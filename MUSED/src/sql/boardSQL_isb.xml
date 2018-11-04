@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE sqlMap PUBLIC '-//ibatis.apache.org//DTD Sql Map 2.0//EN'
+	'http://ibatis.apache.org/dtd/sql-map-2.dtd'>
+<sqlMap>
+	<typeAlias alias="report" type="admin.report.ReportVO"/>
+<!-- 	<typeAlias alias="report_index" type="admin.report.ReportVO"/> -->
+	
+	<resultMap id="reportRes" class="report">
+		<result property="report_no" column="report_no" />
+		<result property="report_memid" column="report_memid" />
+		<result property="report_indexno" column="report_indexno" />
+		<result property="report_subject" column="report_content" />
+		<result property="report_content" column="report_content" />
+		<result property="report_contno" column="report_contno" />
+		<result property="report_regdate" column="report_regdate" />
+	</resultMap>
+	
+	<!-- <resultMap id="" class="comment">
+		<result property="no" column="no" />
+		<result property="originno" column="originno" />
+		<result property="name" column="name" />
+		<result property="password" column="password" />
+		<result property="content" column="content" />
+		<result property="regdate" column="regdate" />
+	</resultMap> -->
+	
+	<!-- 공통으로 사용할 select 절 정의 -->
+	<sql id="select-all">
+		SELECT * FROM REPORT
+	</sql>
+
+	
+	<!-- 공통으로 사용할 where-no 절 정의 -->
+	<sql id="where-no">
+		WHERE no = #no#
+	</sql>
+	
+	
+	<!-- select 쿼리문 정의 -->	
+	<!-- 답변글 로직으로 수정시작 -->
+	
+</sqlMap>
