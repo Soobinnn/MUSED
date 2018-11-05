@@ -42,7 +42,7 @@ public class pagingAction {
 		
 		pagingHtml=new StringBuffer();
 		if(currentPage>blockPage) {
-			pagingHtml.append("<a href=productList.action?currentPage="+(startPage-1)+">");
+			pagingHtml.append("<a href=talentList.action?currentPage="+(startPage-1)+">");
 			pagingHtml.append("이전");
 			pagingHtml.append("</a>");
 		}
@@ -57,7 +57,7 @@ public class pagingAction {
 				pagingHtml.append(i);
 				pagingHtml.append("</font></b>");
 			}else {
-				pagingHtml.append("&nbsp;<a href='productList.action?currentPage=");
+				pagingHtml.append("&nbsp;<a href='talentList.action?currentPage=");
 				pagingHtml.append(i);
 				pagingHtml.append(">");
 				pagingHtml.append(i);
@@ -69,7 +69,7 @@ public class pagingAction {
 			pagingHtml.append("&nbsp;&nbsp;|&nbsp;&nbsp;");
 			
 			if(totalPage - startPage >=blockPage) {
-				pagingHtml.append("<a href=productList.action?currentPage="+(endPage+1)+">");
+				pagingHtml.append("<a href=talentList.action?currentPage="+(endPage+1)+">");
 				pagingHtml.append("다음");
 				pagingHtml.append("</a>");
 			}
