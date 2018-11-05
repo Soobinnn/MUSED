@@ -5,7 +5,9 @@
 <struts>
 <!-- 용량제한 100MB 로 설정. -->
 <constant name="struts.multipart.maxSize" value="104857600" />
-
+	<include file="talent.xml"/>
+	<include file="product.xml"/>
+	
 		<!-- 글로벌 예외 처리 화면 설정 -->
 		<!-- <global-results>
 			<result name="error">/board/pageError.jsp</result>
@@ -17,56 +19,6 @@
 		-->
 		
 		<!-- 게시판 리스트 액션. -->
-
-	<package name="product" extends="struts-default">   <!-- 소진 -->
-
-		<!-- 상품 목록 -->
-		<action name="productList" class="product.ListAction">
-			<result>/product/ListForm.jsp</result>
-		</action>
-		
-		<!-- 상품 등록  폼 -->
-		<action name="productWriteForm" class="product.WriteAction" method="form">
-			<result>/product/WriteForm.jsp</result>
-		</action>
-		
-		<!--  상품 등록 처리   -->
-		<action name="productWrite" class="product.WriteAction">
-			<result>/product/WriteSuccessForm.jsp</result>
-		</action>
-		
-		
-<!-- 
-		product Detail
-		<action name="productDetail" class="product.DetailAction" method="form">
-			<result>/product/DetailForm.jsp</result>
-		</action>
-		 -->	
-
-	</package>
-
-
-	<package name="talent" extends="struts-default">    <!-- 소진 -->
-		<!-- 재능 목록 -->
-		<action name="talentList" class="talent.ListAction">
-			<result>/talent/ListForm.jsp</result>
-		</action>
-		
-		<!-- 재능 등록 폼 -->
-		<action name="talentWriteForm" class="talent.WriteAction" method="form">
-			<result>/talent/WriteForm.jsp</result>
-		</action>
-		<!-- 재능 등록 처리 -->
-		<action name="talentWrite" class="talent.WriteAction">
-			<result>/talent/WriteSuccessForm.jsp</result>
-		</action>
-		<!-- 
-		<action name="productDetail" class="product.DetailAction" method="form">
-			<result>/product/DetailForm.jsp</result>
-		</action>
-			 -->
-	</package>
-
 
 </struts>
 	
