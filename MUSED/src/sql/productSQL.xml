@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD Sql Map 2.0//EN"
+'http://ibatis.apache.org/dtd/sql-map-2.dtd'>
+<sqlMap namespace="product">
+<typeAlias alias="product" type="product.productVO"/>
+<!-- <typeAlias type="product.imgVO" alias="image"/>
+	<resultMap class="image" id="imageRes">
+		<result column="no_p" property="no_p"/>
+		<result column="main_image" property="main_image"/>
+		<result column="image2" property="image2"/>
+		<result column="image3" property="image3"/>
+		<result column="image4" property="image4"/>
+		<result column="image5" property="image5"/>
+
+	</resultMap> -->
+ 
+	<resultMap class="product" id="productRes">
+		<result property="product_no" column="product_no"/>
+		<result property="product_id" column="product_id"/>
+		<result property="product_state" column="product_state"/>
+		<result property="product_subject" column="product_subject"/>
+		<result property="product_name" column="product_name"/>
+		<result property="product_category" column="product_category"/>
+		<result property="product_brand" column="product_brand"/>
+		<result property="product_price" column="product_price"/>
+		<result property="product_type" column="product_type"/>
+		<result property="product_phone" column="product_phone"/>
+		<result property="product_sido" column="product_sido"/>
+		<result property="product_gogon" column="product_gogon"/>
+		<result property="product_image" column="product_image"/>
+		<result property="product_content" column="product_content"/>	
+		
+	</resultMap>
+
+	<!-- product 전체 정보 가져오기 -->
+	<sql id="select-all">
+		SELECT * FROM PRODUCT 
+	</sql>
+	
+	<!-- where no 설정 -->
+	<sql id="where-no">
+		WHERE product_no=#product_no#
+	</sql>
+	
+	<!-- product 전체 가져오는데 no정렬 -->
+	<select id="selectAll" resultMap="productRes">
+		SELECT * FROM PRODUCT
+		ORDER BY product_no DESC
+	</select>
+	
+	<select id="selectLastNo" resultMap="productRes">
+		select * product where product_no = (select max(product_no) from product) 
+	</select>
+
+	
+<!-- 	product 일정 no의 전체 정보 가져오기	 -->
+	<select id="selectOne" resultMap="productRes" parameterClass="product">
+		<include refid="select-all"/>
+		<include refid="where-no"/>
+	</select>
+
+<!-- 	id에 맞는 글만 수정/삭제 폼 나오게...
+
+	product 상품 등록을 위한 insert
+ -->
+ 	<insert id="insertProduct" parameterClass="product">
+		INSERT INTO PRODUCT (PRODUCT_NO, PRODUCT_ID, PRODUCT_STATE, PRODUCT_SUBJECT, PRODUCT_NAME, PRODUCT_CATEGORY, PRODUCT_BRAND, PRODUCT_PRICE, PRODUCT_TYPE, PRODUCT_PHONE, PRODUCT_SIDO, PRODUCT_GOGON, PRODUCT_IMAGE, PRODUCT_CONTENT)
+		VALUES (PRODUCT_NO_SEQ.NEXTVAL, #product_id#, #product_state#, #product_subject#, #product_name#, #product_category#, #product_brand#, #product_price#, #product_type#, #product_phone#, #product_sido#, #product_gogon#, #product_image#, #product_content#)
+	</insert>
+	<!-- 이미지 등록 -->
+<!-- 	<insert id="insertImg" parameterClass="image">
+		INSERT INTO P_IMG (NO_P, MAIN_IMG, IMAGE2, IMAGE3, IMAGE4, IMAGE5)
+		VALUES (#no_p#, #main_img#, #image2#, #image3#, #image4#, #image5#)
+	</insert>
+ -->	
+<!-- 	product 상품 수정을 위한 update -->
+	<update id="updateProduct" parameterClass="product">
+		UPDATE PRODUCT SET PRODUCT_STATE = #product_state#, PRODUCT_NAME = #product_name#, PRODUCT_CATEGORY = #product_category#, PRODUCT_BRAND = #product_brand#, PRODUCT_PRICE = #product_price#, PRODUCT_TYPE = #product_type#, PRODUCT_PHONE = #product_phone#,PRODUCT_CONTENT = #product_content#
+		<include refid="where-no"/>
+	</update>
+
+<!-- 	product 상품 삭제를 위한 delete	 -->
+	<delete id="deleteProduct" parameterClass="product">
+		DELETE FROM product
+		<include refid="where-no"/>
+	</delete>
+
+</sqlMap>

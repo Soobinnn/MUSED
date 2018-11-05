@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD Sql Map 2.0//EN"
+'http://ibatis.apache.org/dtd/sql-map-2.dtd'>
+<sqlMap namespace="talent">
+<typeAlias alias="talent" type="talent.talentVO"/>
+<!-- <typeAlias type="talent.imgVO" alias="image"/>
+	<resultMap class="image" id="imageRes">
+		<result column="no_p" property="no_p"/>
+		<result column="main_image" property="main_image"/>
+		<result column="image2" property="image2"/>
+		<result column="image3" property="image3"/>
+		<result column="image4" property="image4"/>
+		<result column="image5" property="image5"/>
+
+	</resultMap>
+ -->	
+	<resultMap class="talent" id="talentRes">
+		<result property="talent_no" column="talent_no"/>
+		<result property="talent_id" column="talent_id"/>
+		<result property="talent_state" column="talent_state"/>
+		<result property="talent_subject" column="talent_subject"/>
+		<result property="talent_name" column="talent_name"/>
+		<result property="talent_category" column="talent_category"/>
+		<result property="talent_price" column="talent_price"/>
+		<result property="talent_phone" column="talent_phone"/>
+		<result property="talent_sido" column="talent_sido"/>
+		<result property="talent_gogon" column="talent_gogon"/>
+		<result property="talent_content" column="talent_content"/>	
+		<result property="talent_image" column="talent_image"/>		
+	</resultMap>
+
+	<!-- talent 전체 정보 가져오기 -->
+	<sql id="select-all">
+		SELECT * FROM TALENT 
+	</sql>
+	
+	<!-- where no 설정 -->
+	<sql id="where-no">
+		WHERE talent_no=#talent_no#
+	</sql>
+	
+	<!-- TALENT 전체 가져오는데 no정렬 -->
+	<select id="selectAll" resultMap="talentRes">
+		SELECT * FROM TALENT
+		ORDER BY talent_no DESC
+	</select>
+	
+	<select id="selectLastNo" resultMap="talentRes">
+		select * TALENT where talent_no = (select max(talent_no) from TALENT) 
+	</select>
+
+	
+<!-- 	talent 일정 no의 전체 정보 가져오기	 -->
+	<select id="selectOne" resultMap="talentRes" parameterClass="talent">
+		<include refid="select-all"/>
+		<include refid="where-no"/>
+	</select>
+
+<!-- 	id에 맞는 글만 수정/삭제 폼 나오게...
+
+	talent 상품 등록을 위한 insert
+ -->
+ 	<insert id="insertTalent" parameterClass="talent">
+		INSERT INTO TALENT (TALENT_NO, TALENT_ID, TALENT_STATE, TALENT_SUBJECT, TALENT_NAME, TALENT_CATEGORY, TALENT_PRICE, TALENT_PHONE, TALENT_SIDO, TALENT_GOGON, TALENT_CONTENT, TALENT_IMAGE)
+		VALUES (TALENT_NO_SEQ.NEXTVAL, #talent_id#, #talent_state#, #talent_subject#, #talent_name#, #talent_category#, #talent_price#, #talent_phone#, #talent_sido#, #talent_gogon#, #talent_content#, #talent_image#)
+	</insert>
+	
+<!-- 	talent 상품 수정을 위한 update -->
+	<update id="updateTalent" parameterClass="talent">
+		UPDATE TALENT SET TALENT_STATE = #talent_state#, TALENT_NAME = #talent_name#, TALENT_CATEGORY = #talent_category#, TALENT_PRICE = #talent_price#, TALENT_PHONE = #talent_phone#, TALENT_CONTENT = #talent_content#
+		<include refid="where-no"/>
+	</update>
+
+<!-- 	talent 상품 삭제를 위한 delete	 -->
+	<delete id="deletetalent" parameterClass="talent">
+		DELETE FROM talent
+		<include refid="where-no"/>
+	</delete>
+
+</sqlMap>

@@ -4,7 +4,6 @@
 		
 <sqlMapConfig>
 	<properties resource="/dbconnect.properties" />
-	<properties resource="/dbconnect.properties"/>
 	
 	<!-- 
 	<settings cacheModelsEnabled="true"
@@ -26,7 +25,9 @@
 			<property name="JDBC.Password" value="${password}" />
 		</dataSource>
 	</transactionManager>
-	
-	<sqlMap resource="/sql/boardSQL_isb.xml" />
+
+<!-- 	<sqlMap resource="/sql/boardSQL_isb.xml" />
+ -->	<sqlMap resource="/sql/productSQL.xml"/>	<!-- SJ : 상품 관련 sql  -->
+	<sqlMap resource="/sql/talentSQL.xml"/>	<!-- SJ : 재능 관련 sql -->
 	
 </sqlMapConfig>
