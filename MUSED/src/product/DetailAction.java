@@ -2,6 +2,7 @@ package product;
 
 import com.opensymphony.xwork2.ActionSupport;
 import com.ibatis.common.resources.Resources;
+
 import com.ibatis.sqlmap.client.SqlMapClient;
 import com.ibatis.sqlmap.client.SqlMapClientBuilder;
 
@@ -12,67 +13,86 @@ import java.io.InputStream;
 import java.io.IOException;
 
 import java.net.URLEncoder;
+import java.util.ArrayList;
+import java.util.List;
 
-public class DetailAction extends ActionSupport {
+
+
+public class DetailAction extends ActionSupport{
+	//ibatis사용하기 위해
 	public static Reader reader;
 	public static SqlMapClient sqlMapper;
-
-	private productVO paramClass = new productVO(); //파라미터를 저장할 객체
-	private productVO resultClass = new productVO(); //쿼리 결과 값을 저장할 객체
-
+	
+	//객체 전달을 위해
+	private productVO paramClass=new productVO();
+	//처리된 결과 전달을 위해
+	private productVO resultClass=new productVO();
+	
+		//현재 페이지 번호
 	private int currentPage;
-
-	private int no;
+	
+	//글 번호
+	private int product_no;
+	private List<String> image = new ArrayList();
+	private String[] a;
+	//비밀번호 체크
 	private String password;
-
-	// 생성자
-	public DetailAction() throws IOException {
-
-		reader = Resources.getResourceAsReader("sqlMapConfig.xml"); // sqlMapConfig.xml 파일의 설정내용을 가져온다.
-		sqlMapper = SqlMapClientBuilder.buildSqlMapClient(reader); // sqlMapConfig.xml의 내용을 적용한 sqlMapper 객체 생성.
+		
+	//생성자 -> ibatis에 정의한 내용을 가져다 사용할 수 있음
+	public DetailAction() throws IOException{
+		reader=Resources.getResourceAsReader("sqlMapConfig.xml");	
+		sqlMapper=SqlMapClientBuilder.buildSqlMapClient(reader);
 		reader.close();
 	}
-
-	// 상세보기
-	public String execute() throws Exception {
-
-		// 해당 번호의 글을 가져온다.
-		resultClass = (productVO) sqlMapper.queryForObject("product.selectOne", getNo());
-
+	
+	//상세보기
+	public String execute() throws Exception{
+		paramClass.setProduct_no(getProduct_no());
+		// paramClass의 글번호 넣어주기
+		
+		resultClass=(productVO) sqlMapper.queryForObject("product.selectOne",getProduct_no());	//해당 글 번호의 정보 한줄 가져오기
+		resultClass.setMain_img("/MUSED/product/img/"+resultClass.getMain_img());
+		System.out.println(resultClass.getProduct_image());
+		a=resultClass.getProduct_image().split(",");		
+		for(int i= 0 ; i < a.length;i++) {
+			image.add("/MUSED/product/img/"+a[i]);
+			System.out.println(a[i]);
+		}
 		return SUCCESS;
 	}
-/*
-	// 비밀번호 체크 폼
-	public String checkForm() throws Exception {
 
-		return SUCCESS;
+	
+	
+	public List<String> getImage() {
+		return image;
 	}
 
-	// 비밀번호 체크 액션
-	public String checkAction() throws Exception {
-
-		// 비밀번호 입력값 파라미터 설정.
-		paramClass.setNo(getNo());
-		paramClass.setPassword(getPassword());
-
-		// 현재 글의 비밀번호 가져오기.
-		resultClass = (productVO) sqlMapper.queryForObject("selectPassword",
-				paramClass);
-
-		// 입력한 비밀번호가 틀리면 ERROR 리턴.
-		if (resultClass == null)
-			return ERROR;
-
-		return SUCCESS;
+	public void setImage(List<String> image) {
+		this.image = image;
 	}
-*/
+
+	public String[] getA() {
+		return a;
+	}
+
+	public void setA(String[] a) {
+		this.a = a;
+	}
+
+	public int getProduct_no() {
+		return product_no;
+	}
+
+	public void setProduct_no(int product_no) {
+		this.product_no = product_no;
+	}
 
 	public static Reader getReader() {
 		return reader;
 	}
 
 	public static void setReader(Reader reader) {
-		DetailAction.reader = reader;
+		reader = reader;
 	}
 
 	public static SqlMapClient getSqlMapper() {
@@ -80,7 +100,7 @@ public class DetailAction extends ActionSupport {
 	}
 
 	public static void setSqlMapper(SqlMapClient sqlMapper) {
-		DetailAction.sqlMapper = sqlMapper;
+		sqlMapper = sqlMapper;
 	}
 
 	public productVO getParamClass() {
@@ -107,14 +127,6 @@ public class DetailAction extends ActionSupport {
 		this.currentPage = currentPage;
 	}
 
-	public int getNo() {
-		return no;
-	}
-
-	public void setNo(int no) {
-		this.no = no;
-	}
-
 	public String getPassword() {
 		return password;
 	}
@@ -122,6 +134,5 @@ public class DetailAction extends ActionSupport {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-
-
+	
 }

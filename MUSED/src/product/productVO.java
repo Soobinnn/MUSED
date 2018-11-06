@@ -14,7 +14,15 @@ public class productVO {
 	private String product_sido;
 	private String product_gogon;
 	private String product_image;
-	private String product_content;	
+	private String product_content;
+	private String main_img;
+	
+	public String getMain_img() {
+		return main_img;
+	}
+	public void setMain_img(String main_img) {
+		this.main_img = main_img;
+	}
 	public String getProduct_subject() {
 		return product_subject;
 	}

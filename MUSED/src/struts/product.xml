@@ -22,13 +22,10 @@
 			<result>/product/WriteSuccessForm.jsp</result>
 		</action>
 		
-		
-<!-- 
-		product Detail
-		<action name="productDetail" class="product.DetailAction" method="form">
+		<!-- 상품 상세보기 폼 -->
+		<action name="productDetail" class="product.DetailAction">
 			<result>/product/DetailForm.jsp</result>
 		</action>
-		 -->	
 
 	</package>
 

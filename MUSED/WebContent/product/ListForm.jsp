@@ -13,6 +13,7 @@ pageEncoding="utf-8"%>
 		h2{color:gray}
 	</style>
 </head>
+
 <body>
 <table width="600" border="0" cellspacing="0" cellspadding="2">
 	<input type="button" value="판매 등록 폼" onClick="javascript:location.href='/MUSED/product/productWriteForm.action'"/>
@@ -24,6 +25,7 @@ pageEncoding="utf-8"%>
 	</tr>
 </table>
  
+      				
 <table width="600" border="0" cellspacing="0" cellspadding="2">
 
 	<tr align="center">
@@ -76,20 +78,37 @@ pageEncoding="utf-8"%>
 		      <tr bgcolor="#777777">
         		<td height="1" colspan="5"></td>
       	      </tr>
-      	
-
-	      <s:iterator value="list" status="stat">
-	   	  	      <td>
-	   	  	      	<img src="/MUSED/product/img/<s:property value="first"/>" style="height: 100px; width: 100px; display: block;"/>
-	   	  	      	<br><s:property value="product_subject" />
-						<br>판매자 : <s:property value="product_id"/>
-        		</td>
-        		
-        		<s:if test="#stat.count%5==0">
+<%-- 				<tr>
+      	      			<s:iterator value="first" status="stat">
+            	    		<td>
+            	      			<img src="<s:property />" style="height: 100px; width: 100px; display: block;"/>
+							</td>
+						</s:iterator>
+						      	        
+				</tr> --%>
+				
+				<tr>
+	   	  	      	<s:iterator value="list" status="stat">
+	   	  	      		      	<s:url id="DetailURL" action="productDetail">
+									<s:param name="product_no">
+										<s:property value="product_no"/>
+									</s:param>
+								</s:url>
+      	      	      <td>	 
+      	      	      &nbsp;<s:a href="%{DetailURL}">
+            			<img src="/MUSED/product/img/<s:property value="main_img"/>" style="height: 100px; width: 100px; display: block;"/>
+						<br><s:property value="product_subject" />
+						</br></s:a>
+						<br>판매자 : <s:property value="product_id"/>	
+	        		  </td>
+	        	<s:if test="#stat.count%5==0">
         		<tr></tr>
-				</s:if>
- 	      </s:iterator>
-	<s:if test="list.size()<=0">
+				</s:if>	  
+			</s:iterator>
+        		
+        		</tr>
+        		<s:if test="list.size()<=0">
+
 		<tr bgcolor="#FFFFFF" align="center">
 			<td colspan="5">등록된 게시물이 없습니다.</td>
 		</tr>

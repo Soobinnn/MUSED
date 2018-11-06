@@ -73,19 +73,36 @@ pageEncoding="utf-8"%>
 		      <tr bgcolor="#777777">
         		<td height="1" colspan="5"></td>
       	      </tr>
-      	
-	      <s:iterator value="list" status="stat">
- 
-        		<s:if test="#stat.count%6==0">
+    
+	<tr>
+      	      			<s:iterator value="first" status="stat">
+						      	<s:url id="DetailURL" action="talentDetail">
+									<s:param name="talent_no">
+										<s:property value="talent_no"/>
+									</s:param>
+								</s:url>
+            	    		<td>
+            	      			&nbsp;<s:a href="%{DetailURL}">
+            	      			<img src="<s:property />" style="height: 100px; width: 100px; display: block;"/>
+            	      			</s:a>
+							</td>
+						</s:iterator>
+						      	        
+				</tr>
+				
+				<tr>
+	   	  	      	<s:iterator value="list" status="stat">
+      	      	      <td>	 
+						<br><s:property value="talent_subject" />
+						<br>판매자 : <s:property value="talent_id"/>	
+	        		  </td>
+	        	<s:if test="#stat.count%5==0">
         		<tr></tr>
-				</s:if>
+				</s:if>	  
+			</s:iterator>
+        		
+        		</tr>
 
-	   	  	      <td>
-	        		<img src="/MUSED/talent/img/<s:property value="talent_image"/>" style="height: 100px; width: 100px; display: block;">
-					<br><s:property value="talent_subject" />
-					<br>판매자 : <s:property value="talent_id"/>
-        		</td>
- 	      </s:iterator>
 	<s:if test="list.size()<=0">
 		<tr bgcolor="#FFFFFF" align="center">
 			<td colspan="5">등록된 게시물이 없습니다.</td>

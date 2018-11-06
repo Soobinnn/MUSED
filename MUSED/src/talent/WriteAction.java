@@ -42,7 +42,7 @@ public class WriteAction extends ActionSupport {
 	private File[] upload;
 	private String[] uploadFileName;
 	private String[] uploadContentType;
-	private String fileUploadPath="C:\\Users\\bogiy\\OneDrive\\바탕 화면\\자바\\App\\MUSED\\WebContent\\talent\\img\\";
+	private String fileUploadPath="C:\\Users\\bogiy\\OneDrive\\바탕 화면\\자바\\MUSED\\MUSED\\WebContent\\talent\\img\\";
 
 	private String imageName="";
 	

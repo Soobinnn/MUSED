@@ -16,7 +16,7 @@ public class ListAction extends ActionSupport{
 	public static Reader reader;
 	public static SqlMapClient sqlMapper;
 
-	private List<String> first = new ArrayList<String>();
+	private List first = new ArrayList();
 	private List<productVO> list = new ArrayList<productVO>();
 	private productVO resultClass = new productVO(); //쿼리 결과 값을 저장할 객체
 	
@@ -35,14 +35,16 @@ public class ListAction extends ActionSupport{
 	
 	public String execute() throws Exception{
 		list=sqlMapper.queryForList("product.selectAll");
-		for(int i= 0 ; i <  list.size();i++) { 
+/*		for(int i= 0 ; i <  list.size();i++) { 
 			resultClass = list.get(i);
 		    a = resultClass.getProduct_image().split(",");   
-		    first.add(i,a[0]);
-		
+		    
+		    first.add("/MUSED/product/img/"+a[0]);
+		}
+		for(int i= 0 ; i <  list.size();i++) { 
 		System.out.println(first.get(i));
 		}
-		totalCount = list.size();
+*/		totalCount = list.size();
 		
 		page=new pagingAction(currentPage,totalCount,blockCount,blockPage);
 		pagingHtml = page.getPagingHtml().toString();
@@ -56,7 +58,6 @@ public class ListAction extends ActionSupport{
 
 		return SUCCESS;
 	}
-
 
 	public List<String> getFirst() {
 		return first;

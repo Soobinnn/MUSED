@@ -2,6 +2,7 @@ package talent;
 
 import com.opensymphony.xwork2.ActionSupport;
 
+import talent.talentVO;
 import talent.pagingAction;
 
 import com.ibatis.common.resources.Resources;
@@ -15,7 +16,10 @@ import java.io.IOException;
 public class ListAction extends ActionSupport{
 	public static Reader reader;
 	public static SqlMapClient sqlMapper;
+
+	private List first = new ArrayList();
 	private List<talentVO> list = new ArrayList<talentVO>();
+	private talentVO resultClass = new talentVO(); //쿼리 결과 값을 저장할 객체
 	
 	private int currentPage=1;	//현재 페이지
 	private int totalCount;		
@@ -23,6 +27,7 @@ public class ListAction extends ActionSupport{
 	private int blockPage=5;
 	private String pagingHtml;
 	private pagingAction page;
+	private String a[];
 	
 	public ListAction() throws IOException{
 		reader=Resources.getResourceAsReader("sqlMapConfig.xml");
@@ -32,7 +37,15 @@ public class ListAction extends ActionSupport{
 	
 	public String execute() throws Exception{
 		list=sqlMapper.queryForList("talent.selectAll");
-		System.out.println(list);
+		for(int i= 0 ; i <  list.size();i++) { 
+			resultClass = list.get(i);
+		    a = resultClass.getTalent_image().split(",");   
+		    
+		    first.add("/MUSED/talent/img/"+a[0]);
+		}
+		for(int i= 0 ; i <  list.size();i++) { 
+		System.out.println(first.get(i));
+		}
 		totalCount = list.size();
 		
 		page=new pagingAction(currentPage,totalCount,blockCount,blockPage);
@@ -46,6 +59,32 @@ public class ListAction extends ActionSupport{
 		list=list.subList(page.getStartCount(), lastCount);
 
 		return SUCCESS;
+	}
+
+	
+	
+	public List getFirst() {
+		return first;
+	}
+
+	public void setFirst(List first) {
+		this.first = first;
+	}
+
+	public talentVO getResultClass() {
+		return resultClass;
+	}
+
+	public void setResultClass(talentVO resultClass) {
+		this.resultClass = resultClass;
+	}
+
+	public String[] getA() {
+		return a;
+	}
+
+	public void setA(String[] a) {
+		this.a = a;
 	}
 
 	public static Reader getReader() {
