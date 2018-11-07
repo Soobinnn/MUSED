@@ -5,7 +5,7 @@ pageEncoding="utf-8"%>
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
-<link rel="stylesheet" href="/MUSED/css/css.css" type="text/css">
+
 <head>
 <title>악기 게시판</title>
 	<style>
@@ -15,7 +15,6 @@ pageEncoding="utf-8"%>
 
 <body>
 <table width="600" border="0" cellspacing="0" cellspadding="2">
-	<input type="button" value="판매 등록 폼" onClick="javascript:location.href='/MUSED/product/productWriteForm.action'"/>
 	<tr>
 		<td align="center"><h2>악기 리스트</h2></td>
 	</tr>

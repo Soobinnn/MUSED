@@ -73,7 +73,7 @@ table {
 <!-- css 적용 -->
 <link href="https://fonts.googleapis.com/css?family=Henny+Penny"
 	rel="stylesheet" />
-<link rel="stylesheet" href="Mused_main.css">
+<link rel="stylesheet" href="/MUSED/tiles/Mused_main.css">
 <link rel="stylesheet"
 	href="https://fonts.googleapis.com/icon?family=Material+Icons">
 <title>MUSED_Header</title>
@@ -84,7 +84,7 @@ table {
 	<header id="main_header">
 		<div class="head">
 			<h1 id="logo">
-				<a href="#"><img src="logo2.png" width="150" height="150"></a>
+				<a href="#"><img src="/MUSED/tiles/logo2.png" width="150" height="150"></a>
 			</h1>
 			<hgroup id="title">
 				<h2>MUSED</h2>
@@ -115,13 +115,13 @@ table {
 		<div class="nav">
 			<nav id="main_gnb">
 				<ul class="left">
-					<li><a href="#">중고악기거래</a></li>
-					<li><a href="#">재능거래</a></li>
+					<li><a href="productList.action">중고악기거래</a></li>
+					<li><a href="talentList.action">재능거래</a></li>
 					<li><a href="#">커뮤니티</a></li>
 				</ul>
 				<ul class="right">
-					<li><a href="#">악기판매</a></li>
-					<li><a href="#">재능판매</a></li>
+					<li><a href="productWriteForm.action">악기판매</a></li>
+					<li><a href="talentWriteForm.action">재능판매</a></li>
 				</ul>
 			</nav>
 		</div>

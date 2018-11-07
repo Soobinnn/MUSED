@@ -61,6 +61,41 @@
 	</definition>
 	
 	<!-- 로그인 & 회원가입 -->
-
 	
+	<!-- 상품  -->
+
+	<definition name="productList" extends="main">
+		<put-attribute name="body" value="/product/ListForm.jsp"/>
+	</definition>
+	
+	<definition name="productWriteForm" extends="main">
+		<put-attribute name="body" value="/product/WriteForm.jsp"/>
+	</definition>
+	
+	<definition name="productDetailForm" extends="main">
+		<put-attribute name="body" value="/product/DetailForm.jsp"/>
+	</definition>
+
+	<definition name="productWriteSuccess" extends="main">
+		<put-attribute name="body" value="/product/WriteSuccessForm.jsp"/>
+	</definition>
+
+	<!-- 상품  -->
+	
+	<!-- 재능  -->
+
+	<definition name="talentList" extends="main">
+		<put-attribute name="body" value="/talent/ListForm.jsp"/>
+	</definition>
+	
+	<definition name="talentWriteForm" extends="main">
+		<put-attribute name="body" value="/talent/WriteForm.jsp"/>
+	</definition>
+	
+	<definition name="talentDetailForm" extends="main">
+		<put-attribute name="body" value="/talent/DetailForm.jsp"/>
+	</definition>
+
+	<!-- 재능  -->
+
 </tiles-definitions>

@@ -4,15 +4,15 @@
     "http://struts.apache.org/dtds/struts-2.0.dtd">
 <struts>
 <constant name="struts.multipart.maxSize" value="104857600" />
-	<package name="talent" extends="struts-default">    <!-- 소진 -->
+	<package name="talent" extends="struts-default, tiles-default">    <!-- 소진 -->
 		<!-- 재능 목록 -->
 		<action name="talentList" class="talent.ListAction">
-			<result>/talent/ListForm.jsp</result>
+			<result type="tiles">talentList</result>
 		</action>
 		
 		<!-- 재능 등록 폼 -->
 		<action name="talentWriteForm" class="talent.WriteAction" method="form">
-			<result>/talent/WriteForm.jsp</result>
+			<result type="tiles">talentWriteForm</result>
 		</action>
 		<!-- 재능 등록 처리 -->
 		<action name="talentWrite" class="talent.WriteAction">
@@ -20,7 +20,7 @@
 		</action>
 		<!-- 재능 상세보기 -->
 		<action name="talentDetail" class="talent.DetailAction">
-			<result>/talent/DetailForm.jsp</result>
+			<result type="tiles">talentDetailForm</result>
 		</action>
 
 	</package>

@@ -5,26 +5,26 @@
 <struts>
 <constant name="struts.multipart.maxSize" value="104857600" />
 
-	<package name="product" extends="struts-default">   <!-- 소진 -->
+	<package name="product" extends="struts-default, tiles-default">   <!-- 소진 -->
 
 		<!-- 상품 목록 -->
 		<action name="productList" class="product.ListAction">
-			<result>/product/ListForm.jsp</result>
+			<result type="tiles">productList</result>
 		</action>
 		
 		<!-- 상품 등록  폼 -->
 		<action name="productWriteForm" class="product.WriteAction" method="form">
-			<result>/product/WriteForm.jsp</result>
+			<result type="tiles">productWriteForm</result>
 		</action>
 		
 		<!--  상품 등록 처리   -->
 		<action name="productWrite" class="product.WriteAction">
-			<result>/product/WriteSuccessForm.jsp</result>
+			<result type="tiles">productWriteSuccess</result>
 		</action>
 		
 		<!-- 상품 상세보기 폼 -->
 		<action name="productDetail" class="product.DetailAction">
-			<result>/product/DetailForm.jsp</result>
+			<result type="tiles">productDetailForm</result>
 		</action>
 
 	</package>

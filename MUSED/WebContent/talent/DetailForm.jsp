@@ -6,7 +6,6 @@ pageEncoding="utf-8"%>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <title>재능 상세보기</title>
-<link rel="stylesheet" href="/StrutsBoard/board/common/css/css.css" type="text/css">
 
 <script type="text/javascript">
 function open_win_noresizable(url,name){
@@ -19,17 +18,13 @@ function image(img){
 </script>
 </head>
 <body>
-
 	제목 :	&nbsp;&nbsp;	<s:property value="resultClass.talent_subject"/>
 <br>
 		
 <table width="100%" height="400" border="0">
 <tr>
 <td width="60%" align="middle">
-		<%-- <img src='<s:property value="resultClass.main_img"/>' style="height: 300px; width: 300px; display: block;"/> --%>
-
-		<img src="src" alt=""/>
-
+		<img src='<s:property value="resultClass.main_img"/>' style="height: 300px; width: 300px; display: block;"/>
 </td>
 <td width="40%" height="250">
 상품 카테고리 : <s:property value="resultClass.talent_category"/><br>
@@ -47,7 +42,7 @@ function image(img){
 	<s:iterator value="image" status="stat">	
 	
 	<td>
-		<img src='<s:property/>' style="height: 100px; width: 100px; display: block;" onclick="image(this)"/>
+		<%-- <s:a href="#" id="img"> --%><img src='<s:property/>' style="height: 100px; width: 100px; display: block;" onclick="image(this)"/>
 	</td>
 	</s:iterator>
 </tr>
@@ -93,7 +88,9 @@ function image(img){
 <table width="60%" height="150" border="1" align="center">
 
 	 <tr>
-	   	<s:iterator value="list" status="stat">
+
+<!-- 리스트로 출력 말고 no 값 받아서 그 뒤에 5개의 main_image 가져와서 출력시키기! -->
+ 	   	<s:iterator value="list" status="stat">
 	   	  	      		      	<s:url id="DetailURL" action="talentDetail">
 									<s:param name="talent_no">
 										<s:property value="talent_no"/>
@@ -103,7 +100,9 @@ function image(img){
       	      	      &nbsp;<s:a href="%{DetailURL}">
       	      			<img src="/MUSED/talent/img/<s:property value="main_img"/>" style="height: 100px; width: 100px; display: block;"/></s:a>
 				</td>
-						</s:iterator>
+						</s:iterator> 
+
+
 	</tr>
 </table>
 </td>
