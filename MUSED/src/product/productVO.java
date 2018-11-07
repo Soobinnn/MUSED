@@ -1,6 +1,7 @@
 package product;
 
-public class productVO {
+public class productVO 
+{
 	private int product_no;
 	private String product_id;
 	private String product_state;

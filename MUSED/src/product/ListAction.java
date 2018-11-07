@@ -12,7 +12,8 @@ import java.io.IOException;
 
 import product.pagingAction;
 
-public class ListAction extends ActionSupport{
+public class ListAction extends ActionSupport
+{
 	public static Reader reader;
 	public static SqlMapClient sqlMapper;
 
