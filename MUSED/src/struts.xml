@@ -7,6 +7,7 @@
 <constant name="struts.multipart.maxSize" value="104857600" />
 	<include file="struts/talent.xml"/>
 	<include file="struts/product.xml"/>
+	<include file="struts/member.xml"/>
 	
 		<!-- 글로벌 예외 처리 화면 설정 -->
 		<!-- <global-results>

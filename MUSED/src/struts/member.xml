@@ -1,0 +1,98 @@
+<?mxl version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+
+	<!-- 용량제한 100MB로 설정 -->
+	<constant name="struts.multipart.maxSize" value="104857600"/>
+	
+	<package name="join" extends="struts-default, tiles-default">
+	
+		<!-- <<result-types>
+			<result-type name="tiles" class="org.apache.struts2.views.tiles.TilesResult"></result-type>
+		</result-types> -->
+		
+		<!-- 로그인 -->
+		<action name="loginForm" class="login.LoginAction" method="form">
+			<result type="tiles">loginForm</result>
+		</action>
+		
+		<action name="loginAction" class="login.LoginAction" method="login">
+			<result name="success" type="tiles">main</result>
+			<result name="error" type="tiles">loginError</result>
+			
+			<result name="login" type="redirect-action">
+				<param name="actionName">관리자 페이지로 이동</param>
+			</result>
+		</action>
+		
+		<action name="logout" class="login.LoginAction" method="logout">
+			<result name="success" type="tiles">main</result>
+		</action>
+		<!-- 로그인 -->
+		
+		<!-- 회원가입 -->
+		<action name="joinConfirm" class="member.MemberAction" method="joinConfirm">
+			<result type="tiles">joinConfirm</result>
+		</action>
+		
+		<action name="joinForm" class="member.MemberAction" method="joinForm">
+			<result type="tiles">joinForm</result>
+		</action>
+		
+		<action name="checkIdAction" class="member.CheckIdAction">
+			<result>/member/checkId.jsp</result>
+		</action>
+				
+		<action name="joinAction" class="member.MemberAction" method="join" >
+			<result type="tiles">joinSuccess</result>
+		</action>
+		<!-- 회원가입 -->
+		
+		<!-- 아이디 찾기-->
+		<action name="findIdForm" class="member.MemberFindIdAction" method="form">
+			<result type="tiles">findIdForm</result>
+		</action>
+		
+		
+		<action name="findIdAction" class="member.MemberFindIdAction">
+			<result name="success" type="tiles">findIdSuccess</result>
+			<result name="error" type="tiles">findIdError</result>
+		</action>
+		<!-- 아이디 찾기-->
+		
+		<!-- 비밀번호 찾기 -->
+		<action name="findPwForm" class="member.MemberFindPwAction" method="form">
+			<result type="tiles">findPwForm</result>
+		</action>
+		
+		<action name="findPwAction" class="member.MemberFindPwAction">
+			<result name="success" type="tiles">modifyPw</result>
+			<result name="error" type="tiles">findPwError</result>
+		</action>
+		
+		<action name="ModifyPwAction" class="member.MemberFindPwAction" method="modifyPw">
+			<result type="tiles">findPwSuccess</result>
+		</action>
+		<!-- 비밀번호 찾기 -->
+		
+		<!-- 본인인증 -->
+		<action name="authCheckForm" class="util.SmsAction" method="form">
+			<result>/member/authCheck.jsp</result>
+		</action>
+		
+		<action name="authCheckAction" class="util.SmsAction">
+			<result name="success">/member/authCheck.jsp</result>
+			<result name="error">/member/authCheckError.jsp</result>
+		</action>
+		<!-- 본인인증 -->
+		
+		
+		
+		<!-- 본인인증 -->
+
+	</package>
+	
+</struts>
