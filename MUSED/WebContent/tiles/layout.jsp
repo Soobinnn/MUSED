@@ -1,4 +1,4 @@
-<%@ page contentType="text/html; charset=euc-kr" %>
+<%@ page contentType="text/html; charset=utf-8" %>
 <%@ taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles" %>
 <link rel="stylesheet" href="Mused_main.css"
 	type="text/css">

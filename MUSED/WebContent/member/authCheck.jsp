@@ -1,11 +1,11 @@
-<%@ page contentType="text/html; charset=euc-kr"%>
+<%@ page contentType="text/html; charset=utf-8"%>
 <%@ taglib prefix="s" uri="/struts-tags"%>
 
-<?xml version="1.0" encoding="euc-kr" ?>
+<?xml version="1.0" encoding="utf-8" ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<title>º»ÀÎÀÎÁõ Æû</title>
+<title>ë³¸ì¸ì¸ì¦ í¼</title>
 
 <script type="text/javascript">
 	
@@ -15,12 +15,12 @@
 
 		if(auth_form.authNum.value != "" && auth_form.authNum.value == "${authNum}") {
 			
-			alert("ÀÎÁõµÇ¾ú½À´Ï´Ù.");
+			alert("ì¸ì¦ë˜ì—ˆìŠµë‹ˆë‹¤.");
 			
 			opener.document.join_form.phone.value = phone;		
 			self.close();
 		} else{
-			alert("ÀÎÁõ¹øÈ£°¡ Æ²¸³´Ï´Ù.");
+			alert("ì¸ì¦ë²ˆí˜¸ê°€ í‹€ë¦½ë‹ˆë‹¤.");
 			return false;
 		}
 		
@@ -31,19 +31,18 @@
 
 <center>
 	<body>
-		<h3>º»ÀÎÀÎÁõ</h3>
+		<h3>ë³¸ì¸ì¸ì¦</h3>
 		<br><br>
-				<form name="auth_form" action="authCheckAction.action" method="post"
-					enctype="multipart/form-data">
+				<form name="auth_form" action="authCheckAction.action" method="post">
 					<table>
 						<tr>
 							<td>Phone&nbsp;<input type="text" name="phone" value="<s:property value="phone"/>"></input></td>
-							<td><input type="submit" value="º»ÀÎÀÎÁõ" /></td>
+							<td><input type="submit" value="ë³¸ì¸ì¸ì¦" /></td>
 						</tr>
 						<tr>
-							<td>ÀÎÁõ¹øÈ£&nbsp;<input type="text" id="authNum" name="authNum"
+							<td>ì¸ì¦ë²ˆí˜¸&nbsp;<input type="text" id="authNum" name="authNum"
 								maxlength="6"></input></td>
-							<td><input type="button" name="authOk" value="È®ÀÎ" onclick="authCheck()"/></td>
+							<td><input type="button" name="authOk" value="í™•ì¸" onclick="authCheck()"/></td>
 						</tr>
 					</table>
 

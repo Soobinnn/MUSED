@@ -1,10 +1,10 @@
-<%@ page language="java" contentType="text/html; charset=euc-kr"
-	pageEncoding="euc-kr"%>
+<%@ page language="java" contentType="text/html; charset=utf-8"
+	pageEncoding="utf-8"%>
 <%@ taglib prefix="s" uri="/struts-tags"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<title>È¸¿ø°¡ÀÔ</title>
+<title>íšŒì›ê°€ì…</title>
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 <script language="javascript">
 	function check() {
@@ -13,74 +13,74 @@
 		var check = /^(?=.*[a-zA-Z])(?=.*[^a-zA-Z0-9])(?=.*[0-9]).{6,12}$/;
 			
 		if (frm.name.value == "") {
-			alert("ÀÌ¸§À» ÀÔ·ÂÇØÁÖ½Ê½Ã¿À.");
+			alert("ì´ë¦„ì„ ì…ë ¥í•´ì£¼ì‹­ì‹œì˜¤.");
 			frm.name.focus();
 			return false;
 		}
 		if (frm.id.value == "") {
-			alert("¾ÆÀÌµğ¸¦ ÀÔ·ÂÇØÁÖ½Ê½Ã¿À.");
+			alert("ì•„ì´ë””ë¥¼ ì…ë ¥í•´ì£¼ì‹­ì‹œì˜¤.");
 			frm.id.focus();
 			return false;
 		}
 		if (frm.password.value == "") {
-			alert("ºñ¹Ğ¹øÈ£¸¦ ÀÔ·ÂÇØÁÖ½Ê½Ã¿À.");
+			alert("ë¹„ë°€ë²ˆí˜¸ë¥¼ ì…ë ¥í•´ì£¼ì‹­ì‹œì˜¤.");
 			frm.password.focus();
 			return false;
 		}
 		if(frm.password.value.length < 6 || frm.password.value.length > 12) {
-			alert("¾ÏÈ£¸¦ 6 ~ 12ÀÚ ÀÌÇÏ·Î ¼³Á¤ÇØÁÖ¼¼¿ä.");
+			alert("ì•”í˜¸ë¥¼ 6 ~ 12ì ì´í•˜ë¡œ ì„¤ì •í•´ì£¼ì„¸ìš”.");
 			return false;
 		}
 		if(!check.test(frm.password.value)) {
-			alert("¿µ¹®, ¼ıÀÚ, Æ¯¼ö¹®ÀÚ Á¶ÇÕÀ¸·Î ÀÔ·ÂÇØÁÖ¼¼¿ä.");
+			alert("ì˜ë¬¸, ìˆ«ì, íŠ¹ìˆ˜ë¬¸ì ì¡°í•©ìœ¼ë¡œ ì…ë ¥í•´ì£¼ì„¸ìš”.");
 			return false;
 		}
 		if (frm.password.value != frm.password2.value) {
-			alert("ºñ¹Ğ¹øÈ£°¡ ´Ù¸¨´Ï´Ù.");
+			alert("ë¹„ë°€ë²ˆí˜¸ê°€ ë‹¤ë¦…ë‹ˆë‹¤.");
 			frm.password2.select();
 			return false;
 		}
 		if (frm.jumin1.value == "") {
-			alert("ÁÖ¹Îµî·Ï¹øÈ£¸¦ ÀÔ·ÂÇØÁÖ½Ê½Ã¿À.");
+			alert("ì£¼ë¯¼ë“±ë¡ë²ˆí˜¸ë¥¼ ì…ë ¥í•´ì£¼ì‹­ì‹œì˜¤.");
 			frm.jumin1.focus();
 			return false;
 		}
 		if (frm.jumin2.value == "") {
-			alert("ÁÖ¹Îµî·Ï¹øÈ£¸¦ ÀÔ·ÂÇØÁÖ½Ê½Ã¿À.");
+			alert("ì£¼ë¯¼ë“±ë¡ë²ˆí˜¸ë¥¼ ì…ë ¥í•´ì£¼ì‹­ì‹œì˜¤.");
 			frm.jumin2.focus();
 			return false;
 		}
 		if (frm.sex[0].checked == false && frm.sex[1].checked == false) {
-			alert("¼ºº°À» ¼±ÅÃÇØÁÖ½Ê½Ã¿À.");
+			alert("ì„±ë³„ì„ ì„ íƒí•´ì£¼ì‹­ì‹œì˜¤.");
 			return false;
 		}
 		if (frm.email.value == "") {
-			alert("ÀÌ¸ŞÀÏÀ» ÀÔ·ÂÇØÁÖ½Ê½Ã¿À.");
+			alert("ì´ë©”ì¼ì„ ì…ë ¥í•´ì£¼ì‹­ì‹œì˜¤.");
 			frm.email.focus();
 			return false;
 		}
 		if (frm.phone.value == "") {
-			alert("º»ÀÎÀÎÁõÀ» ÇØÁÖ¼¼¿ä.");
+			alert("ë³¸ì¸ì¸ì¦ì„ í•´ì£¼ì„¸ìš”.");
 			frm.phone.focus();
 			return false;
 		}
 		if (frm.zipcode.value == "") {
-			alert("¿ìÆí¹øÈ£¸¦ ÀÔ·ÂÇØÁÖ½Ê½Ã¿À.");
+			alert("ìš°í¸ë²ˆí˜¸ë¥¼ ì…ë ¥í•´ì£¼ì‹­ì‹œì˜¤.");
 			frm.zipcode.focus();
 			return false;
 		}
 		if (frm.address1.value == "") {
-			alert("ÁÖ¼Ò¸¦ ÀÔ·ÂÇØÁÖ½Ê½Ã¿À.");
+			alert("ì£¼ì†Œë¥¼ ì…ë ¥í•´ì£¼ì‹­ì‹œì˜¤.");
 			frm.address1.focus();
 			return false;
 		}
 		if (frm.address2.value == "") {
-			alert("»ó¼¼ÁÖ¼Ò¸¦ ÀÔ·ÂÇØÁÖ½Ê½Ã¿À.");
+			alert("ìƒì„¸ì£¼ì†Œë¥¼ ì…ë ¥í•´ì£¼ì‹­ì‹œì˜¤.");
 			frm.address2.focus();
 			return false;
 		}
 		if (frm.idCheckOn.value == 0) {
-			alert("¾ÆÀÌµğ Áßº¹È®ÀÎÀ» ÇØÁÖ¼¼¿ä.");
+			alert("ì•„ì´ë”” ì¤‘ë³µí™•ì¸ì„ í•´ì£¼ì„¸ìš”.");
 			frm.id.focus();
 			return false;
 		}
@@ -93,12 +93,12 @@
 		join_form.idCheckOn.value = 1;
 
 		if (id.length == 0) {
-			alert("¾ÆÀÌµğ¸¦ ÀÔ·ÂÇÏ½Ê½Ã¿À.");
+			alert("ì•„ì´ë””ë¥¼ ì…ë ¥í•˜ì‹­ì‹œì˜¤.");
 			join_form.id.focus();
 			return false;
 		}
 		if (document.join_form.id.value.length < 4) {
-			alert("ÃÖ¼Ò 4ÀÚ¸® ÀÌ»ó ÀÔ·ÂÇØÁÖ¼¼¿ä!");
+			alert("ìµœì†Œ 4ìë¦¬ ì´ìƒ ì…ë ¥í•´ì£¼ì„¸ìš”!");
 			chk.M_ID.focus();
 			return false;
 		}
@@ -119,42 +119,42 @@
 		new daum.Postcode(
 				{
 					oncomplete : function(data) {
-						// ÆË¾÷¿¡¼­ °Ë»ö°á°ú Ç×¸ñÀ» Å¬¸¯ÇßÀ»¶§ ½ÇÇàÇÒ ÄÚµå¸¦ ÀÛ¼ºÇÏ´Â ºÎºĞ.
+						// íŒì—…ì—ì„œ ê²€ìƒ‰ê²°ê³¼ í•­ëª©ì„ í´ë¦­í–ˆì„ë•Œ ì‹¤í–‰í•  ì½”ë“œë¥¼ ì‘ì„±í•˜ëŠ” ë¶€ë¶„.
 
-						// °¢ ÁÖ¼ÒÀÇ ³ëÃâ ±ÔÄ¢¿¡ µû¶ó ÁÖ¼Ò¸¦ Á¶ÇÕÇÑ´Ù.
-						// ³»·Á¿À´Â º¯¼ö°¡ °ªÀÌ ¾ø´Â °æ¿ì¿£ °ø¹é('')°ªÀ» °¡Áö¹Ç·Î, ÀÌ¸¦ Âü°íÇÏ¿© ºĞ±â ÇÑ´Ù.
-						var fullAddr = ''; // ÃÖÁ¾ ÁÖ¼Ò º¯¼ö
-						var extraAddr = ''; // Á¶ÇÕÇü ÁÖ¼Ò º¯¼ö
+						// ê° ì£¼ì†Œì˜ ë…¸ì¶œ ê·œì¹™ì— ë”°ë¼ ì£¼ì†Œë¥¼ ì¡°í•©í•œë‹¤.
+						// ë‚´ë ¤ì˜¤ëŠ” ë³€ìˆ˜ê°€ ê°’ì´ ì—†ëŠ” ê²½ìš°ì—” ê³µë°±('')ê°’ì„ ê°€ì§€ë¯€ë¡œ, ì´ë¥¼ ì°¸ê³ í•˜ì—¬ ë¶„ê¸° í•œë‹¤.
+						var fullAddr = ''; // ìµœì¢… ì£¼ì†Œ ë³€ìˆ˜
+						var extraAddr = ''; // ì¡°í•©í˜• ì£¼ì†Œ ë³€ìˆ˜
 
-						// »ç¿ëÀÚ°¡ ¼±ÅÃÇÑ ÁÖ¼Ò Å¸ÀÔ¿¡ µû¶ó ÇØ´ç ÁÖ¼Ò °ªÀ» °¡Á®¿Â´Ù.
-						if (data.userSelectedType === 'R') { // »ç¿ëÀÚ°¡ µµ·Î¸í ÁÖ¼Ò¸¦ ¼±ÅÃÇßÀ» °æ¿ì
+						// ì‚¬ìš©ìê°€ ì„ íƒí•œ ì£¼ì†Œ íƒ€ì…ì— ë”°ë¼ í•´ë‹¹ ì£¼ì†Œ ê°’ì„ ê°€ì ¸ì˜¨ë‹¤.
+						if (data.userSelectedType === 'R') { // ì‚¬ìš©ìê°€ ë„ë¡œëª… ì£¼ì†Œë¥¼ ì„ íƒí–ˆì„ ê²½ìš°
 							fullAddr = data.roadAddress;
 
-						} else { // »ç¿ëÀÚ°¡ Áö¹ø ÁÖ¼Ò¸¦ ¼±ÅÃÇßÀ» °æ¿ì(J)
+						} else { // ì‚¬ìš©ìê°€ ì§€ë²ˆ ì£¼ì†Œë¥¼ ì„ íƒí–ˆì„ ê²½ìš°(J)
 							fullAddr = data.jibunAddress;
 						}
 
-						// »ç¿ëÀÚ°¡ ¼±ÅÃÇÑ ÁÖ¼Ò°¡ µµ·Î¸í Å¸ÀÔÀÏ¶§ Á¶ÇÕÇÑ´Ù.
+						// ì‚¬ìš©ìê°€ ì„ íƒí•œ ì£¼ì†Œê°€ ë„ë¡œëª… íƒ€ì…ì¼ë•Œ ì¡°í•©í•œë‹¤.
 						if (data.userSelectedType === 'R') {
-							//¹ıÁ¤µ¿¸íÀÌ ÀÖÀ» °æ¿ì Ãß°¡ÇÑ´Ù.
+							//ë²•ì •ë™ëª…ì´ ìˆì„ ê²½ìš° ì¶”ê°€í•œë‹¤.
 							if (data.bname !== '') {
 								extraAddr += data.bname;
 							}
-							// °Ç¹°¸íÀÌ ÀÖÀ» °æ¿ì Ãß°¡ÇÑ´Ù.
+							// ê±´ë¬¼ëª…ì´ ìˆì„ ê²½ìš° ì¶”ê°€í•œë‹¤.
 							if (data.buildingName !== '') {
 								extraAddr += (extraAddr !== '' ? ', '
 										+ data.buildingName : data.buildingName);
 							}
-							// Á¶ÇÕÇüÁÖ¼ÒÀÇ À¯¹«¿¡ µû¶ó ¾çÂÊ¿¡ °ıÈ£¸¦ Ãß°¡ÇÏ¿© ÃÖÁ¾ ÁÖ¼Ò¸¦ ¸¸µç´Ù.
+							// ì¡°í•©í˜•ì£¼ì†Œì˜ ìœ ë¬´ì— ë”°ë¼ ì–‘ìª½ì— ê´„í˜¸ë¥¼ ì¶”ê°€í•˜ì—¬ ìµœì¢… ì£¼ì†Œë¥¼ ë§Œë“ ë‹¤.
 							fullAddr += (extraAddr !== '' ? ' (' + extraAddr
 									+ ')' : '');
 						}
 
-						// ¿ìÆí¹øÈ£¿Í ÁÖ¼Ò Á¤º¸¸¦ ÇØ´ç ÇÊµå¿¡ ³Ö´Â´Ù.
-						document.getElementById('zipcode').value = data.zonecode; //5ÀÚ¸® »õ¿ìÆí¹øÈ£ »ç¿ë
+						// ìš°í¸ë²ˆí˜¸ì™€ ì£¼ì†Œ ì •ë³´ë¥¼ í•´ë‹¹ í•„ë“œì— ë„£ëŠ”ë‹¤.
+						document.getElementById('zipcode').value = data.zonecode; //5ìë¦¬ ìƒˆìš°í¸ë²ˆí˜¸ ì‚¬ìš©
 						document.getElementById('address1').value = fullAddr;
 
-						// Ä¿¼­¸¦ »ó¼¼ÁÖ¼Ò ÇÊµå·Î ÀÌµ¿ÇÑ´Ù.
+						// ì»¤ì„œë¥¼ ìƒì„¸ì£¼ì†Œ í•„ë“œë¡œ ì´ë™í•œë‹¤.
 						document.getElementById('address2').focus();
 					}
 				}).open();
@@ -162,7 +162,7 @@
 	
 	
 </script>
-<meta http-equiv="Content-Type" content="text/html; charset=euc-kr">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 </head>
 <center>
 	<body>
@@ -171,7 +171,7 @@
 		<br />
 		<br />
 		<form name="join_form" action="joinAction.action" method="post"
-			onsubmit="return check()" enctype="multipart/form-data">
+			onsubmit="return check()">
 			<input type="hidden" name="idCheckOn" value="0" />
 			<table>
 
@@ -192,14 +192,14 @@
 					<td><img
 						src="//img.echosting.cafe24.com/skin/base/common/ico_required.gif">Password</td>
 					<td>&nbsp;<s:password name="password" theme="simple" />
-						¿µ¹®/¼ıÀÚ/Æ¯¼ö¹®ÀÚ¸¦ ÀÌ¿ëÇÏ¿© 6~12ÀÚ
+						ì˜ë¬¸/ìˆ«ì/íŠ¹ìˆ˜ë¬¸ìë¥¼ ì´ìš©í•˜ì—¬ 6~12ì
 					</td>
 				</tr>
 				<tr>
 					<td><img
 						src="//img.echosting.cafe24.com/skin/base/common/ico_required.gif">Confirm</td>
 					<td>&nbsp;<input type="password" name="password2"
-						placeholder="ºñ¹Ğ¹øÈ£ È®ÀÎ" /></td>
+						placeholder="ë¹„ë°€ë²ˆí˜¸ í™•ì¸" /></td>
 				</tr>
 				<tr>
 					<td><img
@@ -220,20 +220,20 @@
 					<td><img
 						src="//img.echosting.cafe24.com/skin/base/common/ico_required.gif">E-mail</td>
 					<td><input type="text" id="email" name="email"
-						placeholder="ÀÌ¸ŞÀÏÀ» ÀÔ·ÂÇØÁÖ¼¼¿ä." /></td>
+						placeholder="ì´ë©”ì¼ì„ ì…ë ¥í•´ì£¼ì„¸ìš”." /></td>
 				</tr>
 				<tr>
 					<td><img
 						src="//img.echosting.cafe24.com/skin/base/common/ico_required.gif">Phone</td>
 					<td><input type="text" id="phone" name="phone"
-						placeholder="º»ÀÎÀÎÁõÀ» ÇØÁÖ¼¼¿ä." readOnly /> &nbsp; <input type="button"
-						value="º»ÀÎÀÎÁõ" onclick="authCheckForm(this.form)"></td>
+						placeholder="ë³¸ì¸ì¸ì¦ì„ í•´ì£¼ì„¸ìš”." readOnly /> &nbsp; <input type="button"
+						value="ë³¸ì¸ì¸ì¦" onclick="authCheckForm(this.form)"></td>
 				</tr>
 				<tr>
 					<td><img
 						src="//img.echosting.cafe24.com/skin/base/common/ico_required.gif">Zipcode</td>&nbsp;
 					<td><input type="text" name="zipcode" id="zipcode" size="7"
-						placeholder="¿ìÆí¹øÈ£" />&nbsp; <input type="button" value="Search"
+						placeholder="ìš°í¸ë²ˆí˜¸" />&nbsp; <input type="button" value="Search"
 						onclick="DaumPostcode()"></td>
 				</tr>
 				<tr>
@@ -241,8 +241,8 @@
 						src="//img.echosting.cafe24.com/skin/base/common/ico_required.gif">Address</td>
 					&nbsp;
 					<td><input type="text" id="address1" name="address1"
-						placeholder="ÁÖ¼Ò" size="50" /><br> <input type="text"
-						id="address2" name="address2" placeholder="»ó¼¼ÁÖ¼Ò" size="50" /></td>
+						placeholder="ì£¼ì†Œ" size="50" /><br> <input type="text"
+						id="address2" name="address2" placeholder="ìƒì„¸ì£¼ì†Œ" size="50" /></td>
 				</tr>
 				<tr>
 					<td></td>
@@ -252,6 +252,7 @@
 
 				</tr>
 			</table>
+		</form>
 	</body>
 </center>
 </html>

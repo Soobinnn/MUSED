@@ -1,9 +1,9 @@
-<%@ page language="java" contentType="text/html; charset=euc-kr"
-	pageEncoding="euc-kr"%>
+<%@ page language="java" contentType="text/html; charset=utf-8"
+	pageEncoding="utf-8"%>
 <%@ taglib prefix="s" uri="/struts-tags"%>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<title>ºñ¹Ğ¹øÈ£ Ã£±â Æû</title>
+<title>ë¹„ë°€ë²ˆí˜¸ ì°¾ê¸° í¼</title>
 
 <style type="text/css">
 .my-box {
@@ -18,27 +18,27 @@
 		var frm = document.findPw_form;
 
 		if (frm.id.value == "") {
-			alert("¾ÆÀÌµğ¸¦ ÀÔ·ÂÇØÁÖ½Ê½Ã¿À.");
+			alert("ì•„ì´ë””ë¥¼ ì…ë ¥í•´ì£¼ì‹­ì‹œì˜¤.");
 			frm.id.focus();
 			return false;
 		}
 		if (frm.name.value == "") {
-			alert("ÀÌ¸§À» ÀÔ·ÂÇØÁÖ½Ê½Ã¿À.");
+			alert("ì´ë¦„ì„ ì…ë ¥í•´ì£¼ì‹­ì‹œì˜¤.");
 			frm.name.focus();
 			return false;
 		}
 		if (frm.jumin1.value == "") {
-			alert("ÁÖ¹Î¹øÈ£ ¾ÕÀÚ¸®¸¦ ÀÔ·ÂÇØÁÖ½Ê½Ã¿À.");
+			alert("ì£¼ë¯¼ë²ˆí˜¸ ì•ìë¦¬ë¥¼ ì…ë ¥í•´ì£¼ì‹­ì‹œì˜¤.");
 			frm.jumin1.focus();
 			return false;
 		}
 		if (frm.jumin2.value == "") {
-			alert("ÁÖ¹Î¹øÈ£ µŞÀÚ¸®¸¦ ÀÔ·ÂÇØÁÖ½Ê½Ã¿À.");
+			alert("ì£¼ë¯¼ë²ˆí˜¸ ë’·ìë¦¬ë¥¼ ì…ë ¥í•´ì£¼ì‹­ì‹œì˜¤.");
 			frm.jumin2.focus();
 			return false;
 		}
 		if (frm.phone.value == "") {
-			alert("ÇÚµåÆù ¹øÈ£¸¦ ÀÔ·ÂÇØÁÖ½Ê½Ã¿À.");
+			alert("í•¸ë“œí° ë²ˆí˜¸ë¥¼ ì…ë ¥í•´ì£¼ì‹­ì‹œì˜¤.");
 			frm.phone.focus();
 			return false;
 		}
@@ -51,17 +51,16 @@
 
 <center>
 	<body>
-		<h1>ºñ¹Ğ¹øÈ£ Ã£±â</h1>
+		<h1>ë¹„ë°€ë²ˆí˜¸ ì°¾ê¸°</h1>
 		<div class="my-box">
-			<form name="findPw_form" action="findPwAction.action" method="post"
-				enctype="multipart/form-data" onsubmit="return check()">
+			<form name="findPw_form" action="findPwAction.action" method="post" onsubmit="return check()">
 				<table>
 					<tr>
 						<td>ID&nbsp;<input type="text" name="id"> &nbsp;<a
-							href="findIdForm.action">ID°¡ ±â¾ïÀÌ ¾È³ª½Ã³ª¿ä?</a>
+							href="findIdForm.action">IDê°€ ê¸°ì–µì´ ì•ˆë‚˜ì‹œë‚˜ìš”?</a>
 						</td>
 					<tr>
-						<td><h5>È¸¿øÁ¤º¸¿¡ µî·ÏÇÑ ÈŞ´ëÀüÈ­ ¹øÈ£¿Í °°¾Æ¾ß ÇÕ´Ï´Ù.</h5></td>
+						<td><h5>íšŒì›ì •ë³´ì— ë“±ë¡í•œ íœ´ëŒ€ì „í™” ë²ˆí˜¸ì™€ ê°™ì•„ì•¼ í•©ë‹ˆë‹¤.</h5></td>
 					</tr>
 					<tr>
 						<td>Name&nbsp;<input type="text" name="name" /></td>
