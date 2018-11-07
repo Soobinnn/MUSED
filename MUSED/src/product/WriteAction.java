@@ -48,6 +48,7 @@ public class WriteAction extends ActionSupport {
 
 	private String imageName="";
 	private String MainName="";
+	private String type="";
 	// »ý¼ºÀÚ
 	public WriteAction() throws IOException {
 
@@ -84,7 +85,6 @@ public class WriteAction extends ActionSupport {
 		paramClass.setProduct_sido(getProduct_sido());
 		paramClass.setProduct_gogon(getProduct_gogon());
 		paramClass.setProduct_content(getProduct_content());		
-
 		for(int i=0;i<upload.length;i++) {
 			File destFile = new File(fileUploadPath + getUploadFileName()[i]);
 			FileUtils.copyFile(getUpload()[i], destFile);

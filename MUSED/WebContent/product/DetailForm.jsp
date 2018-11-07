@@ -23,11 +23,15 @@ function open_win_noresizable(url,name){
 <table width="100%" height="150" border="0">
 <tr>
 <td width="200">
-		<img src='<s:property value="resultClass.main_img"/>' style="height: 300px; width: 300px; display: block;"/>
+		<img src='<s:property value="resultClass.main_img"/>' style="height: 250px; width: 250px; display: block;"/>
 </td>
 <td>
 상품 카테고리 : <s:property value="resultClass.product_category"/><br>
-택배 비 포함 : <s:property value="resultClass.product_type"/><br>
+택배 : 
+<s:iterator value="type" status="stat">
+ 	<s:property />		<!-- image로 출력하기 -->
+</s:iterator>
+<br>
 제목 : <s:property value="resultClass.product_subject"/><br>
 제품명 : <s:property value="resultClass.product_name"/><br>
 브랜드 : <s:property value="resultClass.product_brand"/><br>
@@ -64,13 +68,9 @@ function open_win_noresizable(url,name){
 </tr>
 
 <tr>
-<td c
-olspan="2">
-<s:property value="resultClass.product_content"/>
+<td colspan="2">
+상품 설명 : <s:property value="resultClass.product_content"/>
 <br>
-	<s:iterator value="image" status="stat">	
-		<img src='<s:property/>' />
-	</s:iterator>
 
 </td>
 </tr>
@@ -78,6 +78,33 @@ olspan="2">
 <tr>
 <td colspan="2">
 <hr style="color:gray"/>
+</td>
+</tr>
+<tr>
+<td colspan="2">
+댓글 추가..
+</td>
+</tr>
+
+<tr>
+<td colspan="2">
+<table width="100%" height="150" border="1">
+
+	 <tr>
+
+	   	<s:iterator value="list" status="stat">
+	   	  	      		      	<s:url id="DetailURL" action="productDetail">
+									<s:param name="product_no">
+										<s:property value="product_no"/>
+									</s:param>
+								</s:url>
+      	      	      <td>	 
+      	      	      &nbsp;<s:a href="%{DetailURL}">
+      	      			<img src="/MUSED/product/img/<s:property value="main_img"/>" style="height: 100px; width: 100px; display: block;"/></s:a>
+				</td>
+						</s:iterator>
+	</tr>
+</table>
 </td>
 </tr>
 <tr>

@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
 pageEncoding="utf-8"%>
 <%@ taglib prefix="s" uri="/struts-tags" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page import ="java.util.HashMap" %>
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -12,7 +11,7 @@ pageEncoding="utf-8"%>
 </head>
 <body>
 <table width="600" border="0" cellspacing="0" cellspadding="2">
-	<input type="button" value="판매 등록 폼" onClick="javascript:location.href='/talentWriteForm.action'"/>
+	<input type="button" value="판매 등록 폼" onClick="javascript:location.href='/MUSED/talent/talentWriteForm.action'"/>
 	<tr>
 		<td align="center"><h2>재능 리스트</h2></td>
 	</tr>
@@ -74,26 +73,19 @@ pageEncoding="utf-8"%>
         		<td height="1" colspan="5"></td>
       	      </tr>
     
-	<tr>
-      	      			<s:iterator value="first" status="stat">
+				
+				<tr>
+	   	  	      	<s:iterator value="list" status="stat">
+      	      	      <td>	 
 						      	<s:url id="DetailURL" action="talentDetail">
 									<s:param name="talent_no">
 										<s:property value="talent_no"/>
 									</s:param>
 								</s:url>
-            	    		<td>
             	      			&nbsp;<s:a href="%{DetailURL}">
-            	      			<img src="<s:property />" style="height: 100px; width: 100px; display: block;"/>
-            	      			</s:a>
-							</td>
-						</s:iterator>
-						      	        
-				</tr>
-				
-				<tr>
-	   	  	      	<s:iterator value="list" status="stat">
-      	      	      <td>	 
+            	      			<img src="/MUSED/talent/img/<s:property value="main_img"/>" style="height: 100px; width: 100px; display: block;"/>
 						<br><s:property value="talent_subject" />
+						</s:a>
 						<br>판매자 : <s:property value="talent_id"/>	
 	        		  </td>
 	        	<s:if test="#stat.count%5==0">

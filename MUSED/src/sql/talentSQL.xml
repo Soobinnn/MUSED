@@ -27,6 +27,7 @@
 		<result property="talent_gogon" column="talent_gogon"/>
 		<result property="talent_content" column="talent_content"/>	
 		<result property="talent_image" column="talent_image"/>		
+		<result property="main_img" column="main_img"/>		
 	</resultMap>
 
 	<!-- talent 전체 정보 가져오기 -->
@@ -51,7 +52,7 @@
 
 	
 <!-- 	talent 일정 no의 전체 정보 가져오기	 -->
-	<select id="selectOne" resultMap="talentRes" parameterClass="talent">
+	<select id="selectOne" resultMap="talentRes" parameterClass="int">
 		<include refid="select-all"/>
 		<include refid="where-no"/>
 	</select>
@@ -61,20 +62,19 @@
 	talent 상품 등록을 위한 insert
  -->
  	<insert id="insertTalent" parameterClass="talent">
-		INSERT INTO TALENT (TALENT_NO, TALENT_ID, TALENT_STATE, TALENT_SUBJECT, TALENT_NAME, TALENT_CATEGORY, TALENT_PRICE, TALENT_PHONE, TALENT_SIDO, TALENT_GOGON, TALENT_CONTENT, TALENT_IMAGE)
-		VALUES (TALENT_NO_SEQ.NEXTVAL, #talent_id#, #talent_state#, #talent_subject#, #talent_name#, #talent_category#, #talent_price#, #talent_phone#, #talent_sido#, #talent_gogon#, #talent_content#, #talent_image#)
+		INSERT INTO TALENT (TALENT_NO, TALENT_ID, TALENT_STATE, TALENT_SUBJECT, TALENT_NAME, TALENT_CATEGORY, TALENT_PRICE, TALENT_PHONE, TALENT_SIDO, TALENT_GOGON, TALENT_CONTENT, TALENT_IMAGE,MAIN_IMG)
+		VALUES (TALENT_NO_SEQ.NEXTVAL, #talent_id#, #talent_state#, #talent_subject#, #talent_name#, #talent_category#, #talent_price#, #talent_phone#, #talent_sido#, #talent_gogon#, #talent_content#, #talent_image#,#main_img#)
 	</insert>
-	
-<!-- 	talent 상품 수정을 위한 update -->
+<!--  	talent 상품 수정을 위한 update 
 	<update id="updateTalent" parameterClass="talent">
 		UPDATE TALENT SET TALENT_STATE = #talent_state#, TALENT_NAME = #talent_name#, TALENT_CATEGORY = #talent_category#, TALENT_PRICE = #talent_price#, TALENT_PHONE = #talent_phone#, TALENT_CONTENT = #talent_content#
 		<include refid="where-no"/>
 	</update>
 
-<!-- 	talent 상품 삭제를 위한 delete	 -->
+	talent 상품 삭제를 위한 delete	
 	<delete id="deletetalent" parameterClass="talent">
 		DELETE FROM talent
 		<include refid="where-no"/>
 	</delete>
-
+ -->
 </sqlMap>

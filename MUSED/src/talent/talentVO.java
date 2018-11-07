@@ -13,6 +13,15 @@ public class talentVO {
 	private String talent_gogon;
 	private String talent_content;	
 	private String talent_image;
+	private String main_img;
+	
+	
+	public String getMain_img() {
+		return main_img;
+	}
+	public void setMain_img(String main_img) {
+		this.main_img = main_img;
+	}
 	public int getTalent_no() {
 		return talent_no;
 	}
