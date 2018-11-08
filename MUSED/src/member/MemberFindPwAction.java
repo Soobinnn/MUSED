@@ -9,6 +9,7 @@ import org.apache.struts2.interceptor.SessionAware;
 import com.ibatis.common.resources.Resources;
 import com.ibatis.sqlmap.client.SqlMapClient;
 import com.ibatis.sqlmap.client.SqlMapClientBuilder;
+import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 
 public class MemberFindPwAction extends ActionSupport implements SessionAware {
@@ -45,6 +46,13 @@ public class MemberFindPwAction extends ActionSupport implements SessionAware {
 		paramClass.setPassword(getPassword());
 		
 		sqlMapper.update("member.modifyPw",paramClass);
+		
+		ActionContext context = ActionContext.getContext();
+		Map<String, String> session = (Map<String, String>) context.getSession();
+		
+		session.remove("ID");
+
+		context.setSession(session); // 다시 session을 적용 시켜서 초기화
 		
 		return SUCCESS;
 	}

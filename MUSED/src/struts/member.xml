@@ -73,6 +73,10 @@
 			<result name="error" type="tiles">findPwError</result>
 		</action>
 		
+		<action name="modifyPwForm" class="member.MemberFindPwAction" method="form">
+			<result type="tiles">modifyPw</result>
+		</action>
+		
 		<action name="ModifyPwAction" class="member.MemberFindPwAction" method="modifyPw">
 			<result type="tiles">findPwSuccess</result>
 		</action>

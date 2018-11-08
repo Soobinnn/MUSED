@@ -34,7 +34,7 @@
 	</select>
 	
 	<!-- 로그인 -->
-	<select id="searchpw" resultMap="memberRes" parameterClass="string">
+	<select id="selectOne" resultMap="memberRes" parameterClass="string">
 		SELECT * FROM MEMBER WHERE ID = #id#
 	</select>
 	
@@ -99,6 +99,18 @@
 		UPDATE MEMBER SET PASSWORD = #password#
 		WHERE ID = #id#
 	</update>
+	
+	<!-- 회원정보 변경 -->
+	<update id="modifyInfo" parameterClass="member">
+		UPDATE MEMBER SET EMAIL=#email#,PHONE=#phone#,ZIPCODE=#zipcode#,ADDRESS1=#address1#,ADDRESS2=#address2#
+		WHERE ID = #id#
+	</update>
+	
+	<!-- 회원탈퇴 -->
+	<delete id="deleteMem" parameterClass="string">
+		DELETE FROM MEMBER
+		WHERE ID = #id#
+	</delete>
 	
 
 </sqlMap>

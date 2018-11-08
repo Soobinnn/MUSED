@@ -98,7 +98,7 @@ table {
 					</s:if>
 					<s:else>
 						<li><a href="logout.action">로그아웃</a></li>
-						<li><a href="#">마이페이지</a></li>
+						<li><a href="mypage.action">마이페이지</a></li>
 						<div class="a">
 							<a href="loginForm.action"><i class="material-icons md-48">
 									account_circle </i></a>
