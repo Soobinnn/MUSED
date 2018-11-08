@@ -61,7 +61,7 @@ table
 <!-- 웹 폰트 적용  -->
 <!-- css 적용 -->
 <link href="https://fonts.googleapis.com/css?family=Henny+Penny" rel="stylesheet"/>
-<link rel="stylesheet" href="Mused_main.css">
+<link rel="stylesheet" href="style.css">
 <title>MUSED_Main</title>
 </head>
 <body>	

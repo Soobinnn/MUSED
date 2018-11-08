@@ -1,18 +1,18 @@
-<%@ page language="java" contentType="text/html; charset=euc-kr"
-	pageEncoding="euc-kr"%>
+<%@ page language="java" contentType="text/html; charset=utf-8"
+	pageEncoding="utf-8"%>
 <%@ taglib prefix="s" uri="/struts-tags"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<title>╟║ют ©о╥А</title>
+<title>Й╟─Л·┘ Л≥└Кё▄</title>
 </head>
 <center>
 <body>
 	<h1>Welcome!!</h1>
-	<form action="loginForm.action" method="post" enctype="multipart/form-data">
+	<form action="loginForm.action" method="post">
 	<table>
 		<tr>
-			<td>х╞©╣гу╢о╢ы.<b><s:property value="id"/></b>╢т</td>
+			<td>М≥≤Л≤│М∙╘К▀┬К▀╓.<b><s:property value="id"/></b>К▀≤</td>
 		</tr>
 		<tr>
 			<td><input type="submit" value="Login"/>

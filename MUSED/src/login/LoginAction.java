@@ -91,6 +91,7 @@ public class LoginAction extends ActionSupport implements SessionAware {
 
 		resultClass = (MemberVO) sqlMapper.queryForObject("member.selectOne", getId());
 
+
 		if (resultClass != null) {
 			if (resultClass.getPassword().equals(getPassword())) {
 

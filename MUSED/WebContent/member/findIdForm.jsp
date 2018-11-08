@@ -1,10 +1,9 @@
-<%@ page language="java" contentType="text/html; charset=euc-kr"
-	pageEncoding="euc-kr"%>
+<%@ page language="java" contentType="text/html; charset=utf-8"
+	pageEncoding="utf-8"%>
 <%@ taglib prefix="s" uri="/struts-tags"%>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<title>���̵�ã����</title>
-<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
+<title>아이디찾기폼</title>
 
 <script language="javascript">
 	function display_jumin(box) {
@@ -29,20 +28,19 @@
 		email_4.style.display = 'block';
 	}
 </script>
-<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
 </head>
 
 <center>
 	<body>
-		<h1>���̵� ã��</h1>
-		<form action="findIdAction.action" method="post" enctype="multipart/form-data">		
+		<h1>아이디 찾기</h1>
+		<form action="findIdAction.action" method="post">		
 			<table width="100%" border="0" cellspacing="0" cellpadding="3">
 				<tr align="center">
 					<td><input type="radio" name="auth" onClick="display_jumin()"
-						value="J" checked />&nbsp;�̸�/�ֹι�ȣ�� ã��</td>
+						value="J" checked />&nbsp;이름/주민번호로 찾기</td>
 				</tr>
 				<tr id="jumin_1" align="center">
-					<td>ȸ�������� ����� �̸�/�ֹι�ȣ�� ���ƾ� �մϴ�.</td>
+					<td>회원정보에 등록한 이름/주민번호와 같아야 합니다.</td>
 				</tr>
 				<tr id="jumin_2" align="center">
 					<td>Name &nbsp;<input type="text" name="name" /></td>
@@ -61,10 +59,10 @@
 			<table>
 				<tr align="center">
 					<td><input type="radio" name="auth" onClick="display_email()"
-						value="E" />&nbsp;��ȭ��ȣ/�̸��Ϸ� ã��</td>
+						value="E" />&nbsp;전화번호/이메일로 찾기</td>
 				</tr>
 				<tr id="email_1" align="center" style="display: none">
-					<td>ȸ�������� ����� ��ȭ��ȣ/�̸��� �ּҿ� ���ƾ� �մϴ�.</td>
+					<td>회원정보에 등록한 전화번호/이메일 주소와 같아야 합니다.</td>
 				</tr>
 				<tr id="email_2" align="center" style="display: none">
 					<td>Phone &nbsp;<input type="text" name="phone" /></td>

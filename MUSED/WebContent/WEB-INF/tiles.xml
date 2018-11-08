@@ -79,7 +79,6 @@
 		<put-attribute name="mypage_body" value="/mypage/button/mypageMemDeleteAction.jsp"/>
 	</definition>
 	
-	
 	<!-- 로그인 & 회원가입 -->
 	<definition name="loginForm" extends="main">
 		<put-attribute name="body" value="/member/loginForm.jsp"/>

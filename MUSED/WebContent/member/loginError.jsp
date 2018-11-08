@@ -1,17 +1,17 @@
-<%@ page language="java" contentType="text/html; charset=euc-kr"
-	pageEncoding="euc-kr"%>
+<%@ page language="java" contentType="text/html; charset=utf-8"
+	pageEncoding="utf-8"%>
 <%@ taglib prefix="s" uri="/struts-tags"%>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<title>·Î±×ÀÎ ½ÇÆÐ</title>
+<title>ë¡œê·¸ì¸ ì‹¤íŒ¨</title>
 </head>
 
 <center>
 <body>
-	<b><h1>·Î±×ÀÎ ½ÇÆÐ</h1></b>
+	<b><h1>ë¡œê·¸ì¸ ì‹¤íŒ¨</h1></b>
 	<br><br>
-	ÀÏÄ¡ÇÏ´Â °èÁ¤ÀÌ ¾ø½À´Ï´Ù.<br>
-	¾ÆÀÌµð¿Í ºñ¹Ð¹øÈ£¸¦ È®ÀÎÇØÁÖ¼¼¿ä.
+	ì¼ì¹˜í•˜ëŠ” ê³„ì •ì´ ì—†ìŠµë‹ˆë‹¤.<br>
+	ì•„ì´ë””ì™€ ë¹„ë°€ë²ˆí˜¸ë¥¼ í™•ì¸í•´ì£¼ì„¸ìš”.
 	<br><br>
 	<input type="button" value="Back" onclick="javascript:history.back(-1)"/>
 </body>
