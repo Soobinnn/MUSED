@@ -72,7 +72,7 @@ public class LoginAction extends ActionSupport implements SessionAware {
 		cid=request.getParameter("id");
 		
 		//아이디 저장
-		if(request.getParameter("saveId") == null) { 
+		if(request.getParameter("member.saveId") == null) { 
 			response.addCookie(CookieBox.createCookie("ID","","/",-1));	
 		} else {
 			response.addCookie(CookieBox.createCookie("ID",cid,"/",-1));
@@ -90,7 +90,6 @@ public class LoginAction extends ActionSupport implements SessionAware {
 		paramClass.setPassword(getPassword());
 
 		resultClass = (MemberVO) sqlMapper.queryForObject("member.selectOne", getId());
-
 
 		if (resultClass != null) {
 			if (resultClass.getPassword().equals(getPassword())) {

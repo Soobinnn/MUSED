@@ -22,6 +22,7 @@
 
 	<sqlMap resource="/sql/productSQL.xml" />	<!-- SJ : 상품 관련 sql -->
 	<sqlMap resource="/sql/talentSQL.xml" />	<!-- SJ : 재능 관련 sql -->
-	<sqlMap resource="/sql/memberSQL.xml" />    <!-- DK : 회원가입 , 로그인 관련 sql -->
+	<sqlMap resource="/sql/memberSQL.xml" /> <!-- DK : 회원가입 , 로그인 관련 sql -->
+	<sqlMap resource="/sql/reportSQL.xml"/>	<!-- SJ : 재능 관련 sql -->
 
 </sqlMapConfig>

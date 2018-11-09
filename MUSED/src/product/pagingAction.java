@@ -1,6 +1,7 @@
 package product;
 
-public class pagingAction {
+public class pagingAction 
+{
 	private int currentPage;
 	private int totalCount;
 	private int totalPage;

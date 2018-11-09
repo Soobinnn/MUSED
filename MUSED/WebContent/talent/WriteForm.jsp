@@ -7,7 +7,52 @@
 
 <head>
 <title>재능 입력 폼</title>
+<script type="text/javascript">
+		function validation() {
+			var frm = document.forms(0);
+			
+			if(frm.talent_id.value == "") {
+				alert("아이디를 입력해주세요.(수정 예정)");
+				frm.talent_id.focus();
+				return false;
+			} 
+			
+			else if(frm.talent_state.value == "") {
+				alert("판매 상태를 체크해주세요.");
+				frm.talent_state.focus();
+				return false;
+			}
+			
+			else if(frm.talent_subject.value == "") {
+				alert("제목을 입력해주세요.");
+				frm.talent_subject.focus();
+				return false;
+			}
+
+			else if(frm.talent_name.value == "") {
+				alert("상품명을 입력해주세요.");
+				frm.talent_name.focus();
+				return false;			
+			} 
+			
+			else if(frm.talent_category.value == "") {
+				alert("카테고리를 정해주세요.");
+				frm.talent_category.focus();
+				return false;			
+			} 
+
+			else if(frm.talent_price.value == "") {
+				alert("가격을 입력해주세요.");
+				frm.talent_price.focus();
+				return false;			
+			} 
+
+			return true;
+		}
+	</script>
+
 </head>
+
 <body>
 
 
@@ -15,12 +60,11 @@
 			<form action="talentWrite.action" method="post" enctype="multipart/form-data" onsubmit="return validation();">
 		</s:if>
 		
-<%-- 		<s:else>
-		  <form action="modifyAction.action" method="post" enctype="multipart/form-data">
-		  <s:hidden name="no" value="%{resultClass.no}" />
+ 		<s:else>
+		  <form action="talentUpdate.action" method="post" enctype="multipart/form-data">
+		  <s:hidden name="no" value="%{resultClass.talent_no}" />
 		  <s:hidden name="currentPage" value="%{currentPage}" />
-		  <s:hidden name="old_file" value="%{resultClass.file_savname}" />
-		</s:else> --%>
+		</s:else>
 		
 
        <table width="800" border="0" cellspacing="0" cellpadding="0">
@@ -151,7 +195,7 @@
         <tr>
           <td align="right" colspan="2">
           	<input name="submit" type="submit" value="작성완료" class="inputb">
-            <input name="list" type="button" value="목록" class="inputb" onClick="javascript:location.href='listAction.action?currentPage=<s:property value="currentPage" />'">
+            <input name="list" type="button" value="목록" class="inputb" onClick="javascript:location.href='talentList.action'">
           </td>
         </tr>
 

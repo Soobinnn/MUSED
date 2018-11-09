@@ -12,15 +12,14 @@
 <tr colspan="1" height="30%" bgcolor="#FFFFFF">
 <td><tiles:insertAttribute name="header"/></td>
 </tr>
-<tr height="20%"></tr>
+<tr height="0"></tr>
 <tr>
 	<td valign="top" align="center" bgcolor="#FFFFFF"><tiles:insertAttribute name="body" /></td>
 </tr>
-<tr height="40%">
+<tr height="20">
 </tr>
 <tr>
-
-	<td colspan="1" height="10%" align="center" bgcolor="#FFFFFF">
+	<td colspan="1" height="10%" align="center" bgcolor="FFFFFF">
 	<tiles:insertAttribute name="footer" />
 	</td>
 

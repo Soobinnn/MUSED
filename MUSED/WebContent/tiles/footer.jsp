@@ -17,9 +17,20 @@
 <link rel="stylesheet" href="style.css">
 <title>MUSED_Main</title>
 </head>
+<script>
+
+</script>
 <body>
 <!-- Footer부분 -->
 	<footer id="main_footer">
+		<nav id =footer_nav>
+			<ul>
+				<li><a href="#">개인정보처리방침</a></li>
+				<li><a href="#">이용약관</a></li>
+				<li><a href='reportForm.action' onclick="window.open(this.href,'신고하기','width=610,height=470'); return false;">신고하기</a></li>
+				
+			</ul>
+		</nav>
  		<h3>html5_css3</h3>
  		<address>website Layout basic</address>
  	</footer>

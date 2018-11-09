@@ -98,10 +98,25 @@
 
 #content > #product_section
 {
-	margin-top : 20px
+	margin-top : 10px
 	
 }
 
+#content > #board_section >#notice_
+{
+	display : inline-block;
+	width : 30%;
+}
+#content > #board_section >#free_
+{
+	display : inline-block;
+	width : 30%;
+}
+#content > #board_section >#suggestion_
+{
+	display : inline-block;
+	width : 30%;
+}
 #title
 {	
 	font-family: 'Henny Penny', cursive;
@@ -125,3 +140,49 @@
 	/* 글자 정렬 */
 	text-align: center;
 }
+#main_footer > #footer_nav
+{
+	position : absolute;
+	right : 0;
+	top : 0;
+}
+#footer_nav > ul
+{
+	overflow : hidden;
+}
+#footer_nav > ul > li
+{
+	float : left;
+}
+#footer_nav > ul > li > a
+{
+	display : block;
+	padding : 2px 10px;
+	border : 1px solid black;
+}
+#footer_nav > ul > li > a:hover
+{
+	background : black;
+	color : white;
+}
+/*슬라이드 몸통 */
+
+.slide{background : gray; text-align:center; position:relative; width: 1500px; margin: 0 auto; display: block; height:350px;}
+
+.slide_ul{display: block;}
+.slide_ul>li{position:absolute; top:0; left:0; list-style:none;z-index:10; display: block;}
+.slide_ul>li img{}
+li{list-style: none;}
+
+.show{display:block;}
+
+
+/* 하단 동그라미 버튼 CSS*/
+.slide_btn>li{float: left; margin:0 5px 5px 0;}
+.slide_btn>li>a{display:block; width: 14px; height:14px; background: url(../images/spr.png) -24px -125px; text-indent: -999em; }
+.slide_btn>li>a.active{background-position: 0 -126px;}
+
+.slide_btn{z-index:100; position:absolute; right: 0; bottom:0; }
+
+.slide_btn:after{content:''; display:block; clear:both;}
+.slide_btn{*zoom:1;}

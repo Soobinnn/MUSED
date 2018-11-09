@@ -37,15 +37,7 @@ public class ListAction extends ActionSupport{
 	
 	public String execute() throws Exception{
 		list=sqlMapper.queryForList("talent.selectAll");
-		for(int i= 0 ; i <  list.size();i++) { 
-			resultClass = list.get(i);
-		    a = resultClass.getTalent_image().split(",");   
-		    
-		    first.add("/MUSED/talent/img/"+a[0]);
-		}
-		for(int i= 0 ; i <  list.size();i++) { 
-		System.out.println(first.get(i));
-		}
+		
 		totalCount = list.size();
 		
 		page=new pagingAction(currentPage,totalCount,blockCount,blockPage);

@@ -12,7 +12,8 @@ import java.io.IOException;
 
 import product.pagingAction;
 
-public class ListAction extends ActionSupport{
+public class ListAction extends ActionSupport
+{
 	public static Reader reader;
 	public static SqlMapClient sqlMapper;
 
@@ -22,7 +23,7 @@ public class ListAction extends ActionSupport{
 	
 	private int currentPage=1;	//현재 페이지
 	private int totalCount;		
-	private int blockCount=25;   //5*5 이미지 정렬
+	private int blockCount=5;   //5*5 이미지 정렬
 	private int blockPage=5;
 	private String pagingHtml;
 	private pagingAction page;
@@ -35,16 +36,8 @@ public class ListAction extends ActionSupport{
 	
 	public String execute() throws Exception{
 		list=sqlMapper.queryForList("product.selectAll");
-/*		for(int i= 0 ; i <  list.size();i++) { 
-			resultClass = list.get(i);
-		    a = resultClass.getProduct_image().split(",");   
-		    
-		    first.add("/MUSED/product/img/"+a[0]);
-		}
-		for(int i= 0 ; i <  list.size();i++) { 
-		System.out.println(first.get(i));
-		}
-*/		totalCount = list.size();
+
+		totalCount = list.size();
 		
 		page=new pagingAction(currentPage,totalCount,blockCount,blockPage);
 		pagingHtml = page.getPagingHtml().toString();

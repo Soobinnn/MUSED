@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE sqlMap PUBLIC '-//ibatis.apache.org//DTD Sql Map 2.0//EN'
+	'http://ibatis.apache.org/dtd/sql-map-2.dtd'>
+<sqlMap namespace="report">
+	<typeAlias alias="report" type="report.reportVO"/>
+
+	<resultMap id="reportRes" class="report">
+		<result property="report_no" column="report_no" />
+		<result property="report_memid" column="report_memid" />
+		<result property="report_category" column="report_category" />
+		<result property="report_indexno" column="report_indexno" />
+		<result property="report_subject" column="report_subject" />
+		<result property="report_content" column="report_content" />
+		<result property="report_contno" column="report_contno" />
+		<result property="report_regdate" column="report_regdate" />
+		<result property="report_reportid" column="report_reportid"/>
+		<result property="file_orgname" column="file_orgname"/>
+		<result property="file_savname" column="file_savname"/>
+	</resultMap>
+	
+	<!-- 공통으로 사용할 select 절 정의 -->
+	<sql id="select-all">
+		SELECT * FROM REPORT
+	</sql>
+
+	<!-- 공통으로 사용할 where-no 절 정의 -->
+	<sql id="where-no">
+		WHERE report_no = #report_no#
+	</sql>
+	
+	<!-- select 쿼리문 정의 -->
+	<select id="selectAll" resultMap="reportRes">
+		<include refid="select-all" />
+		ORDER BY report_no DESC
+	</select>
+		
+	<select id="selectOne" resultMap="reportRes" parameterClass="int">
+		<include refid="select-all" />
+		<include refid="where-no" />
+	</select>
+		
+	<select id="selectLastNo" resultClass="report">
+		SELECT max(report_no) as report_no FROM REPORT
+	</select>
+	
+	<insert id="insertReport" parameterClass="report">
+		INSERT INTO REPORT (REPORT_NO, REPORT_MEMID, REPORT_CATEGORY, REPORT_SUBJECT, REPORT_CONTENT, REPORT_CONTNO, REPORT_REGDATE, REPORT_REPORTID)
+		VALUES (PRODUCT_NO_SEQ.NEXTVAL, #report_memid#, #report_category#, #report_subject#, #report_content#, #report_contno#, #report_regdate#, #report_reportid#)
+	</insert>
+	
+	<update id="updateFile" parameterClass="report">
+    	UPDATE REPORT SET FILE_ORGNAME = #file_orgname#,FILE_SAVNAME = #file_savname#
+		<include refid="where-no" />
+   	</update>
+</sqlMap>

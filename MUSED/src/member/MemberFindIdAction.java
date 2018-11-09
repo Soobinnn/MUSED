@@ -153,10 +153,10 @@ public class MemberFindIdAction extends ActionSupport implements SessionAware {
 		return resultClass;
 	}
 
-	public void setResultClass(MemberVO resultClass) {
+	public void setResultClass(MemberVO resultClass) 
+	{
 		this.resultClass = resultClass;
 	}
 	
 	
-
 }
