@@ -28,7 +28,6 @@
 			<h1 id="logo">
 
 				<a href="#"><img src="/MUSED/tiles/logo2.png" width="150" height="150"></a>
-
 				<a href="#"><img src="./image/logo2.png" width="150"
 					height="150"></a>
 
