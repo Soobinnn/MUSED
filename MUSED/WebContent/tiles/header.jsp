@@ -26,12 +26,12 @@
 	<header id="main_header">
 		<div class="head">
 			<h1 id="logo">
-<<<<<<< HEAD
+
 				<a href="#"><img src="/MUSED/tiles/logo2.png" width="150" height="150"></a>
-=======
+
 				<a href="#"><img src="./image/logo2.png" width="150"
 					height="150"></a>
->>>>>>> branch 'master' of https://github.com/Soobinnn/MUSED.git
+
 			</h1>
 			<hgroup id="title">
 				<h2>MUSED</h2>
