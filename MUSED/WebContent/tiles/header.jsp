@@ -27,9 +27,7 @@
 		<div class="head">
 			<h1 id="logo">
 
-				<a href="#"><img src="/MUSED/tiles/logo2.png" width="150" height="150"></a>
-				<a href="#"><img src="./image/logo2.png" width="150"
-					height="150"></a>
+				<a href="#"><img src="./image/logo2.png" width="150" height="150"></a>
 
 			</h1>
 			<hgroup id="title">
@@ -80,24 +78,17 @@
 		<div class="nav">
 			<nav id="main_gnb">
 				<ul class="left">
-<<<<<<< HEAD
-					<li><a href="productList.action">중고악기거래</a></li>
-					<li><a href="talentList.action">재능거래</a></li>
-					<li><a href="#">커뮤니티</a></li>
-=======
-					<li id="menubar"><a href="#">중고악기거래</a></li>
-					<li id="menubar"><a href="#">재능거래</a></li>
+
+					<li id="menubar"><a href="productList.action">중고악기거래</a></li>
+					<li id="menubar"><a href="talentList.action">재능거래</a></li>
 					<li id="menubar"><a href="#">커뮤니티</a></li>
->>>>>>> branch 'master' of https://github.com/Soobinnn/MUSED.git
+
 				</ul>
 				<ul class="right">
-<<<<<<< HEAD
-					<li><a href="productWriteForm.action">악기판매</a></li>
-					<li><a href="talentWriteForm.action">재능판매</a></li>
-=======
-					<li id="menubar"><a href="#">악기판매</a></li>
-					<li id="menubar"><a href="#">재능판매</a></li>
->>>>>>> branch 'master' of https://github.com/Soobinnn/MUSED.git
+
+					<li id="menubar"><a href="productWriteForm.action">악기판매</a></li>
+					<li id="menubar"><a href="talentWriteForm.action">재능판매</a></li>
+
 				</ul>
 			</nav>
 		</div>
