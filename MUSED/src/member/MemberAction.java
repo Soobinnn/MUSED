@@ -80,18 +80,18 @@ public class MemberAction extends ActionSupport implements SessionAware {
 		paramClass.setScore(getScore());
 		paramClass.setLogincount(getLogincount());
 		
-		//µî·Ï Äõ¸® ¼öÇà
+		
 		sqlMapper.insert("member.memberInsert",paramClass);
 		
 		return SUCCESS;
 	}
 	
-	/*È¸¿øÁ¤º¸º¯°æ*/
+	
 	public String modifyForm() throws Exception{
 		resultClass = (MemberVO)sqlMapper.queryForObject("member.selectOne",(String)session.get("ID"));
 		return SUCCESS;
 	}
-	/*È¸¿øÁ¤º¸º¯°æÈ®ÀÎ*/
+	
 	public String modifyAction() throws Exception{
 		paramClass = new MemberVO();
 		
@@ -106,12 +106,12 @@ public class MemberAction extends ActionSupport implements SessionAware {
 		
 		return SUCCESS;
 	}
-	/*È¸¿øÅ»Åð*/
+	/*È¸ï¿½ï¿½Å»ï¿½ï¿½*/
 	public String deleteForm() throws Exception{
 		resultClass = (MemberVO)sqlMapper.queryForObject("member.selectOne",(String)session.get("ID"));
 		return SUCCESS;
 	}
-	/*È¸¿øÅ»Åð¿Ï·á*/
+	/*È¸ï¿½ï¿½Å»ï¿½ï¿½Ï·ï¿½*/
 	public String deleteAction() throws Exception{
 		sqlMapper.delete("member.deleteMem",(String)session.get("ID"));
 		
@@ -120,7 +120,7 @@ public class MemberAction extends ActionSupport implements SessionAware {
 		
 		session.remove("ID");
 
-		context.setSession(session); // ´Ù½Ã sessionÀ» Àû¿ë ½ÃÄÑ¼­ ÃÊ±âÈ­
+		context.setSession(session); // ï¿½Ù½ï¿½ sessionï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ñ¼ï¿½ ï¿½Ê±ï¿½È­
 		return SUCCESS;
 	}
 	
