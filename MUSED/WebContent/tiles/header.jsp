@@ -11,7 +11,7 @@
 
 <link rel="stylesheet" href="/MUSED/tiles/Mused_main.css">
 
-<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="/MUSED/tiles/style.css">
 
 <link rel="stylesheet"
 	href="https://fonts.googleapis.com/icon?family=Material+Icons">
@@ -27,7 +27,7 @@
 		<div class="head">
 			<h1 id="logo">
 
-				<a href="#"><img src="./image/logo2.png" width="150" height="150"></a>
+				<a href="#"><img src="/MUSED/tiles/image/logo2.png" width="150" height="150"></a>
 
 			</h1>
 			<hgroup id="title">
@@ -43,7 +43,7 @@
 							</div>
 							<div>Login</div></li>
 						<li><div>
-								<a href="joinConfirm.action"><img src="./image/join.png"
+								<a href="joinConfirm.action"><img src="/MUSED/tiles/image/join.png"
 									width="45" height="45" /></a>
 							</div>
 							<div>Join Us</div></li>
@@ -55,7 +55,7 @@
 							</div>
 							<div>Logout</div></li>
 						<li><div>						
-								<a href="mypage.action"><img src="./image/myPage.png" width="45"
+								<a href="mypage.action"><img src="/MUSED/tiles/image/myPage.png" width="45"
 									height="45"/>
 									<p class="arrow_box">MUSED 계정 : <s:property value="%{#session.ID}" /><br>
 									(<s:property value="%{resultClass.email}"/>)
