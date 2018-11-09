@@ -9,7 +9,7 @@
 <center>
 <body>
 	<h1>Welcome!!</h1>
-	<form action="loginForm.action" method="post" enctype="multipart/form-data">
+	<form action="loginForm.action" method="post">
 	<table>
 		<tr>
 			<td>환영합니다.<b><s:property value="id"/></b>님</td>

@@ -4,7 +4,6 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <title>아이디찾기폼</title>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 
 <script language="javascript">
 	function display_jumin(box) {
@@ -29,13 +28,13 @@
 		email_4.style.display = 'block';
 	}
 </script>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
 </head>
 
 <center>
 	<body>
 		<h1>아이디 찾기</h1>
-		<form action="findIdAction.action" method="post" enctype="multipart/form-data">		
+		<form action="findIdAction.action" method="post">		
 			<table width="100%" border="0" cellspacing="0" cellpadding="3">
 				<tr align="center">
 					<td><input type="radio" name="auth" onClick="display_jumin()"

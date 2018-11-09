@@ -53,8 +53,7 @@
 	<body>
 		<h1>비밀번호 찾기</h1>
 		<div class="my-box">
-			<form name="findPw_form" action="findPwAction.action" method="post"
-				enctype="multipart/form-data" onsubmit="return check()">
+			<form name="findPw_form" action="findPwAction.action" method="post" onsubmit="return check()">
 				<table>
 					<tr>
 						<td>ID&nbsp;<input type="text" name="id"> &nbsp;<a

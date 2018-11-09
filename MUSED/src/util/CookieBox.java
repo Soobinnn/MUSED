@@ -60,7 +60,8 @@ public class CookieBox {
 	}
 	
 	//전달받은 인자의 이름을 가지는 쿠키의 존재유무를 리턴
-	public boolean exists(String name) {
+	public boolean exists(String name) 
+	{
 		return cookieMap.get(name) != null;
 	}
 

@@ -33,8 +33,7 @@
 	<body>
 		<h3>본인인증</h3>
 		<br><br>
-				<form name="auth_form" action="authCheckAction.action" method="post"
-					enctype="multipart/form-data">
+				<form name="auth_form" action="authCheckAction.action" method="post">
 					<table>
 						<tr>
 							<td>Phone&nbsp;<input type="text" name="phone" value="<s:property value="phone"/>"></input></td>

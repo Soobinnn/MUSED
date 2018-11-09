@@ -7,21 +7,66 @@
 
 <head>
 <title>악기 입력 폼</title>
+<script type="text/javascript">
+		function validation() {
+			var frm = document.forms(0);
+			
+			if(frm.product_id.value == "") {
+				alert("아이디를 입력해주세요.(수정 예정)");
+				frm.product_id.focus();
+				return false;
+			} 
+			
+			else if(frm.product_state.value == "") {
+				alert("판매 상태를 체크해주세요.");
+				frm.product_state.focus();
+				return false;
+			}
+
+			else if(frm.product_type.value == "") {
+				alert("거래 형식을 입력해주세요.");
+				return false;			
+			} 
+			
+			else if(frm.product_subject.value == "") {
+				alert("제목을 입력해주세요.");
+				frm.product_subject.focus();
+				return false;
+			}
+
+			else if(frm.product_name.value == "") {
+				alert("상품명을 입력해주세요.");
+				frm.product_name.focus();
+				return false;			
+			} 
+			
+			else if(frm.product_category.value == "") {
+				alert("카테고리를 정해주세요.");
+				frm.product_category.focus();
+				return false;			
+			} 
+
+			else if(frm.product_price.value == "") {
+				alert("가격을 입력해주세요.");
+				frm.product_price.focus();
+				return false;			
+			} 
+
+			return true;
+		}
+	</script>
 </head>
 <body>
-
-
 	<s:if test="resultClass == NULL">
 			<form action="productWrite.action" method="post" enctype="multipart/form-data" onsubmit="return validation();">
 		</s:if>
 		
-<%-- 		<s:else>
-		  <form action="modifyAction.action" method="post" enctype="multipart/form-data">
-		  <s:hidden name="no" value="%{resultClass.no}" />
+		<s:else>
+		  <form action="productUpdate.action" method="post" enctype="multipart/form-data">
+		  <s:hidden name="product_no" value="%{resultClass.product_no}" />
 		  <s:hidden name="currentPage" value="%{currentPage}" />
-		  <s:hidden name="old_file" value="%{resultClass.file_savname}" />
-		</s:else> --%>
-		
+		 
+		</s:else>
 
        <table width="800" border="0" cellspacing="0" cellpadding="0">
         <tr>
@@ -73,7 +118,7 @@
           <td bgcolor="#FFFFFF">
           <!-- 나중에 checkbox 선택 시 저장.. 이런거 다시 구현 -->
 			<input type="checkbox" name="product_type" value="직">일반형(비배송형)</input>
-			<input type="checkbox" name="product_type" value="포">배송형(택배 비 포함)</input>
+			<input type="checkbox" name="product_type" value="포" checked="checked">배송형(택배 비 포함)</input>
 			<input type="checkbox" name="product_type" value="미">배송형(택배 비 미포함)</input>
           </td>
         </tr>
@@ -144,7 +189,7 @@
         </tr> 
 
         <tr>
-          <td bgcolor="#F4F4F4">  메인 사진 등록</td>  <!-- 시도, 구군, 동 으로 나누는 방법 생각해보기 -->
+          <td bgcolor="#F4F4F4"><font color="#FF0000">*</font>  메인 사진 등록</td>  <!-- 시도, 구군, 동 으로 나누는 방법 생각해보기 -->
           <td bgcolor="#FFFFFF">
              <s:file name="upload"/>   	      
           </td>
@@ -174,7 +219,7 @@
         <tr>
           <td align="right" colspan="2">
           	<input name="submit" type="submit" value="작성완료" class="inputb">
-            <input name="list" type="button" value="목록" class="inputb" onClick="javascript:location.href='listAction.action?currentPage=<s:property value="currentPage" />'">
+            <input name="list" type="button" value="목록" class="inputb" onClick="javascript:location.href='productList.action'">
           </td>
         </tr>
 

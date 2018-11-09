@@ -48,6 +48,7 @@ public class WriteAction extends ActionSupport {
 
 	private String imageName="";
 	private String MainName="";
+	private String type="";
 	// 생성자
 	public WriteAction() throws IOException {
 
@@ -69,8 +70,6 @@ public class WriteAction extends ActionSupport {
 		paramClass = new productVO();
 		resultClass = new productVO();
 
-		
-		
 		// 등록할 항목 설정.
 		paramClass.setProduct_id(getProduct_id());
 		paramClass.setProduct_state(getProduct_state());
@@ -85,6 +84,7 @@ public class WriteAction extends ActionSupport {
 		paramClass.setProduct_gogon(getProduct_gogon());
 		paramClass.setProduct_content(getProduct_content());		
 
+		if(upload.length>0) {
 		for(int i=0;i<upload.length;i++) {
 			File destFile = new File(fileUploadPath + getUploadFileName()[i]);
 			FileUtils.copyFile(getUpload()[i], destFile);
@@ -95,6 +95,7 @@ public class WriteAction extends ActionSupport {
 				imageName += (getUploadFileName()[i].equals(""))?getUploadFileName()[i]:","+getUploadFileName()[i];
 			}
 		}
+		}
 		paramClass.setMain_img(MainName);			
 		paramClass.setProduct_image(imageName);
 		// 등록 쿼리 수행.
@@ -104,20 +105,7 @@ public class WriteAction extends ActionSupport {
 		
 		return SUCCESS;
 	}
-/*
-	public String file(String imageName) throws Exception{
-		String typewhere="";
-		String[] array = imageName.split(",");
-		for(int i=0;i<upload.length;i++) {
-			paramClass.setProduct_image(getUploadFileName()[i]);
-			imageName=getUploadFileName()[i].split(",");
-			
-		}
-		
-		return SUCCESS;
-	}
-*/	
-	
+
 	
 	public static Reader getReader() {
 		return reader;

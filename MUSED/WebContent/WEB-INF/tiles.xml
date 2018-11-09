@@ -11,6 +11,74 @@
 		<put-attribute name="body" value="/tiles/body.jsp"/>
 		<put-attribute name="footer" value="/tiles/footer.jsp"/>
 	</definition>
+	
+	<!-- 마이페이지 -->
+	<definition name="mypage" template="/tiles/mypage_layout.jsp">
+		<put-attribute name="title" value="MYPAGE"/>
+		<put-attribute name="header" value="/tiles/header.jsp"/>
+		<put-attribute name="mypage_header1" value="/tiles/mypage_header1.jsp"/>
+		<put-attribute name="mypage_header2" value="/tiles/mypage_header2.jsp"/>
+		<put-attribute name="mypage_left" value="/tiles/mypage_left.jsp"/>
+		<put-attribute name="mypage_body" value="/mypage/FirstView.jsp"/>
+		<put-attribute name="footer" value="/tiles/footer.jsp"/>
+	</definition>
+	<!-- 마이페이지 등록된상품 -->
+	<definition name="myProduct" extends="mypage">
+		<put-attribute name="mypage_body" value="/mypage/button/mypageProductList.jsp"/>
+	</definition>
+	<!-- 마이페이지 등록된 재능 -->
+	<definition name="myTalent" extends="mypage">
+		<put-attribute name="mypage_body" value="/mypage/button/mypageTalentList.jsp"/>
+	</definition>
+	<!-- 마이페이지 최근 본 상품 -->
+	<definition name="myRecent" extends="mypage">
+		<put-attribute name="mypage_body" value="/mypage/button/mypageRecentList.jsp"/>
+	</definition>
+	<!-- 마이페이지 찜한 상품 -->
+	<definition name="myZzim" extends="mypage">
+		<put-attribute name="mypage_body" value="/mypage/button/mypageZzimList.jsp"/>
+	</definition>
+	<!-- 마이페이지 판매 내역 -->
+	<definition name="mySell" extends="mypage">
+		<put-attribute name="mypage_body" value="/mypage/button/mypageSellList.jsp"/>
+	</definition>
+	<!-- 마이페이지 쪽지 보내기 -->
+	<definition name="sendMessage" extends="mypage">
+		<put-attribute name="mypage_body" value="/mypage/button/mypageSendMessage.jsp"/>
+	</definition>
+	<!-- 마이페이지 받은 쪽지 -->
+	<definition name="receivedMessage" extends="mypage">
+		<put-attribute name="mypage_body" value="/mypage/button/mypageReceivedMessage.jsp"/>
+	</definition>
+	<!-- 마이페이지 보낸 쪽지 -->
+	<definition name="sendedMessage" extends="mypage">
+		<put-attribute name="mypage_body" value="/mypage/button/mypageSendedMessage.jsp"/>
+	</definition>
+	<!-- 마이페이지 내가 쓴 댓글 -->
+	<definition name="myComment" extends="mypage">
+		<put-attribute name="mypage_body" value="/mypage/button/mypageWritenComment.jsp"/>
+	</definition>
+	<!-- 마이페이지 내 게시글 댓글 -->
+	<definition name="myBoardComment" extends="mypage">
+		<put-attribute name="mypage_body" value="/mypage/button/mypageMyboardComment.jsp"/>
+	</definition>
+	<!-- 마이페이지 개인정보 수정 폼 -->
+	<definition name="memberUpdate" extends="mypage">
+		<put-attribute name="mypage_body" value="/mypage/button/mypageMemUpdateForm.jsp"/>
+	</definition>
+	<!-- 마이페이지 개인정보 수정 완료 -->
+	<definition name="memberUpdateAction" extends="mypage">
+		<put-attribute name="mypage_body" value="/mypage/button/mypageMemUpdateAction.jsp"/>
+	</definition>
+	<!-- 마이페이지 회원탈퇴 -->
+	<definition name="memberDelete" extends="mypage">
+		<put-attribute name="mypage_body" value="/mypage/button/mypageMemDelete.jsp"/>
+	</definition>
+	<!-- 마이페이지 회원탈퇴 완료 -->
+	<definition name="memberDeleteAction" extends="mypage">
+		<put-attribute name="mypage_body" value="/mypage/button/mypageMemDeleteAction.jsp"/>
+	</definition>
+	
 	<!-- 로그인 & 회원가입 -->
 	<definition name="loginForm" extends="main">
 		<put-attribute name="body" value="/member/loginForm.jsp"/>
@@ -61,6 +129,61 @@
 	</definition>
 	
 	<!-- 로그인 & 회원가입 -->
-
 	
+	<!-- 상품  -->
+
+	<definition name="productList" extends="main">
+		<put-attribute name="body" value="/product/ListForm.jsp"/>
+	</definition>
+	
+	<definition name="productWriteForm" extends="main">
+		<put-attribute name="body" value="/product/WriteForm.jsp"/>
+	</definition>
+	
+	<definition name="productWriteSuccess" extends="main">
+		<put-attribute name="body" value="/product/WriteSuccessForm.jsp"/>
+	</definition>
+
+	<definition name="productDetailForm" extends="main">
+		<put-attribute name="body" value="/product/DetailForm.jsp"/>
+	</definition>
+	
+	<definition name="productUpdateForm" extends="main">
+		<put-attribute name="body" value="/product/WriteForm.jsp"/>
+	</definition>
+	
+	<definition name="productDeleteSuccess" extends="main">
+		<put-attribute name="body" value="/product/DeleteForm.jsp"/>
+	</definition>
+	
+	<!-- 상품  -->
+	
+	<!-- 재능  -->
+
+	<definition name="talentList" extends="main">
+		<put-attribute name="body" value="/talent/ListForm.jsp"/>
+	</definition>
+	
+	<definition name="talentWriteForm" extends="main">
+		<put-attribute name="body" value="/talent/WriteForm.jsp"/>
+	</definition>
+
+	<definition name="talentWriteSuccess" extends="main">
+		<put-attribute name="body" value="/talent/WriteSuccessForm.jsp"/>
+	</definition>
+	
+	<definition name="talentDetailForm" extends="main">
+		<put-attribute name="body" value="/talent/DetailForm.jsp"/>
+	</definition>
+	
+	<definition name="talentUpdateForm" extends="main">
+		<put-attribute name="body" value="/talent/WriteForm.jsp"/>
+	</definition>
+	
+	<definition name="talentDeleteSuccess" extends="main">
+		<put-attribute name="body" value="/talent/DeleteForm.jsp"/>
+	</definition>
+
+	<!-- 재능  -->
+
 </tiles-definitions>

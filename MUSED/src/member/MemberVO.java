@@ -1,6 +1,7 @@
 package member;
 
 import java.util.Date;
+import java.util.Map;
 
 public class MemberVO {
 	
@@ -20,7 +21,6 @@ public class MemberVO {
 	private int score;
 	private int logincount;
 
-	
 	public String getId() {
 		return id;
 	}

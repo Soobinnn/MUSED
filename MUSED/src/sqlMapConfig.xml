@@ -10,8 +10,7 @@
 		/> -->
 	<settings useStatementNamespaces="true" />
 
-	<transactionManager type="JDBC"
-		commitRequired="false">
+	<transactionManager type="JDBC" commitRequired="false">
 		<dataSource type="SIMPLE">
 			<property name="JDBC.Driver" value="${driver}" />
 			<property name="JDBC.ConnectionURL" value="${url}" />
@@ -25,5 +24,5 @@
 	<sqlMap resource="/sql/talentSQL.xml" />	<!-- SJ : 재능 관련 sql -->
 	<sqlMap resource="/sql/memberSQL.xml" /> <!-- DK : 회원가입 , 로그인 관련 sql -->
 	<sqlMap resource="/sql/reportSQL.xml"/>	<!-- SJ : 재능 관련 sql -->
-	
+
 </sqlMapConfig>

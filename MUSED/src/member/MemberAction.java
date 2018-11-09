@@ -4,13 +4,17 @@ import java.io.IOException;
 import java.io.Reader;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Map;
+
+import org.apache.struts2.interceptor.SessionAware;
 
 import com.ibatis.common.resources.Resources;
 import com.ibatis.sqlmap.client.SqlMapClient;
 import com.ibatis.sqlmap.client.SqlMapClientBuilder;
+import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 
-public class MemberAction extends ActionSupport {
+public class MemberAction extends ActionSupport implements SessionAware {
 	
 	public static Reader reader;
 	public static SqlMapClient sqlMapper;
@@ -33,6 +37,8 @@ public class MemberAction extends ActionSupport {
 	private int access_num;
 	private int score;
 	private int logincount;
+	
+	private Map session;
 	
 	Calendar today = Calendar.getInstance();
 	
@@ -80,6 +86,53 @@ public class MemberAction extends ActionSupport {
 		return SUCCESS;
 	}
 	
+	/*회원정보변경*/
+	public String modifyForm() throws Exception{
+		resultClass = (MemberVO)sqlMapper.queryForObject("member.selectOne",(String)session.get("ID"));
+		return SUCCESS;
+	}
+	/*회원정보변경확인*/
+	public String modifyAction() throws Exception{
+		paramClass = new MemberVO();
+		
+		paramClass.setId(getId());
+		paramClass.setEmail(getEmail());
+		paramClass.setPhone(getPhone());
+		paramClass.setZipcode(getZipcode());
+		paramClass.setAddress1(getAddress1());
+		paramClass.setAddress2(getAddress2());
+		
+		sqlMapper.update("member.modifyInfo",paramClass);
+		
+		return SUCCESS;
+	}
+	/*회원탈퇴*/
+	public String deleteForm() throws Exception{
+		resultClass = (MemberVO)sqlMapper.queryForObject("member.selectOne",(String)session.get("ID"));
+		return SUCCESS;
+	}
+	/*회원탈퇴완료*/
+	public String deleteAction() throws Exception{
+		sqlMapper.delete("member.deleteMem",(String)session.get("ID"));
+		
+		ActionContext context = ActionContext.getContext();
+		Map<String, String> session = (Map<String, String>) context.getSession();
+		
+		session.remove("ID");
+
+		context.setSession(session); // 다시 session을 적용 시켜서 초기화
+		return SUCCESS;
+	}
+	
+	
+	public Map getSession() {
+		return session;
+	}
+
+	public void setSession(Map session) {
+		this.session = session;
+	}
+
 	public static Reader getReader() {
 		return reader;
 	}

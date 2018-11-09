@@ -22,8 +22,7 @@
 		<br>고객님의 정보와 일치하는 아이디 목록입니다.
 		<br>
 		<div class="my-box">
-			<form action="loginForm.action" method="post"
-				enctype="multipart/form-data">
+			<form action="loginForm.action" method="post">
 				<table>
 				<s:iterator value="%{list}" status="stat">
 					<tr>

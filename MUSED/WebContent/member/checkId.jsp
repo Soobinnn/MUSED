@@ -18,7 +18,7 @@ function windowclose() {
 </head>
 <body bgcolor="#f5f5f5">
 <s:if test="chkNo==1">
-	<form name="checkId" action="checkIdAction.action" method="post" enctype="multipart/form-data">
+	<form name="checkId" action="checkIdAction.action" method="post">
 		<table width="400" border="0" cellspacing="0" cellpadding="5">
 			<tr align="center">
 				<td height="30">

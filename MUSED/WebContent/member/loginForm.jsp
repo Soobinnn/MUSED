@@ -33,8 +33,7 @@
 			CookieBox cookieBox = new CookieBox(request);
 		%>
 		<b><h1>MUSED</h1></b>
-		<form name="loginForm" action="loginAction.action" method="post"
-			enctype="multipart/form-data">
+		<form name="loginForm" action="loginAction.action" method="post">
 			<table>
 				<tr>
 					<td align="center">ID</td>
@@ -42,23 +41,21 @@
 						String sid = request.getParameter("selectedId");
 					%>
 					<%
-						if (cookieBox.exists("ID")) {
+						if (sid == null && cookieBox.exists("ID")) {
 					%>
 					<td align="center"><input type="text" name="id" size="17"
 						value="<%=cookieBox.getValue("ID")%>"></td>
 					<%
-						} else if (sid == null) {
+						} else if(sid != null){
 					%>
 					<td align="center"><input type="text" name="id" size="17"
 						value="<%=sid%>"></td>
 					<%
-						} else {
-					%>
-					<td align="center"><input type="text" name="id" size="17"
+						} else { %>		
+						<td align="center"><input type="text" name="id" size="17"
 						value=""></td>
-					<%
-						}
-					%>
+					<%} %>
+	
 					<td><input type="checkbox" name="saveId" value="1" />Save Id</td>
 				</tr>
 				<tr>

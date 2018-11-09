@@ -6,10 +6,13 @@
 <!-- 용량제한 100MB 로 설정. -->
 <constant name="struts.multipart.maxSize" value="104857600" />
 
+	<include file="struts/main.xml"/>
 	<include file="struts/talent.xml"/>
 	<include file="struts/product.xml"/>
 	<include file="struts/member.xml"/>
 	<include file="struts/report.xml"/>
+	<include file="struts/mypage.xml"/>
+
 		<!-- 글로벌 예외 처리 화면 설정 -->
 		<!-- <global-results>
 			<result name="error">/board/pageError.jsp</result>

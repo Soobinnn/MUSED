@@ -171,7 +171,7 @@
 		<br />
 		<br />
 		<form name="join_form" action="joinAction.action" method="post"
-			onsubmit="return check()" enctype="multipart/form-data">
+			onsubmit="return check()">
 			<input type="hidden" name="idCheckOn" value="0" />
 			<table>
 
@@ -252,6 +252,7 @@
 
 				</tr>
 			</table>
+		</form>
 	</body>
 </center>
 </html>
