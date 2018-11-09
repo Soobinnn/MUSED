@@ -1,12 +1,12 @@
-<%@ page language="java" contentType="text/html; charset=euc-kr"
-	pageEncoding="euc-kr"%>
+<%@ page language="java" contentType="text/html; charset=utf-8"
+	pageEncoding="utf-8"%>
 <%@ page import="util.CookieBox"%>
 <%@ taglib prefix="s" uri="/struts-tags"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
 <html>
 <head>
-<title>∑Œ±◊¿Œ ∆˚</title>
+<title>Î°úÍ∑∏Ïù∏ Ìèº</title>
 
 <script language="javascript">
 	function begin() {
@@ -15,12 +15,12 @@
 
 	function checkIt() {
 		if (!document.loginForm.id.value) {
-			alert("¿Ã∏ß¿ª ¿‘∑¬«œ¡ˆ æ ¿∏ºÃΩ¿¥œ¥Ÿ.");
+			alert("Ïù¥Î¶ÑÏùÑ ÏûÖÎ†•ÌïòÏßÄ ÏïäÏúºÏÖ®ÏäµÎãàÎã§.");
 			document.myform.id.focus();
 			return false;
 		}
 		if (!document.loginForm.password.value) {
-			alert("∫Òπ–π¯»£∏¶ ¿‘∑¬«œ¡ˆ æ ¿∏ºÃΩ¿¥œ¥Ÿ.");
+			alert("ÎπÑÎ∞ÄÎ≤àÌò∏Î•º ÏûÖÎ†•ÌïòÏßÄ ÏïäÏúºÏÖ®ÏäµÎãàÎã§.");
 			document.myform.passwd.focus();
 			return false;
 		}
@@ -33,8 +33,7 @@
 			CookieBox cookieBox = new CookieBox(request);
 		%>
 		<b><h1>MUSED</h1></b>
-		<form name="loginForm" action="loginAction.action" method="post"
-			enctype="multipart/form-data">
+		<form name="loginForm" action="loginAction.action" method="post">
 			<table>
 				<tr>
 					<td align="center">ID</td>
@@ -42,23 +41,21 @@
 						String sid = request.getParameter("selectedId");
 					%>
 					<%
-						if (cookieBox.exists("ID")) {
+						if (sid == null && cookieBox.exists("ID")) {
 					%>
 					<td align="center"><input type="text" name="id" size="17"
 						value="<%=cookieBox.getValue("ID")%>"></td>
 					<%
-						} else if (sid == null) {
+						} else if(sid != null){
 					%>
 					<td align="center"><input type="text" name="id" size="17"
 						value="<%=sid%>"></td>
 					<%
-						} else {
-					%>
-					<td align="center"><input type="text" name="id" size="17"
+						} else { %>		
+						<td align="center"><input type="text" name="id" size="17"
 						value=""></td>
-					<%
-						}
-					%>
+					<%} %>
+	
 					<td><input type="checkbox" name="saveId" value="1" />Save Id</td>
 				</tr>
 				<tr>

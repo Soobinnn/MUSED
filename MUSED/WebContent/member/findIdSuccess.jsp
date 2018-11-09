@@ -1,9 +1,9 @@
-<%@ page language="java" contentType="text/html; charset=euc-kr"
-	pageEncoding="euc-kr"%>
+<%@ page language="java" contentType="text/html; charset=utf-8"
+	pageEncoding="utf-8"%>
 <%@ taglib prefix="s" uri="/struts-tags"%>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<title>¾ÆÀÌµð Ã£±â ¼º°ø</title>
+<title>ì•„ì´ë”” ì°¾ê¸° ì„±ê³µ</title>
 
 <style type="text/css">
 .my-box {
@@ -18,12 +18,11 @@
 
 <center>
 	<body>
-		<h1>¾ÆÀÌµð Ã£±â</h1>
-		<br>°í°´´ÔÀÇ Á¤º¸¿Í ÀÏÄ¡ÇÏ´Â ¾ÆÀÌµð ¸ñ·ÏÀÔ´Ï´Ù.
+		<h1>ì•„ì´ë”” ì°¾ê¸°</h1>
+		<br>ê³ ê°ë‹˜ì˜ ì •ë³´ì™€ ì¼ì¹˜í•˜ëŠ” ì•„ì´ë”” ëª©ë¡ìž…ë‹ˆë‹¤.
 		<br>
 		<div class="my-box">
-			<form action="loginForm.action" method="post"
-				enctype="multipart/form-data">
+			<form action="loginForm.action" method="post">
 				<table>
 				<s:iterator value="%{list}" status="stat">
 					<tr>

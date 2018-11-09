@@ -1,9 +1,9 @@
-<%@ page language="java" contentType="text/html; charset=euc-kr"
-	pageEncoding="euc-kr"%>
+<%@ page language="java" contentType="text/html; charset=utf-8"
+	pageEncoding="utf-8"%>
 <%@ taglib prefix="s" uri="/struts-tags"%>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<title>��й�ȣ �缳�� ����</title>
+<title>비밀번호 재설정 성공</title>
 
 <style type="text/css">
 .my-box {
@@ -18,7 +18,7 @@
 
 <center>
 	<body>
-		<h1>��й�ȣ�� ���������� �缳�� �Ǿ����ϴ�.</h1>
+		<h1>비밀번호가 성공적으로 재설정 되었습니다.</h1>
 		<br><br>
 		<input type="button" value="Login" onclick="javascript:location.href='loginForm.action'">
 	</body>

@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<!-- 용량제한 100MB로 설정 -->
+	<constant name="struts.multipart.maxSize" value="104857600"/>
+	
+	<package name="mypage" extends="struts-default, tiles-default">
+		<!-- 마이페이지로 이동 -->
+		<action name="mypage" class="mypage.mypageAction">
+			<result type="tiles">mypage</result>
+		</action>
+		<!-- 등록된상품 -->
+		<action name="myProduct" class="mypage.productListAction">
+			<result type="tiles">myProduct</result>
+		</action>
+		<!-- 등록된 재능 -->
+		<action name="myTalent" class="mypage.talentListAction">
+			<result type="tiles">myTalent</result>
+		</action>
+		<!-- 최근 본 상품 -->
+		<action name="myRecent" class="mypage.recentListAction">
+			<result type="tiles">myRecent</result>
+		</action>
+		<!-- 찜한 상품 -->
+		<action name="myZzim" class="mypage.zzimListAction">
+			<result type="tiles">myZzim</result>
+		</action>
+		<!-- 판매 내역 -->
+		<action name="mySell" class="mypage.sellListAction">
+			<result type="tiles">mySell</result>
+		</action>
+		<!-- 쪽지 보내기 -->
+		<action name="sendMessage" class="mypage.sendMessageAction">
+			<result type="tiles">sendMessage</result>
+		</action>
+		<!-- 받은 쪽지 -->
+		<action name="receivedMessage" class="mypage.receivedMessageAction">
+			<result type="tiles">receivedMessage</result>
+		</action>
+		<!-- 보낸 쪽지 -->
+		<action name="sendedMessage" class="mypage.sendedMessageAction">
+			<result type="tiles">sendedMessage</result>
+		</action>
+		<!-- 내가 쓴 댓글 -->
+		<action name="myComment" class="mypage.myCommentAction">
+			<result type="tiles">myComment</result>
+		</action>
+		<!-- 내 게시글 댓글 -->
+		<action name="myBoardComment" class="mypage.myBoardCommentAction">
+			<result type="tiles">myBoardComment</result>
+		</action>
+		<!-- 개인 정보 수정 -->
+		<action name="memberUpdateForm" class="member.MemberAction" method="modifyForm">
+			<result type="tiles">memberUpdate</result>
+		</action>
+		<!-- 개인 정보 수정 확인 -->
+		<action name="memberUpdateAction" class="member.MemberAction" method="modifyAction">
+			<result type="tiles">memberUpdateAction</result>
+		</action>
+		
+		<!-- 회원탈퇴 -->
+		<action name="memberDeleteForm" class="member.MemberAction" method="deleteForm">
+			<result type="tiles">memberDelete</result>
+		</action>
+		
+		<!-- 회원탈퇴 완료 -->
+		<action name="memberDeleteAction" class="member.MemberAction" method="deleteAction">
+			<result type="tiles">memberDeleteAction</result>
+		</action> 
+	</package> 
+	
+	
+</struts>
