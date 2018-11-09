@@ -9,17 +9,6 @@ pageEncoding="utf-8"%>
 <title>재능 게시판</title>
 </head>
 <body>
-
-
-<table width="600" border="0" cellspacing="0" cellspadding="2">
-	<tr>
-		<td align="center"><h2>재능 리스트</h2></td>
-	</tr>
-	<tr>
-		<td height="20"></td>
-	</tr>
-</table>
- 
 <table width="600" border="0" cellspacing="0" cellspadding="2">
 
 	<tr align="center">
@@ -30,6 +19,7 @@ pageEncoding="utf-8"%>
 				</form>
 		</td>
 	</tr>
+
 	<tr align="center">
 		<td colspan="5"><!-- 우편... -->
 				<select name="sido">
@@ -46,6 +36,7 @@ pageEncoding="utf-8"%>
 			</form>
 		</td>
 	</tr>
+
 	<tr align="center">
 	<!-- 버튼 말고 check같은 거로 해야됨 -->
 		<td colspan="5">
@@ -57,6 +48,7 @@ pageEncoding="utf-8"%>
 			<input type="button" name="etc" value="그 외 악기"/>
 		</td>
 	</tr>
+
 	<tr align="left">
 		<td colspan="5">
 		-----------------------------------------------------------<br>
@@ -69,31 +61,30 @@ pageEncoding="utf-8"%>
 				<br>
 		</td>
 	</tr>
-		      <tr bgcolor="#777777">
-        		<td height="1" colspan="5"></td>
-      	      </tr>
+
+	<tr bgcolor="#777777">
+    	<td height="1" colspan="5"></td>
+   	</tr>
     
-				
-				<tr>
-	   	  	      	<s:iterator value="list" status="stat">
-      	      	      <td>	 
-						      	<s:url id="DetailURL" action="talentDetail">
-									<s:param name="talent_no">
-										<s:property value="talent_no"/>
-									</s:param>
-								</s:url>
-            	      			&nbsp;<s:a href="%{DetailURL}">
-            	      			<img src="/MUSED/talent/img/<s:property value="main_img"/>" style="height: 100px; width: 100px; display: block;"/>
-						<br><s:property value="talent_subject" />
-						</s:a>
-						<br>판매자 : <s:property value="talent_id"/>	
-	        		  </td>
-	        	<s:if test="#stat.count%5==0">
+	<tr>
+     	<s:iterator value="list" status="stat">
+  	      <td>	 
+	      	<s:url id="DetailURL" action="talentDetail">
+				<s:param name="talent_no">
+					<s:property value="talent_no"/>
+				</s:param>
+			</s:url>
+   			&nbsp;<s:a href="%{DetailURL}">
+   	      			<img src="/MUSED/talent/img/<s:property value="main_img"/>" style="height: 100px; width: 100px; display: block;"/>
+					<br><s:property value="talent_subject" />
+				  </s:a>
+			<br>판매자 : <s:property value="talent_id"/>	
+	     </td>
+	       	<s:if test="#stat.count%5==0">
         		<tr></tr>
-				</s:if>	  
-			</s:iterator>
-        		
-        		</tr>
+			</s:if>	  
+		</s:iterator>
+	</tr>
 
 	<s:if test="list.size()<=0">
 		<tr bgcolor="#FFFFFF" align="center">
@@ -102,7 +93,7 @@ pageEncoding="utf-8"%>
 	</s:if>
 	
     <tr align="center">
-    		<td colspan="5"><s:property value="pagingHtml"  escape="false" /></td>
+  		<td colspan="5"><s:property value="pagingHtml"  escape="false" /></td>
     </tr>
 
 </table>

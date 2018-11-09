@@ -26,6 +26,22 @@
 		<action name="productDetail" class="product.DetailAction">
 			<result type="tiles">productDetailForm</result>
 		</action>
+		
+		<!--  상품 수정하기 폼 -->
+		<action name="productUpdateForm" class="product.UpdateAction" method="form">
+			<result type="tiles">productWriteForm</result>
+		</action>
+		
+		<!--  상품 수정 처리 -->
+		<action name="productUpdate" class="product.UpdateAction">
+			<result type="tiles">productWriteSuccess</result>
+		</action>
+		
+		<!-- 상품 삭제하기 -->
+		<action name="productDelete" class="product.DeleteAction">
+			<result type="tiles">productDeleteSuccess</result>
+		</action>
+		
 
 	</package>
 

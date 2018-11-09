@@ -16,12 +16,28 @@
 		</action>
 		<!-- 재능 등록 처리 -->
 		<action name="talentWrite" class="talent.WriteAction">
-			<result>/talent/WriteSuccessForm.jsp</result>
+			<result type="tiles">talentWriteSuccess</result>
 		</action>
 		<!-- 재능 상세보기 -->
 		<action name="talentDetail" class="talent.DetailAction">
 			<result type="tiles">talentDetailForm</result>
 		</action>
+
+		<!--  재능 수정하기 폼 -->
+		<action name="talentUpdateForm" class="talent.UpdateAction" method="form">
+			<result type="tiles">talentWriteForm</result>
+		</action>
+		
+		<!--  재능 수정 처리 -->
+		<action name="talentUpdate" class="talent.UpdateAction">
+			<result type="tiles">talentWriteSuccess</result>
+		</action>
+		
+		<!-- 재능 삭제하기 -->
+		<action name="talentDelete" class="talent.DeleteAction">
+			<result type="tiles">talentDeleteSuccess</result>
+		</action>
+		
 
 	</package>
 
