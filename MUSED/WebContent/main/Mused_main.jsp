@@ -144,7 +144,7 @@ table
 			<ul>
 				<li><a href="#">개인정보처리방침</a></li>
 				<li><a href="#">이용약관</a></li>
-				<li><a href="/MUSED/reportForm.action">신고하기</a></li>
+				<li><a href="reportForm.action">신고하기</a></li>
 			</ul>
 		</nav>
  		<h3>html5_css3</h3>

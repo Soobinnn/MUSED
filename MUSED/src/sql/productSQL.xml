@@ -29,7 +29,7 @@
 		<result property="product_gogon" column="product_gogon"/>
 		<result property="product_image" column="product_image"/>
 		<result property="product_content" column="product_content"/>	
-		
+		<result property="main_img" column="main_img"/>
 	</resultMap>
 
 	<!-- product 전체 정보 가져오기 -->
@@ -48,13 +48,13 @@
 		ORDER BY product_no DESC
 	</select>
 	
-	<select id="selectLastNo" resultMap="productRes">
+	<select id="selectLastNo" resultMap="productRes" parameterClass="int">
 		select * product where product_no = (select max(product_no) from product) 
 	</select>
 
 	
 <!-- 	product 일정 no의 전체 정보 가져오기	 -->
-	<select id="selectOne" resultMap="productRes" parameterClass="product">
+	<select id="selectOne" resultMap="productRes" parameterClass="int">
 		<include refid="select-all"/>
 		<include refid="where-no"/>
 	</select>
@@ -64,15 +64,10 @@
 	product 상품 등록을 위한 insert
  -->
  	<insert id="insertProduct" parameterClass="product">
-		INSERT INTO PRODUCT (PRODUCT_NO, PRODUCT_ID, PRODUCT_STATE, PRODUCT_SUBJECT, PRODUCT_NAME, PRODUCT_CATEGORY, PRODUCT_BRAND, PRODUCT_PRICE, PRODUCT_TYPE, PRODUCT_PHONE, PRODUCT_SIDO, PRODUCT_GOGON, PRODUCT_IMAGE, PRODUCT_CONTENT)
-		VALUES (PRODUCT_NO_SEQ.NEXTVAL, #product_id#, #product_state#, #product_subject#, #product_name#, #product_category#, #product_brand#, #product_price#, #product_type#, #product_phone#, #product_sido#, #product_gogon#, #product_image#, #product_content#)
+		INSERT INTO PRODUCT (PRODUCT_NO, PRODUCT_ID, PRODUCT_STATE, PRODUCT_SUBJECT, PRODUCT_NAME, PRODUCT_CATEGORY, PRODUCT_BRAND, PRODUCT_PRICE, PRODUCT_TYPE, PRODUCT_PHONE, PRODUCT_SIDO, PRODUCT_GOGON, PRODUCT_IMAGE, PRODUCT_CONTENT, MAIN_IMG)
+		VALUES (PRODUCT_NO_SEQ.NEXTVAL, #product_id#, #product_state#, #product_subject#, #product_name#, #product_category#, #product_brand#, #product_price#, #product_type#, #product_phone#, #product_sido#, #product_gogon#, #product_image#, #product_content#,#main_img#)
 	</insert>
-	<!-- 이미지 등록 -->
-<!-- 	<insert id="insertImg" parameterClass="image">
-		INSERT INTO P_IMG (NO_P, MAIN_IMG, IMAGE2, IMAGE3, IMAGE4, IMAGE5)
-		VALUES (#no_p#, #main_img#, #image2#, #image3#, #image4#, #image5#)
-	</insert>
- -->	
+
 <!-- 	product 상품 수정을 위한 update -->
 	<update id="updateProduct" parameterClass="product">
 		UPDATE PRODUCT SET PRODUCT_STATE = #product_state#, PRODUCT_NAME = #product_name#, PRODUCT_CATEGORY = #product_category#, PRODUCT_BRAND = #product_brand#, PRODUCT_PRICE = #product_price#, PRODUCT_TYPE = #product_type#, PRODUCT_PHONE = #product_phone#,PRODUCT_CONTENT = #product_content#

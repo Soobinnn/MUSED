@@ -14,4 +14,14 @@
   	<filter-name>struts2</filter-name>
   	<url-pattern>/*</url-pattern>	
   </filter-mapping>
+  
+   <servlet>
+        <servlet-name>tiles</servlet-name>
+        <servlet-class>org.apache.tiles.web.startup.TilesServlet</servlet-class>
+        <init-param>
+           <param-name>org.apache.tiles.impl.BasicTilesContainer.DEFINITIONS_CONFIG</param-name>
+           <param-value>/WEB-INF/tiles.xml,/WEB-INF/tiles-service.xml</param-value>
+        </init-param>
+        <load-on-startup>1</load-on-startup>
+  </servlet>
 </web-app>

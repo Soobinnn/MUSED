@@ -40,14 +40,14 @@ public class WriteAction extends ActionSupport {
 	private String product_gogon;
 	private String product_image;
 	private String product_content;
-
+	private String main_img;
 	private File[] upload;
 	private String[] uploadFileName;
 	private String[] uploadContentType;
-	private String fileUploadPath="C:\\Users\\bogiy\\OneDrive\\바탕 화면\\자바\\App\\MUSED\\WebContent\\product\\img\\";
+	private String fileUploadPath="C:\\Users\\bogiy\\OneDrive\\바탕 화면\\자바\\MUSED\\MUSED\\WebContent\\product\\img\\";
 
 	private String imageName="";
-	
+	private String MainName="";
 	// 생성자
 	public WriteAction() throws IOException {
 
@@ -88,17 +88,14 @@ public class WriteAction extends ActionSupport {
 		for(int i=0;i<upload.length;i++) {
 			File destFile = new File(fileUploadPath + getUploadFileName()[i]);
 			FileUtils.copyFile(getUpload()[i], destFile);
-			
-			
 			if(i==0) {
+				MainName += getUploadFileName()[0];
 				imageName += getUploadFileName()[i];
 			}else{
 				imageName += (getUploadFileName()[i].equals(""))?getUploadFileName()[i]:","+getUploadFileName()[i];
 			}
-			
-			
 		}
-
+		paramClass.setMain_img(MainName);			
 		paramClass.setProduct_image(imageName);
 		// 등록 쿼리 수행.
 		sqlMapper.insert("product.insertProduct", paramClass);	//입력 : insert
@@ -120,8 +117,18 @@ public class WriteAction extends ActionSupport {
 		return SUCCESS;
 	}
 */	
+	
+	
 	public static Reader getReader() {
 		return reader;
+	}
+
+	public String getMain_img() {
+		return main_img;
+	}
+
+	public void setMain_img(String main_img) {
+		this.main_img = main_img;
 	}
 
 	public static void setReader(Reader reader) {

@@ -6,6 +6,13 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <title>신고하기</title>
+<script>
+function alertnclose()
+{
+	alert('신고가 접수되었습니다');
+	window.close();
+}
+</script>
 </head>
 <body>
   	<table width="600" border="0" cellspacing="0" cellpadding="2">
@@ -99,7 +106,7 @@
 
         <tr>
           <td align="right" colspan="2">    
-          	<input name="submit" type="submit" value="작성" class="inputb">
+          	<input name="submit" type="submit" value="작성" class="inputb" onclick="alertnclose()">
             <input name="list" type="button" value="취소" class="inputb" >
           </td>
         </tr>

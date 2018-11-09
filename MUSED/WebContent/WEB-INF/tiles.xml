@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 2.1//EN"
+       "http://tiles.apache.org/dtds/tiles-config_2_1.dtd">
+
+<tiles-definitions>
+	
+	<definition name="main" template="/tiles/layout.jsp">
+		<put-attribute name="title" value="MUSED"/>
+		<put-attribute name="header" value="/tiles/header.jsp"/>
+		<put-attribute name="body" value="/tiles/body.jsp"/>
+		<put-attribute name="footer" value="/tiles/footer.jsp"/>
+	</definition>
+	<!-- 로그인 & 회원가입 -->
+	<definition name="loginForm" extends="main">
+		<put-attribute name="body" value="/member/loginForm.jsp"/>
+	</definition>
+	
+	<definition name="loginError" extends="main">
+		<put-attribute name="body" value="/member/loginError.jsp"/>
+	</definition>
+	
+	<definition name="joinConfirm" extends="main">
+		<put-attribute name="body" value="/member/joinConfirm.jsp"/>
+	</definition>
+	
+	<definition name="joinForm" extends="main">
+		<put-attribute name="body" value="/member/joinForm.jsp"/>
+	</definition>
+	
+	<definition name="joinSuccess" extends="main">
+		<put-attribute name="body" value="/member/joinSuccess.jsp"/>
+	</definition>
+	
+	<definition name="findIdForm" extends="main">
+		<put-attribute name="body" value="/member/findIdForm.jsp"/>
+	</definition>
+	
+	<definition name="findPwForm" extends="main">
+		<put-attribute name="body" value="/member/findPwForm.jsp"/>
+	</definition>
+	
+	<definition name="findIdSuccess" extends="main">
+		<put-attribute name="body" value="/member/findIdSuccess.jsp"/>
+	</definition>
+	
+	<definition name="findIdError" extends="main">
+		<put-attribute name="body" value="/member/findIdError.jsp"/>
+	</definition>
+	
+	<definition name="modifyPw" extends="main">
+		<put-attribute name="body" value="/member/modifyPw.jsp"/>
+	</definition>
+	
+	<definition name="findPwSuccess" extends="main">
+		<put-attribute name="body" value="/member/findPwSuccess.jsp"/>
+	</definition>
+	
+	<definition name="findPwError" extends="main">
+		<put-attribute name="body" value="/member/findPwError.jsp"/>
+	</definition>
+	
+	<!-- 로그인 & 회원가입 -->
+
+	
+</tiles-definitions>
