@@ -106,12 +106,12 @@ public class MemberAction extends ActionSupport implements SessionAware {
 		
 		return SUCCESS;
 	}
-	/*ȸ��Ż��*/
+	/*회占쏙옙탈占쏙옙*/
 	public String deleteForm() throws Exception{
 		resultClass = (MemberVO)sqlMapper.queryForObject("member.selectOne",(String)session.get("ID"));
 		return SUCCESS;
 	}
-	/*ȸ��Ż��Ϸ�*/
+	/*회占쏙옙탈占쏙옙狗占�*/
 	public String deleteAction() throws Exception{
 		sqlMapper.delete("member.deleteMem",(String)session.get("ID"));
 		
@@ -119,8 +119,11 @@ public class MemberAction extends ActionSupport implements SessionAware {
 		Map<String, String> session = (Map<String, String>) context.getSession();
 		
 		session.remove("ID");
+		session.remove("EMAIL");
+		session.remove("ACCESS_NUM");
+		session.remove("JOINDATE");
 
-		context.setSession(session); // �ٽ� session�� ���� ���Ѽ� �ʱ�ȭ
+		context.setSession(session); // 占쌕쏙옙 session占쏙옙 占쏙옙占쏙옙 占쏙옙占싼쇽옙 占십깍옙화
 		return SUCCESS;
 	}
 	

@@ -35,6 +35,7 @@ public class LoginAction extends ActionSupport implements SessionAware {
 
 	private String id;
 	private String password;
+	private String email;
 	private String cid;
 
 	private int access_num;
@@ -88,6 +89,7 @@ public class LoginAction extends ActionSupport implements SessionAware {
 
 		paramClass.setId(getId());
 		paramClass.setPassword(getPassword());
+		paramClass.setEmail(getEmail());
 
 		resultClass = (MemberVO) sqlMapper.queryForObject("member.selectOne", getId());
 
@@ -97,6 +99,9 @@ public class LoginAction extends ActionSupport implements SessionAware {
 				ActionContext context = ActionContext.getContext();
 				session = context.getSession();
 				session.put("ID", resultClass.getId());
+				session.put("EMAIL", resultClass.getEmail());
+				session.put("ACCESS_NUM", resultClass.getAccess_num());
+				session.put("JOINDATE", resultClass.getJoindate());
 				context.setSession(session);
 				// 관리자면 관리자페이지로 로그인
 				if (resultClass.getAccess_num() == 1) {
@@ -113,6 +118,9 @@ public class LoginAction extends ActionSupport implements SessionAware {
 		Map<String, String> session = (Map<String, String>) context.getSession();
 
 		session.remove("ID");
+		session.remove("EMAIL");
+		session.remove("ACCESS_NUM");
+		session.remove("JOINDATE");
 
 		context.setSession(session); // 다시 session을 적용 시켜서 초기화
 
@@ -121,6 +129,14 @@ public class LoginAction extends ActionSupport implements SessionAware {
 
 	
 	
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
 	public String getCid() {
 		return cid;
 	}
