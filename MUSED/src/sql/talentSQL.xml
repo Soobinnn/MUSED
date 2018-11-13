@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="euc-kr"?>
 <!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD Sql Map 2.0//EN"
 'http://ibatis.apache.org/dtd/sql-map-2.dtd'>
 <sqlMap namespace="talent">
@@ -30,17 +30,17 @@
 		<result property="c_regdate" column="c_regdate"/>
 	</resultMap>
 
-	<!-- talent ì „ì²´ ì •ë³´ ê°€ì ¸ì˜¤ê¸° -->
+	<!-- talent ÀüÃ¼ Á¤º¸ °¡Á®¿À±â -->
 	<sql id="select-all">
 		SELECT * FROM TALENT 
 	</sql>
 	
-	<!-- where no ì„¤ì • -->
+	<!-- where no ¼³Á¤ -->
 	<sql id="where-no">
 		WHERE TALENT_NO=#talent_no#
 	</sql>
 	
-	<!-- TALENT ì „ì²´ ê°€ì ¸ì˜¤ëŠ”ë° noì •ë ¬ -->
+	<!-- TALENT ÀüÃ¼ °¡Á®¿À´Âµ¥ noÁ¤·Ä -->
 	<select id="selectAll" resultMap="talentRes">
 		SELECT * FROM TALENT
 		ORDER BY talent_no DESC
@@ -56,13 +56,12 @@
 		ORDER BY c_no DESC
 	</select>
 	
-	<!-- 	talent ì¼ì • noì˜ ì „ì²´ ì •ë³´ ê°€ì ¸ì˜¤ê¸°	 -->
+	<!-- 	talent ÀÏÁ¤ noÀÇ ÀüÃ¼ Á¤º¸ °¡Á®¿À±â	 -->
 	<select id="selectOne" resultMap="talentRes" parameterClass="int">
 		<include refid="select-all"/>
 		<include refid="where-no"/>
 	</select>
 	
-	<!-- ìƒì„¸ë³´ê¸°ì—ì„œ ê´€ë ¨ ìƒí’ˆ 5ê°œ ì¶œë ¥í•˜ê¸°-->
 	<select id="TselectMainImg" resultMap="talentRes" parameterClass="int">
 	<![CDATA[
 		SELECT * FROM 
@@ -71,7 +70,7 @@
 	]]>
 	</select>
 
-	<!--talent ìƒí’ˆ ë“±ë¡ì„ ìœ„í•œ insert -->
+	<!--talent »óÇ° µî·ÏÀ» À§ÇÑ insert -->
  	<insert id="insertTalent" parameterClass="talent">
 		INSERT INTO TALENT (TALENT_NO, TALENT_ID, TALENT_STATE, TALENT_SUBJECT, TALENT_NAME, TALENT_CATEGORY, TALENT_PRICE, TALENT_PHONE, TALENT_SIDO, TALENT_GOGON, TALENT_CONTENT, TALENT_IMAGE,MAIN_IMG, READHIT)
 		VALUES (TALENT_NO_SEQ.NEXTVAL, #talent_id#, #talent_state#, #talent_subject#, #talent_name#, #talent_category#, #talent_price#, #talent_phone#, #talent_sido#, #talent_gogon#, #talent_content#, #talent_image#,#main_img#,0)
@@ -82,27 +81,23 @@
 		VALUES (COMMENTS_NO_SEQ.NEXTVAL, 1, #c_contnum#, #c_id#, #c_content#, #c_regdate#)	
 	</insert>
 	
-	
-	<!-- talent ìƒí’ˆ ì¡°íšŒìˆ˜ ì¦ê°€ë¥¼ ìœ„í•œ update -->
-	<update id="updateReadHit" parameterClass="talent">
+		<update id="updateReadHit" parameterClass="talent">
     			UPDATE TALENT SET READHIT = READHIT + 1
 			<include refid="where-no" />
    		 </update>
 	
-	
- 	<!-- talent ìƒí’ˆ ìˆ˜ì •ì„ ìœ„í•œ update --> 
+	<!-- talent »óÇ° ¼öÁ¤À» À§ÇÑ update --> 
 	<update id="updateTalent" parameterClass="talent">
 		UPDATE TALENT SET TALENT_STATE = #talent_state#, TALENT_SUBJECT=#talent_subject#, TALENT_NAME = #talent_name#, TALENT_CATEGORY = #talent_category#, TALENT_PRICE = #talent_price#, TALENT_PHONE = #talent_phone#, TALENT_SIDO=#talent_sido#, TALENT_GOGON=#talent_gogon#, TALENT_CONTENT = #talent_content#, TALENT_IMAGE = #talent_image#, MAIN_IMG=#main_img#
 		<include refid="where-no"/>
 	</update>
 
-	<!-- talent ìƒí’ˆ ì‚­ì œë¥¼ ìœ„í•œ delete	 -->
+	<!-- talent »óÇ° »èÁ¦¸¦ À§ÇÑ delete	 -->
 	<delete id="deleteTalent" parameterClass="talent">
 		DELETE FROM TALENT
 		<include refid="where-no"/>
 	</delete>
 	
-	<!-- talent ëŒ“ê¸€ ì‚­ì œë¥¼ ìœ„í•œ delete	 -->
 	<delete id="deleteTComment" parameterClass="Tcomment">
 		DELETE FROM COMMENTS
 		WHERE C_INDEX=1
@@ -110,5 +105,25 @@
 		and C_ID=#c_id#
 	</delete>
 	
- 
+	<!-- ¸¶ÀÌÆäÀÌÁö¿¡¼­ ³» Àç´É µî·ÏÇÑ °³¼ö -->
+	<select id="countTalent" parameterClass="String" resultClass="java.lang.Integer">
+		SELECT COUNT(*) as ctal  FROM talent WHERE TALENT_ID=#talent_id#
+	</select>
+	
+	<!-- mypage¿¡¼­ ³»°¡ ÆÇ¸ÅÇÑ Àç´É ¼ö -->
+	<select id="countSellTalent" parameterClass="String" resultClass="java.lang.Integer">
+		SELECT COUNT(*) as stal FROM talent WHERE TALENT_ID=#talent_id# AND TALENT_STATE='¿Ï'
+	</select>
+	
+	<!-- mypage¿¡¼­ µî·ÏÇÑ Àç´É --> 
+	<select id="selectMyTalent" parameterClass="String" resultMap="talentRes">
+		SELECT * FROM TALENT WHERE TALENT_ID=#talent_id#
+		ORDER BY talent_no DESC
+	</select>
+	
+	<!-- mypage¿¡¼­ ³»°¡ ÆÇ¸ÅÇÑ Àç´É ¸®½ºÆ® -->
+	<select id="selectMySellTalent" parameterClass="String" resultMap="talentRes">
+		SELECT * FROM TALENT WHERE TALENT_ID=#talent_id# AND TALENT_STATE='¿Ï'
+	</select>
+
 </sqlMap>

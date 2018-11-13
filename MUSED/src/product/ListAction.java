@@ -7,15 +7,20 @@ import com.ibatis.sqlmap.client.SqlMapClient;
 import com.ibatis.sqlmap.client.SqlMapClientBuilder;
 
 import java.util.*;
+
+import org.apache.struts2.interceptor.SessionAware;
+
 import java.io.Reader;
 import java.io.IOException;
 
 import product.pagingAction;
 
-public class ListAction extends ActionSupport
+public class ListAction extends ActionSupport implements SessionAware
 {
 	public static Reader reader;
 	public static SqlMapClient sqlMapper;
+	
+	private Map session;
 
 	private List<productVO> list = new ArrayList<productVO>();
 	private productVO resultClass = new productVO(); //쿼리 결과 값을 저장할 객체
@@ -48,6 +53,14 @@ public class ListAction extends ActionSupport
 		list=list.subList(page.getStartCount(), lastCount);
 
 		return SUCCESS;
+	}
+	
+	public Map getSession() {
+		return session;
+	}
+
+	public void setSession(Map session) {
+		this.session = session;
 	}
 
 
