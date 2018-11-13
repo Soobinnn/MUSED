@@ -1,47 +1,50 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=utf-8"
+	pageEncoding="utf-8"%>
 <%@ taglib prefix="s" uri="/struts-tags"%>
 
-<!DOCTYPE html>
-<html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <title>개인 정보 수정</title>
+
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
+
 <script language="javascript">
-function check(){
-	var upda = document.update_form;
-	if(upda.password.value==""){
-		alert("비밀번호를 입력해주십시오.");
-		upda.password.focus();
-		return false;
+	function check() {
+		var upda = document.update_form;
+		if (upda.password.value == "") {
+			alert("비밀번호를 입력해주십시오.");
+			upda.password.focus();
+			return false;
+		}
+		if (upda.password.value != upda.password2.value) {
+			alert("비밀번호가 다릅니다.");
+			upda.password2.focus();
+			return false;
+		}
+		if (upda.email.value == "") {
+			alert("이메일을 입력해주십시오.");
+			upda.email.focus();
+			return false;
+		}
+		if (frm.zipcode.value == "") {
+			alert("우편번호를 입력해주십시오.");
+			frm.zipcode.focus();
+			return false;
+		}
+		if (frm.address1.value == "") {
+			alert("주소를 입력해주십시오.");
+			frm.address1.focus();
+			return false;
+		}
+		if (frm.address2.value == "") {
+			alert("상세주소를 입력해주십시오.");
+			frm.address2.focus();
+			return false;
+		}
 	}
-	if(upda.password.value != upda.password2.value){
-		alert("비밀번호가 다릅니다.");
-		upda.password2.focus();
-		return false;
-	}
-	if(upda.email.value==""){
-		alert("이메일을 입력해주십시오.");
-		upda.email.focus();
-		return false;
-	}
-	if (frm.zipcode.value == "") {
-		alert("우편번호를 입력해주십시오.");
-		frm.zipcode.focus();
-		return false;
-	}
-	if (frm.address1.value == "") {
-		alert("주소를 입력해주십시오.");
-		frm.address1.focus();
-		return false;
-	}
-	if (frm.address2.value == "") {
-		alert("상세주소를 입력해주십시오.");
-		frm.address2.focus();
-		return false;
-	}
-}
- 	function DaumPostcode() {
+
+	function DaumPostcode() {
 
 		new daum.Postcode(
 				{
@@ -87,66 +90,73 @@ function check(){
 				}).open();
 	}
 </script>
-<meta http-equiv="Content-Type" content="text/html; charset=UFT-8">
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 </head>
 <center>
-<body>
-<%
-	request.setCharacterEncoding("utf-8");
-%>
-	<h1>개인정보수정</h1>
-	<br/>
-	<br/>
-	<form action="memberUpdateAction.action" name="update_form" method="post" onsubmit="return check()">
-		
-		<table>
-			<tr>
-				<td>Name</td>
-				<td>&nbsp;<s:textfield name="name" theme="simple" value="%{resultClass.name}" readonly="true"/></td>
-			</tr>
-			<tr>
-				<td>ID</td>
-				<td>&nbsp;<s:textfield name="id" theme="simple" value="%{resultClass.id}" readonly="true"/></td>
-			</tr>
-			<tr>
-				<td>Reg Number</td>
-				<td>&nbsp;<s:textfield name="jumin1" theme="simple"
-							value="%{resultClass.jumin1}" cssStyle="width:70px" maxlength="6" readonly="true" />&nbsp;-&nbsp;
-						<s:textfield name="jumin2" theme="simple"
-							value="%{resultClass.jumin2}" cssStyle="width:70px" maxlength="7" readonly="true" />
-				</td>
-			</tr>
-			<tr>
-				<td>Sex</td>
-				<td><input type="radio" name="sex" value="M" checked>&nbsp;Male
-					<input type="radio" name="sex" value="F">&nbsp;Female</td>
-			</tr>
-			<tr>
-				<td>E-mail</td>
-				<td><input type="text" id="email" name="email" value="${resultClass.email}"/></td>
-			</tr>
-			<tr>
-				<td>Phone</td>
-				<td><input type="text" id="phone" name="phone" value="${resultClass.phone}"/></td>
-			</tr>
-			<tr>
-				<td>Zipcode</td>&nbsp;
-				<td><input type="text" name="zipcode" id="zipcode" value="${resultClass.zipcode}"/>&nbsp;
-						<input type="button" value="Search" onclick="DaumPostcode()"></td>
-			</tr>
-			<tr>
-				<td>Address</td>
-				<td><input type="text" id="address1" name="address1"
-						placeholder="주소" size="50" value="${resultClass.address1}" /><br> <input type="text"
-						id="address2" name="address2" placeholder="상세주소" size="50" value="${resultClass.address2}" />
-				</td>
-			</tr>
-			<tr>
-				<td></td>
-				<td align="center"><input type="submit" value="변경" onclick="javascript:location.href='memberUpdateAction.action'">&nbsp;
-									<input type="button" value="취소" onclick="javascript:location.href='mypage.action'"></td>
-			</tr>	
-		</table>
-	</form>
-</body>
+	<body>
+		<h1>개인정보수정</h1>
+		<br />
+		<br />
+		<form action="memberUpdateAction.action" name="update_form"
+			method="post" onsubmit="return check()">
+
+			<table>
+				<tr>
+					<td>Name</td>
+					<td>&nbsp;<s:textfield name="name" theme="simple"
+							value="%{resultClass.name}" readonly="true" /></td>
+				</tr>
+				<tr>
+					<td>ID</td>
+					<td>&nbsp;<s:textfield name="id" theme="simple"
+							value="%{resultClass.id}" readonly="true" /></td>
+				</tr>
+				<tr>
+					<td>Reg Number</td>
+					<td>&nbsp;<s:textfield name="jumin1" theme="simple"
+							value="%{resultClass.jumin1}" cssStyle="width:70px" maxlength="6"
+							readonly="true" />&nbsp;-&nbsp; <s:textfield name="jumin2"
+							theme="simple" value="%{resultClass.jumin2}"
+							cssStyle="width:70px" maxlength="7" readonly="true" />
+					</td>
+				</tr>
+				<tr>
+					<td>Sex</td>
+					<td><input type="radio" name="sex" value="M" checked>&nbsp;Male
+						<input type="radio" name="sex" value="F">&nbsp;Female</td>
+				</tr>
+				<tr>
+					<td>E-mail</td>
+					<td><input type="text" id="email" name="email"
+						value="${resultClass.email}" /></td>
+				</tr>
+				<tr>
+					<td>Phone</td>
+					<td><input type="text" id="phone" name="phone"
+						value="${resultClass.phone}" /></td>
+				</tr>
+				<tr>
+					<td>Zipcode</td>&nbsp;
+					<td><input type="text" name="zipcode" id="zipcode" size="7"
+						value="${resultClass.zipcode}" />&nbsp; <input type="button"
+						value="Search" onclick="DaumPostcode()"></td>
+				</tr>
+				<tr>
+					<td>Address</td>
+					<td><input type="text" id="address1" name="address1"
+						placeholder="주소" size="50" value="${resultClass.address1}" /><br>
+						<input type="text" id="address2" name="address2"
+						placeholder="상세주소" size="50" value="${resultClass.address2}" /></td>
+				</tr>
+				<tr>
+					<td></td>
+					<td align="center"><input type="submit" value="변경">&nbsp;
+						<input type="button" value="취소"
+						onclick="javascript:history.back(-1)"></td>
+				</tr>
+			</table>
+		</form>
+	</body>
+
 </html>

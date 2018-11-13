@@ -20,7 +20,24 @@ public class MemberVO {
 	private int access_num;
 	private int score;
 	private int logincount;
+	private String file_orgname;
+	private String file_savname;
+	
+	
 
+	
+	public String getFile_orgname() {
+		return file_orgname;
+	}
+	public void setFile_orgname(String file_orgname) {
+		this.file_orgname = file_orgname;
+	}
+	public String getFile_savname() {
+		return file_savname;
+	}
+	public void setFile_savname(String file_savname) {
+		this.file_savname = file_savname;
+	}
 	public String getId() {
 		return id;
 	}

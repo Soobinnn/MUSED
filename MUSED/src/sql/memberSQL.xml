@@ -21,6 +21,8 @@
 		<result property="access_num" column="access_num"/>
 		<result property="score" column="score"/>
 		<result property="logincount" column="logincount"/>
+		<result property="file_orgname" column="file_orgname"/>
+		<result property="file_savname" column="file_savname"/>
 	</resultMap>
 	
 	<!-- 회원관리 공통 쿼리문 정의 -->
@@ -34,7 +36,7 @@
 	</select>
 	
 	<!-- 로그인 -->
-	<select id="selectOne" resultMap="memberRes" parameterClass="string">
+	<select id="selectOne" resultMap="memberRes" parameterClass="String">
 		SELECT * FROM MEMBER WHERE ID = #id#
 	</select>
 	
@@ -102,7 +104,14 @@
 	
 	<!-- 회원정보 변경 -->
 	<update id="modifyInfo" parameterClass="member">
-		UPDATE MEMBER SET EMAIL=#email#,PHONE=#phone#,ZIPCODE=#zipcode#,ADDRESS1=#address1#,ADDRESS2=#address2#
+		UPDATE MEMBER SET EMAIL = #email#, PHONE = #phone#, ZIPCODE = #zipcode#,ADDRESS1 = #address1#,ADDRESS2 = #address2#
+		WHERE ID = #id#
+	</update>
+	
+	<!-- 프로필 사진 업로드 -->
+	<update id="updateProfile" parameterClass="member">
+		UPDATE MEMBER SET FILE_ORGNAME = #file_orgname#
+				,FILE_SAVNAME = #file_savname#
 		WHERE ID = #id#
 	</update>
 	

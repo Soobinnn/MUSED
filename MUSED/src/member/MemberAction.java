@@ -81,13 +81,51 @@ public class MemberAction extends ActionSupport implements SessionAware {
 		paramClass.setScore(getScore());
 		paramClass.setLogincount(getLogincount());
 		
-		//��� ���� ����
+		
 		sqlMapper.insert("member.memberInsert",paramClass);
 		
 		return SUCCESS;
 	}
 	
+	public String modifyForm() throws Exception{
+		resultClass = (MemberVO)sqlMapper.queryForObject("member.selectOne",(String)session.get("ID"));
+		return SUCCESS;
+	}
 	
+	public String modifyAction() throws Exception{
+		paramClass = new MemberVO();
+		
+		paramClass.setId(getId());
+		paramClass.setEmail(getEmail());
+		paramClass.setPhone(getPhone());
+		paramClass.setZipcode(getZipcode());
+		paramClass.setAddress1(getAddress1());
+		paramClass.setAddress2(getAddress2());
+		
+		sqlMapper.update("member.modifyInfo",paramClass);
+		
+		return SUCCESS;
+	}
+	/*�쉶�뜝�룞�삕�깉�뜝�룞�삕*/
+	public String deleteForm() throws Exception{
+		resultClass = (MemberVO)sqlMapper.queryForObject("member.selectOne",(String)session.get("ID"));
+		return SUCCESS;
+	}
+	/*�쉶�뜝�룞�삕�깉�뜝�룞�삕�떁�뜝占�*/
+	public String deleteAction() throws Exception{
+		sqlMapper.delete("member.deleteMem",(String)session.get("ID"));
+		
+		ActionContext context = ActionContext.getContext();
+		Map<String, String> session = (Map<String, String>) context.getSession();
+		
+		session.remove("ID");
+		session.remove("EMAIL");
+		session.remove("ACCESS_NUM");
+		session.remove("JOINDATE");
+
+		context.setSession(session); // �뜝�뙐�룞�삕 session�뜝�룞�삕 �뜝�룞�삕�뜝�룞�삕 �뜝�룞�삕�뜝�떬�눦�삕 �뜝�떗源띿삕�솕
+		return SUCCESS;
+	}
 	
 	public Map getSession() {
 		return session;
