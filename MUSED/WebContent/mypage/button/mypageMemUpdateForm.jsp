@@ -5,7 +5,6 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
 <title>개인 정보 수정</title>
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 <script language="javascript">
@@ -41,8 +40,8 @@ function check(){
 		frm.address2.focus();
 		return false;
 	}
-	
-	function DaumPostcode() {
+}
+ 	function DaumPostcode() {
 
 		new daum.Postcode(
 				{
@@ -87,13 +86,14 @@ function check(){
 					}
 				}).open();
 	}
-	
-}
 </script>
-<meta http-equiv="Content-Type" content="text/html; charset=euc-kr">
+<meta http-equiv="Content-Type" content="text/html; charset=UFT-8">
 </head>
 <center>
 <body>
+<%
+	request.setCharacterEncoding("utf-8");
+%>
 	<h1>개인정보수정</h1>
 	<br/>
 	<br/>
@@ -143,8 +143,8 @@ function check(){
 			</tr>
 			<tr>
 				<td></td>
-				<td align="center"><input type="submit" value="변경" onclick="javascript:location.href=memberUpdateAction.action">&nbsp;
-									<input type="button" value="취소" onclick="javascript:location.href=mypage.action"></td>
+				<td align="center"><input type="submit" value="변경" onclick="javascript:location.href='memberUpdateAction.action'">&nbsp;
+									<input type="button" value="취소" onclick="javascript:location.href='mypage.action'"></td>
 			</tr>	
 		</table>
 	</form>

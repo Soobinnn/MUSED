@@ -29,6 +29,7 @@ public class MemberAction extends ActionSupport implements SessionAware {
 	private int jumin2;
 	private String sex;
 	private String email;
+	
 	private String phone;
 	private String zipcode;
 	private String address1;
@@ -86,43 +87,6 @@ public class MemberAction extends ActionSupport implements SessionAware {
 		return SUCCESS;
 	}
 	
-	/*회원정보변경*/
-	public String modifyForm() throws Exception{
-		resultClass = (MemberVO)sqlMapper.queryForObject("member.selectOne",(String)session.get("ID"));
-		return SUCCESS;
-	}
-	/*회원정보변경확인*/
-	public String modifyAction() throws Exception{
-		paramClass = new MemberVO();
-		
-		paramClass.setId(getId());
-		paramClass.setEmail(getEmail());
-		paramClass.setPhone(getPhone());
-		paramClass.setZipcode(getZipcode());
-		paramClass.setAddress1(getAddress1());
-		paramClass.setAddress2(getAddress2());
-		
-		sqlMapper.update("member.modifyInfo",paramClass);
-		
-		return SUCCESS;
-	}
-	/*회원탈퇴*/
-	public String deleteForm() throws Exception{
-		resultClass = (MemberVO)sqlMapper.queryForObject("member.selectOne",(String)session.get("ID"));
-		return SUCCESS;
-	}
-	/*회원탈퇴완료*/
-	public String deleteAction() throws Exception{
-		sqlMapper.delete("member.deleteMem",(String)session.get("ID"));
-		
-		ActionContext context = ActionContext.getContext();
-		Map<String, String> session = (Map<String, String>) context.getSession();
-		
-		session.remove("ID");
-
-		context.setSession(session); // 다시 session을 적용 시켜서 초기화
-		return SUCCESS;
-	}
 	
 	
 	public Map getSession() {

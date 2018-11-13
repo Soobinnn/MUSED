@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
+<%@ taglib prefix="s" uri="/struts-tags"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,13 +10,9 @@
 <body>
 
 회원 이미지<br>
-아이디:mused<br>
-등급:Gold(172)<br>
-VVIP<br>
-VIP<br>
-GOLD<br>
-SILVER<br>
-BRONZE .....
+아이디:<s:property value="%{id}"/><br>
+등급:<s:property value="%{grade}"/>
+(<s:property value="%{paramClass.score}"/>)<br>
 
 
 </body>

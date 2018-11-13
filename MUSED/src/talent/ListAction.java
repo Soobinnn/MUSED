@@ -10,10 +10,13 @@ import com.ibatis.sqlmap.client.SqlMapClient;
 import com.ibatis.sqlmap.client.SqlMapClientBuilder;
 
 import java.util.*;
+
+import org.apache.struts2.interceptor.SessionAware;
+
 import java.io.Reader;
 import java.io.IOException;
 
-public class ListAction extends ActionSupport{
+public class ListAction extends ActionSupport implements SessionAware{
 	public static Reader reader;
 	public static SqlMapClient sqlMapper;
 
@@ -28,6 +31,8 @@ public class ListAction extends ActionSupport{
 	private String pagingHtml;
 	private pagingAction page;
 	private String a[];
+	
+	private Map session;
 	
 	public ListAction() throws IOException{
 		reader=Resources.getResourceAsReader("sqlMapConfig.xml");
@@ -52,9 +57,15 @@ public class ListAction extends ActionSupport{
 
 		return SUCCESS;
 	}
+	
+	public Map getSession() {
+		return session;
+	}
 
-	
-	
+	public void setSession(Map session) {
+		this.session = session;
+	}
+
 	public List getFirst() {
 		return first;
 	}
