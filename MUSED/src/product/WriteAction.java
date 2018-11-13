@@ -5,6 +5,9 @@ import com.ibatis.common.resources.Resources;
 import com.ibatis.sqlmap.client.SqlMapClient;
 import com.ibatis.sqlmap.client.SqlMapClientBuilder;
 
+import org.apache.struts2.interceptor.SessionAware;
+import member.MemberVO;
+
 import java.util.*;
 import java.io.Reader;
 import java.io.IOException;
@@ -17,7 +20,7 @@ import org.apache.struts2.ServletActionContext;
 
 import product.productVO;
 
-public class WriteAction extends ActionSupport {
+public class WriteAction extends ActionSupport implements SessionAware{
 
 	public static Reader reader; //파일 스트림을 위한 reader.
 	public static SqlMapClient sqlMapper; //SqlMapClient API를 사용하기 위한 sqlMapper 객체.
@@ -25,6 +28,9 @@ public class WriteAction extends ActionSupport {
 	private productVO paramClass; //파라미터를 저장할 객체(ibatis에서 꺼내온거 받기위해)
 	private productVO resultClass; //쿼리 결과 값을 저장할 객체(select문 처리->받기위해)
 
+	private MemberVO Mparam;
+	private MemberVO Mresult;
+	
 	private int currentPage; //현재 페이지
 
 	private String product_id;
@@ -45,10 +51,12 @@ public class WriteAction extends ActionSupport {
 	private String[] uploadFileName;
 	private String[] uploadContentType;
 	private String fileUploadPath="C:\\Users\\bogiy\\OneDrive\\바탕 화면\\자바\\MUSED\\MUSED\\WebContent\\product\\img\\";
-
+								
 	private String imageName="";
 	private String MainName="";
 	private String type="";
+	
+	private Map session;
 	// 생성자
 	public WriteAction() throws IOException {
 
@@ -71,7 +79,7 @@ public class WriteAction extends ActionSupport {
 		resultClass = new productVO();
 
 		// 등록할 항목 설정.
-		paramClass.setProduct_id(getProduct_id());
+		paramClass.setProduct_id((String)session.get("ID"));
 		paramClass.setProduct_state(getProduct_state());
 		paramClass.setProduct_subject(getProduct_subject());
 		paramClass.setProduct_name(getProduct_name());
@@ -107,6 +115,54 @@ public class WriteAction extends ActionSupport {
 	}
 
 	
+	public MemberVO getMparam() {
+		return Mparam;
+	}
+
+	public void setMparam(MemberVO mparam) {
+		Mparam = mparam;
+	}
+
+	public MemberVO getMresult() {
+		return Mresult;
+	}
+
+	public void setMresult(MemberVO mresult) {
+		Mresult = mresult;
+	}
+
+	public String getImageName() {
+		return imageName;
+	}
+
+	public void setImageName(String imageName) {
+		this.imageName = imageName;
+	}
+
+	public String getMainName() {
+		return MainName;
+	}
+
+	public void setMainName(String mainName) {
+		MainName = mainName;
+	}
+
+	public String getType() {
+		return type;
+	}
+
+	public void setType(String type) {
+		this.type = type;
+	}
+
+	public Map getSession() {
+		return session;
+	}
+
+	public void setSession(Map session) {
+		this.session = session;
+	}
+
 	public static Reader getReader() {
 		return reader;
 	}

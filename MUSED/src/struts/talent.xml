@@ -22,7 +22,14 @@
 		<action name="talentDetail" class="talent.DetailAction">
 			<result type="tiles">talentDetailForm</result>
 		</action>
-
+		<!-- 댓글 달기 -->
+		<action name="TwriteCommentAction" class="talent.commentWriteAction">
+			<result type="chain">talentDetail</result>
+		</action>
+		<!-- 댓글 삭제하기 -->
+		<action name="deleteTComment" class="talent.DetailAction" method="commentDelete">
+			<result type="chain">talentDetail</result>
+		</action>
 		<!--  재능 수정하기 폼 -->
 		<action name="talentUpdateForm" class="talent.UpdateAction" method="form">
 			<result type="tiles">talentWriteForm</result>

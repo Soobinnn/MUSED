@@ -17,7 +17,15 @@ public class productVO
 	private String product_image;
 	private String product_content;
 	private String main_img;
+	private int readhit;
 	
+	
+	public int getReadhit() {
+		return readhit;
+	}
+	public void setReadhit(int readhit) {
+		this.readhit = readhit;
+	}
 	public String getMain_img() {
 		return main_img;
 	}

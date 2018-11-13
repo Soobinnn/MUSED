@@ -8,9 +8,10 @@
 <head>
 <title>악기 입력 폼</title>
 <script type="text/javascript">
+
 		function validation() {
 			var frm = document.forms(0);
-			
+			var form = document.write_form;
 			if(frm.product_id.value == "") {
 				alert("아이디를 입력해주세요.(수정 예정)");
 				frm.product_id.focus();
@@ -51,7 +52,7 @@
 				frm.product_price.focus();
 				return false;			
 			} 
-
+			
 			return true;
 		}
 	</script>
@@ -62,7 +63,7 @@
 		</s:if>
 		
 		<s:else>
-		  <form action="productUpdate.action" method="post" enctype="multipart/form-data">
+		  	<form action="productUpdate.action" method="post" enctype="multipart/form-data" onsubmit="return validation();">
 		  <s:hidden name="product_no" value="%{resultClass.product_no}" />
 		  <s:hidden name="currentPage" value="%{currentPage}" />
 		 
@@ -72,7 +73,9 @@
         <tr>
           <td><font color="#FF0000">*</font>는 필수 입력사항입니다.</td>
           <td bgcolor="#FFFFFF">
-            <s:textfield name="product_id" theme="simple" value="%{resultClass.product_id}" cssStyle="width:100px" maxlength="50"/>
+                <s:if test='%{#session.ID != null}'>
+       		     <s:textfield name="product_id" theme="simple" value="%{#session.ID}" cssStyle="width:100px" maxlength="50"/>
+ 				</s:if>
           </td>
           
         </tr>
@@ -168,7 +171,7 @@
         
         
         <tr>
-          <td bgcolor="#F4F4F4">  거래 시 연락처</td>		<!-- 연락처 그냥 한줄로 받을지,,, 아니면 010-0000-0000 3개로 받아서 합치거나 그냥 출력해줄지... -->
+          <td bgcolor="#F4F4F4">  거래 시 연락처</td>	
           <td bgcolor="#FFFFFF">
             <s:textfield name="product_phone" theme="simple" value="%{resultClass.product_phone}" cssStyle="width:100px" maxlength="11"/>
           </td>
@@ -177,7 +180,7 @@
           <td height="1" colspan="2"></td>	
         </tr>
         <tr>
-          <td bgcolor="#F4F4F4">  거래 선호 지역</td>  <!-- 시도, 구군, 동 으로 나누는 방법 생각해보기 -->
+          <td bgcolor="#F4F4F4">  거래 선호 지역</td>
           <td bgcolor="#FFFFFF">
             <s:textfield name="product_sido" theme="simple" value="%{resultClass.product_sido}" cssStyle="width:100px" maxlength="7"/>
             <s:textfield name="product_gogon" theme="simple" value="%{resultClass.product_gogon}" cssStyle="width:100px" maxlength="10"/>
@@ -189,13 +192,13 @@
         </tr> 
 
         <tr>
-          <td bgcolor="#F4F4F4"><font color="#FF0000">*</font>  메인 사진 등록</td>  <!-- 시도, 구군, 동 으로 나누는 방법 생각해보기 -->
+          <td bgcolor="#F4F4F4"><font color="#FF0000">*</font>  메인 사진 등록</td>  
           <td bgcolor="#FFFFFF">
-             <s:file name="upload"/>   	      
+             <s:file id="f" name="upload"/>   	      
           </td>
         </tr>
         <tr>
-          <td bgcolor="#F4F4F4">  추가 사진 등록</td>  <!-- 시도, 구군, 동 으로 나누는 방법 생각해보기 -->
+          <td bgcolor="#F4F4F4">  추가 사진 등록</td> 
           <td bgcolor="#FFFFFF">
              <s:file name="upload"/>  
              <s:file name="upload"/>  
@@ -203,7 +206,6 @@
              <s:file name="upload"/>   	      
           </td>
         </tr>
-        
          
 		<tr>
           <td bgcolor="#F4F4F4"><font color="#FF0000">*</font>  상품 상세 설명 </td>

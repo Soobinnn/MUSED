@@ -27,6 +27,16 @@
 			<result type="tiles">productDetailForm</result>
 		</action>
 		
+		<!-- 댓글 달기 -->
+		<action name="writeCommentAction" class="product.commentWriteAction">
+			<result type="chain">productDetail</result>
+		</action>
+
+		<!-- 댓글 삭제하기 -->
+		<action name="deletePComment" class="product.DetailAction" method="commentDelete">
+			<result type="chain">productDetail</result>
+		</action>
+		
 		<!--  상품 수정하기 폼 -->
 		<action name="productUpdateForm" class="product.UpdateAction" method="form">
 			<result type="tiles">productWriteForm</result>
@@ -41,6 +51,8 @@
 		<action name="productDelete" class="product.DeleteAction">
 			<result type="tiles">productDeleteSuccess</result>
 		</action>
+		
+		
 		
 
 	</package>

@@ -17,7 +17,6 @@ public class ListAction extends ActionSupport
 	public static Reader reader;
 	public static SqlMapClient sqlMapper;
 
-	private List first = new ArrayList();
 	private List<productVO> list = new ArrayList<productVO>();
 	private productVO resultClass = new productVO(); //쿼리 결과 값을 저장할 객체
 	
@@ -27,7 +26,6 @@ public class ListAction extends ActionSupport
 	private int blockPage=5;
 	private String pagingHtml;
 	private pagingAction page;
-	private String a[];
 	public ListAction() throws IOException{
 		reader=Resources.getResourceAsReader("sqlMapConfig.xml");
 		sqlMapper=SqlMapClientBuilder.buildSqlMapClient(reader);
@@ -52,13 +50,6 @@ public class ListAction extends ActionSupport
 		return SUCCESS;
 	}
 
-	public List<String> getFirst() {
-		return first;
-	}
-
-	public void setFirst(List<String> first) {
-		this.first = first;
-	}
 
 	public productVO getResultClass() {
 		return resultClass;
@@ -66,14 +57,6 @@ public class ListAction extends ActionSupport
 
 	public void setResultClass(productVO resultClass) {
 		this.resultClass = resultClass;
-	}
-
-	public String[] getA() {
-		return a;
-	}
-
-	public void setA(String[] a) {
-		this.a = a;
 	}
 
 	public static Reader getReader() {

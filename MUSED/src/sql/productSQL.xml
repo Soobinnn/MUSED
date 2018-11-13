@@ -3,17 +3,7 @@
 'http://ibatis.apache.org/dtd/sql-map-2.dtd'>
 <sqlMap namespace="product">
 <typeAlias alias="product" type="product.productVO"/>
-<!-- <typeAlias type="product.imgVO" alias="image"/>
-	<resultMap class="image" id="imageRes">
-		<result column="no_p" property="no_p"/>
-		<result column="main_image" property="main_image"/>
-		<result column="image2" property="image2"/>
-		<result column="image3" property="image3"/>
-		<result column="image4" property="image4"/>
-		<result column="image5" property="image5"/>
-
-	</resultMap> -->
- 
+<typeAlias alias="comments" type="product.product_cVO"/>
 	<resultMap class="product" id="productRes">
 		<result property="product_no" column="product_no"/>
 		<result property="product_id" column="product_id"/>
@@ -30,6 +20,16 @@
 		<result property="product_image" column="product_image"/>
 		<result property="product_content" column="product_content"/>	
 		<result property="main_img" column="main_img"/>
+		<result property="readhit" column="readhit"/>
+	</resultMap>
+	
+	<resultMap class="comments" id="commentRes">
+		<result property="c_no" column="c_no"/>
+		<result property="c_index" column="c_index"/>	
+		<result property="c_contnum" column="c_contnum"/>
+		<result property="c_id" column="c_id"/>
+		<result property="c_content" column="c_content"/>	
+		<result property="c_regdate" column="c_regdate"/>
 	</resultMap>
 
 	<!-- product 전체 정보 가져오기 -->
@@ -51,22 +51,46 @@
 	<select id="selectLastNo" resultMap="productRes" parameterClass="int">
 		select * product where product_no = (select max(product_no) from product) 
 	</select>
-
+	
+ 	<select id="commentSelectAll" resultMap="commentRes" parameterClass="int">
+		SELECT * FROM comments
+		WHERE c_contnum = #c_contnum# and c_index=0
+		ORDER BY c_no DESC
+	</select>
 	
 <!-- 	product 일정 no의 전체 정보 가져오기	 -->
 	<select id="selectOne" resultMap="productRes" parameterClass="int">
 		<include refid="select-all"/>
 		<include refid="where-no"/>
 	</select>
-
-<!-- 	id에 맞는 글만 수정/삭제 폼 나오게...
-
-	product 상품 등록을 위한 insert
- -->
+	
+<!-- 상세보기에서 관련 상품 5개 출력하기-->
+	<select id="selectMainImg" resultMap="productRes" parameterClass="int">
+	<![CDATA[
+		SELECT * FROM 
+		(SELECT * FROM product WHERE product_no <= #product_no# ORDER BY product_no DESC) 
+		WHERE ROWNUM <= 5 
+	]]>
+	</select>
+ 
+<!-- product 상품 등록을 위한 insert -->
  	<insert id="insertProduct" parameterClass="product">
-		INSERT INTO PRODUCT (PRODUCT_NO, PRODUCT_ID, PRODUCT_STATE, PRODUCT_SUBJECT, PRODUCT_NAME, PRODUCT_CATEGORY, PRODUCT_BRAND, PRODUCT_PRICE, PRODUCT_TYPE, PRODUCT_PHONE, PRODUCT_SIDO, PRODUCT_GOGON, PRODUCT_IMAGE, PRODUCT_CONTENT, MAIN_IMG)
-		VALUES (PRODUCT_NO_SEQ.NEXTVAL, #product_id#, #product_state#, #product_subject#, #product_name#, #product_category#, #product_brand#, #product_price#, #product_type#, #product_phone#, #product_sido#, #product_gogon#, #product_image#, #product_content#,#main_img#)
+		INSERT INTO PRODUCT (PRODUCT_NO, PRODUCT_ID, PRODUCT_STATE, PRODUCT_SUBJECT, PRODUCT_NAME, PRODUCT_CATEGORY, PRODUCT_BRAND, PRODUCT_PRICE, PRODUCT_TYPE, PRODUCT_PHONE, PRODUCT_SIDO, PRODUCT_GOGON, PRODUCT_IMAGE, PRODUCT_CONTENT, MAIN_IMG, READHIT)
+		VALUES (PRODUCT_NO_SEQ.NEXTVAL, #product_id#, #product_state#, #product_subject#, #product_name#, #product_category#, #product_brand#, #product_price#, #product_type#, #product_phone#, #product_sido#, #product_gogon#, #product_image#, #product_content#,#main_img#, 0)
 	</insert>
+
+<!-- product comment 등록 -->
+	<insert id="insertComment" parameterClass="comments">
+		INSERT INTO comments (C_NO, C_INDEX, C_CONTNUM, C_ID, C_CONTENT, C_REGDATE)
+		VALUES (COMMENTS_NO_SEQ.NEXTVAL, 0, #c_contnum#, #c_id#, #c_content#, #c_regdate#)	
+	</insert>
+	
+	
+<!-- product 상품 조회수 증가를 위한 update -->
+	<update id="updateReadHit" parameterClass="product">
+    			UPDATE PRODUCT SET READHIT = READHIT + 1
+			<include refid="where-no" />
+   		 </update>
 
 <!-- 	product 상품 수정을 위한 update -->
 	<update id="updateProduct" parameterClass="product">
@@ -78,6 +102,13 @@
 	<delete id="deleteProduct" parameterClass="product">
 		DELETE FROM product
 		<include refid="where-no"/>
+	</delete>
+	
+	<delete id="deletePComment" parameterClass="comments">
+		DELETE FROM COMMENTS
+		WHERE C_INDEX=0
+		and C_NO=#c_no#
+		and C_ID=#c_id#
 	</delete>
 
 </sqlMap>

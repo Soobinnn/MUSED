@@ -5,6 +5,9 @@ import com.ibatis.common.resources.Resources;
 import com.ibatis.sqlmap.client.SqlMapClient;
 import com.ibatis.sqlmap.client.SqlMapClientBuilder;
 
+import org.apache.struts2.interceptor.SessionAware;
+import member.MemberVO;
+
 import java.util.*;
 import java.io.Reader;
 import java.io.IOException;
@@ -17,7 +20,7 @@ import org.apache.struts2.ServletActionContext;
 
 import talent.talentVO;
 
-public class WriteAction extends ActionSupport {
+public class WriteAction extends ActionSupport implements SessionAware{
 
 	public static Reader reader; //파일 스트림을 위한 reader.
 	public static SqlMapClient sqlMapper; //SqlMapClient API를 사용하기 위한 sqlMapper 객체.
@@ -25,6 +28,9 @@ public class WriteAction extends ActionSupport {
 	private talentVO paramClass; //파라미터를 저장할 객체(ibatis에서 꺼내온거 받기위해)
 	private talentVO resultClass; //쿼리 결과 값을 저장할 객체(select문 처리->받기위해)
 
+	private MemberVO Mparam;
+	private MemberVO Mresult;
+	
 	private int currentPage; //현재 페이지
 
 	private String talent_id;
@@ -47,6 +53,7 @@ public class WriteAction extends ActionSupport {
 	private String imageName="";
 	private String MainName="";
 	
+	private Map session;
 	// 생성자
 	public WriteAction() throws IOException {
 
@@ -69,7 +76,7 @@ public class WriteAction extends ActionSupport {
 		resultClass = new talentVO();
 		
 		// 등록할 항목 설정.
-		paramClass.setTalent_id(getTalent_id());
+		paramClass.setTalent_id((String)session.get("ID"));
 		paramClass.setTalent_state(getTalent_state());
 		paramClass.setTalent_subject(getTalent_subject());
 		paramClass.setTalent_name(getTalent_name());
@@ -101,6 +108,38 @@ public class WriteAction extends ActionSupport {
 	}
 
 	
+	public MemberVO getMparam() {
+		return Mparam;
+	}
+
+	public void setMparam(MemberVO mparam) {
+		Mparam = mparam;
+	}
+
+	public MemberVO getMresult() {
+		return Mresult;
+	}
+
+	public void setMresult(MemberVO mresult) {
+		Mresult = mresult;
+	}
+
+	public String getMainName() {
+		return MainName;
+	}
+
+	public void setMainName(String mainName) {
+		MainName = mainName;
+	}
+
+	public Map getSession() {
+		return session;
+	}
+
+	public void setSession(Map session) {
+		this.session = session;
+	}
+
 	public String getMain_img() {
 		return main_img;
 	}

@@ -10,7 +10,7 @@ pageEncoding="utf-8"%>
 </head>
 <body>
 <table width="600" border="0" cellspacing="0" cellspadding="2">
-
+  <s:hidden name="currentPage" value="%{currentPage}" />
 	<tr align="center">
 		<td colspan="5">
 			<form>
@@ -67,11 +67,16 @@ pageEncoding="utf-8"%>
    	</tr>
     
 	<tr>
+	<!-- 로그인 했을 때 상세보기 들어가짐 -->
+	<s:if test='%{#session.ID != null}'>
      	<s:iterator value="list" status="stat">
   	      <td>	 
 	      	<s:url id="DetailURL" action="talentDetail">
 				<s:param name="talent_no">
 					<s:property value="talent_no"/>
+				</s:param>
+				<s:param name="currentPage">
+					<s:property value="currentPage"/>
 				</s:param>
 			</s:url>
    			&nbsp;<s:a href="%{DetailURL}">
@@ -84,6 +89,23 @@ pageEncoding="utf-8"%>
         		<tr></tr>
 			</s:if>	  
 		</s:iterator>
+		</s:if>
+		
+		<!-- 로그인 안했을 때 로그인 폼으로 -->
+	 <s:if test='%{#session.ID == null}'>
+	 <s:iterator value="list" status="stat">
+      <td>	 
+          &nbsp;<s:a href="loginForm.action">
+      			<img src="/MUSED/talent/img/<s:property value="main_img"/>" style="height: 100px; width: 100px; display: block;"/>
+				<br><s:property value="talent_subject" />
+				</s:a>
+			<br>판매자 : <s:property value="talent_id"/>	
+	     </td>
+	       	<s:if test="#stat.count%5==0">
+        		<tr></tr>
+			</s:if>	  
+		</s:iterator>  		
+	 </s:if>
 	</tr>
 
 	<s:if test="list.size()<=0">

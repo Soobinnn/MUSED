@@ -17,17 +17,15 @@ public class ListAction extends ActionSupport{
 	public static Reader reader;
 	public static SqlMapClient sqlMapper;
 
-	private List first = new ArrayList();
 	private List<talentVO> list = new ArrayList<talentVO>();
 	private talentVO resultClass = new talentVO(); //쿼리 결과 값을 저장할 객체
 	
 	private int currentPage=1;	//현재 페이지
 	private int totalCount;		
-	private int blockCount=25;   //5*5 이미지 정렬
+	private int blockCount=5;   //5*5 이미지 정렬
 	private int blockPage=5;
 	private String pagingHtml;
 	private pagingAction page;
-	private String a[];
 	
 	public ListAction() throws IOException{
 		reader=Resources.getResourceAsReader("sqlMapConfig.xml");
@@ -54,14 +52,6 @@ public class ListAction extends ActionSupport{
 	}
 
 	
-	
-	public List getFirst() {
-		return first;
-	}
-
-	public void setFirst(List first) {
-		this.first = first;
-	}
 
 	public talentVO getResultClass() {
 		return resultClass;
@@ -69,14 +59,6 @@ public class ListAction extends ActionSupport{
 
 	public void setResultClass(talentVO resultClass) {
 		this.resultClass = resultClass;
-	}
-
-	public String[] getA() {
-		return a;
-	}
-
-	public void setA(String[] a) {
-		this.a = a;
 	}
 
 	public static Reader getReader() {
