@@ -34,6 +34,7 @@ public class LoginAction extends ActionSupport implements SessionAware {
 	private HttpServletResponse response;
 
 	private String id;
+	private String name;
 	private String password;
 	private String cid;
 
@@ -97,6 +98,7 @@ public class LoginAction extends ActionSupport implements SessionAware {
 				ActionContext context = ActionContext.getContext();
 				session = context.getSession();
 				session.put("ID", resultClass.getId());
+				session.put("NAME", resultClass.getName());
 				context.setSession(session);
 				// 관리자면 관리자페이지로 로그인
 				if (resultClass.getAccess_num() == 1) {
@@ -113,7 +115,7 @@ public class LoginAction extends ActionSupport implements SessionAware {
 		Map<String, String> session = (Map<String, String>) context.getSession();
 
 		session.remove("ID");
-
+		session.remove("NAME");
 		context.setSession(session); // 다시 session을 적용 시켜서 초기화
 
 		return SUCCESS;
@@ -239,6 +241,14 @@ public class LoginAction extends ActionSupport implements SessionAware {
 
 	public void setToday(Calendar today) {
 		this.today = today;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
 	}
 
 }

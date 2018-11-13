@@ -74,4 +74,21 @@
 		<include refid="where-no"/>
 	</delete>
  
+ 	<!-- 검색로직 추가시작 -->
+	<select id="selectSearchW" resultMap="talentRes" parameterClass="string">
+	<include refid="select-all" />
+		WHERE product_name like #searchKeyword#
+		ORDER BY talent_no DESC
+		</select>
+		<select id="selectSearchS" resultMap="talentRes" parameterClass="string">
+			<include refid="select-all" />
+		 	WHERE product_subject like #searchKeyword#
+		 	ORDER BY talent_no DESC
+		</select>
+		<select id="selectSearchC" resultMap="talentRes" parameterClass="string">
+			<include refid="select-all" />
+		 	WHERE product_content like #searchKeyword#
+		 	ORDER BY talent_no DESC
+		</select>
+	<!-- 검색로직 끝 -->
 </sqlMap>

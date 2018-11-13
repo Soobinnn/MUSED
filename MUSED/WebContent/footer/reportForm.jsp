@@ -6,13 +6,6 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <title>신고하기</title>
-<script>
-function alertnclose()
-{
-	alert('신고가 접수되었습니다');
-	window.close();
-}
-</script>
 </head>
 <body>
   	<table width="600" border="0" cellspacing="0" cellpadding="2">
@@ -38,18 +31,25 @@ function alertnclose()
          	<td width="100" bgcolor="#F4F4F4"><font color="#FF0000">*</font>카테고리</td>
         	<td width="500" bgcolor="#FFFFFF">
         		<select name="report_category"> 
-        			<option value="ct">사기</option>
-        			<option value="sw">욕설</option>
-        			<option value="ad">광고</option>
+        			<option value="사기">사기</option>
+        			<option value="욕설">욕설</option>
+        			<option value="광고">광고</option>
         		</select>
            	</td>
         </tr>
         <tr>
          	<td width="100" bgcolor="#F4F4F4"><font color="#FF0000">*</font>  본인 아이디</td>
         	<td width="500" bgcolor="#FFFFFF">
+        	<s:if test='%{#session.ID == null}'>
             	<s:textfield name="report_memid" theme="simple" value="%{resultClass.report_memid}" cssStyle="width:370px" maxlength="50"/>
+          	</s:if>
+          	<s:else>
+          		<s:textfield name="report_memid" theme="simple" value="%{#session.ID}" cssStyle="width:370px" maxlength="50"/>
+        	</s:else>			
           	</td>
-        </tr>					
+        </tr>
+        
+        		
         <tr>
          	<td width="100" bgcolor="#F4F4F4"><font color="#FF0000">*</font>  제목</td>
         	<td width="500" bgcolor="#FFFFFF">
@@ -70,7 +70,7 @@ function alertnclose()
         	<td height="1" colspan="2"></td>	
         </tr>
         <tr>
-        	<td bgcolor="#F4F4F4"><font color="#FF0000">*</font> 신고 게시판번호 </td>
+        	<td bgcolor="#F4F4F4"><font color="#FF0000">*</font> 신고 게시글번호 </td>
         	<td bgcolor="#FFFFFF">
         	<s:textfield name="report_contno" theme="simple" value="%{resultClass.report_contno}" cssStyle="width:100px" maxlength="20"/>
           	</td>
@@ -99,14 +99,14 @@ function alertnclose()
         <tr bgcolor="#777777">
           <td height="1" colspan="2"></td>	
         </tr>
-        
+        	<input type="hidden" name="report_state" value="처리중"></input>
         <tr>
           <td height="10" colspan="2"></td>
         </tr>
 
         <tr>
           <td align="right" colspan="2">    
-          	<input name="submit" type="submit" value="작성" class="inputb" onclick="alertnclose()">
+          	<input name="submit" type="submit" value="작성" class="inputb">
             <input name="list" type="button" value="취소" class="inputb" >
           </td>
         </tr>

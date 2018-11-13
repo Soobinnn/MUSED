@@ -24,7 +24,7 @@
 			<result name="error" type="tiles">loginError</result>
 			
 			<result name="login" type="redirect-action">
-				<param name="actionName">관리자 페이지로 이동</param>
+				<param name="actionName">admin/admin_main</param>
 			</result>
 		</action>
 		

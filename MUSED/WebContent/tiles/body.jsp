@@ -62,7 +62,6 @@ table
 <!-- css 적용 -->
 <link href="https://fonts.googleapis.com/css?family=Henny+Penny" rel="stylesheet"/>
 
-<link rel="stylesheet" href="Mused_main.css">
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
 <script type="text/javascript" src="main.js"></script>
 <link rel="stylesheet" href="style.css">
