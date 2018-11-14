@@ -7,17 +7,20 @@ import com.ibatis.sqlmap.client.SqlMapClient;
 import com.ibatis.sqlmap.client.SqlMapClientBuilder;
 
 import java.util.*;
+
+import org.apache.struts2.interceptor.SessionAware;
+
 import java.io.Reader;
 import java.io.IOException;
 
 import product.pagingAction;
 
-public class ListAction extends ActionSupport
+public class ListAction extends ActionSupport 
 {
 	public static Reader reader;
 	public static SqlMapClient sqlMapper;
-
 	
+
 	private List<productVO> list = new ArrayList<productVO>();
 	private productVO resultClass = new productVO(); //쿼리 결과 값을 저장할 객체
 	
@@ -27,11 +30,11 @@ public class ListAction extends ActionSupport
 	
 	private int currentPage=1;	//현재 페이지
 	private int totalCount;		
-	private int blockCount=5;   //5*5 이미지 정렬
+	private int blockCount=25;   //5*5 이미지 정렬
 	private int blockPage=5;
 	private String pagingHtml;
 	private pagingAction page;
-	
+
 	public ListAction() throws IOException{
 		reader=Resources.getResourceAsReader("sqlMapConfig.xml");
 		sqlMapper=SqlMapClientBuilder.buildSqlMapClient(reader);
@@ -62,6 +65,7 @@ public class ListAction extends ActionSupport
 
 		return SUCCESS;
 	}
+
 	public String search() throws Exception 
 	{
 		if(searchNum == 0)
@@ -89,6 +93,7 @@ public class ListAction extends ActionSupport
 		list = list.subList(page.getStartCount(), lastCount);
 		return SUCCESS;
 	}
+
 
 	public productVO getResultClass() {
 		return resultClass;

@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+<package name="sug_board" extends="struts-default" namespace="/sug">
+
+<action name="listAction" class="board.suggestion.listAction">
+
+		<result>/board/suggestion/boardList.jsp</result>
+	</action>
+
+	<!-- 게시판 글쓰기 액션 -->
+	<action name="writeForm" class="board.suggestion.writeAction" method="form"> <!-- writeAction의 form메소드를 실행하면 다음 jsp로 이동한다. -->
+	 	<result>/board/suggestion/boardWrite.jsp</result>
+	</action>
+	
+	
+	<action name="writeAction" class="board.suggestion.writeAction"> <!-- writeAction의 execute 메소드가 호출되면 -->
+		<result type="redirect-action">    <!-- listAction으로 리다이렉트한다.즉, 글을 쓰고나면 리스트페이지로 이동하도록 한다. -->
+			<param name="actionName">listAction</param>
+		</result>
+	</action>
+	
+	
+	
+	<!-- 게시판 답변글쓰기 액션 -->
+	<action name="replyForm" class="board.suggestion.writeAction" method="reply">
+	 	<result type="chain">writeForm</result>
+	</action>
+	
+	<action name="replyAction" class="board.suggestion.writeAction">
+		<result type="redirect-action">
+		  <param name="actionName">listAction</param>
+		</result>
+    </action>
+    
+	<!-- 게시판 글 읽기 액션 -->
+	<action name="viewAction" class="board.suggestion.viewAction">
+		<result>/board/suggestion/boardView.jsp</result>
+	</action>
+	
+	<!-- 게시판 파일 다운로드 액션 -->
+	<action name="fileDownloadAction" class="board.suggestion.viewAction" method="download">
+		<result name="success" type="stream">
+                <param name="contentType">binary/octet-stream</param>
+                <param name="inputName">inputStream</param>
+                <param name="contentDisposition">${contentDisposition}</param>
+                <param name="contentLength">${contentLength}</param> 
+                <param name="bufferSize">409600</param>
+         </result>
+	</action>
+	
+	<!-- 게시판 수정 액션 -->
+	<action name="modifyForm" class="board.suggestion.viewAction">
+		<result type="chain">writeForm</result>
+	</action>
+	
+	
+	<action name="modifyAction" class="board.suggestion.modifyAction">
+		<result type="chain">viewAction</result>
+	</action>
+	
+	
+	<!-- 비밀번호 체크 액션 -->
+	<action name="checkForm" class="board.suggestion.viewAction" method="checkForm">
+		<result>/board/suggestion/delConfirm.jsp</result>
+	</action>
+	
+		
+	<action name="checkAction" class="board.suggestion.viewAction" method="checkAction">
+		<result name="error">/board/suggestion/checkError.jsp</result>
+		<result>/board/suggestion/checkSuccess.jsp</result>
+	</action>
+	
+		
+	<action name="deleteAction" class="board.suggestion.deleteAction">
+		<result type="chain">listAction</result>
+	</action>
+	
+	
+</package>
+		
+</struts>

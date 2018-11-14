@@ -21,6 +21,7 @@ public class MemberFindPwAction extends ActionSupport implements SessionAware {
 	private int jumin2;
 	private String phone;
 	private String password;
+	private String email;
 	
 	public static Reader reader;
 	public static SqlMapClient sqlMapper;
@@ -51,6 +52,9 @@ public class MemberFindPwAction extends ActionSupport implements SessionAware {
 		Map<String, String> session = (Map<String, String>) context.getSession();
 		
 		session.remove("ID");
+		session.remove("EMAIL");
+		session.remove("ACCESS_NUM");
+		session.remove("JOINDATE");
 
 		context.setSession(session); // 다시 session을 적용 시켜서 초기화
 		
@@ -79,6 +83,14 @@ public class MemberFindPwAction extends ActionSupport implements SessionAware {
 	
 	
 	
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
 	public String getPassword() {
 		return password;
 	}

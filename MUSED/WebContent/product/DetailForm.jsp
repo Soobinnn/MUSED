@@ -10,6 +10,10 @@ pageEncoding="utf-8"%>
 
 <script type="text/javascript">
 
+function btn(){
+    alert("경고! 수정 버튼을 누르면 원본 파일은 사라집니다.");
+}
+
  function open_win_noresizable(url,name){
 	var oWin = window.open(url, name, "scrollbars=no,status=no, resizable=no, width=300, height=150");
 }
@@ -17,32 +21,27 @@ pageEncoding="utf-8"%>
 var slideIndex = 1;
 showSlides(slideIndex);
 
-// Next/previous controls
-function plusSlides(n) {
-  showSlides(slideIndex += n);
-}
 
 // Thumbnail image controls
 function currentSlide(n) {
+	
   showSlides(slideIndex = n);
-}
 
+}
 function showSlides(n) {
+	document.getElementById("img").style.display ='none';
+	
   var i;
-  var slides = document.getElementsByClassName("mySlides");
-  var dots = document.getElementsByClassName("dot");
+  var slides = document.getElementsByClassName("mySlides")
   if (n > slides.length) {slideIndex = 1} 
   if (n < 1) {slideIndex = slides.length}
   for (i = 0; i < slides.length; i++) {
       slides[i].style.display = "none"; 
   }
-  for (i = 0; i < dots.length; i++) {
-      dots[i].className = dots[i].className.replace(" active", "");
-  }
   slides[slideIndex-1].style.display = "block"; 
-  dots[slideIndex-1].className += " active";
 }
 
+	
 </script>
 <style>
 
@@ -139,6 +138,15 @@ function showSlides(n) {
   from {opacity: .4} 
   to {opacity: 1}
 }
+.circle {
+	border-radius: 1200px !important;
+	overflow: hidden;
+	width: 80px;
+	height: 80px;
+	border: 8px solid rgba(255, 255, 255, 0.7);
+	position: relative;
+	top: 0px;
+}
 </style>
 
 </head>
@@ -148,17 +156,30 @@ function showSlides(n) {
 	제목 :	&nbsp;&nbsp;(<s:property value="resultClass.product_state"/>)
 	<s:property value="resultClass.product_subject"/>
 <br>
-		
-<table width="100%" height="400" border="0">
+	조회수 :  &nbsp; &nbsp;<s:property value="resultClass.readhit"/>
+
+	<input name="list" type="button" value="찜하기" class="inputb" onClick="ZzimInsert.action"/>
+    <input name="list" type="button" value="찜취소" class="inputb" onClick="ZzimDelete.action"/>
+
+
+<table width="100%" height="400" border="1">
+
 <tr>
 <td width="60%" align="middle">
+
+			  <img id="img"src="<s:property value="resultClass.main_img"/>" style="width:350px; height:350px"/> 
+
 	<div class="slideshow-container">
-		<s:iterator value="image" status="stat">
+		<s:subset source="image" count="4">
+			<s:iterator status="stat">	
+
 		  <!-- Full-width images with number and caption text -->
 		  <div class="mySlides fade">
-		    <img src="<s:property/>" style="width:300px; height:300px"/>
+		    <img src="<s:property/>" style="width:350px; height:350px" />
+		    
 		  </div>
 		</s:iterator>
+		</s:subset>
 	</div>
 </td>
 
@@ -191,6 +212,8 @@ function showSlides(n) {
 </td>
 <td width="40%">
 판매자 정보<br>
+
+<img class="circle" id="blah" src="C:\Java\upload\file_<s:property value="resultClass.product_id"/>.jpg" width="150" height="150" /><br>
 판매자 : <s:property value="resultClass.product_id"/><br>
 이메일 : <br>
 판매자 연락처 : <s:property value="resultClass.product_phone"/><br>
@@ -218,10 +241,77 @@ function showSlides(n) {
 <hr style="color:gray"/>
 </td>
 </tr>
+<!-- 댓글 입력 -->
 <tr>
-<td colspan="2">
-댓글 추가..
+<td colspan="2" height="10">
+
+<form action="writeCommentAction.action" method="post">
+			<table align="center">
+				<tr>
+					<td width="170">
+						아이디 : <s:property value="%{#session.ID}"/>
+					</td>
+					<s:hidden name="c_contnum" value="%{resultClass.product_no}" />
+					<s:hidden name="product_no" value="%{resultClass.product_no}" />
+					<s:hidden name="currentPage" value="%{currentPage}"/>
+					<td align="left">
+						<s:textarea name="c_content" theme="simple" value="" cols="60" rows="3"/>
+					</td>
+				</tr>
+				<tr>
+					<td colspan="2" align="right">
+						<input name="submit" type="submit" value="작성완료" class="inputb">
+					</td>
+				</tr>
+					<tr bgcolor="#777777">
+		<td colspan="2" height="1"></td>
+	</tr>	
+				<s:iterator value="commentList" status="stat">
+	<tr>
+		<td width="170" align="center">
+		<img class="circle" id="blah" src="C:\Java\upload\file_<s:property value="c_id"/>.jpg" width="50" height="50" /><br>
+			<s:property value="c_id"/><br>
+			<s:property value="c_regdate"/><br><br>
+		</td>
+		<td >
+			<s:property value="c_content"/>
+				<s:url id="DeleteURL" action="deletePComment">
+					<s:param name="c_no">
+						<s:property value="c_no"/>
+					</s:param>
+					<s:param name="c_id">
+						<s:property value="%{#session.ID}"/>
+					</s:param>
+					<s:param name="product_no">
+						<s:property value="product_no"/>
+					</s:param>
+					<s:param name="currentPage">
+						<s:property value="currentPage"/>
+					</s:param>
+				</s:url>
+			<s:a href="%{DeleteURL}">X</s:a>
+
+		</td>
+	</tr>
+	<tr bgcolor="#777777">
+		<td colspan="2" height="1"></td>
+	</tr>	
+	</s:iterator>
+	<tr>
+		<td colspan="2" height="10">
+			<s:if test="commentList.size() <= 0">
+			댓글 없음
+			</s:if>
+		</td>
+	</tr>
+			</table>
+		</form>
+
 </td>
+</tr>
+
+<tr bgcolor="#777777">
+<td colspan="2" height="1"></td>
 </tr>
 
 <tr>
@@ -229,8 +319,8 @@ function showSlides(n) {
 <table width="60%" height="150" border="1" align="center">
 
 	 <tr>
-
-	   	<s:iterator value="list" status="stat">
+ <s:subset source="Mainlist">
+	<s:iterator status="stat">	
 	   	  	      		      	<s:url id="DetailURL" action="productDetail">
 									<s:param name="product_no">
 										<s:property value="product_no"/>
@@ -241,6 +331,7 @@ function showSlides(n) {
       	      			<img src="/MUSED/product/img/<s:property value="main_img"/>" style="height: 100px; width: 100px; display: block;"/></s:a>
 				</td>
 						</s:iterator>
+						</s:subset>
 	</tr>
 </table>
 </td>
@@ -250,12 +341,12 @@ function showSlides(n) {
 <td colspan="2">
 	    		
 		<input name="list" type="button" value="목록" class="inputb" onClick="javascript:location.href='product/productList.action?currentPage=<s:property value="currentPage"/>'"/>
+           <s:if test="%{#session.ID==resultClass.product_id}">
 		<input name="update" type="button" value="수정하기" class="inputb" onClick="javascript:location.href='productUpdateForm.action?product_no=<s:property value="product_no"/>&currentPage=<s:property value="currentPage"/>'"/>
 		<input name="delete" type="button" value="삭제하기" class="inputb" onClick="javascript:location.href='productDelete.action?product_no=<s:property value="product_no"/>&currentPage=<s:property value="currentPage"/>'"/>
-		
+		</s:if>
 </td>
 </tr>
-
 </table>
 
 </body>

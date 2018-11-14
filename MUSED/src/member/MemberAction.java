@@ -29,6 +29,7 @@ public class MemberAction extends ActionSupport implements SessionAware {
 	private int jumin2;
 	private String sex;
 	private String email;
+	
 	private String phone;
 	private String zipcode;
 	private String address1;
@@ -80,18 +81,17 @@ public class MemberAction extends ActionSupport implements SessionAware {
 		paramClass.setScore(getScore());
 		paramClass.setLogincount(getLogincount());
 		
-		//µî·Ï Äõ¸® ¼öÇà
+		
 		sqlMapper.insert("member.memberInsert",paramClass);
 		
 		return SUCCESS;
 	}
 	
-	/*È¸¿øÁ¤º¸º¯°æ*/
 	public String modifyForm() throws Exception{
 		resultClass = (MemberVO)sqlMapper.queryForObject("member.selectOne",(String)session.get("ID"));
 		return SUCCESS;
 	}
-	/*È¸¿øÁ¤º¸º¯°æÈ®ÀÎ*/
+	
 	public String modifyAction() throws Exception{
 		paramClass = new MemberVO();
 		
@@ -106,12 +106,12 @@ public class MemberAction extends ActionSupport implements SessionAware {
 		
 		return SUCCESS;
 	}
-	/*È¸¿øÅ»Åğ*/
+	/*ï¿½ì‰¶ï¿½ëœï¿½ë£ï¿½ì‚•ï¿½ê¹‰ï¿½ëœï¿½ë£ï¿½ì‚•*/
 	public String deleteForm() throws Exception{
 		resultClass = (MemberVO)sqlMapper.queryForObject("member.selectOne",(String)session.get("ID"));
 		return SUCCESS;
 	}
-	/*È¸¿øÅ»Åğ¿Ï·á*/
+	/*ï¿½ì‰¶ï¿½ëœï¿½ë£ï¿½ì‚•ï¿½ê¹‰ï¿½ëœï¿½ë£ï¿½ì‚•ï¿½ë–ï¿½ëœå ï¿½*/
 	public String deleteAction() throws Exception{
 		sqlMapper.delete("member.deleteMem",(String)session.get("ID"));
 		
@@ -119,11 +119,13 @@ public class MemberAction extends ActionSupport implements SessionAware {
 		Map<String, String> session = (Map<String, String>) context.getSession();
 		
 		session.remove("ID");
+		session.remove("EMAIL");
+		session.remove("ACCESS_NUM");
+		session.remove("JOINDATE");
 
-		context.setSession(session); // ´Ù½Ã sessionÀ» Àû¿ë ½ÃÄÑ¼­ ÃÊ±âÈ­
+		context.setSession(session); // ï¿½ëœï¿½ë™ï¿½ë£ï¿½ì‚• sessionï¿½ëœï¿½ë£ï¿½ì‚• ï¿½ëœï¿½ë£ï¿½ì‚•ï¿½ëœï¿½ë£ï¿½ì‚• ï¿½ëœï¿½ë£ï¿½ì‚•ï¿½ëœï¿½ë–¬ï¿½ëˆ¦ï¿½ì‚• ï¿½ëœï¿½ë–—æºë¿ì‚•ï¿½ì†•
 		return SUCCESS;
 	}
-	
 	
 	public Map getSession() {
 		return session;

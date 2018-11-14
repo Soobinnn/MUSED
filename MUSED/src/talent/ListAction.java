@@ -10,10 +10,13 @@ import com.ibatis.sqlmap.client.SqlMapClient;
 import com.ibatis.sqlmap.client.SqlMapClientBuilder;
 
 import java.util.*;
+
+import org.apache.struts2.interceptor.SessionAware;
+
 import java.io.Reader;
 import java.io.IOException;
 
-public class ListAction extends ActionSupport{
+public class ListAction extends ActionSupport {
 	public static Reader reader;
 	public static SqlMapClient sqlMapper;
 
@@ -54,6 +57,7 @@ public class ListAction extends ActionSupport{
 
 		return SUCCESS;
 	}
+
 	public String search() throws Exception
 	{
 		if(searchNum == 0)
@@ -85,7 +89,8 @@ public class ListAction extends ActionSupport{
 	
 	public String getSearchKeyword() {
 		return searchKeyword;
-	}
+		}
+	
 
 	public void setSearchKeyword(String searchKeyword) {
 		this.searchKeyword = searchKeyword;

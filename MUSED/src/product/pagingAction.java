@@ -58,7 +58,7 @@ public class pagingAction
 				pagingHtml.append(i);
 				pagingHtml.append("</font></b>");
 			}else {
-				pagingHtml.append("&nbsp;<a href='productList.action?currentPage=");
+				pagingHtml.append("&nbsp;<a href=productList.action?currentPage=");
 				pagingHtml.append(i);
 				if(isSearch != "")
 					pagingHtml.append("&searchKeyword="+isSearch);

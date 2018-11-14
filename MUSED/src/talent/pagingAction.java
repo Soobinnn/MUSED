@@ -57,7 +57,7 @@ public class pagingAction {
 				pagingHtml.append(i);
 				pagingHtml.append("</font></b>");
 			}else {
-				pagingHtml.append("&nbsp;<a href='talentList.action?currentPage=");
+				pagingHtml.append("&nbsp;<a href=talentList.action?currentPage=");
 				pagingHtml.append(i);
 				pagingHtml.append(">");
 				if(isSearch != "")

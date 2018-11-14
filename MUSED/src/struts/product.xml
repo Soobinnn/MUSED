@@ -28,6 +28,16 @@
 			<result type="tiles">productDetailForm</result>
 		</action>
 		
+		<!-- 댓글 달기 -->
+		<action name="writeCommentAction" class="product.commentWriteAction">
+			<result type="chain">productDetail</result>
+		</action>
+
+		<!-- 댓글 삭제하기 -->
+		<action name="deletePComment" class="product.DetailAction" method="commentDelete">
+			<result type="chain">productDetail</result>
+		</action>
+		
 		<!--  상품 수정하기 폼 -->
 		<action name="productUpdateForm" class="product.UpdateAction" method="form">
 			<result type="tiles">productWriteForm</result>
@@ -43,7 +53,11 @@
 			<result type="tiles">productDeleteSuccess</result>
 		</action>
 		
-		
+		<!-- 소진이 테스트 
+		<action name="search" class="product.SearchAction">
+			<result>product/test11.jsp</result>
+		</action>
+		 -->
 	</package>
 
 </struts>

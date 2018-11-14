@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC '-//ibatis.apache.org//DTD Sql Map 2.0//EN'
+ 'http://ibatis.apache.org/dtd/sql-map-2.dtd'>
+
+
+<sqlMap namespace="sug">
+
+
+
+	<typeAlias alias="sug_board" type="board.suggestion.boardVO" /> <!-- 프로젝트 안에서 boardVo라는 자바빈 클래스를 board라는 별칭으로 쓰겠다. -->
+    
+    
+	<!-- result map 정의 -->
+	<resultMap id="sug_boardRes" class="sug_board"> <!-- 결과 매핑 시작 -->
+		<result property="no" column="no" /> <!-- 자바빈이 갖고 있는 프로퍼티 9개(set메소드 역할),DB의 컬럼명에 넣는다(rs.getInt개념, 대소문자 주의) -->
+		<result property="subject" column="subject" />
+		<result property="name" column="writer" />
+		<result property="content" column="content" />
+		<result property="readhit" column="readhit" />
+		<result property="regdate" column="regdate" />
+	    <result property="ref" column="ref"/>
+	    <result property="re_step" column="re_step" />
+	    <result property="re_level" column="re_level" />
+	</resultMap>
+	
+	
+
+	<!-- 공통으로 사용할 select절 정의 -->
+	<sql id="select-all">
+		SELECT * FROM SUG_BOARD
+	</sql>
+
+   	
+	<!-- 공통으로 사용할 where-no 절 정의 -->
+	<sql id="where-no">
+		WHERE no = #no#  <!-- where, 컬럼명 , (#값이 전송되는 위치#, 띄어쓰기 금지) -->
+	</sql>
+
+	<!-- select 쿼리문 정의 
+	public List<boardVO> selectAll() -->
+	
+	<select id="selectAll" resultMap="sug_boardRes" parameterClass="int">
+		<include refid="select-all" />  <!-- SELECT * FROM sug_BOARD -->
+		ORDER BY ref DESC, re_step ASC
+	</select>
+
+	
+	
+	<!-- 한줄만 꺼내오기(상세보기) public boardVO selectOne(int no) SELECT * FROM sug_BOARD 
+		WHERE no = #no# -->
+	<select id="selectOne" resultMap="sug_boardRes" parameterClass="int">
+		<include refid="select-all" />
+		<include refid="where-no" />
+	</select>
+
+	<!-- 검색로직 추가시작, 컬럼명과 검색어를 동시에 전달하면 아래 3개의 로직을 하나로 합칠 수 있다. -->
+    <select id ="selectSearchW" resultMap="sug_boardRes" parameterClass="string">
+           <include refid="select-all"/>
+             WHERE name like #searchKeyword#
+              ORDER BY no DESC
+    </select>	
+    
+    <select id ="selectSearchS" resultMap="sug_boardRes" parameterClass="string">
+           <include refid="select-all"/>
+             WHERE subject like #searchKeyword#
+              ORDER BY no DESC
+    </select>
+  	<select id ="selectSearchC" resultMap="sug_boardRes" parameterClass="string">
+           <include refid="select-all"/>
+             WHERE content like #searchKeyword#
+              ORDER BY no DESC
+    </select>	
+    <!-- 검색로직 끝 -->
+	
+	
+	
+	<!-- public boardVO selectLastNo() -->
+	<select id="selectLastNo" resultClass="sug_board">
+		SELECT max(no) as no FROM SUG_BOARD  <!-- 가장최근 등록된 글을 가져온다. -->
+	</select>
+
+
+	<!-- 비번 체크 public boardVO selectPassword(boardVo board) SELECT * FROM BOARD 
+		WHERE no = #no# AND password = #password# -->
+	<select id="selectPassword" resultMap="sug_boardRes" parameterClass="sug_board">
+		<include refid="select-all" />
+		<include refid="where-no" />
+		<!-- AND password = #password# -->
+	</select>
+	
+		<!-- insert 쿼리문 정의 public void insertBoard(boardVO board) -->
+	<insert id="insertBoard" parameterClass="sug_board">
+		INSERT INTO SUG_BOARD(NO, SUBJECT, WRITER, CONTENT, REGDATE, RE_STEP, RE_LEVEL, REF)
+		            VALUES (SUG_BOARD_NO_SEQ.NEXTVAL, #subject#, #name#,
+		                                              #content#, #regdate#, #re_step#, #re_level#, SUG_BOARD_NO_SEQ.CURRVAL) <!-- ref로 넘어가는 것은 시퀀스의 현재값으로 채운다.자바빈 board로부터 전송된 값들 -->
+	</insert>
+
+    <insert id="insertBoardReply" parameterClass="sug_board">
+            INSERT INTO SUG_BOARD(NO, SUBJECT, WRITER, CONTENT, REGDATE, RE_STEP, RE_LEVEL, REF)
+             VALUES (SUG_BOARD_NO_SEQ.NEXTVAL, #subject#, #name#, #content#, #regdate#, #re_step#, #re_level#, #ref#)
+    </insert>
+    
+    
+
+	<!-- update 쿼리문 정의 -->
+	<update id="updateBoard" parameterClass="sug_board">
+		UPDATE SUG_BOARD SET SUBJECT = #subject#,
+		                     WRITER = #name#,
+		                     CONTENT = #content#
+		<include refid="where-no" />
+	</update>
+
+		
+	<update id="updateReadHit" parameterClass="sug_board">
+		UPDATE SUG_BOARD SET READHIT = readHit + 1
+		<include refid="where-no" />
+	</update>
+	
+	<update id="updateReplyStep" parameterClass="sug_board">
+	       UPDATE SUG_BOARD SET re_step=re_step+1 WHERE ref=#ref# AND re_step>#re_step#
+	</update>       
+
+	<!-- delete 쿼리문 정의 -->
+	<delete id="deleteBoard" parameterClass="sug_board">
+		DELETE FROM SUG_BOARD
+		<include refid="where-no" />
+	</delete>
+	
+	
+	
+</sqlMap>
