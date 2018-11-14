@@ -12,7 +12,6 @@
 	<include file="struts/member.xml"/>
 	<include file="struts/report.xml"/>
 	<include file="struts/mypage.xml"/>
-
 		<!-- 글로벌 예외 처리 화면 설정 -->
 		<!-- <global-results>
 			<result name="error">/board/pageError.jsp</result>

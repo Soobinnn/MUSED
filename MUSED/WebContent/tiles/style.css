@@ -84,7 +84,7 @@ table
 	left : 550px;
 	top : 65px;
 }
-#main_header > .head > .search_bar > #search_text
+#main_header > .head > .search_bar > .searchform > #search_text
 {
 	font-size : 16px;
 	width : 300px;
@@ -93,7 +93,7 @@ table
 	outline : none;
 	float : left;
 }
-#main_header > .head > .search_bar > #search_button
+#main_header > .head > .search_bar > .searchform > #search_button
 {
 	width : 50px;
 	height : 100%;

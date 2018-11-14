@@ -81,20 +81,10 @@
 	</delete>
 
 	<!-- 검색로직 추가시작 -->
-	<select id="selectSearchW" resultMap="productRes" parameterClass="string">
+	<select id="main_selectSearch" resultMap="productRes" parameterClass="string">
 	<include refid="select-all" />
-		WHERE product_name like #searchKeyword#
+		WHERE product_content LIKE #searchKeyword# OR product_subject LIKE #searchKeyword#
 		ORDER BY product_no DESC
-		</select>
-		<select id="selectSearchS" resultMap="productRes" parameterClass="string">
-			<include refid="select-all" />
-		 	WHERE product_subject like #searchKeyword#
-		 	ORDER BY product_no DESC
-		</select>
-		<select id="selectSearchC" resultMap="productRes" parameterClass="string">
-			<include refid="select-all" />
-		 	WHERE product_content like #searchKeyword#
-		 	ORDER BY product_no DESC
-		</select>
-	<!-- 검색로직 끝 -->
+	</select>
+	
 </sqlMap>

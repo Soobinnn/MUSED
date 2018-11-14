@@ -14,13 +14,6 @@
 <link rel="stylesheet"
 	href="https://fonts.googleapis.com/icon?family=Material+Icons">
 <title>MUSED_Header</title>
-<script>
-function test()
-{
-	
-}
-</script>
-
 </head>
 <body>
 	<!-- Header부분 -->
@@ -39,15 +32,11 @@ function test()
 				<h2>MUSED</h2>
 			</hgroup>
 			<div class="search_bar">
-			<form name="search" action="productList.action">
-				<select name="searchNum" >
-					<option value="0">작성자</option>
-					<option value="1">제목</option>
-					<option value="2">내용</option>
-				</select>
-				<input type="text" placeholder="검색어 입력" id="search_text" name="searchKeyword">	
-				<input name="submit" type="submit" value="검색" id="search_button">
-			</form>	
+				<form class="searchform" name="search" action="mainSearch.action">
+					<input type="hidden" name="searchNum" value="0"/>
+					<input type="text" placeholder="검색어 입력" id="search_text" name="searchKeyword">	
+					<input name="submit" type="submit" value="검색" id="search_button">
+				</form>	
 			</div>
 			<nav id="main_tnb">
 				<ul>

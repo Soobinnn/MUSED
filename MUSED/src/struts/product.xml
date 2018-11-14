@@ -9,7 +9,7 @@
 
 		<!-- 상품 목록 <result type="tiles">productList</result> -->
 		<action name="productList" class="product.ListAction">
-			<result type="tiles">main_search</result>
+			<result type="tiles">productList</result>
 
 		</action>
 		

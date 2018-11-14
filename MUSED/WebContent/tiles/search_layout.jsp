@@ -15,12 +15,7 @@
 <tr>
 <td><tiles:insertAttribute name="body1"/></td>
 </tr>
-<tr>
-<td><tiles:insertAttribute name="body2"/></td>
-</tr>
-<tr>
-<td><tiles:insertAttribute name="body3"/></td>
-</tr>
+
 <tr>
 	<td valign="top" align="center" bgcolor="#FFFFFF"><tiles:insertAttribute name="footer" /></td>
 </tr>

@@ -1,6 +1,6 @@
 <%@ page contentType="text/html; charset=utf-8" %>
 <%@ taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles" %>
-<link rel="stylesheet" href="style.css"type="text/css">
+<link rel="stylesheet" href="style.css">
 <html>
 <head> 
 	<title><tiles:getAsString name="title" /></title>
@@ -19,9 +19,8 @@
 </tr>
 <tr>
 	<td colspan="1" height="10%" align="left" bgcolor="FFFFFF">
-	<tiles:insertAttribute name="footer" />
+	<tiles:insertAttribute name="footer"/>
 	</td>
-
 </tr>
 </table>
 </body>

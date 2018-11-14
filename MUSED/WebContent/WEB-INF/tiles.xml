@@ -29,13 +29,11 @@
 		<put-attribute name="admin_header" value="/tiles/header.jsp"/>
 		<put-attribute name="admin_body" value="/admin/admin_main.jsp"/>
 	</definition>
-	
+	<!-- 메인 검색 -->
 	<definition name="main_search" template="/tiles/search_layout.jsp">
 		<put-attribute name="title" value="MUSED"/>
 		<put-attribute name="header" value="/tiles/header.jsp"/>
-		<put-attribute name="body1" value="/product/ListForm.jsp"/>
-		<put-attribute name="body2" value="/product/ListForm.jsp"/>
-		<put-attribute name="body3" value="/product/ListForm.jsp"/>
+		<put-attribute name="body1" value="/main/mainSearchResult.jsp"/>
 		<put-attribute name="footer" value="/tiles/footer.jsp"/>
 	</definition>
 	<!-- 마이페이지 등록된상품 -->
@@ -206,8 +204,5 @@
 		<put-attribute name="admin_body" value="/admin/reportList.jsp"/>
 	</definition>
 
-	<!-- 검색 -->
-	<definition name="talent_search" extends="main_search">
-		<put-attribute name="body2" value="/talent/ListForm.jsp"/>
-	</definition>
+	
 </tiles-definitions>
