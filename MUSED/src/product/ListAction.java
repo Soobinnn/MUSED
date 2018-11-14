@@ -22,7 +22,6 @@ public class ListAction extends ActionSupport implements SessionAware
 	
 	private Map session;
 
-	private List first = new ArrayList();
 	private List<productVO> list = new ArrayList<productVO>();
 	private productVO resultClass = new productVO(); //쿼리 결과 값을 저장할 객체
 	
@@ -32,7 +31,6 @@ public class ListAction extends ActionSupport implements SessionAware
 	private int blockPage=5;
 	private String pagingHtml;
 	private pagingAction page;
-	private String a[];
 	public ListAction() throws IOException{
 		reader=Resources.getResourceAsReader("sqlMapConfig.xml");
 		sqlMapper=SqlMapClientBuilder.buildSqlMapClient(reader);
@@ -65,13 +63,6 @@ public class ListAction extends ActionSupport implements SessionAware
 		this.session = session;
 	}
 
-	public List<String> getFirst() {
-		return first;
-	}
-
-	public void setFirst(List<String> first) {
-		this.first = first;
-	}
 
 	public productVO getResultClass() {
 		return resultClass;
@@ -79,14 +70,6 @@ public class ListAction extends ActionSupport implements SessionAware
 
 	public void setResultClass(productVO resultClass) {
 		this.resultClass = resultClass;
-	}
-
-	public String[] getA() {
-		return a;
-	}
-
-	public void setA(String[] a) {
-		this.a = a;
 	}
 
 	public static Reader getReader() {

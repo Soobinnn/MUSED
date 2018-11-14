@@ -14,8 +14,15 @@ public class talentVO {
 	private String talent_content;	
 	private String talent_image;
 	private String main_img;
+	private int readhit;
 	
 	
+	public int getReadhit() {
+		return readhit;
+	}
+	public void setReadhit(int readhit) {
+		this.readhit = readhit;
+	}
 	public String getMain_img() {
 		return main_img;
 	}

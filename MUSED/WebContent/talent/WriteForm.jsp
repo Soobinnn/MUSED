@@ -62,7 +62,7 @@
 		
  		<s:else>
 		  <form action="talentUpdate.action" method="post" enctype="multipart/form-data">
-		  <s:hidden name="no" value="%{resultClass.talent_no}" />
+		  <s:hidden name="talent_no" value="%{resultClass.talent_no}" />
 		  <s:hidden name="currentPage" value="%{currentPage}" />
 		</s:else>
 		
@@ -71,7 +71,9 @@
         <tr>
           <td><font color="#FF0000">*</font>는 필수 입력사항입니다.</td>
           <td bgcolor="#FFFFFF">
-            <s:textfield name="talent_id" theme="simple" value="%{resultClass.talent_id}" cssStyle="width:100px" maxlength="50"/>
+            <s:if test='%{#session.ID != null}'>
+            <s:textfield name="talent_id" theme="simple" value="%{#session.ID}" cssStyle="width:100px" maxlength="50"/>
+       		</s:if>
           </td>
         </tr>
         

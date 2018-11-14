@@ -1,3 +1,4 @@
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 pageEncoding="utf-8"%>
 <%@ taglib prefix="s" uri="/struts-tags" %>
@@ -24,25 +25,23 @@ function plusSlides(n) {
 
 // Thumbnail image controls
 function currentSlide(n) {
+	
   showSlides(slideIndex = n);
-}
 
+  
+}
 function showSlides(n) {
+	document.getElementById("img").style.display ='none';
+	
   var i;
-  var slides = document.getElementsByClassName("mySlides");
-  var dots = document.getElementsByClassName("dot");
+  var slides = document.getElementsByClassName("mySlides")
   if (n > slides.length) {slideIndex = 1} 
   if (n < 1) {slideIndex = slides.length}
   for (i = 0; i < slides.length; i++) {
       slides[i].style.display = "none"; 
   }
-  for (i = 0; i < dots.length; i++) {
-      dots[i].className = dots[i].className.replace(" active", "");
-  }
   slides[slideIndex-1].style.display = "block"; 
-  dots[slideIndex-1].className += " active";
 }
-
 </script>
 <style>
 
@@ -144,12 +143,20 @@ function showSlides(n) {
 </script>
 </head>
 <body>
-	제목 :	&nbsp;&nbsp;	<s:property value="resultClass.talent_subject"/>
+<s:hidden name="currentPage" value="%{currentPage}" />
+
+
+	제목 :	&nbsp;&nbsp;(<s:property value="resultClass.talent_state"/>)
+	<s:property value="resultClass.talent_subject"/>
 <br>
-		
+	조회수 : &nbsp; &nbsp;<s:property value="resultClass.readhit"/>
 <table width="100%" height="400" border="0">
 <tr>
 <td width="60%" align="middle">
+
+ <img id="img"src="<s:property value="resultClass.main_img"/>" style="width:350px; height:350px"/> 
+
+
 <div class="slideshow-container">
 		<s:iterator value="image" status="stat">
 		  <!-- Full-width images with number and caption text -->
@@ -210,20 +217,85 @@ function showSlides(n) {
 </td>
 </tr>
 
+<!-- 댓글 입력 -->
 <tr>
-<td colspan="2">
-댓글 추가..
+<td colspan="2" height="10">
+
+<form action="TwriteCommentAction.action" method="post">
+			<table>
+				<tr>
+					<td width="170">
+						아이디 : <s:property value="%{#session.ID}"/>
+					</td>
+					<s:hidden name="c_contnum" value="%{resultClass.talent_no}" />
+					<s:hidden name="talent_no" value="%{resultClass.talent_no}" />
+					<s:hidden name="currentPage" value="%{currentPage}"/>
+					<td align="left">
+						<s:textarea name="c_content" theme="simple" value="" cols="60" rows="3"/>
+					</td>
+				</tr>
+				<tr>
+					<td colspan="2" align="right">
+						<input name="submit" type="submit" value="작성완료" class="inputb">
+					</td>
+				</tr>
+			</table>
+		</form>
+
 </td>
 </tr>
+
+<tr bgcolor="#777777">
+<td colspan="2" height="1"></td>
+</tr>
+<!-- 댓글 리스트 -->
+<s:iterator value="TcommentList" status="stat">
+	<tr>
+		<td height="10" width="130" align="center">
+			<s:property value="c_id"/><br>
+			<s:property value="c_regdate"/><br><br>
+		</td>
+		<td>
+			<s:property value="c_content"/><br></br>
+				<s:url id="DeleteURL" action="deleteTComment">
+					<s:param name="c_no">
+						<s:property value="c_no"/>
+					</s:param>
+					<s:param name="c_id">
+						<s:property value="%{#session.ID}"/>
+					</s:param>
+					<s:param name="talent_no">
+						<s:property value="talent_no"/>
+					</s:param>
+					<s:param name="currentPage">
+						<s:property value="currentPage"/>
+					</s:param>
+				</s:url>
+			<s:a href="%{DeleteURL}">X</s:a>
+
+		</td>
+	</tr>
+	<tr bgcolor="#777777">
+		<td colspan="2" height="1"></td>
+	</tr>	
+	</s:iterator>
+	<tr>
+		<td colspan="2" height="10">
+			<s:if test="TcommentList.size() <= 0">
+			댓글 없음
+			</s:if>
+		</td>
+	</tr>
+
+<!-- 댓글 -->
 
 <tr>
 <td colspan="2">
 <table width="60%" height="150" border="1" align="center">
 
-	 <tr>
-
-<!-- 리스트로 출력 말고 no 값 받아서 그 뒤에 5개의 main_image 가져와서 출력시키기! -->
- 	   	<s:iterator value="list" status="stat">
+		 <tr>
+ <s:subset source="Mainlist">
+	<s:iterator status="stat">	
 	   	  	      		      	<s:url id="DetailURL" action="talentDetail">
 									<s:param name="talent_no">
 										<s:property value="talent_no"/>
@@ -233,9 +305,8 @@ function showSlides(n) {
       	      	      &nbsp;<s:a href="%{DetailURL}">
       	      			<img src="/MUSED/talent/img/<s:property value="main_img"/>" style="height: 100px; width: 100px; display: block;"/></s:a>
 				</td>
-						</s:iterator> 
-
-
+						</s:iterator>
+						</s:subset>
 	</tr>
 </table>
 </td>
@@ -245,9 +316,11 @@ function showSlides(n) {
 <tr>
 <td colspan="2">
 		<input name="list" type="button" value="목록" class="inputb" onClick="javascript:location.href='talent/talentList.action'"/>
+
+   <s:if test='%{#session.ID != null}'>
 		<input name="update" type="button" value="수정하기" class="inputb" onClick="javascript:location.href='talentUpdateForm.action?talent_no=<s:property value="talent_no"/>&currentPage=<s:property value="currentPage"/>'"/>
 		<input name="delete" type="button" value="삭제하기" class="inputb" onClick="javascript:location.href='talentDelete.action?talent_no=<s:property value="talent_no"/>&currentPage=<s:property value="currentPage"/>'"/>
-
+	</s:if>
 </td>
 </tr>
 

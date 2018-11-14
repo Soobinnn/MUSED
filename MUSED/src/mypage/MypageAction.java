@@ -57,7 +57,6 @@ public class MypageAction extends ActionSupport implements SessionAware{
 	
 	private Map session;
 	
-	private List first = new ArrayList();
 	private List<productVO> list = new ArrayList<productVO>();
 	private productVO resultClass2 = new productVO(); //쿼리 결과 값을 저장할 객체
 	
@@ -285,6 +284,8 @@ public class MypageAction extends ActionSupport implements SessionAware{
 	
 	
 	
+
+
 	public static Reader getReader() {
 		return reader;
 	}
@@ -363,14 +364,6 @@ public class MypageAction extends ActionSupport implements SessionAware{
 
 	public void setFilePath(String filePath) {
 		this.filePath = filePath;
-	}
-
-	public List getFirst() {
-		return first;
-	}
-
-	public void setFirst(List first) {
-		this.first = first;
 	}
 
 	public List<productVO> getList() {

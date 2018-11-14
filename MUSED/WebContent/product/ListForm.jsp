@@ -61,7 +61,14 @@ pageEncoding="utf-8"%>
 	<tr bgcolor="#777777">
     	<td height="1" colspan="5"></td>
     </tr>
+   		<s:if test="list.size()<=0">
+			<tr bgcolor="#FFFFFF" align="center">
+				<td colspan="5">등록된 게시물이 없습니다.</td>
+			</tr>
+		</s:if>
 	<tr>
+	<!-- 로그인 했을 때 상세보기 들어가짐 -->
+      <s:if test='%{#session.ID != null}'>
       	<s:iterator value="list" status="stat">
 	      	<s:url id="DetailURL" action="productDetail">
 				<s:param name="product_no">
@@ -82,18 +89,29 @@ pageEncoding="utf-8"%>
   					<tr></tr>
 				</s:if>	  
 		</s:iterator>  		
+		</s:if>
+		
+		<!-- 로그인 안했을 때 로그인 폼으로 -->
+	 <s:if test='%{#session.ID == null}'>
+	 <s:iterator value="list" status="stat">
+      <td>	 
+          &nbsp;<s:a href="loginForm.action">
+      			<img src="/MUSED/product/img/<s:property value="main_img"/>" style="height: 100px; width: 100px; display: block;"/>
+				<br><s:property value="product_subject" />
+				</br></s:a>
+				<br>판매자 : <s:property value="product_id"/>	
+	  </td>
+	  	     	<s:if test="#stat.count%5==0">
+  					<tr></tr>
+				</s:if>	  
+		</s:iterator>  		
+	 </s:if>
 	</tr>
    	
-   		<s:if test="list.size()<=0">
-			<tr bgcolor="#FFFFFF" align="center">
-				<td colspan="5">등록된 게시물이 없습니다.</td>
-			</tr>
-		</s:if>
-	
-    <tr align="center">
-    	<td colspan="5"><s:property value="pagingHtml"  escape="false" /></td>
-    </tr>
 
+	<tr align="center">
+		<td colspan="5"><s:property value="pagingHtml" escape="false" /></td>
+	</tr>
 </table>
 </body>
 </html>

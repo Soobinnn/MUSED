@@ -96,16 +96,17 @@
 			<nav id="main_gnb">
 				<ul class="left">
 
-					<li id="menubar"><a href="productList.action">중고악기거래</a></li>
-					<li id="menubar"><a href="talentList.action">재능거래</a></li>
+					<li id="menubar"><a href="productList.action?currentPage=1">중고악기거래</a></li>
+					<li id="menubar"><a href="talentList.action?currentPage=1">재능거래</a></li>
 					<li id="menubar"><a href="#">커뮤니티</a></li>
 
 				</ul>
 				<ul class="right">
 
+					<s:if test='%{#session.ID != null}'>
 					<li id="menubar"><a href="productWriteForm.action">악기판매</a></li>
 					<li id="menubar"><a href="talentWriteForm.action">재능판매</a></li>
-
+					</s:if>
 				</ul>
 			</nav>
 		</div>
