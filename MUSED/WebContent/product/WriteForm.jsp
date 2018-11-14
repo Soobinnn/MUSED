@@ -254,6 +254,7 @@ function initRegion()
 			<input type="checkbox" name="product_type" value="미">배송형(택배 비 미포함)</input>
           </td>
         </tr>
+        
         <tr bgcolor="#777777">
           <td height="1" colspan="2"></td>	
         </tr>
