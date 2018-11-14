@@ -98,9 +98,11 @@
 					<table width="100%">
 						<tr height="100px">
 							<td width="20%" align="center">
+
 								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;프로필 사진 <br> <img
 								class="circle" id="blah"
 								src="C:/Java/upload/file_<s:property value="%{#session.ID}"/>.jpg"
+
 								width="150" height="150" /><br>
 								<button class="replace">이미지 업로드</button> <input type="file"
 								class="upload" id="imgInp" name="upload" accept="image/*"><input

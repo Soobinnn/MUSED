@@ -92,6 +92,18 @@
 		<include refid="where-no"/>
 	</update>
 
+	<!-- 게시글 등록 시 점수 증가 -->
+ 	<update id="writeScore" parameterClass="String">
+		UPDATE MEMBER SET SCORE = SCORE + 5
+		WHERE ID = #id#
+	</update>	
+	<!-- 댓글 등록 시 점수 증가 -->
+	 <update id="CwriteScore" parameterClass="String">
+		UPDATE MEMBER SET SCORE = SCORE + 1 
+		WHERE ID = #id#
+	</update>
+	
+
 	<!-- talent 상품 삭제를 위한 delete	 -->
 	<delete id="deleteTalent" parameterClass="talent">
 		DELETE FROM TALENT

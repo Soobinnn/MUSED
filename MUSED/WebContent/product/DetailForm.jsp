@@ -138,7 +138,15 @@ function showSlides(n) {
   from {opacity: .4} 
   to {opacity: 1}
 }
-
+.circle {
+	border-radius: 1200px !important;
+	overflow: hidden;
+	width: 80px;
+	height: 80px;
+	border: 8px solid rgba(255, 255, 255, 0.7);
+	position: relative;
+	top: 0px;
+}
 </style>
 
 </head>
@@ -152,7 +160,8 @@ function showSlides(n) {
 
 	<input name="list" type="button" value="찜하기" class="inputb" onClick="ZzimInsert.action"/>
     <input name="list" type="button" value="찜취소" class="inputb" onClick="ZzimDelete.action"/>
-    
+
+
 <table width="100%" height="400" border="1">
 
 <tr>
@@ -203,6 +212,8 @@ function showSlides(n) {
 </td>
 <td width="40%">
 판매자 정보<br>
+
+<img class="circle" id="blah" src="C:\Java\upload\file_<s:property value="resultClass.product_id"/>.jpg" width="150" height="150" /><br>
 판매자 : <s:property value="resultClass.product_id"/><br>
 이메일 : <br>
 판매자 연락처 : <s:property value="resultClass.product_phone"/><br>
@@ -235,7 +246,7 @@ function showSlides(n) {
 <td colspan="2" height="10">
 
 <form action="writeCommentAction.action" method="post">
-			<table>
+			<table align="center">
 				<tr>
 					<td width="170">
 						아이디 : <s:property value="%{#session.ID}"/>
@@ -252,30 +263,24 @@ function showSlides(n) {
 						<input name="submit" type="submit" value="작성완료" class="inputb">
 					</td>
 				</tr>
-			</table>
-		</form>
-
-</td>
-</tr>
-
-<tr bgcolor="#777777">
-<td colspan="2" height="1"></td>
-</tr>
-<!-- 댓글 리스트 -->
-<s:iterator value="commentList" status="stat">
+					<tr bgcolor="#777777">
+		<td colspan="2" height="1"></td>
+	</tr>	
+				<s:iterator value="commentList" status="stat">
 	<tr>
-		<td height="10" width="130" align="center">
+		<td width="170" align="center">
+		<img class="circle" id="blah" src="C:\Java\upload\file_<s:property value="c_id"/>.jpg" width="50" height="50" /><br>
 			<s:property value="c_id"/><br>
 			<s:property value="c_regdate"/><br><br>
 		</td>
-		<td>
-			<s:property value="c_content"/><br></br>
+		<td >
+			<s:property value="c_content"/>
 				<s:url id="DeleteURL" action="deletePComment">
 					<s:param name="c_no">
 						<s:property value="c_no"/>
 					</s:param>
 					<s:param name="c_id">
-						<s:property value="c_id"/>
+						<s:property value="%{#session.ID}"/>
 					</s:param>
 					<s:param name="product_no">
 						<s:property value="product_no"/>
@@ -299,8 +304,16 @@ function showSlides(n) {
 			</s:if>
 		</td>
 	</tr>
+			</table>
+		</form>
 
-<!-- 댓글 -->
+</td>
+</tr>
+
+<tr bgcolor="#777777">
+<td colspan="2" height="1"></td>
+</tr>
+
 <tr>
 <td colspan="2">
 <table width="60%" height="150" border="1" align="center">
@@ -328,14 +341,12 @@ function showSlides(n) {
 <td colspan="2">
 	    		
 		<input name="list" type="button" value="목록" class="inputb" onClick="javascript:location.href='product/productList.action?currentPage=<s:property value="currentPage"/>'"/>
-            <s:if test='%{#session.ID != null}'>
+           <s:if test="%{#session.ID==resultClass.product_id}">
 		<input name="update" type="button" value="수정하기" class="inputb" onClick="javascript:location.href='productUpdateForm.action?product_no=<s:property value="product_no"/>&currentPage=<s:property value="currentPage"/>'"/>
 		<input name="delete" type="button" value="삭제하기" class="inputb" onClick="javascript:location.href='productDelete.action?product_no=<s:property value="product_no"/>&currentPage=<s:property value="currentPage"/>'"/>
 		</s:if>
-
 </td>
 </tr>
-
 </table>
 
 </body>
