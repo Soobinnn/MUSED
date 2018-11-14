@@ -99,6 +99,7 @@
 						<tr height="100px">
 							<td width="20%" align="center">
 
+
 								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;프로필 사진 <br> <img
 								class="circle" id="blah"
 								src="C:/Java/upload/file_<s:property value="%{#session.ID}"/>.jpg"
