@@ -20,18 +20,18 @@ import org.apache.struts2.ServletActionContext;
 
 import product.productVO;
 
-public class WriteAction extends ActionSupport implements SessionAware{
+public class WriteAction extends ActionSupport implements SessionAware {
 
-	public static Reader reader; //파일 스트림을 위한 reader.
-	public static SqlMapClient sqlMapper; //SqlMapClient API를 사용하기 위한 sqlMapper 객체.
+	public static Reader reader; // 파일 스트림을 위한 reader.
+	public static SqlMapClient sqlMapper; // SqlMapClient API를 사용하기 위한 sqlMapper 객체.
 
-	private productVO paramClass; //파라미터를 저장할 객체(ibatis에서 꺼내온거 받기위해)
-	private productVO resultClass; //쿼리 결과 값을 저장할 객체(select문 처리->받기위해)
+	private productVO paramClass; // 파라미터를 저장할 객체(ibatis에서 꺼내온거 받기위해)
+	private productVO resultClass; // 쿼리 결과 값을 저장할 객체(select문 처리->받기위해)
 
 	private MemberVO Mparam;
 	private MemberVO Mresult;
-	
-	private int currentPage; //현재 페이지
+
+	private int currentPage; // 현재 페이지
 
 	private String product_id;
 	private String product_state;
@@ -50,13 +50,15 @@ public class WriteAction extends ActionSupport implements SessionAware{
 	private File[] upload;
 	private String[] uploadFileName;
 	private String[] uploadContentType;
-	private String fileUploadPath="C:\\Users\\bogiy\\OneDrive\\바탕 화면\\자바\\MUSED\\MUSED\\WebContent\\product\\img\\";
-								
-	private String imageName="";
-	private String MainName="";
-	private String type="";
-	
+
+	private String fileUploadPath = "C:\\Users\\DONGKUK\\git\\MUSED\\MUSED\\WebContent\\product\\img\\";
+
+	private String imageName = "";
+	private String MainName = "";
+	private String type = "";
+
 	private Map session;
+
 	// 생성자
 	public WriteAction() throws IOException {
 
@@ -66,20 +68,19 @@ public class WriteAction extends ActionSupport implements SessionAware{
 	}
 
 	public String form() throws Exception {
-		//등록 폼.
+		// 등록 폼.
 		return SUCCESS;
 	}
 
-	
 	// 게시판 WRITE 액션
 	public String execute() throws Exception {
 
-		//파라미터와 리절트 객체 생성.
+		// 파라미터와 리절트 객체 생성.
 		paramClass = new productVO();
 		resultClass = new productVO();
 
 		// 등록할 항목 설정.
-		paramClass.setProduct_id((String)session.get("ID"));
+		paramClass.setProduct_id((String) session.get("ID"));
 		paramClass.setProduct_state(getProduct_state());
 		paramClass.setProduct_subject(getProduct_subject());
 		paramClass.setProduct_name(getProduct_name());
@@ -90,31 +91,34 @@ public class WriteAction extends ActionSupport implements SessionAware{
 		paramClass.setProduct_phone(getProduct_phone());
 		paramClass.setProduct_sido(getProduct_sido());
 		paramClass.setProduct_gogon(getProduct_gogon());
-		paramClass.setProduct_content(getProduct_content());		
+		paramClass.setProduct_content(getProduct_content());
 
-		if(upload.length>0) {
-		for(int i=0;i<upload.length;i++) {
-			File destFile = new File(fileUploadPath + getUploadFileName()[i]);
-			FileUtils.copyFile(getUpload()[i], destFile);
-			if(i==0) {
-				MainName += getUploadFileName()[0];
-				imageName += getUploadFileName()[i];
-			}else{
-				imageName += (getUploadFileName()[i].equals(""))?getUploadFileName()[i]:","+getUploadFileName()[i];
+		if (upload.length > 0) {
+			for (int i = 0; i < upload.length; i++) {
+				File destFile = new File(fileUploadPath + getUploadFileName()[i]);
+				FileUtils.copyFile(getUpload()[i], destFile);
+				if (i == 0) {
+					MainName += getUploadFileName()[0];
+					imageName += getUploadFileName()[i];
+				} else {
+					imageName += (getUploadFileName()[i].equals("")) ? getUploadFileName()[i]
+							: "," + getUploadFileName()[i];
+				}
 			}
 		}
-		}
-		paramClass.setMain_img(MainName);			
+		paramClass.setMain_img(MainName);
 		paramClass.setProduct_image(imageName);
 		// 등록 쿼리 수행.
+
 		sqlMapper.insert("product.insertProduct", paramClass);	//입력 : insert
 				   //”insert의 id값”
-
 		
+		sqlMapper.update("product.writeScore", (String)session.get("ID"));	//등록 시 점수 증가
+		
+
 		return SUCCESS;
 	}
 
-	
 	public MemberVO getMparam() {
 		return Mparam;
 	}
@@ -291,7 +295,6 @@ public class WriteAction extends ActionSupport implements SessionAware{
 		this.product_gogon = product_gogon;
 	}
 
-
 	public String getProduct_image() {
 		return product_image;
 	}
@@ -340,7 +343,6 @@ public class WriteAction extends ActionSupport implements SessionAware{
 		this.fileUploadPath = fileUploadPath;
 	}
 
-
 	public String getProduct_id() {
 		return product_id;
 	}
@@ -348,7 +350,5 @@ public class WriteAction extends ActionSupport implements SessionAware{
 	public void setProduct_id(String product_id) {
 		this.product_id = product_id;
 	}
-
-	
 
 }

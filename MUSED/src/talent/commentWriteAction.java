@@ -55,6 +55,8 @@ public class commentWriteAction extends ActionSupport implements SessionAware{
 	
 		sqlMapper.insert("talent.TinsertComment",paramClass);
 		
+		sqlMapper.update("product.CwriteScore", (String)session.get("ID"));	//등록 시 점수 증가
+		
 		return SUCCESS;
 	}
 

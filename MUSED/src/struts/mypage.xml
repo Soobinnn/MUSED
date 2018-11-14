@@ -4,19 +4,21 @@
     "http://struts.apache.org/dtds/struts-2.0.dtd">
 <struts>
 	<!-- 용량제한 100MB로 설정 -->
-	<constant name="struts.multipart.maxSize" value="104857600"/>
-	
+	<constant name="struts.multipart.maxSize" value="104857600" />
+
 	<package name="mypage" extends="struts-default, tiles-default">
 		<!-- 마이페이지로 이동 -->
 		<action name="mypage" class="mypage.MypageAction">
 			<result type="tiles">mypage</result>
 		</action>
 		<!-- 등록된상품 -->
-		<action name="myProduct" class="mypage.MypageAction" method="myProductList">
+		<action name="myProduct" class="mypage.MypageAction"
+			method="myProductList">
 			<result type="tiles">myProduct</result>
 		</action>
 		<!-- 등록된 재능 -->
-		<action name="myTalent" class="mypage.MypageAction" method="myTalentList" >
+		<action name="myTalent" class="mypage.MypageAction"
+			method="myTalentList">
 			<result type="tiles">myTalent</result>
 		</action>
 		<!-- 최근 본 상품 -->
@@ -28,11 +30,13 @@
 			<result type="tiles">myZzim</result>
 		</action>
 		<!-- 제품 판매 내역 -->
-		<action name="mySellProduct" class="mypage.MypageAction" method="mySellProductList">
+		<action name="mySellProduct" class="mypage.MypageAction"
+			method="mySellProductList">
 			<result type="tiles">mySellProduct</result>
 		</action>
 		<!-- 재능 판매 내역 -->
-		<action name="mySellTalent" class="mypage.MypageAction" method="mySellTalentList">
+		<action name="mySellTalent" class="mypage.MypageAction"
+			method="mySellTalentList">
 			<result type="tiles">mySellTalent</result>
 		</action>
 		<!-- 쪽지 보내기 -->
@@ -40,7 +44,8 @@
 			<result type="tiles">sendMessage</result>
 		</action>
 		<!-- 받은 쪽지 -->
-		<action name="receivedMessage" class="mypage.receivedMessageAction">
+		<action name="receivedMessage"
+			class="mypage.receivedMessageAction">
 			<result type="tiles">receivedMessage</result>
 		</action>
 		<!-- 보낸 쪽지 -->
@@ -52,30 +57,41 @@
 			<result type="tiles">myComment</result>
 		</action>
 		<!-- 내 게시글 댓글 -->
-		<action name="myBoardComment" class="mypage.myBoardCommentAction">
+		<action name="myBoardComment"
+			class="mypage.myBoardCommentAction">
 			<result type="tiles">myBoardComment</result>
 		</action>
-		
-		
+
+
 		<!-- 개인 정보 수정 -->
-		<action name="memberUpdateForm" class="mypage.MypageAction" method="modifyForm">
+		<action name="memberUpdateForm" class="mypage.MypageAction"
+			method="modifyForm">
 			<result type="tiles">memberUpdate</result>
 		</action>
 		<!-- 개인 정보 수정 확인 -->
-		<action name="memberUpdateAction" class="mypage.MypageAction" method="modifyAction">
+		<action name="memberUpdateAction" class="mypage.MypageAction"
+			method="modifyAction">
 			<result type="tiles">memberUpdateAction</result>
 		</action>
-		
+
 		<!-- 회원탈퇴 -->
-		<action name="memberDeleteForm" class="mypage.MypageAction" method="deleteForm">
+		<action name="memberDeleteForm" class="mypage.MypageAction"
+			method="deleteForm">
 			<result type="tiles">memberDelete</result>
 		</action>
-		
+
 		<!-- 회원탈퇴 완료 -->
-		<action name="memberDeleteAction" class="mypage.MypageAction" method="deleteAction">
+		<action name="memberDeleteAction" class="mypage.MypageAction"
+			method="deleteAction">
 			<result type="tiles">memberDeleteAction</result>
-		</action> 
-	</package> 
-	
-	
+		</action>
+
+		<!-- 프로필 사진 바꾸기 -->
+		<action name="updateProfile" class="mypage.MypageAction"
+			method="updateProfile">
+			<result type="tiles">mypage</result>
+		</action>
+	</package>
+
+
 </struts>

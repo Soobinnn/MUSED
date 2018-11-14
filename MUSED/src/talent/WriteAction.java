@@ -48,7 +48,7 @@ public class WriteAction extends ActionSupport implements SessionAware{
 	private File[] upload;
 	private String[] uploadFileName;
 	private String[] uploadContentType;
-	private String fileUploadPath="C:\\Users\\bogiy\\OneDrive\\바탕 화면\\자바\\MUSED\\MUSED\\WebContent\\talent\\img\\";
+	private String fileUploadPath="C:\\Users\\DONGKUK\\git\\MUSED\\MUSED\\WebContent\\talent\\img\\";
 
 	private String imageName="";
 	private String MainName="";
@@ -103,6 +103,7 @@ public class WriteAction extends ActionSupport implements SessionAware{
 		sqlMapper.insert("talent.insertTalent", paramClass);	//입력 : insert
 				   //”insert의 id값”
 
+		sqlMapper.update("product.writeScore", (String)session.get("ID"));	//등록 시 점수 증가
 		
 		return SUCCESS;
 	}

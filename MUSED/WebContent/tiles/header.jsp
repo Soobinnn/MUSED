@@ -29,7 +29,7 @@
 	<header id="main_header">
 		<div class="head">
 			<h1 id="logo">
-				<a href="#"><img src="/MUSED/tiles/image/logo2.png"
+				<a href="#"><img src="/MUSED_MUSED/tiles/image/logo2.png"
 					width="150" height="150"></a>
 			</h1>
 			<hgroup id="title">
@@ -45,7 +45,7 @@
 							</div></li>
 						<li><div>
 								<a href="joinConfirm.action"><img
-									src="/MUSED/tiles/image/join.png" width="45" height="45" /></a><br>Join
+									src="/MUSED_MUSED/tiles/image/join.png" width="45" height="45" /></a><br>Join
 								Us
 							</div></li>
 					</s:if>
@@ -56,20 +56,16 @@
 							</div>
 							<div>Logout</div></li>
 						<li><div>
-								<a href="mypage.action">
-								<s:if test="%{resultClass.file_savname == null}">
-								<img class="border"
-									src="/MUSED/tiles/image/myPage.png" width="45" height="45"/>
-								</s:if>
-								<s:else>
-								<img class="border"
-									src="C:\\Java\\upload\\thum_<s:property value="%{#session.ID}"/>.jpg"
-									width="45" height="45" />
-								</s:else>
-									<s:if test="%{resultClass.access_num == 1}">
-									<p class="arrow_box">
-										관리자 계정
-									</p>
+								<a href="mypage.action"> <s:if
+										test="%{resultClass.file_savname == null}">
+										<img class="border" src="/MUSED_MUSED/tiles/image/myPage.png"
+											width="45" height="45" />
+									</s:if> <s:else>
+										<img class="border"
+											src="C:/Java/upload/thum_<s:property value="%{#session.ID}"/>.jpg"
+											width="45" height="45" />
+									</s:else> <s:if test="%{#session.ACCESS_NUM == 1}">
+										<p class="arrow_box">관리자 계정</p>
 									</s:if>
 									<p class="arrow_box">
 										MUSED 계정 :
@@ -77,12 +73,13 @@
 										<br> (
 										<s:property value="%{#session.EMAIL}" />
 										)
-									</p> </a>
+									</p>
+								</a>
 							</div></li>
 						<s:if test="%{#session.ACCESS_NUM == 1}">
 							<li><div>
-									<a href="#"><img src="/MUSED_MUSED/tiles/image/admin.png" width="45" height="45"/></a>
-									<br>Admin
+									<a href="#"><img src="/MUSED_MUSED/tiles/image/admin.png"
+										width="45" height="45" /></a> <br>Admin
 								</div></li>
 						</s:if>
 						<br>

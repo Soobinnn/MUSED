@@ -1,20 +1,40 @@
+<html>
+<head>
+<style>
+input {             /*input tag 공통 스타일*/
+  width: 200px;
+  height: 100px;
+  border-radius: 3px;
+  font-weight: 600;
+  border-color: transparent;
+  font-size: 25px;
+  background: hotpink;
+  color: #fff;
+ cursor: pointer;
+}
+input.upload {  
+  opacity: 0;       /*input type="file" tag 투명하게 처리*/
+  position: relative;
+}
+button.replace {    /*button tag 에 원하는 스타일 적용*/
+  position: absolute;
+  width: 200px;
+  height: 100px;
+  border-radius: 3px;
+  font-weight: 600;
+  border-color: transparent;
+  font-size: 25px;
+  background: hotpink;
+  color: #fff;
+  cursor: pointer;
+}
+</style>
+</head>
+<body>
+<input type="submit" value="등록">
+<button class="replace">파일 업로드</button>
+<input type="file" value="파일 업로드" class="upload">
+</body>
+</html>
 
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
- 
- <!-- 썸네일 관련 import -->
-<%@page import="java.awt.Image"%>
-<%@page import="com.sun.jimi.core.Jimi"%>
-<%@page import="com.sun.jimi.core.JimiException"%>
-<%@page import="com.sun.jimi.core.JimiUtils"%>
- <!-- 썸네일 관련 import -->
-<%
-        String filePath = "C:\\Java\\upload\\";
- 
-        String orgImg = filePath+"file_sdk6789.jpg";//원본파일
-        String thumbImg = filePath+"thum_sdk6789.jpg";//썸네일파일
-        int thumbWidth = 160 ;//썸네일 가로
-        int thumbHeight = 160 ;//썸네일 세로
- 
-        Image thumbnail = JimiUtils.getThumbnail(orgImg, thumbWidth, thumbHeight, Jimi.IN_MEMORY);// 썸네일 설정
-        Jimi.putImage(thumbnail, thumbImg);// 썸네일 생성
-%>
+
