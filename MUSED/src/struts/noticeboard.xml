@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>    
+    <package name="nboard" extends="struts-default" namespace="/notice">
+
+    <!-- 게시판 리스트 액션 -->
+	<action name="listAction" class="board.notice.listAction">
+		<result>/board/notice/boardList.jsp</result>
+	</action>
+
+	<!-- 게시판 글쓰기 액션 -->
+	<action name="writeForm" class="board.notice.writeAction" method="form"> <!-- writeAction의 form메소드를 실행하면 다음 jsp로 이동한다. -->
+	 	<result>/board/notice/boardWrite.jsp</result>
+	</action>
+	
+	
+	<action name="writeAction" class="board.notice.writeAction"> <!-- writeAction의 execute 메소드가 호출되면 -->
+		<result type="redirect-action">    <!-- listAction으로 리다이렉트한다.즉, 글을 쓰고나면 리스트페이지로 이동하도록 한다. -->
+			<param name="actionName">listAction</param>
+		</result>
+	</action>
+	
+	
+	
+	
+	<!-- 게시판 글 읽기 액션 -->
+	<action name="viewAction" class="board.notice.viewAction">
+		<result>/board/notice/boardView.jsp</result>
+	</action>
+	
+	<!-- 게시판 파일 다운로드 액션 -->
+	<action name="fileDownloadAction" class="board.notice.viewAction" method="download">
+		<result name="success" type="stream">
+                <param name="contentType">binary/octet-stream</param>
+                <param name="inputName">inputStream</param>
+                <param name="contentDisposition">${contentDisposition}</param>
+                <param name="contentLength">${contentLength}</param> 
+                <param name="bufferSize">409600</param>
+         </result>
+	</action>
+	
+	<!-- 게시판 수정 액션 -->
+	<action name="modifyForm" class="board.notice.viewAction">
+		<result type="chain">writeForm</result>
+	</action>
+	
+	
+	<action name="modifyAction" class="board.notice.modifyAction">
+		<result type="chain">viewAction</result>
+	</action>
+	
+	<!-- 비밀번호 체크 액션 -->
+	<action name="checkForm" class="board.notice.viewAction" method="checkForm">
+		<result>/board/notice/delConfirm.jsp</result>
+	</action>
+	
+	<action name="checkAction" class="board.notice.viewAction" method="checkAction">
+		<result name="error">/board/notice/checkError.jsp</result>
+		<result>/board/notice/checkSuccess.jsp</result>
+	</action>
+	
+	
+	<action name="deleteAction" class="board.notice.deleteAction">
+		<result type="chain">listAction</result>
+	</action>
+	
+</package>
+
+</struts>
