@@ -55,7 +55,7 @@
 							</div></li>
 						<li><div>
 								<a href="joinConfirm.action"><img
-									src="/MUSED_MUSED/tiles/image/join.png" width="45" height="45" /></a><br>Join
+									src="/tiles/image/join.png" width="45" height="45" /></a><br>Join
 								Us
 							</div></li>
 					</s:if>
