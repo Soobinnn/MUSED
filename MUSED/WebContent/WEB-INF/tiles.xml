@@ -21,6 +21,20 @@
 		<put-attribute name="mypage_body" value="/mypage/FirstView.jsp"/>
 		<put-attribute name="footer" value="/tiles/footer.jsp"/>
 	</definition>
+	
+	<!-- 관리자 -->
+	<definition name="admin" template="/tiles/admin_layout.jsp">
+		<put-attribute name="admin_title" value="MUSED"/>
+		<put-attribute name="admin_header" value="/tiles/header.jsp"/>
+		<put-attribute name="admin_body" value="/admin/admin_main.jsp"/>
+	</definition>
+	<!-- 메인 검색 -->
+	<definition name="main_search" template="/tiles/search_layout.jsp">
+		<put-attribute name="title" value="MUSED"/>
+		<put-attribute name="header" value="/tiles/header.jsp"/>
+		<put-attribute name="body1" value="/main/mainSearchResult.jsp"/>
+		<put-attribute name="footer" value="/tiles/footer.jsp"/>
+	</definition>
 	<!-- 마이페이지 등록된상품 -->
 	<definition name="myProduct" extends="mypage">
 		<put-attribute name="mypage_body" value="/product/ListForm.jsp"/>
@@ -190,5 +204,15 @@
 	</definition>
 
 	<!-- 재능  -->
+	<!-- 관리자 -->
+	<definition name="admin_report" extends="admin">
+		<put-attribute name="admin_body" value="/admin/reportList.jsp"/>
+	</definition>
 
+
+<!-- 자유게시판 -->
+  <definition name="freeboard_list" extends="main">
+     <put-attribute name="body" value="/board/free/boardList.jsp"/>
+  </definition>
+	
 </tiles-definitions>

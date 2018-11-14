@@ -16,7 +16,7 @@
     <include file="struts/noticeboard.xml"/>
     <include file="struts/sug_board.xml"/>
     
-    
+
 		<!-- 글로벌 예외 처리 화면 설정 -->
 		<!-- <global-results>
 			<result name="error">/board/pageError.jsp</result>

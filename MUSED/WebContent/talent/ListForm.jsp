@@ -37,18 +37,6 @@ pageEncoding="utf-8"%>
 		</td>
 	</tr>
 
-	<tr align="center">
-	<!-- 버튼 말고 check같은 거로 해야됨 -->
-		<td colspan="5">
-			<input type="button" name="c" value="클래식(관악기/현악기)"/>
-			<input type="button" name="g" value="기타"/>
-			<input type="button" name="d" value="드럼/타악기"/>
-			<input type="button" name="gb" value="건반악기"/>
-			<input type="button" name="um" value="음향장비"/>
-			<input type="button" name="etc" value="그 외 악기"/>
-		</td>
-	</tr>
-
 	<tr align="left">
 		<td colspan="5">
 		-----------------------------------------------------------<br>

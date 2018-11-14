@@ -109,6 +109,7 @@
 		DELETE FROM TALENT
 		<include refid="where-no"/>
 	</delete>
+ 
 	
 	<delete id="deleteTComment" parameterClass="Tcomment">
 		DELETE FROM COMMENTS
@@ -138,4 +139,10 @@
 		SELECT * FROM TALENT WHERE TALENT_ID=#talent_id# AND TALENT_STATE='완'
 	</select>
 
+	<!-- 메인검색 -->
+	<select id="main_selectSearch" resultMap="talentRes" parameterClass="string">
+	<include refid="select-all" />
+		 	WHERE talent_content LIKE #searchKeyword# OR talent_subject LIKE #searchKeyword#
+			ORDER BY talent_no DESC
+		</select>
 </sqlMap>

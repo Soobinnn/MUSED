@@ -1,27 +1,31 @@
-package talent;
+package main;
 
 import com.opensymphony.xwork2.ActionSupport;
-
-import talent.talentVO;
-import talent.pagingAction;
 
 import com.ibatis.common.resources.Resources;
 import com.ibatis.sqlmap.client.SqlMapClient;
 import com.ibatis.sqlmap.client.SqlMapClientBuilder;
 
 import java.util.*;
-
-import org.apache.struts2.interceptor.SessionAware;
-
 import java.io.Reader;
 import java.io.IOException;
 
-public class ListAction extends ActionSupport {
+import product.pagingAction;
+import product.productVO;
+import talent.talentVO;
+
+public class mainSearchAction extends ActionSupport
+{
 	public static Reader reader;
 	public static SqlMapClient sqlMapper;
-
-	private List<talentVO> list = new ArrayList<talentVO>();
-	private talentVO resultClass = new talentVO(); //쿼리 결과 값을 저장할 객체
+	
+	/*product*/
+	private List<productVO> list_p = new ArrayList<productVO>();
+	private productVO resultClass_p =  new productVO();
+	
+	/*talent*/
+	private List<talentVO> list_t = new ArrayList<talentVO>();
+	private talentVO resultClass_t = new talentVO(); 
 	
 	private String searchKeyword;
 	private int searchNum;
@@ -29,51 +33,54 @@ public class ListAction extends ActionSupport {
 	
 	private int currentPage=1;	//현재 페이지
 	private int totalCount;		
-	private int blockCount=25;   //5*5 이미지 정렬
+	private int blockCount=5;   //5*5 이미지 정렬
 	private int blockPage=5;
 	private String pagingHtml;
 	private pagingAction page;
-
-	public ListAction() throws IOException{
+	
+	public mainSearchAction() throws IOException
+	{
 		reader=Resources.getResourceAsReader("sqlMapConfig.xml");
 		sqlMapper=SqlMapClientBuilder.buildSqlMapClient(reader);
 		reader.close();
 	}
 	
-	public String execute() throws Exception{
-		list=sqlMapper.queryForList("talent.selectAll");
+	public String execute() throws Exception
+	{
+		if(getSearchKeyword() != null)
+		{
+			return search();
+		}
 		
-		totalCount = list.size();
+		list_p=sqlMapper.queryForList("product.selectAll");
+		list_t=sqlMapper.queryForList("talent.selectAll");
+		
+		totalCount = list_p.size();
 		
 		page=new pagingAction(currentPage,totalCount,blockCount,blockPage, num, "");
 		pagingHtml = page.getPagingHtml().toString();
 		
 		int lastCount=totalCount;
 		
-		if(page.getEndCount()<totalCount) {
+		if(page.getEndCount()<totalCount) 
+		{
 			lastCount=page.getEndCount()+1;
 		}
-		list=list.subList(page.getStartCount(), lastCount);
+		
+		list_p=list_p.subList(page.getStartCount(), lastCount);
 
 		return SUCCESS;
 	}
-
+	
 	public String search() throws Exception
 	{
 		if(searchNum == 0)
 		{
-			list = sqlMapper.queryForList("talent.selectSearchW", "%"+getSearchKeyword()+"%");
-		}
-		if(searchNum == 1)
-		{
-			list = sqlMapper.queryForList("talent.selectSearchS", "%"+getSearchKeyword()+"%");
-		}
-		if(searchNum == 2)
-		{
-			list = sqlMapper.queryForList("talent.selectSearchC", "%"+getSearchKeyword()+"%");	
+			list_p = sqlMapper.queryForList("product.main_selectSearch", "%"+getSearchKeyword()+"%");
+			list_t = sqlMapper.queryForList("talent.main_selectSearch", "%"+getSearchKeyword()+"%");
 		}
 		
-		totalCount = list.size();
+		totalCount = list_p.size();
 		page = new pagingAction(currentPage, totalCount, blockCount, blockPage, searchNum, getSearchKeyword());
 		pagingHtml = page.getPagingHtml().toString();
 		
@@ -82,15 +89,29 @@ public class ListAction extends ActionSupport {
 		if(page.getEndCount() < totalCount)
 			lastCount = page.getEndCount() + 1;
 		
-		list = list.subList(page.getStartCount(), lastCount);
+		list_p = list_p.subList(page.getStartCount(), lastCount);
 		return SUCCESS;
 	}
-	
-	
+
+	public List<productVO> getList_p() {
+		return list_p;
+	}
+
+	public void setList_p(List<productVO> list_p) {
+		this.list_p = list_p;
+	}
+
+	public productVO getResultClass_p() {
+		return resultClass_p;
+	}
+
+	public void setResultClass_p(productVO resultClass_p) {
+		this.resultClass_p = resultClass_p;
+	}
+
 	public String getSearchKeyword() {
 		return searchKeyword;
-		}
-	
+	}
 
 	public void setSearchKeyword(String searchKeyword) {
 		this.searchKeyword = searchKeyword;
@@ -104,37 +125,12 @@ public class ListAction extends ActionSupport {
 		this.searchNum = searchNum;
 	}
 
-	public talentVO getResultClass() {
-		return resultClass;
+	public int getNum() {
+		return num;
 	}
 
-	public void setResultClass(talentVO resultClass) {
-		this.resultClass = resultClass;
-	}
-
-
-	public static Reader getReader() {
-		return reader;
-	}
-
-	public static void setReader(Reader reader) {
-		ListAction.reader = reader;
-	}
-
-	public static SqlMapClient getSqlMapper() {
-		return sqlMapper;
-	}
-
-	public static void setSqlMapper(SqlMapClient sqlMapper) {
-		ListAction.sqlMapper = sqlMapper;
-	}
-
-	public List<talentVO> getList() {
-		return list;
-	}
-
-	public void setList(List<talentVO> list) {
-		this.list = list;
+	public void setNum(int num) {
+		this.num = num;
 	}
 
 	public int getCurrentPage() {
@@ -183,6 +179,22 @@ public class ListAction extends ActionSupport {
 
 	public void setPage(pagingAction page) {
 		this.page = page;
+	}
+
+	public List<talentVO> getList_t() {
+		return list_t;
+	}
+
+	public void setList_t(List<talentVO> list_t) {
+		this.list_t = list_t;
+	}
+
+	public talentVO getResultClass_t() {
+		return resultClass_t;
+	}
+
+	public void setResultClass_t(talentVO resultClass_t) {
+		this.resultClass_t = resultClass_t;
 	}
 	
 }

@@ -79,8 +79,8 @@ public class DetailAction extends ActionSupport{
 		System.out.println("--------------------");
 		
 		//type - split으로 나누기
-		String[] t = resultClass.getProduct_type().split(", ");
-		
+		String[] t = resultClass.getProduct_type().split(", ");  
+
 		for(int i= 0 ; i < t.length;i++) {
 			System.out.println(t[i]);
 		if(t[i].indexOf("직")==0)	//이미지 추가!

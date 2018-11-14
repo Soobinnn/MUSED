@@ -35,7 +35,10 @@ public class listAction extends ActionSupport
 				
 		reader.close();		
 	}
-	
+	public String admin_main() throws Exception
+	{
+		return SUCCESS;
+	}
 	public String execute() throws Exception
 	{
 		list = sqlMapper.queryForList("report.selectAll");

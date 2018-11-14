@@ -45,7 +45,10 @@
 			<result type="tiles">talentDeleteSuccess</result>
 		</action>
 		
-
+		<!-- 재능검색 -->
+		<action name="talent_search" class="talent.ListAction">
+			<result type="tiles">talent_search</result>
+		</action>
 	</package>
 
 </struts>

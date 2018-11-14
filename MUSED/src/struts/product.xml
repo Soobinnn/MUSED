@@ -7,9 +7,10 @@
 
 	<package name="product" extends="struts-default, tiles-default">   <!-- 소진 -->
 
-		<!-- 상품 목록 -->
+		<!-- 상품 목록 <result type="tiles">productList</result> -->
 		<action name="productList" class="product.ListAction">
 			<result type="tiles">productList</result>
+
 		</action>
 		
 		<!-- 상품 등록  폼 -->
@@ -52,9 +53,11 @@
 			<result type="tiles">productDeleteSuccess</result>
 		</action>
 		
-		<!-- <action name="search" class="product.SearchAction">
+		<!-- 소진이 테스트 
+		<action name="search" class="product.SearchAction">
 			<result>product/test11.jsp</result>
 		</action> 아직 팀원이 테스트중이다. -->
+		
 		
 	</package>
 
