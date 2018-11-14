@@ -25,7 +25,7 @@ public class ListAction extends ActionSupport implements SessionAware{
 	
 	private int currentPage=1;	//현재 페이지
 	private int totalCount;		
-	private int blockCount=5;   //5*5 이미지 정렬
+	private int blockCount=25;   //5*5 이미지 정렬
 	private int blockPage=5;
 	private String pagingHtml;
 	private pagingAction page;

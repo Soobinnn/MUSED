@@ -103,6 +103,7 @@ public class WriteAction extends ActionSupport implements SessionAware{
 		sqlMapper.insert("talent.insertTalent", paramClass);	//입력 : insert
 				   //”insert의 id값”
 
+		sqlMapper.update("product.writeScore", (String)session.get("ID"));	//등록 시 점수 증가
 		
 		return SUCCESS;
 	}

@@ -316,8 +316,7 @@ function showSlides(n) {
 <tr>
 <td colspan="2">
 		<input name="list" type="button" value="목록" class="inputb" onClick="javascript:location.href='talent/talentList.action'"/>
-
-   <s:if test='%{#session.ID != null}'>
+      <s:if test="%{#session.ID==resultClass.talent_id}">
 		<input name="update" type="button" value="수정하기" class="inputb" onClick="javascript:location.href='talentUpdateForm.action?talent_no=<s:property value="talent_no"/>&currentPage=<s:property value="currentPage"/>'"/>
 		<input name="delete" type="button" value="삭제하기" class="inputb" onClick="javascript:location.href='talentDelete.action?talent_no=<s:property value="talent_no"/>&currentPage=<s:property value="currentPage"/>'"/>
 	</s:if>
