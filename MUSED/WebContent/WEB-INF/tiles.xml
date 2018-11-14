@@ -209,5 +209,10 @@
 		<put-attribute name="admin_body" value="/admin/reportList.jsp"/>
 	</definition>
 
+
+<!-- 자유게시판 -->
+  <definition name="freeboard_list" extends="main">
+     <put-attribute name="body" value="/board/free/boardList.jsp"/>
+  </definition>
 	
 </tiles-definitions>

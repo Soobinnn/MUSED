@@ -19,6 +19,10 @@ top:500; left:410;}
 </head>
 
 <body>
+	<div>
+		<a href='#'>공지사항</a>&nbsp;&nbsp; <a href='#'>자유게시판</a> &nbsp;&nbsp; <a href='#'>건의게시판</a>
+	<br/><br/><br/><br/><br/><br/><br/>	
+	</div>
 	<table width="600" border="0" cellspacing="0" cellpadding="2">
 		<tr>
 			<td align="center"><h2>자유 게시판</h2></td>

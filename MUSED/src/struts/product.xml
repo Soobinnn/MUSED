@@ -56,8 +56,9 @@
 		<!-- 소진이 테스트 
 		<action name="search" class="product.SearchAction">
 			<result>product/test11.jsp</result>
-		</action>
-		 -->
+		</action> 아직 팀원이 테스트중이다. -->
+		
+		
 	</package>
 
 </struts>
