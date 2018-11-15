@@ -5,10 +5,10 @@
 <struts>
 <package name="sug_board" extends="struts-default, tiles-default" namespace="/tiles/sug">
 
-     
-     
-     <action name="listAction" class="board.suggestion.listAction">
-       <result type="tiles">suggestionboard_list</result>
+
+<action name="listAction" class="board.suggestion.listAction">
+		<result type="tiles">suggestion_list</result>
+
 	</action>
 
 	<!-- 게시판 글쓰기 액션 -->
@@ -18,7 +18,7 @@
 	
 	
 	<action name="writeAction" class="board.suggestion.writeAction"> <!-- writeAction의 execute 메소드가 호출되면 -->
-		<result type="redirect-action">    <!-- listAction으로 리다이렉트한다.즉, 글을 쓰고나면 리스트페이지로 이동하도록 한다. -->
+		<result type="redirect-action">   <!-- listAction으로 리다이렉트한다.즉, 글을 쓰고나면 리스트페이지로 이동하도록 한다. -->
 			<param name="actionName">listAction</param>
 		</result>
 	</action>

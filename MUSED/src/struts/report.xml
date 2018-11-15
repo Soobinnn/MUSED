@@ -4,7 +4,7 @@
     "http://struts.apache.org/dtds/struts-2.0.dtd">
 <struts>
 <constant name="struts.multipart.maxSize" value="104857600" />
-	<package name="report" namespace="/admin" extends="struts-default, tiles-default">    <!-- 수빈 -->
+	<package name="report" namespace="/tiles/admin" extends="struts-default, tiles-default">    <!-- 수빈 -->
 		<action name="reportForm" class="report.reportAction" method="form">
 			<result>/footer/reportForm.jsp</result>
 		</action>

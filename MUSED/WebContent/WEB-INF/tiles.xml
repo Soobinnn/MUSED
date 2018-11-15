@@ -208,22 +208,28 @@
 	<definition name="admin_report" extends="admin">
 		<put-attribute name="admin_body" value="/admin/reportList.jsp"/>
 	</definition>
+	
+	<definition name="admin_member" extends="admin">
+		<put-attribute name="admin_body" value="/admin/reportList.jsp"/>
+	</definition>
 
-
-<!-- 자유게시판 -->
+	<definition name="admin_notice" extends="admin">
+		<put-attribute name="admin_body" value="/admin/reportList.jsp"/>
+	</definition>
+	
+<!--게시판 -->
   <definition name="freeboard_list" extends="main">
      <put-attribute name="body" value="/board/free/boardList.jsp"/>
   </definition>
-	
-	<!-- 공지사항 게시판 -->
-  <definition name="noticeboard_list" extends="main">
-    <put-attribute name="body" value="/board/notice/boardList.jsp"/>
+
+
+  <definition name="notice_list" extends="main">
+     <put-attribute name="body" value="/board/notice/boardList.jsp"/>
   </definition>
   
-    <!-- 건의사항 게시판 -->
-  <definition name="suggestionboard_list" extends="main">
-    <put-attribute name="body" value="/board/suggestion/boardList.jsp"/>
+   <definition name="suggestion_list" extends="main">
+     <put-attribute name="body" value="/board/suggestion/boardList.jsp"/>
   </definition>
-	
-	
+		
+
 </tiles-definitions>
