@@ -15,9 +15,9 @@
 <input type="button" value="찜한 상품" onclick="javascript:location.href='myZzim.action'"><br>
 <input type="button" value="판매 내역" onclick="javascript:location.href='mySell.action'"><br>
 <h2>쪽지</h2><br>
-<input type="button" value="쪽지 보내기" onclick="javascript:location.href='sendMessage.action'"><br>
-<input type="button" value="받은 쪽지" onclick="javascript:location.href='receivedMessage.action'"><br>
-<input type="button" value="보낸 쪽지" onclick="javascript:location.href='sendedMessage.action'"><br>
+<input type="button" value="쪽지 보내기" onclick="javascript:location.href='sendMessageForm.action'"><br>
+<input type="button" value="받은 쪽지" onclick="javascript:location.href='receivedMessage.action?check=0'"><br>
+<input type="button" value="보낸 쪽지" onclick="javascript:location.href='sendedMessage.action?check=1'"><br>
 <h2>댓글</h2><br>
 <input type="button" value="내가 쓴 댓글" onclick="javascript:location.href='myComment.action'"><br>
 <input type="button" value="내 게시글 댓글" onclick="javascript:location.href='myBoardComment.action'"><br> 

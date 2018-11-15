@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+    
+ <struts>
+    <constant name="struts.multipart.maxSize" value="104857600"/>
+	<package name="message" extends="struts-default,  tiles-default">
+	
+		<!--내가 보낸 메세지 리스트-->
+		<action name="sendedMessage" class="message.Msg_listAction" method="execute2">
+			<result type="tiles">sendedMessage</result>
+		</action>
+		
+		<!--내가 받은 메세지 리스트-->
+		<action name="receivedMessage"	class="message.Msg_listAction">
+			<result type="tiles">receivedMessage</result>
+		</action>
+
+		<!--  메시지 보내기 폼 액션 -->	
+		<action name="sendMessageForm" class="message.Msg_writeAction" method="Form">
+			<result type="tiles">sendMessage</result>	
+		</action>
+		<!-- 메시지 쓰기 액션 -->
+		<action name="sendMessage" class="message.Msg_writeAction">
+			<result type="redirect-action">sendedMessage</result>
+		</action>
+		
+		<!-- <action name="Msg_writeAction" class="message.Msg_writeAction">
+			<result name="success">/Msg/Msg_Write2.jsp</result>
+				<result name="error">/Msg/Msg_WriteFail.jsp</result>
+		</action> -->
+
+		<!--  메시지 상세보기 -->
+		<action name="MsgviewAction" class="message.Msg_viewAction">
+			<result>/mypage/button/mypageViewMessage.jsp</result>
+		</action>
+		
+		<action name="ReMessageForm" class="message.Msg_writeAction" method="Form">
+			<result>/mypage/button/mypageSendMessage2.jsp</result>	
+		</action>
+</package>
+</struts>

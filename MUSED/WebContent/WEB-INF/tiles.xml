@@ -44,7 +44,7 @@
 	</definition>
 	<!-- 마이페이지 쪽지 보내기 -->
 	<definition name="sendMessage" extends="mypage">
-		<put-attribute name="mypage_body" value="/mypage/button/mypageSendMessage.jsp"/>
+		<put-attribute name="mypage_body" value="/mypage/button/mypageSendMessage2.jsp"/>
 	</definition>
 	<!-- 마이페이지 받은 쪽지 -->
 	<definition name="receivedMessage" extends="mypage">

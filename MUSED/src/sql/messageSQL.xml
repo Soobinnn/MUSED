@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC '-//ibatis.apache.org//DTD Sql Map 2.0//EN' 'http://ibatis.apache.org/dtd/sql-map-2.dtd'>
+
+<sqlMap namespace="Message">
+
+	<typeAlias alias="message" type="message.Message_VO" />
+
+		<!-- 리절트 맵 정의 -->
+	  	<resultMap id="messageRes" class="message">
+	      	<result property="msg_no" column="Message_NO"/>
+		  	<result property="msg_wrt_id" column="Message_SEND"/>
+		  	<result property="msg_rec_id" column="Message_READ"/>
+		  	<result property="msg_regdate" column="Message_REGDATE" />
+		  	<result property="msg_content" column="Message_CONTENT"/>
+		</resultMap>
+		
+		<!-- 받은 Msg 리스트 -->
+		<select id="Msg_select_Rec"   resultMap="messageRes" parameterClass="String" remapResults="true" >
+			select * from message WHERE message_read=#msg_rec_id# order by Message_REGDATE desc
+		</select>
+
+		<!-- 내가 쓴 Msg 리스트 -->
+		<select id="Msg_select_Wrt" resultMap="messageRes" parameterClass="String" remapResults="true">
+			select * from message WHERE message_SEND=#msg_wrt_id# order by Message_REGDATE desc
+			<!-- select * from message join member on message.Message_SEND = member.id order by Message_NO desc  -->
+		</select>
+		<!-- Msg 리스트 개수 -->
+		<select id="Msg_Count" parameterClass="int">
+			select count(*) from message
+		</select>
+		<!-- Msg 쓰기 -->
+		<insert id="WriteMessage" parameterClass="message">
+			insert into message (Message_NO,
+			Message_SEND, Message_READ,
+			Message_REGDATE, Message_CONTENT)
+			 values(
+			 MESSAGE_NO_SEQ.NEXTVAL,
+			 #msg_wrt_id#,
+			 #msg_rec_id#, 
+			 #msg_regdate#, 
+			 #msg_content#)
+		</insert>
+		
+		<!-- 글 하나 정보 가져오기 -->
+		<select id="Msg_selectOne" resultMap="messageRes" parameterClass="int" remapResults="true">
+			select * from message where Message_NO = #msg_no#
+		</select>
+		
+	<!--  메시지 검색 -->
+	<select id="Msg_selectSearchW" resultMap="messageRes" parameterClass="string">
+		select * from message
+		 WHERE message_SEND like #searchKeyword#
+		 ORDER BY Message_NO DESC 
+	</select>
+	<select id="Msg_selectSearchR" resultMap="messageRes" parameterClass="string">
+		select * from message
+		 WHERE message_READ like #searchKeyword#
+		 ORDER BY Message_NO DESC 
+	</select>
+	
+	<select id="Msg_selectSearchC" resultMap="messageRes" parameterClass="string">
+		select * from message
+		 WHERE Message_CONTENT like #searchKeyword#
+		 ORDER BY Message_NO DESC
+	</select>
+	
+	<select id="Msg_selectSearchD" resultMap="messageRes" parameterClass="string">
+		select * from message
+		 WHERE Message_REGDATE like #searchKeyword#
+		 ORDER BY Message_NO DESC
+	</select>
+</sqlMap>
