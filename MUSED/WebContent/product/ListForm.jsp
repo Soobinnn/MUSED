@@ -7,8 +7,6 @@ pageEncoding="utf-8"%>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <title>악기 게시판</title>
-</head>
-<body>
 
 <script language=javascript>
 
@@ -163,31 +161,34 @@ select, input{
 }
 </style>
 
+</head>
+
+<body>
+
 <table width="600" border="0" cellspacing="0" cellspadding="2">
 		  <s:hidden name="currentPage" value="%{currentPage}" />
-		  <form name="fwrite" action="search.action">
+		  <form name="fwrite" action="Psearch.action">
 	<tr align="center" height="30px">
 	<!-- 버튼 말고 check같은 거로 해야됨 -->
 	<br></br>
 		<td colspan="5">
-		  	<input name="category" type="checkbox" id="classic" value="classic">
+		  	<input name="category1" type="checkbox" id="classic" value="classic">
    			 	<label for="classic">클래식</label>
    			 	
-   			<input name="category" type="checkbox" id="guiter" value="guiter">
+   			<input name="category2" type="checkbox" id="guiter" value="guiter">
    				<label for="guiter">기타</label>
    				
-	   		<input name="category" type="checkbox" id="drum" value="drum">
+	   		<input name="category3" type="checkbox" id="drum" value="drum">
 	   			 <label for="drum">드럼/타악기</label>
 	   			 
-	   		<input name="category" type="checkbox" id="piano" value="piano">
+	   		<input name="category4" type="checkbox" id="piano" value="piano">
 	   			 <label for="piano">건반악기</label>
 	   			 
-	   		<input name="category" type="checkbox" id="sound" value="sound">
+	   		<input name="category5" type="checkbox" id="sound" value="sound">
 	   			 <label for="sound">음향악기</label>
 	   			 
-	   	   	<input name="category" type="checkbox" id="etc" value="etc">
+	   	   	<input name="category6" type="checkbox" id="etc" value="etc">
 	   			 <label for="etc">그 외 악기</label>
-	   	
 		</td>
 	</tr>
 		<tr align="left" height="30px">
@@ -260,6 +261,8 @@ select, input{
 				<br><s:property value="product_subject" />
 				</br></s:a>
 				<br>판매자 : <s:property value="product_id"/>	
+				
+				<br><s:property value="product_price"/>원
 	  </td>
 	  	     	<s:if test="#stat.count%5==0">
   					<tr></tr>

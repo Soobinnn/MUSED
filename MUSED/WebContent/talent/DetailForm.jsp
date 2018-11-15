@@ -190,7 +190,8 @@ function showSlides(n) {
 </table>
 </td>
 <td width="40%">
-판매자 정보<br>
+판매자 정보<br> 
+<img class="circle" id="blah" src="C:\Java\upload\file_<s:property value="resultClass.product_id"/>.jpg" width="150" height="150"/><br></br>
 판매자 : <s:property value="resultClass.talent_id"/><br>
 이메일 : <br>
 판매자 연락처 : <s:property value="resultClass.talent_phone"/><br>
@@ -253,6 +254,7 @@ function showSlides(n) {
 <s:iterator value="TcommentList" status="stat">
 	<tr>
 		<td height="10" width="130" align="center">
+			<img class="circle"	id="blah"src="C:\Java\upload\file_<s:property value="c_id"/>.jpg" width="50" height="50" /><br> 
 			<s:property value="c_id"/><br>
 			<s:property value="c_regdate"/><br><br>
 		</td>
