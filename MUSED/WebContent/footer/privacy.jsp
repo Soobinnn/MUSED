@@ -16,7 +16,7 @@
 
 
 <div id="A_Container">
-	<h1 class="bor_btm266 ">(주)Mused 개인정보처리방침 (ver 1.0)</h1>
+	<h1 class="bor_btm266 ">(주)Mused 개인정보처리방침</h1>
 
 	<div class="service_box_2">
 

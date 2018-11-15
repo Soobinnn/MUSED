@@ -63,6 +63,11 @@
 			<result>product/test11.jsp</result>
 		</action> 아직 팀원이 테스트중이다. -->
 		
+		<action name="mainList" class="product.ListAction">
+			<result type="tiles">main</result>
+
+		</action>
+		
 	</package>
 
 </struts>

@@ -79,7 +79,7 @@
         	<td height="1" colspan="2"></td>	
         </tr>
         <tr>
-        	<td bgcolor="#F4F4F4"><font color="#FF0000">*</font>  내용 </td>
+        	<td bgcolor="#F4F4F4"><font color="#FF0000">*</font> 내용 </td>
         	<td bgcolor="#FFFFFF">
             <s:textarea name="report_content" theme="simple" value="%{resultClass.report_content}" cols="50" rows="10" />
           	</td>

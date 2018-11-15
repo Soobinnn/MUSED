@@ -18,7 +18,7 @@
 				<hr/>
 				<li><a href="#">회원관리</a></li>
 				<li><a href="#">공지사항</a></li>
-				<li><a href='/MUSED/admin/listAction.action'>신고목록</a></li>
+				<li><a href='/MUSED/tiles/admin/listAction.action'>신고목록</a></li>
 			</ul>
 		</section>
 		<section class="admin admin_body">
