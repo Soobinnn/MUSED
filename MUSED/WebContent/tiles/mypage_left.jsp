@@ -15,7 +15,7 @@
 <input type="button" value="찜한 상품" onclick="javascript:location.href='myZzim.action'"><br>
 <h2>판매내역</h2><br>
 <input type="button" value="제품 판매 내역" onclick="javascript:location.href='mySellProduct.action'"><br>
-<input type="button" value="재능 판매 내역" onclick="javascript:loaction.href='mySellTalent.action'"><br>
+<input type="button" value="재능 판매 내역" onclick="javascript:location.href='mySellTalent.action'"><br>
 <h2>쪽지</h2><br>
 <input type="button" value="쪽지 보내기" onclick="javascript:location.href='sendMessage.action'"><br>
 <input type="button" value="받은 쪽지" onclick="javascript:location.href='receivedMessage.action'"><br>

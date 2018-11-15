@@ -116,6 +116,7 @@ public class MypageAction extends ActionSupport implements SessionAware{
 	/*마이페이지 제품 판매 내역*/
 	public String mySellProductList() throws Exception{
 		common();
+		
 		list=sqlMapper.queryForList("product.selectMySellProduct",(String)session.get("ID"));
 		
 		totalCount = list.size();
@@ -137,6 +138,7 @@ public class MypageAction extends ActionSupport implements SessionAware{
 		common();
 		
 		list=sqlMapper.queryForList("talent.selectMySellTalent",(String)session.get("ID"));
+		
 		totalCount = list.size();
 		
 		page=new pagingAction(currentPage,totalCount,blockCount,blockPage);
@@ -211,7 +213,7 @@ public class MypageAction extends ActionSupport implements SessionAware{
 			grade = "GOLD";
 		else if(paramClass.getScore()>=100)
 			grade = "SILVER";
-		else 
+		else if(paramClass.getScore()>=0)
 			grade = "BRONZE";
 		/*마이페이지 등록된 상품 수*/
 		countPro = (Integer)sqlMapper.queryForObject("product.countProduct",(String)session.get("ID"));
@@ -224,8 +226,6 @@ public class MypageAction extends ActionSupport implements SessionAware{
 		sum = sellCountProduct + sellCountTalent;
 	
 	}
-	
-	
 	
 	public List getFirst() {
 		return first;

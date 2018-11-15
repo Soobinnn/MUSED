@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
+<%@ taglib prefix="s" uri="/struts-tags" %>
 <%@ page import ="java.util.HashMap" %>
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -37,7 +38,7 @@
 </tr>
    	  <s:if test="list.size()<=0">
 			<tr bgcolor="#FFFFFF" align="center">
-				<td colspan="5">등록된 게시물이 없습니다.</td>
+				<td colspan="5">판매된 제품이 없습니다.</td>
 			</tr>
 	</s:if>
 	

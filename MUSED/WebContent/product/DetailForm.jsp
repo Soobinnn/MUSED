@@ -12,7 +12,7 @@ pageEncoding="utf-8"%>
 
  function open_win_noresizable(url,name){
 	var oWin = window.open(url, name, "scrollbars=no,status=no, resizable=no, width=300, height=150");
-}
+ }
 
 var slideIndex = 1;
 showSlides(slideIndex);
@@ -41,6 +41,10 @@ function showSlides(n) {
   }
   slides[slideIndex-1].style.display = "block"; 
   dots[slideIndex-1].className += " active";
+}
+
+function zzim_click(){
+	alert("찜 등록이 완료되었습니다.")
 }
 
 </script>
@@ -173,6 +177,9 @@ function showSlides(n) {
 제품명 : <s:property value="resultClass.product_name"/><br>
 브랜드 : <s:property value="resultClass.product_brand"/><br>
 가격 : <s:property value="resultClass.product_price"/><br>
+<form>
+<input type="button" value="찜하기" onclick="zzim_click();javascript:location.href='productZzim.action'"/>
+</form>
 </td>
 </tr>
 <tr>

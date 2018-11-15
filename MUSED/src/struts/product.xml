@@ -27,6 +27,13 @@
 			<result type="tiles">productDetailForm</result>
 		</action>
 		
+		<!-- 상품 찜하기 처리 -->
+		<action name="productZzim" class="product.ZzimAction">
+			<result type="chain">
+				<param name="actionName">productDetail</param>
+			</result>
+		</action>
+		
 		<!--  상품 수정하기 폼 -->
 		<action name="productUpdateForm" class="product.UpdateAction" method="form">
 			<result type="tiles">productWriteForm</result>

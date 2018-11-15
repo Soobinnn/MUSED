@@ -161,6 +161,10 @@
 		<put-attribute name="body" value="/product/DeleteForm.jsp"/>
 	</definition>
 	
+	<definition name="productZzim" extends="main">
+		<put-attribute name="body" value="/product/DetailForm.jsp"/>
+	</definition>
+	
 	<!-- 상품  -->
 	
 	<!-- 재능  -->
