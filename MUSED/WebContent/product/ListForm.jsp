@@ -261,7 +261,7 @@ select, input{
 				<br><s:property value="product_subject" />
 				</br></s:a>
 				<br>판매자 : <s:property value="product_id"/>	
-				
+				 
 				<br><s:property value="product_price"/>원
 	  </td>
 	  	     	<s:if test="#stat.count%5==0">
