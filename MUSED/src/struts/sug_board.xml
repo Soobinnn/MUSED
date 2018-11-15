@@ -3,11 +3,12 @@
     "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
     "http://struts.apache.org/dtds/struts-2.0.dtd">
 <struts>
-<package name="sug_board" extends="struts-default" namespace="/sug">
+<package name="sug_board" extends="struts-default, tiles-default" namespace="/tiles/sug">
 
-<action name="listAction" class="board.suggestion.listAction">
-
-		<result>/board/suggestion/boardList.jsp</result>
+     
+     
+     <action name="listAction" class="board.suggestion.listAction">
+       <result type="tiles">suggestionboard_list</result>
 	</action>
 
 	<!-- 게시판 글쓰기 액션 -->
