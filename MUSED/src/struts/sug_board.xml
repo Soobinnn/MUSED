@@ -5,8 +5,10 @@
 <struts>
 <package name="sug_board" extends="struts-default, tiles-default" namespace="/tiles/sug">
 
+
 <action name="listAction" class="board.suggestion.listAction">
 		<result type="tiles">suggestion_list</result>
+
 	</action>
 
 	<!-- 게시판 글쓰기 액션 -->

@@ -217,17 +217,33 @@
 		<put-attribute name="admin_body" value="/admin/reportList.jsp"/>
 	</definition>
 	
-<!--게시판 -->
+<!--자유 게시판 : KS -->
   <definition name="freeboard_list" extends="main">
      <put-attribute name="body" value="/board/free/boardList.jsp"/>
-  </definition>
+   </definition>
+   
+   <definition name="freeboard_view" extends="main">
+     <put-attribute name="body" value="/board/free/boardView.jsp"/>
+    </definition>
+    
+    <definition name="freeboard_write" extends="main">
+      <put-attribute name="body" value="board/free/boardWrite.jsp"/>
+    </definition>
 
-  <definition name="notice_list" extends="main">
+<!-- 자유 게시판 종료 : KS -->
+  
+  <!-- 공지사항 게시판 -->
+   <definition name="notice_list" extends="main">
      <put-attribute name="body" value="/board/notice/boardList.jsp"/>
   </definition>
   
+   
+   
+   
+   <!-- 건의사항 게시판 -->
    <definition name="suggestion_list" extends="main">
      <put-attribute name="body" value="/board/suggestion/boardList.jsp"/>
   </definition>
 		
+
 </tiles-definitions>

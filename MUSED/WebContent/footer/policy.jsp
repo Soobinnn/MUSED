@@ -8,7 +8,7 @@
 </head>
 <body>
 <div id="A_Container">
-	<h1 class="bor_btm266 ">(주)Mused 이용약관 (ver 1.1)
+	<h1 class="bor_btm266 ">(주)Mused 이용약관
 </h1>
 
 	<div class="service_box">
@@ -530,7 +530,7 @@
 
 	<b>[부칙]</b>
 	<p>제1조 (적용일자)</p>
-	<p>이 약관은 2017. 01. 16일부터 적용됩니다.</p>
+	<p>이 약관은 2018. 11. 22일부터 적용됩니다.</p>
 
 
 	</div>

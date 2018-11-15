@@ -10,6 +10,8 @@
 		<result type="tiles">notice_list</result>
 	</action>
 
+
+
 	<!-- 게시판 글쓰기 액션 -->
 	<action name="writeForm" class="board.notice.writeAction" method="form"> <!-- writeAction의 form메소드를 실행하면 다음 jsp로 이동한다. -->
 	 	<result>/board/notice/boardWrite.jsp</result>

@@ -54,7 +54,7 @@
 	<!-- 검색로직 추가시작, 컬럼명과 검색어를 동시에 전달하면 아래 3개의 로직을 하나로 합칠 수 있다. -->
     <select id ="selectSearchW" resultMap="nboardRes" parameterClass="string">
            <include refid="select-all"/>
-             WHERE name like #searchKeyword#
+             WHERE writer like #searchKeyword#
               ORDER BY no DESC
     </select>	
     
