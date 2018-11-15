@@ -16,7 +16,7 @@ public class pagingAction
 	
 	private StringBuffer pagingHtml;
 	
-	public pagingAction(int currentPage, int totalCount, int blockCount, int blockPage) {
+	public pagingAction(int currentPage, int totalCount, int blockCount, int blockPage, int searchNum, String isSearch) {
 		this.blockCount=blockCount;
 		this.blockPage=blockPage;
 		this.currentPage=currentPage;
@@ -60,6 +60,8 @@ public class pagingAction
 			}else {
 				pagingHtml.append("&nbsp;<a href=productList.action?currentPage=");
 				pagingHtml.append(i);
+				if(isSearch != "")
+					pagingHtml.append("&searchKeyword="+isSearch);
 				pagingHtml.append(">");
 				pagingHtml.append(i);
 				pagingHtml.append("</a>");	
@@ -71,6 +73,8 @@ public class pagingAction
 			
 			if(totalPage - startPage >=blockPage) {
 				pagingHtml.append("<a href=productList.action?currentPage="+(endPage+1)+">");
+				if(isSearch != "")
+					pagingHtml.append("&searchKeyword="+isSearch);
 				pagingHtml.append("¥Ÿ¿Ω");
 				pagingHtml.append("</a>");
 			}

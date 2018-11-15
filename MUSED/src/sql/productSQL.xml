@@ -140,6 +140,11 @@
 	<select id="selectMySellProduct" parameterClass="String" resultMap="productRes">
 		SELECT * FROM PRODUCT WHERE PRODUCT_ID=#product_id# AND PRODUCT_STATE='¿Ï'
 	</select>
-	
-	
+
+	<!-- °Ë»ö -->
+	<select id="main_selectSearch" resultMap="productRes" parameterClass="string">
+	<include refid="select-all" />
+		WHERE product_content LIKE #searchKeyword# OR product_subject LIKE #searchKeyword#
+		ORDER BY product_no DESC
+	</select>
 </sqlMap>

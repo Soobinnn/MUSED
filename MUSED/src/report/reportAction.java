@@ -30,6 +30,7 @@ public class reportAction extends ActionSupport
 	private String report_contno;
 	private String report_content;
 	private String report_reportid;
+	private String report_state;
 	
 	private String file_orgName; //업로드 파일의 원래 이름
 	private String file_savName; //서버에 저장할 업로드 파일의 이름. 고유 번호로 구분한다.
@@ -70,6 +71,7 @@ public class reportAction extends ActionSupport
 		paramClass.setReport_content(getReport_content());	//report_content
 		paramClass.setReport_regdate(today.getTime());	//report_regdate
 		paramClass.setReport_reportid(getReport_reportid());
+		paramClass.setReport_state(getReport_state());
 		// 등록 쿼리 수행.
 		sqlMapper.insert("report.insertReport", paramClass);
 
@@ -257,6 +259,14 @@ public class reportAction extends ActionSupport
 
 	public void setReport_reportid(String report_reportid) {
 		this.report_reportid = report_reportid;
+	}
+
+	public String getReport_state() {
+		return report_state;
+	}
+
+	public void setReport_state(String report_state) {
+		this.report_state = report_state;
 	}
 	
 }

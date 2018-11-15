@@ -9,8 +9,6 @@
 <link href="https://fonts.googleapis.com/css?family=Henny+Penny"
 	rel="stylesheet" />
 
-<link rel="stylesheet" href="/MUSED/tiles/Mused_main.css">
-
 <link rel="stylesheet" href="/MUSED/tiles/style.css">
 
 <link rel="stylesheet"
@@ -29,13 +27,20 @@
 	<header id="main_header">
 		<div class="head">
 			<h1 id="logo">
-				<a href="#"><img src="/MUSED_MUSED/tiles/image/logo2.png"
-					width="150" height="150"></a>
+				<a href="mainForm.action"><img
+					src="/MUSED/tiles/image/logo2.png" width="150" height="150"></a>
 			</h1>
 			<hgroup id="title">
 				<h2>MUSED</h2>
 			</hgroup>
-
+			<div class="search_bar">
+				<form class="searchform" name="search" action="mainSearch.action">
+					<input type="hidden" name="searchNum" value="0" /> <input
+						type="text" placeholder="검색어 입력" id="search_text"
+						name="searchKeyword"> <input name="submit" type="submit"
+						value="검색" id="search_button">
+				</form>
+			</div>
 			<nav id="main_tnb">
 				<ul>
 					<s:if test='%{#session.ID == null}'>
@@ -104,8 +109,8 @@
 				<ul class="right">
 
 					<s:if test='%{#session.ID != null}'>
-					<li id="menubar"><a href="productWriteForm.action">악기판매</a></li>
-					<li id="menubar"><a href="talentWriteForm.action">재능판매</a></li>
+						<li id="menubar"><a href="productWriteForm.action">악기판매</a></li>
+						<li id="menubar"><a href="talentWriteForm.action">재능판매</a></li>
 					</s:if>
 				</ul>
 			</nav>

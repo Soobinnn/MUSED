@@ -34,6 +34,7 @@ public class LoginAction extends ActionSupport implements SessionAware {
 	private HttpServletResponse response;
 
 	private String id;
+	private String name;
 	private String password;
 	private String email;
 	private String cid;
@@ -99,6 +100,7 @@ public class LoginAction extends ActionSupport implements SessionAware {
 				ActionContext context = ActionContext.getContext();
 				session = context.getSession();
 				session.put("ID", resultClass.getId());
+				session.put("NAME", resultClass.getName());
 				session.put("EMAIL", resultClass.getEmail());
 				session.put("ACCESS_NUM", resultClass.getAccess_num());
 				session.put("JOINDATE", resultClass.getJoindate());
@@ -118,6 +120,7 @@ public class LoginAction extends ActionSupport implements SessionAware {
 		Map<String, String> session = (Map<String, String>) context.getSession();
 
 		session.remove("ID");
+		session.remove("NAME");
 		session.remove("EMAIL");
 		session.remove("ACCESS_NUM");
 		session.remove("JOINDATE");
@@ -255,6 +258,14 @@ public class LoginAction extends ActionSupport implements SessionAware {
 
 	public void setToday(Calendar today) {
 		this.today = today;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
 	}
 
 }

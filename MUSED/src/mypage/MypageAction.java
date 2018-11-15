@@ -40,6 +40,11 @@ public class MypageAction extends ActionSupport implements SessionAware{
 	private MemberVO paramClass;
 	private MemberVO resultClass;
 	
+	/*페이징에러때매 임시방편 수정해야함-수빈*/
+	private String searchKeyword;
+	private int searchNum;
+	private int num =0;
+	
 	/*마이페이지 내 이름*/
 	private String id;
 	/*마이페이지 내 등급*/
@@ -138,7 +143,7 @@ public class MypageAction extends ActionSupport implements SessionAware{
 		
 		totalCount = list.size();
 		
-		page=new pagingAction(currentPage,totalCount,blockCount,blockPage);
+		page=new pagingAction(currentPage,totalCount,blockCount,blockPage,searchNum, getSearchKeyword());
 		pagingHtml = page.getPagingHtml().toString();
 		
 		int lastCount=totalCount;
@@ -158,7 +163,7 @@ public class MypageAction extends ActionSupport implements SessionAware{
 		
 		totalCount = list.size();
 		
-		page=new pagingAction(currentPage,totalCount,blockCount,blockPage);
+		page=new pagingAction(currentPage,totalCount,blockCount,blockPage,searchNum, getSearchKeyword());
 		pagingHtml = page.getPagingHtml().toString();
 		
 		int lastCount=totalCount;
@@ -177,7 +182,7 @@ public class MypageAction extends ActionSupport implements SessionAware{
 		
 		totalCount = list.size();
 		
-		page=new pagingAction(currentPage,totalCount,blockCount,blockPage);
+		page=new pagingAction(currentPage,totalCount,blockCount,blockPage,searchNum, getSearchKeyword());
 		pagingHtml = page.getPagingHtml().toString();
 		
 		int lastCount=totalCount;
@@ -196,7 +201,7 @@ public class MypageAction extends ActionSupport implements SessionAware{
 		list=sqlMapper.queryForList("talent.selectMySellTalent",(String)session.get("ID"));
 		totalCount = list.size();
 		
-		page=new pagingAction(currentPage,totalCount,blockCount,blockPage);
+		page=new pagingAction(currentPage,totalCount,blockCount,blockPage,searchNum, getSearchKeyword());
 		pagingHtml = page.getPagingHtml().toString();
 		
 		int lastCount=totalCount;
@@ -556,6 +561,22 @@ public class MypageAction extends ActionSupport implements SessionAware{
 
 	public void setSession(Map session) {
 		this.session = session;
+	}
+
+	public String getSearchKeyword() {
+		return searchKeyword;
+	}
+
+	public void setSearchKeyword(String searchKeyword) {
+		this.searchKeyword = searchKeyword;
+	}
+
+	public int getSearchNum() {
+		return searchNum;
+	}
+
+	public void setSearchNum(int searchNum) {
+		this.searchNum = searchNum;
 	}
 	
 	

@@ -8,7 +8,6 @@
 		<result property="report_no" column="report_no" />
 		<result property="report_memid" column="report_memid" />
 		<result property="report_category" column="report_category" />
-		<result property="report_indexno" column="report_indexno" />
 		<result property="report_subject" column="report_subject" />
 		<result property="report_content" column="report_content" />
 		<result property="report_contno" column="report_contno" />
@@ -16,6 +15,7 @@
 		<result property="report_reportid" column="report_reportid"/>
 		<result property="file_orgname" column="file_orgname"/>
 		<result property="file_savname" column="file_savname"/>
+		<result property="report_state" column="report_state"/>
 	</resultMap>
 	
 	<!-- 공통으로 사용할 select 절 정의 -->
@@ -44,12 +44,17 @@
 	</select>
 	
 	<insert id="insertReport" parameterClass="report">
-		INSERT INTO REPORT (REPORT_NO, REPORT_MEMID, REPORT_CATEGORY, REPORT_SUBJECT, REPORT_CONTENT, REPORT_CONTNO, REPORT_REGDATE, REPORT_REPORTID)
-		VALUES (PRODUCT_NO_SEQ.NEXTVAL, #report_memid#, #report_category#, #report_subject#, #report_content#, #report_contno#, #report_regdate#, #report_reportid#)
+		INSERT INTO REPORT (REPORT_NO, REPORT_MEMID, REPORT_CATEGORY, REPORT_SUBJECT, REPORT_CONTENT, REPORT_CONTNO, REPORT_REGDATE, REPORT_REPORTID, REPORT_STATE)
+		VALUES (PRODUCT_NO_SEQ.NEXTVAL, #report_memid#, #report_category#, #report_subject#, #report_content#, #report_contno#, #report_regdate#, #report_reportid#, #report_state#)
 	</insert>
 	
 	<update id="updateFile" parameterClass="report">
     	UPDATE REPORT SET FILE_ORGNAME = #file_orgname#,FILE_SAVNAME = #file_savname#
 		<include refid="where-no" />
+   	</update>
+   	
+   	<update id="adminreport" parameterClass="report">
+   		UPDATE REPORT SET STATE_STATE = #report_state#
+   		<include refid="where-no" />
    	</update>
 </sqlMap>

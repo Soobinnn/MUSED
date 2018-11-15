@@ -16,12 +16,16 @@ import org.apache.struts2.interceptor.SessionAware;
 import java.io.Reader;
 import java.io.IOException;
 
-public class ListAction extends ActionSupport implements SessionAware{
+public class ListAction extends ActionSupport {
 	public static Reader reader;
 	public static SqlMapClient sqlMapper;
 
 	private List<talentVO> list = new ArrayList<talentVO>();
 	private talentVO resultClass = new talentVO(); //쿼리 결과 값을 저장할 객체
+	
+	private String searchKeyword;
+	private int searchNum;
+	private int num =0;
 	
 	private int currentPage=1;	//현재 페이지
 	private int totalCount;		
@@ -29,9 +33,7 @@ public class ListAction extends ActionSupport implements SessionAware{
 	private int blockPage=5;
 	private String pagingHtml;
 	private pagingAction page;
-	
-	private Map session;
-	
+
 	public ListAction() throws IOException{
 		reader=Resources.getResourceAsReader("sqlMapConfig.xml");
 		sqlMapper=SqlMapClientBuilder.buildSqlMapClient(reader);
@@ -43,7 +45,7 @@ public class ListAction extends ActionSupport implements SessionAware{
 		
 		totalCount = list.size();
 		
-		page=new pagingAction(currentPage,totalCount,blockCount,blockPage);
+		page=new pagingAction(currentPage,totalCount,blockCount,blockPage, num, "");
 		pagingHtml = page.getPagingHtml().toString();
 		
 		int lastCount=totalCount;
@@ -55,13 +57,51 @@ public class ListAction extends ActionSupport implements SessionAware{
 
 		return SUCCESS;
 	}
+
+	public String search() throws Exception
+	{
+		if(searchNum == 0)
+		{
+			list = sqlMapper.queryForList("talent.selectSearchW", "%"+getSearchKeyword()+"%");
+		}
+		if(searchNum == 1)
+		{
+			list = sqlMapper.queryForList("talent.selectSearchS", "%"+getSearchKeyword()+"%");
+		}
+		if(searchNum == 2)
+		{
+			list = sqlMapper.queryForList("talent.selectSearchC", "%"+getSearchKeyword()+"%");	
+		}
+		
+		totalCount = list.size();
+		page = new pagingAction(currentPage, totalCount, blockCount, blockPage, searchNum, getSearchKeyword());
+		pagingHtml = page.getPagingHtml().toString();
+		
+		int lastCount = totalCount;
+		
+		if(page.getEndCount() < totalCount)
+			lastCount = page.getEndCount() + 1;
+		
+		list = list.subList(page.getStartCount(), lastCount);
+		return SUCCESS;
+	}
 	
-	public Map getSession() {
-		return session;
+	
+	public String getSearchKeyword() {
+		return searchKeyword;
+		}
+	
+
+	public void setSearchKeyword(String searchKeyword) {
+		this.searchKeyword = searchKeyword;
 	}
 
-	public void setSession(Map session) {
-		this.session = session;
+	public int getSearchNum() {
+		return searchNum;
+	}
+
+	public void setSearchNum(int searchNum) {
+		this.searchNum = searchNum;
 	}
 
 	public talentVO getResultClass() {
@@ -71,6 +111,7 @@ public class ListAction extends ActionSupport implements SessionAware{
 	public void setResultClass(talentVO resultClass) {
 		this.resultClass = resultClass;
 	}
+
 
 	public static Reader getReader() {
 		return reader;
