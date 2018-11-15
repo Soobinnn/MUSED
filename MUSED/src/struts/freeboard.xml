@@ -7,7 +7,7 @@
 <struts>
 <constant name="struts.multipart.maxSize" value="104857600" />
 
-<package name="board" extends="struts-default" namespace="/free">
+<package name="board" extends="struts-default, tiles-default" namespace="/tiles/free">
 
 
 
@@ -22,13 +22,14 @@
 	
 	<!-- 게시판 리스트 액션 -->
 	<action name="listAction" class="board.free.listAction">
-
-		<result>/board/free/boardList.jsp</result>
+       <result type="tiles">freeboard_list</result>
 	</action>
 
+	
+	
 	<!-- 게시판 글쓰기 액션 -->
 	<action name="writeForm" class="board.free.writeAction" method="form"> <!-- writeAction의 form메소드를 실행하면 다음 jsp로 이동한다. -->
-	 	<result>/board/free/boardWrite.jsp</result>
+	 	<result type="tiles">freeboard_write</result>
 	</action>
 	
 	

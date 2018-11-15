@@ -22,10 +22,6 @@
 			alert("이름을 입력해주세요");
 			return false;
 		
-		} else if (frm.password.value == "") {
-			alert("비밀번호를 입력해주세요.");
-			return false;
-		
 		} else if (frm.content.value == "") {
 			alert("내용을 입력해주세요.");
 			return false;
@@ -94,6 +90,7 @@
 		<tr>
 			<td bgcolor="#F4F4F4"><font color="#FF0000">*</font>이름</td>
 			<td bgcolor="#FFFFFF">
+				
 				<%-- 세션에서 ID 가져오기 --%>
 			<font color="#3B0B0B"><s:property value="%{#session.ID}" /></font>
 		<input type="hidden" name="name" value="<s:property value='%{#session.ID}' />"/>
@@ -105,12 +102,12 @@
 			<td height="1" colspan="2"></td>
 		</tr>
 
-		<tr>
+	<%-- 	<tr>
 			<td bgcolor="#F4F4F4"><font color="#FF0000">*</font>비밀번호</td>
 			<td bgcolor="#FFFFFF"><s:textfield name="password"
 					theme="simple" value="%{resultClass.password}"
 					cssStyle="width:20px" maxlength="30" /></td>
-		</tr>
+		</tr> --%>
 
 		<tr bgcolor="#777777">
 			<td height="1" colspan="2"></td>
@@ -120,7 +117,7 @@
 		<tr>
 			<td bgcolor="#F4F4F4"><font color="#FF0000">*</font>내용</td>
 			<td bgcolor="#FFFFFF"><s:textarea name="content" theme="simple"
-					value="%{resultClass.content}" cols="50" rows="10" /></td>
+					value="%{resultClass.content}" cols="50" rows="10" /><pre></pre></td>
 		</tr>
 
 		<tr bgcolor="#777777">

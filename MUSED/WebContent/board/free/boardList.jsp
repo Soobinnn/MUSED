@@ -19,6 +19,12 @@ top:500; left:410;}
 </head>
 
 <body>
+	<div>
+
+		<a href='/MUSED/tiles/notice/listAction.action'>공지사항</a>&nbsp;&nbsp; <a href='/MUSED/tiles/free/listAction.action'>자유게시판</a> &nbsp;&nbsp; <a href='/MUSED/tiles/sug/listAction.action'>건의게시판</a>
+
+	<br/><br/><br/><br/><br/><br/><br/>	
+	</div>
 	<table width="600" border="0" cellspacing="0" cellpadding="2">
 		<tr>
 			<td align="center"><h2>자유 게시판</h2></td>

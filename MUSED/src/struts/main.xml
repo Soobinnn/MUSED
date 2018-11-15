@@ -13,10 +13,6 @@
 	<action name="mainSearch" class="main.mainSearchAction">
 			<result type="tiles">main_search</result>
 	</action>
-	
-	<action name="mainForm" class="main.MainAction">
-		<result type="tiles">main</result>
-	</action>
 
 </package>
 </struts>

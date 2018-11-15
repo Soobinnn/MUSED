@@ -172,6 +172,7 @@ function showSlides(n) {
 제목 : <s:property value="resultClass.talent_subject"/><br>
 제품명 : <s:property value="resultClass.talent_name"/><br>
 가격 : <s:property value="resultClass.talent_price"/><br>
+
 </td>
 </tr>
 <tr>

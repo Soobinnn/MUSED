@@ -22,7 +22,7 @@ function btn(){
 
  function open_win_noresizable(url,name){
 	var oWin = window.open(url, name, "scrollbars=no,status=no, resizable=no, width=300, height=150");
-}
+ }
 
 var slideIndex = 1;
 showSlides(slideIndex);
@@ -47,7 +47,10 @@ function showSlides(n) {
   slides[slideIndex-1].style.display = "block"; 
 }
 
-	
+function zzim_click(){
+	alert("찜 등록이 완료되었습니다.")
+}
+
 </script>
 <style>
 * {
@@ -178,9 +181,9 @@ to {
 	<s:property value="resultClass.product_subject" />
 	<br> 조회수 : &nbsp; &nbsp;<s:property value="resultClass.readhit" />
 
-		<input name="list" type="button" value="찜하기" class="inputb"
-		onClick="ZzimInsert.action" /> <input name="list" type="button"
-		value="찜취소" class="inputb" onClick="ZzimDelete.action" />
+		
+	<input name="list" type="button" value="찜하기" class="inputb" onclick="zzim_click();javascript:location.href='productZzim.action'"/>
+
 
 
 		<table width="100%" height="400" border="1">
