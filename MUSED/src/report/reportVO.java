@@ -7,7 +7,6 @@ public class reportVO
 	private int report_no;
 	private String report_memid;
 	private String report_category;
-	private int report_indexno;
 	private String report_subject;
 	private String report_content;
 	private String report_contno;
@@ -15,7 +14,14 @@ public class reportVO
 	private String report_reportid;
 	private String file_orgname;
 	private String file_savname;
+	private String report_state;
 	
+	public String getReport_state() {
+		return report_state;
+	}
+	public void setReport_state(String report_state) {
+		this.report_state = report_state;
+	}
 	public int getReport_no() {
 		return report_no;
 	}
@@ -39,14 +45,7 @@ public class reportVO
 	{
 		this.report_category = report_category;
 	}
-	public int getReport_indexno() 
-	{
-		return report_indexno;
-	}
-	public void setReport_indexno(int report_indexno) 
-	{
-		this.report_indexno = report_indexno;
-	}
+
 	public String getReport_subject() 
 	{
 		return report_subject;

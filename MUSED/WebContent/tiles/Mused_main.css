@@ -135,10 +135,7 @@
 	box-sizing : border-box;
 	padding: 10px;
 	border: 1px solid black;
-	
 	bottom : 0px;
-	/* 글자 정렬 */
-	text-align: center;
 }
 #main_footer > #footer_nav
 {
@@ -167,6 +164,10 @@
 }
 /*슬라이드 몸통 */
 
+#main_footer > #footer_descrip
+{
+	font-color:gray;
+}
 .slide{background : gray; text-align:center; position:relative; width: 1500px; margin: 0 auto; display: block; height:350px;}
 
 .slide_ul{display: block;}

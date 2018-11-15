@@ -16,19 +16,32 @@
 	<definition name="mypage" template="/tiles/mypage_layout.jsp">
 		<put-attribute name="title" value="MYPAGE"/>
 		<put-attribute name="header" value="/tiles/header.jsp"/>
-		<put-attribute name="mypage_header1" value="/tiles/mypage_header1.jsp"/>
-		<put-attribute name="mypage_header2" value="/tiles/mypage_header2.jsp"/>
+		<put-attribute name="mypage_header" value="/tiles/mypage_header.jsp"/>
 		<put-attribute name="mypage_left" value="/tiles/mypage_left.jsp"/>
 		<put-attribute name="mypage_body" value="/mypage/FirstView.jsp"/>
 		<put-attribute name="footer" value="/tiles/footer.jsp"/>
 	</definition>
+	
+	<!-- 관리자 -->
+	<definition name="admin" template="/tiles/admin_layout.jsp">
+		<put-attribute name="admin_title" value="MUSED"/>
+		<put-attribute name="admin_header" value="/tiles/header.jsp"/>
+		<put-attribute name="admin_body" value="/admin/admin_main.jsp"/>
+	</definition>
+	<!-- 메인 검색 -->
+	<definition name="main_search" template="/tiles/search_layout.jsp">
+		<put-attribute name="title" value="MUSED"/>
+		<put-attribute name="header" value="/tiles/header.jsp"/>
+		<put-attribute name="body1" value="/main/mainSearchResult.jsp"/>
+		<put-attribute name="footer" value="/tiles/footer.jsp"/>
+	</definition>
 	<!-- 마이페이지 등록된상품 -->
 	<definition name="myProduct" extends="mypage">
-		<put-attribute name="mypage_body" value="/mypage/button/mypageProductList.jsp"/>
+		<put-attribute name="mypage_body" value="/product/ListForm.jsp"/>
 	</definition>
 	<!-- 마이페이지 등록된 재능 -->
 	<definition name="myTalent" extends="mypage">
-		<put-attribute name="mypage_body" value="/mypage/button/mypageTalentList.jsp"/>
+		<put-attribute name="mypage_body" value="/talent/ListForm.jsp"/>
 	</definition>
 	<!-- 마이페이지 최근 본 상품 -->
 	<definition name="myRecent" extends="mypage">
@@ -38,9 +51,13 @@
 	<definition name="myZzim" extends="mypage">
 		<put-attribute name="mypage_body" value="/mypage/button/mypageZzimList.jsp"/>
 	</definition>
-	<!-- 마이페이지 판매 내역 -->
-	<definition name="mySell" extends="mypage">
-		<put-attribute name="mypage_body" value="/mypage/button/mypageSellList.jsp"/>
+	<!-- 마이페이지 상품 판매 내역 -->
+	<definition name="mySellProduct" extends="mypage">
+		<put-attribute name="mypage_body" value="/mypage/button/mypageSellProductList.jsp"/>
+	</definition>
+	<!-- 마이페이지 재능 판매 내역 -->
+	<definition name="mySellTalent" extends="mypage">
+		<put-attribute name="mypage_body" value="/mypage/button/mypageSellTalentList.jsp"/>
 	</definition>
 	<!-- 마이페이지 쪽지 보내기 -->
 	<definition name="sendMessage" extends="mypage">
@@ -78,6 +95,8 @@
 	<definition name="memberDeleteAction" extends="mypage">
 		<put-attribute name="mypage_body" value="/mypage/button/mypageMemDeleteAction.jsp"/>
 	</definition>
+	
+	
 	
 	<!-- 로그인 & 회원가입 -->
 	<definition name="loginForm" extends="main">
@@ -156,6 +175,10 @@
 		<put-attribute name="body" value="/product/DeleteForm.jsp"/>
 	</definition>
 	
+	<definition name="productZzim" extends="main">
+		<put-attribute name="body" value="/product/DetailForm.jsp"/>
+	</definition>
+	
 	<!-- 상품  -->
 	
 	<!-- 재능  -->
@@ -185,5 +208,46 @@
 	</definition>
 
 	<!-- 재능  -->
+	<!-- 관리자 -->
+	<definition name="admin_report" extends="admin">
+		<put-attribute name="admin_body" value="/admin/reportList.jsp"/>
+	</definition>
+	
+	<definition name="admin_member" extends="admin">
+		<put-attribute name="admin_body" value="/admin/reportList.jsp"/>
+	</definition>
+
+	<definition name="admin_notice" extends="admin">
+		<put-attribute name="admin_body" value="/admin/reportList.jsp"/>
+	</definition>
+	
+<!--자유 게시판 : KS -->
+  <definition name="freeboard_list" extends="main">
+     <put-attribute name="body" value="/board/free/boardList.jsp"/>
+   </definition>
+   
+   <definition name="freeboard_view" extends="main">
+     <put-attribute name="body" value="/board/free/boardView.jsp"/>
+    </definition>
+    
+    <definition name="freeboard_write" extends="main">
+      <put-attribute name="body" value="board/free/boardWrite.jsp"/>
+    </definition>
+
+<!-- 자유 게시판 종료 : KS -->
+  
+  <!-- 공지사항 게시판 -->
+   <definition name="notice_list" extends="main">
+     <put-attribute name="body" value="/board/notice/boardList.jsp"/>
+  </definition>
+  
+   
+   
+   
+   <!-- 건의사항 게시판 -->
+   <definition name="suggestion_list" extends="main">
+     <put-attribute name="body" value="/board/suggestion/boardList.jsp"/>
+  </definition>
+		
 
 </tiles-definitions>

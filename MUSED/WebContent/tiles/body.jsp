@@ -1,68 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
+<%@ taglib prefix="s" uri="/struts-tags" %>
 <!DOCTYPE html>
-
-<!-- 초기화 -->
-<!-- http://meyerweb.com/eric/tools/css/reset/ 
-   v2.0 | 20110126
-   License: none (public domain) -->
-
-<style>
-html, body, div, span, applet, object, iframe,
-h1, h2, h3, h4, h5, h6, p, blockquote, pre,
-a, abbr, acronym, address, big, cite, code,
-del, dfn, em, img, ins, kbd, q, s, samp,
-small, strike, strong, sub, sup, tt, var,
-b, u, i, center,
-dl, dt, dd, ol, ul, li,
-fieldset, form, label, legend,
-table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, canvas, details, embed, 
-figure, figcaption, footer, header, hgroup, 
-menu, nav, output, ruby, section, summary,
-time, mark, audio, video 
-{
-	margin: 0;
-	padding: 0;
-	border: 0;
-	font-size: 100%;
-	font: inherit;
-	vertical-align: baseline;
-}
-/* HTML5 display-role reset for older browsers */
-article, aside, details, figcaption, figure, 
-footer, header, hgroup, menu, nav, section 
-{
-	display: block;
-}
-body {
-	line-height: 1;
-}
-ol, ul {
-	list-style: none;
-}
-blockquote, q {
-	quotes: none;
-}
-blockquote:before, blockquote:after,
-q:before, q:after {
-	content: '';
-	content: none;
-}
-table 
-{
-	border-collapse: collapse;
-	border-spacing: 0;
-}
-</style>
-
 <html>
 <head>
 <!-- 웹 폰트 적용  -->
 <!-- css 적용 -->
 <link href="https://fonts.googleapis.com/css?family=Henny+Penny" rel="stylesheet"/>
 
-<link rel="stylesheet" href="Mused_main.css">
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
 <script type="text/javascript" src="main.js"></script>
 <link rel="stylesheet" href="style.css">
@@ -85,35 +30,220 @@ table
 	<div id = "content">
 		<section id ="product_section">
 			<h1>중고악기거래</h1>
-			<p>
-				<img src="http://placehold.it/250x250" width="250" height="250"/>
-				<img src="http://placehold.it/250x250" width="250" height="250"/>
-				<img src="http://placehold.it/250x250" width="250" height="250"/>
-				<img src="http://placehold.it/250x250" width="250" height="250"/>
-				<img src="http://placehold.it/250x250" width="250" height="250"/>	
-			<p>		
+			&nbsp;<a href='#'>전체보기</a>
+			<table width="600" border="0" cellspacing="0" cellspadding="2">
+			<tr>
+				<s:if test='%{#session.ID != null}'>
+      				<s:iterator value="list_p" status="stat">
+	      			<s:url id="DetailURL" action="productDetail">
+					<s:param name="product_no">
+					<s:property value="product_no"/>
+					</s:param>
+					</s:url>
+      			<td>	 
+          			&nbsp;<s:a href="%{DetailURL}">
+      				<img src="/MUSED/product/img/<s:property value="main_img"/>" style="height: 100px; width: 100px; display: block;"/>
+					<br/>
+					<s:property value="product_subject" /></s:a>
+					<br/>
+					판매자 : <s:property value="product_id"/>	
+	  			</td>
+	  	     		<s:if test="#stat.count%5==0">
+  					<tr></tr>
+					</s:if>	  
+					</s:iterator>  		
+				</s:if>
+		
+				<!-- 로그인 안했을 때 로그인 폼으로 -->
+	 			<s:if test='%{#session.ID == null}'>
+	 			<s:iterator value="list_p" status="stat">
+      			<td>	 
+         			 &nbsp;<s:a href="loginForm.action">
+      					<img src="/MUSED/product/img/<s:property value='main_img'/>" style="height: 100px; width: 100px; display: block;"/>
+					<br/>
+					<s:property value="product_subject"/></s:a>
+					<br/>
+					<s:property value="product_id"/>	
+					<br/>
+					<s:property value="product_price"/>원
+	  			</td>
+	  	     		<s:if test="#stat.count%5==0">
+  					<tr></tr>
+					</s:if>	  
+					</s:iterator>  		
+	 			</s:if>
+			</tr>
+			</table>
 		</section>
+		
 		<section id ="talent_section">
 			<h1>재능거래</h1>
-				<img src="http://placehold.it/250x250" width="250" height="250"/>
-				<img src="http://placehold.it/250x250" width="250" height="250"/>
-				<img src="http://placehold.it/250x250" width="250" height="250"/>
-				<img src="http://placehold.it/250x250" width="250" height="250"/>
-				<img src="http://placehold.it/250x250" width="250" height="250"/>
+			&nbsp;<a href='#'>전체보기</a>
+			<table width="600" border="0" cellspacing="0" cellspadding="2">
+			<tr>
+				<!-- 로그인 했을 때 상세보기 들어가짐 -->
+				<s:if test='%{#session.ID != null}'>
+     				<s:iterator value="list_t" status="stat">
+  	      			<td>	 
+	      				<s:url id="DetailURL" action="talentDetail">
+						<s:param name="talent_no">
+						<s:property value="talent_no"/>
+						</s:param>
+						</s:url>
+					<td>
+   						&nbsp;<s:a href="%{DetailURL}">
+   	      				<img src="/MUSED/talent/img/<s:property value="main_img"/>" style="height: 100px; width: 100px; display: block;"/>
+						<br>
+						<s:property value="talent_subject" /></s:a>
+						<br>
+						판매자 : <s:property value="talent_id"/>	
+	    			</td>
+	       				<s:if test="#stat.count%5==0">
+        				<tr></tr>
+						</s:if>	  
+					</s:iterator>
+				</s:if>
+		
+				<!-- 로그인 안했을 때 로그인 폼으로 -->
+	 			<s:if test='%{#session.ID == null}'>
+	 				<s:iterator value="list_t" status="stat">
+      				<td>	 
+          				&nbsp;<s:a href="loginForm.action">
+      					<img src="/MUSED/talent/img/<s:property value="main_img"/>" style="height: 100px; width: 100px; display: block;"/>
+						<br>
+						<s:property value="talent_subject" /></s:a>
+						<br>
+						판매자 : <s:property value="talent_id"/>	
+	     			</td>
+	       				<s:if test="#stat.count%5==0">
+        				<tr></tr>
+						</s:if>	  
+						</s:iterator>  		
+	 				</s:if>
+			</tr>
+			</table>
 		</section>
 				
 		<section id ="board_section">
 			<div id ="notice_">
 				<h1>공지사항</h1>
-				<img src="http://placehold.it/350x250" width="350" height="250"/>
+				&nbsp;<a href='#'>전체보기</a>
+				<!-- <img src="http://placehold.it/350x250" width="350" height="250"/> -->
+				
+				<table width="350" border="0" cellspacing="0" cellpadding="2">
+					<tr>
+						<td width="150"><strong>제목</strong></td>
+						<td width="50"><strong>글쓴이</strong></td>
+						<td width="100"><strong>날짜</strong></td>
+						<td width="50"><strong>조회</strong></td>
+					</tr>
+					<tr bgcolor="#777777">
+						<td height="1" colspan="5"></td>
+					</tr>
+					<s:iterator value="list_n" status="stat">
+						<s:url id="viewURL" action="/tiles/notice/viewAction">
+						<s:param name="no">
+						<s:property value="no"/> 
+						</s:param>
+					<s:param name="currentPage">
+					<s:property value="currentPage"/>
+				</s:param>	
+						</s:url>
+					<tr>
+						 <td align="left">
+			      			<s:if test="re_level != 0">
+			          			<c:forEach var = "i" begin ="${re_level}" end = "0">&nbsp;</c:forEach>→
+			      			</s:if>		
+						 	<s:a href="%{viewURL}"><s:property value="subject" /></s:a>
+						 </td>
+						 <td> <s:property value="name" /></td>
+						 <td> <s:property value="regdate" /></td>
+			 			<td><s:property value="readhit" /></td>
+			 		<tr bgcolor="#777777">
+			     		<td height="1" colspan="5"></td>
+					</tr>		
+					</s:iterator>
+				</table>
 			</div>
 			<div id ="free_">
 				<h1>자유게시판</h1>
-				<img src="http://placehold.it/350x250" width="350" height="250"/>
+				&nbsp;<a href='#'>전체보기</a>
+				<!-- <img src="http://placehold.it/350x250" width="350" height="250"/> -->
+				<table width="350" border="0" cellspacing="0" cellpadding="2">
+					<tr>
+						<td width="150"><strong>제목</strong></td>
+						<td width="50"><strong>글쓴이</strong></td>
+						<td width="100"><strong>날짜</strong></td>
+						<td width="50"><strong>조회</strong></td>
+					</tr>
+					<tr bgcolor="#777777">
+						<td height="1" colspan="5"></td>
+					</tr>
+					<s:iterator value="list_f" status="stat">
+						<s:url id="viewURL" action="/tiles/free/viewAction">
+						<s:param name="no">
+						<s:property value="no"/> 
+						</s:param>
+						<s:param name="currentPage">
+					<s:property value="currentPage"/>
+						</s:param>
+						
+						</s:url>
+					<tr>
+						 <td align="left">
+			      			<s:if test="re_level != 0">
+			          			<c:forEach var = "i" begin ="${re_level}" end = "0">&nbsp;</c:forEach>→
+			      			</s:if>		
+						 	<s:a href="%{viewURL}"><s:property value="subject" /></s:a>
+						 </td>
+						 <td> <s:property value="name" /></td>
+						 <td> <s:property value="regdate" /></td>
+			 			<td><s:property value="readhit" /></td>
+			 		<tr bgcolor="#777777">
+			     		<td height="1" colspan="5"></td>
+					</tr>		
+					</s:iterator>
+				</table>
 			</div>
 			<div id ="suggestion_">
 				<h1>건의사항</h1>
-				<img src="http://placehold.it/350x250" width="350" height="250"/>
+				&nbsp;<a href='#'>전체보기</a>
+				<!-- <img src="http://placehold.it/350x250" width="350" height="250"/> -->
+					<table width="350" border="0" cellspacing="0" cellpadding="2">
+					<tr>
+						<td width="150"><strong>제목</strong></td>
+						<td width="50"><strong>글쓴이</strong></td>
+						<td width="100"><strong>날짜</strong></td>
+						<td width="50"><strong>조회</strong></td>
+					</tr>
+					<tr bgcolor="#777777">
+						<td height="1" colspan="5"></td>
+					</tr>
+					<s:iterator value="list_s" status="stat">
+						<s:url id="viewURL" action="/tiles/sug/viewAction">
+						<s:param name="no">
+						<s:property value="no"/> 
+						</s:param>
+						<s:param name="currentPage">
+					<s:property value="currentPage"/>
+				</s:param>
+						
+						</s:url>
+					<tr>
+						 <td align="left">
+			      			<s:if test="re_level != 0">
+			          			<c:forEach var = "i" begin ="${re_level}" end = "0">&nbsp;</c:forEach>→
+			      			</s:if>		
+						 	<s:a href="%{viewURL}"><s:property value="subject" /></s:a>
+						 </td>
+						 <td> <s:property value="name" /></td>
+						 <td> <s:property value="regdate" /></td>
+			 			<td><s:property value="readhit" /></td>
+			 		<tr bgcolor="#777777">
+			     		<td height="1" colspan="5"></td>
+					</tr>		
+					</s:iterator>
+				</table>
 			</div>
 		</section>
 	</div>

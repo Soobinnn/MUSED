@@ -20,12 +20,9 @@
 		</action>
 		
 		<action name="loginAction" class="login.LoginAction" method="login">
-			<result name="success" type="tiles">main</result>
+			<result name="success" type="chain">main</result>
 			<result name="error" type="tiles">loginError</result>
-			
-			<result name="login" type="redirect-action">
-				<param name="actionName">관리자 페이지로 이동</param>
-			</result>
+			<result name="login" type="chain">main</result>
 		</action>
 		
 		<action name="logout" class="login.LoginAction" method="logout">
@@ -91,11 +88,7 @@
 			<result name="success">/member/authCheck.jsp</result>
 			<result name="error">/member/authCheckError.jsp</result>
 		</action>
-		<!-- 본인인증 -->
-		
-		
-		
-		<!-- 본인인증 -->
+		<!-- 본인인증 -->	
 
 	</package>
 	

@@ -1,31 +1,40 @@
-<%@ page language="java" contentType="text/html; charset=utf-8"
-	pageEncoding="utf-8"%>
-
-<!doctype html>
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
 <head>
-
-<title>Dropdown</title>
-
-<link type="text/css" rel="stylesheet" href="style.css" />
-
+<style>
+input {             /*input tag 공통 스타일*/
+  width: 200px;
+  height: 100px;
+  border-radius: 3px;
+  font-weight: 600;
+  border-color: transparent;
+  font-size: 25px;
+  background: hotpink;
+  color: #fff;
+ cursor: pointer;
+}
+input.upload {  
+  opacity: 0;       /*input type="file" tag 투명하게 처리*/
+  position: relative;
+}
+button.replace {    /*button tag 에 원하는 스타일 적용*/
+  position: absolute;
+  width: 200px;
+  height: 100px;
+  border-radius: 3px;
+  font-weight: 600;
+  border-color: transparent;
+  font-size: 25px;
+  background: hotpink;
+  color: #fff;
+  cursor: pointer;
+}
+</style>
 </head>
 <body>
-
-	<div id="drop">
-		<ul>
-			<li><a href="#">홈</a></li>
-			<li><a href="#">일상</a></li>
-			<li><a href="#">여행</a>
-				<ul>
-					<li><a href="#">미국</a>
-					<li><a href="#">캐나다</a>
-					<li><a href="#">일본</a>
-					<li><a href="#">홍콩</a>
-				</ul>
-			</li>
-			<li><a href="#">컴퓨터</a></li>
-		</ul>
-	</div>
+<input type="submit" value="등록">
+<button class="replace">파일 업로드</button>
+<input type="file" value="파일 업로드" class="upload">
 </body>
 </html>
+
+

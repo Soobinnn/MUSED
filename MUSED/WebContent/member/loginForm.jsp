@@ -12,7 +12,7 @@
 	function begin() {
 		document.loginForm.id.focus();
 	}
-
+	
 	function checkIt() {
 		if (!document.loginForm.id.value) {
 			alert("이름을 입력하지 않으셨습니다.");

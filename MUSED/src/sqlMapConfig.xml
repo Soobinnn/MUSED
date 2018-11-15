@@ -25,5 +25,8 @@
 	<sqlMap resource="/sql/memberSQL.xml" /> <!-- DK : 회원가입 , 로그인 관련 sql -->
 	<sqlMap resource="/sql/reportSQL.xml"/>	<!-- SJ : 재능 관련 sql -->
 	<sqlMap resource="/sql/messageSQL.xml"/> <!--  JH : 쪽지 관련 sql -->
+	<sqlMap resource="/sql/freeboardSQL.xml"/> <!-- KS : 자유게시판 sql -->
+	<sqlMap resource="/sql/noticeSQL.xml"/> <!--  KS : 공지사항게시판 sql -->
+	<sqlMap resource="/sql/suggestionSQL.xml"/> <!-- KS : 건의사항 게시판 sql -->
 
 </sqlMapConfig>

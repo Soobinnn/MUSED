@@ -1,19 +1,9 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="euc-kr"?>
 <!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD Sql Map 2.0//EN"
 'http://ibatis.apache.org/dtd/sql-map-2.dtd'>
 <sqlMap namespace="product">
 <typeAlias alias="product" type="product.productVO"/>
-<!-- <typeAlias type="product.imgVO" alias="image"/>
-	<resultMap class="image" id="imageRes">
-		<result column="no_p" property="no_p"/>
-		<result column="main_image" property="main_image"/>
-		<result column="image2" property="image2"/>
-		<result column="image3" property="image3"/>
-		<result column="image4" property="image4"/>
-		<result column="image5" property="image5"/>
-
-	</resultMap> -->
- 
+<typeAlias alias="comments" type="product.product_cVO"/>
 	<resultMap class="product" id="productRes">
 		<result property="product_no" column="product_no"/>
 		<result property="product_id" column="product_id"/>
@@ -30,19 +20,29 @@
 		<result property="product_image" column="product_image"/>
 		<result property="product_content" column="product_content"/>	
 		<result property="main_img" column="main_img"/>
+		<result property="readhit" column="readhit"/>
+	</resultMap>
+	
+	<resultMap class="comments" id="commentRes">
+		<result property="c_no" column="c_no"/>
+		<result property="c_index" column="c_index"/>	
+		<result property="c_contnum" column="c_contnum"/>
+		<result property="c_id" column="c_id"/>
+		<result property="c_content" column="c_content"/>	
+		<result property="c_regdate" column="c_regdate"/>
 	</resultMap>
 
-	<!-- product ì „ì²´ ì •ë³´ ê°€ì ¸ì˜¤ê¸° -->
+	<!-- product ÀüÃ¼ Á¤º¸ °¡Á®¿À±â -->
 	<sql id="select-all">
 		SELECT * FROM PRODUCT 
 	</sql>
 	
-	<!-- where no ì„¤ì • -->
+	<!-- where no ¼³Á¤ -->
 	<sql id="where-no">
 		WHERE product_no=#product_no#
 	</sql>
 	
-	<!-- product ì „ì²´ ê°€ì ¸ì˜¤ëŠ”ë° noì •ë ¬ -->
+	<!-- product ÀüÃ¼ °¡Á®¿À´Âµ¥ noÁ¤·Ä -->
 	<select id="selectAll" resultMap="productRes">
 		SELECT * FROM PRODUCT
 		ORDER BY product_no DESC
@@ -51,33 +51,115 @@
 	<select id="selectLastNo" resultMap="productRes" parameterClass="int">
 		select * product where product_no = (select max(product_no) from product) 
 	</select>
-
 	
-<!-- 	product ì¼ì • noì˜ ì „ì²´ ì •ë³´ ê°€ì ¸ì˜¤ê¸°	 -->
+ 	<select id="commentSelectAll" resultMap="commentRes" parameterClass="int">
+		SELECT * FROM comments
+		WHERE c_contnum = #c_contnum# and c_index=0
+		ORDER BY c_no DESC
+	</select>
+	
+<!-- 	product ÀÏÁ¤ noÀÇ ÀüÃ¼ Á¤º¸ °¡Á®¿À±â	 -->
 	<select id="selectOne" resultMap="productRes" parameterClass="int">
 		<include refid="select-all"/>
 		<include refid="where-no"/>
 	</select>
 
-<!-- 	idì— ë§žëŠ” ê¸€ë§Œ ìˆ˜ì •/ì‚­ì œ í¼ ë‚˜ì˜¤ê²Œ...
+	<select id="selectMainImg" resultMap="productRes" parameterClass="int">
+	<![CDATA[
+		SELECT * FROM 
+		(SELECT * FROM product WHERE product_no <= #product_no# ORDER BY product_no DESC) 
+		WHERE ROWNUM <= 5 
+	]]>
+	</select>
+ 
 
-	product ìƒí’ˆ ë“±ë¡ì„ ìœ„í•œ insert
- -->
+<!-- product »óÇ° µî·ÏÀ» À§ÇÑ insert -->
  	<insert id="insertProduct" parameterClass="product">
-		INSERT INTO PRODUCT (PRODUCT_NO, PRODUCT_ID, PRODUCT_STATE, PRODUCT_SUBJECT, PRODUCT_NAME, PRODUCT_CATEGORY, PRODUCT_BRAND, PRODUCT_PRICE, PRODUCT_TYPE, PRODUCT_PHONE, PRODUCT_SIDO, PRODUCT_GOGON, PRODUCT_IMAGE, PRODUCT_CONTENT, MAIN_IMG)
-		VALUES (PRODUCT_NO_SEQ.NEXTVAL, #product_id#, #product_state#, #product_subject#, #product_name#, #product_category#, #product_brand#, #product_price#, #product_type#, #product_phone#, #product_sido#, #product_gogon#, #product_image#, #product_content#,#main_img#)
+		INSERT INTO PRODUCT (PRODUCT_NO, PRODUCT_ID, PRODUCT_STATE, PRODUCT_SUBJECT, PRODUCT_NAME, PRODUCT_CATEGORY, PRODUCT_BRAND, PRODUCT_PRICE, PRODUCT_TYPE, PRODUCT_PHONE, PRODUCT_SIDO, PRODUCT_GOGON, PRODUCT_IMAGE, PRODUCT_CONTENT, MAIN_IMG, READHIT)
+		VALUES (PRODUCT_NO_SEQ.NEXTVAL, #product_id#, #product_state#, #product_subject#, #product_name#, #product_category#, #product_brand#, #product_price#, #product_type#, #product_phone#, #product_sido#, #product_gogon#, #product_image#, #product_content#,#main_img#, 0)
 	</insert>
 
-<!-- 	product ìƒí’ˆ ìˆ˜ì •ì„ ìœ„í•œ update -->
+	<insert id="insertComment" parameterClass="comments">
+		INSERT INTO comments (C_NO, C_INDEX, C_CONTNUM, C_ID, C_CONTENT, C_REGDATE)
+		VALUES (COMMENTS_NO_SEQ.NEXTVAL, 0, #c_contnum#, #c_id#, #c_content#, #c_regdate#)	
+	</insert>
+	
+	
+	<update id="updateReadHit" parameterClass="product">
+    			UPDATE PRODUCT SET READHIT = READHIT + 1
+			<include refid="where-no" />
+   		 </update>
+
 	<update id="updateProduct" parameterClass="product">
 		UPDATE PRODUCT SET PRODUCT_STATE = #product_state#, PRODUCT_SUBJECT = #product_subject#, PRODUCT_NAME = #product_name#, PRODUCT_CATEGORY = #product_category#, PRODUCT_BRAND = #product_brand#, PRODUCT_PRICE = #product_price#, PRODUCT_TYPE = #product_type#, PRODUCT_PHONE = #product_phone#, PRODUCT_SIDO=#product_sido#, PRODUCT_GOGON=#product_gogon#,PRODUCT_IMAGE=#product_image#, PRODUCT_CONTENT = #product_content#, MAIN_IMG=#main_img#	
 		<include refid="where-no"/>
 	</update>
 
-<!-- 	product ìƒí’ˆ ì‚­ì œë¥¼ ìœ„í•œ delete	 -->
+	
+	<!-- °Ô½Ã±Û µî·Ï ½Ã Á¡¼ö Áõ°¡ -->
+ 	<update id="writeScore" parameterClass="String">
+		UPDATE MEMBER SET SCORE = SCORE + 5
+		WHERE ID = #id#
+	</update>	
+	<!-- ´ñ±Û µî·Ï ½Ã Á¡¼ö Áõ°¡ -->
+ 	 <update id="CwriteScore" parameterClass="String">
+		UPDATE MEMBER SET SCORE = SCORE + 1
+		WHERE ID = #id#
+	</update>
+	
+<!-- 	product »óÇ° »èÁ¦¸¦ À§ÇÑ delete	 -->
 	<delete id="deleteProduct" parameterClass="product">
 		DELETE FROM product
 		<include refid="where-no"/>
 	</delete>
+	
+	<delete id="deletePComment" parameterClass="comments">
+		DELETE FROM COMMENTS
+		WHERE C_INDEX=0
+		and C_NO=#c_no#
+		and C_ID=#c_id#
+	</delete>
 
+	<!-- mypage¿¡¼­ ³» °Ô½Ã¹° µî·ÏÇÑ °³¼ö -->
+	<select id="countProduct" parameterClass="String" resultClass="java.lang.Integer">
+		SELECT COUNT(*) as cpro  FROM product WHERE PRODUCT_ID=#product_id#
+	</select>
+	
+	<!-- mypage¿¡¼­ ³»°¡ ÆÇ¸ÅÇÑ °Ô½Ã¹° ¼ö -->
+	<select id="countSellProduct" parameterClass="String"  resultClass="java.lang.Integer">
+		SELECT COUNT(*) as spro FROM product WHERE PRODUCT_ID=#product_id# AND PRODUCT_STATE='¿Ï'
+	</select>
+	
+	<!-- mypage¿¡¼­ µî·ÏÇÑ »óÇ° -->
+	<select id="selectMyProduct" parameterClass="String" resultMap="productRes">
+		SELECT * FROM PRODUCT WHERE PRODUCT_ID=#product_id#
+		ORDER BY product_no DESC
+	</select>
+	
+	<!-- mypage¿¡¼­ ³»°¡ ÆÇ¸ÅÇÑ »óÇ° ¸®½ºÆ® -->
+	<select id="selectMySellProduct" parameterClass="String" resultMap="productRes">
+		SELECT * FROM PRODUCT WHERE PRODUCT_ID=#product_id# AND PRODUCT_STATE='¿Ï'
+	</select>
+
+	<!-- °Ë»ö -->
+	<select id="main_selectSearch" resultMap="productRes" parameterClass="string">
+	<include refid="select-all" />
+		WHERE product_content LIKE #searchKeyword# OR product_subject LIKE #searchKeyword#
+		ORDER BY product_no DESC
+	</select>
+	
+	<select id="detailSearch" parameterClass="java.util.HashMap" resultMap="productRes">
+		SELECT * from product
+   	 	WHERE product_category=#product_category1# 
+		or product_category=#product_category2# 
+		or product_category=#product_category3# 
+		or product_category=#product_category4#
+		or product_category=#product_category5# 
+		or product_category=#product_category6#
+		or product_price BETWEEN $product_priceA$ and $product_priceB$
+		or product_sido=#product_sido# or product_gogon=#product_gogon#
+		or product_content LIKE #searchKeyword# OR product_subject LIKE #searchKeyword#
+		ORDER BY product_no DESC
+ </select>
+	
 </sqlMap>

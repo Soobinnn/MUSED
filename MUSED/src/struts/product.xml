@@ -7,9 +7,10 @@
 
 	<package name="product" extends="struts-default, tiles-default">   <!-- 소진 -->
 
-		<!-- 상품 목록 -->
+		<!-- 상품 목록-->
 		<action name="productList" class="product.ListAction">
 			<result type="tiles">productList</result>
+
 		</action>
 		
 		<!-- 상품 등록  폼 -->
@@ -27,6 +28,21 @@
 			<result type="tiles">productDetailForm</result>
 		</action>
 		
+		<!-- 상품 찜하기 처리 -->
+		<action name="productZzim" class="product.ZzimAction">
+			<result type="chain">productDetail</result>
+		</action>
+
+		<!-- 댓글 달기 -->
+		<action name="writeCommentAction" class="product.commentWriteAction">
+			<result type="chain">productDetail</result>
+		</action>
+
+		<!-- 댓글 삭제하기 -->
+		<action name="deletePComment" class="product.DetailAction" method="commentDelete">
+			<result type="chain">productDetail</result>
+		</action>
+		
 		<!--  상품 수정하기 폼 -->
 		<action name="productUpdateForm" class="product.UpdateAction" method="form">
 			<result type="tiles">productWriteForm</result>
@@ -42,7 +58,15 @@
 			<result type="tiles">productDeleteSuccess</result>
 		</action>
 		
+		<action name="search" class="product.SearchAction">
+			<result type="tiles">productList</result>
+		</action>
+		
+		<action name="mainList" class="product.ListAction">
+			<result type="tiles">main</result>
+		</action>
 
+		
 	</package>
 
 </struts>

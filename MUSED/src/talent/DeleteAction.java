@@ -68,6 +68,7 @@ public class DeleteAction extends ActionSupport {
 		return SUCCESS;
 	}
 
+
 	public static Reader getReader() {
 		return reader;
 	}

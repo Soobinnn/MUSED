@@ -10,16 +10,22 @@ import com.ibatis.sqlmap.client.SqlMapClient;
 import com.ibatis.sqlmap.client.SqlMapClientBuilder;
 
 import java.util.*;
+
+import org.apache.struts2.interceptor.SessionAware;
+
 import java.io.Reader;
 import java.io.IOException;
 
-public class ListAction extends ActionSupport{
+public class ListAction extends ActionSupport {
 	public static Reader reader;
 	public static SqlMapClient sqlMapper;
 
-	private List first = new ArrayList();
 	private List<talentVO> list = new ArrayList<talentVO>();
 	private talentVO resultClass = new talentVO(); //쿼리 결과 값을 저장할 객체
+	
+	private String searchKeyword;
+	private int searchNum;
+	private int num =0;
 	
 	private int currentPage=1;	//현재 페이지
 	private int totalCount;		
@@ -27,8 +33,7 @@ public class ListAction extends ActionSupport{
 	private int blockPage=5;
 	private String pagingHtml;
 	private pagingAction page;
-	private String a[];
-	
+
 	public ListAction() throws IOException{
 		reader=Resources.getResourceAsReader("sqlMapConfig.xml");
 		sqlMapper=SqlMapClientBuilder.buildSqlMapClient(reader);
@@ -40,7 +45,7 @@ public class ListAction extends ActionSupport{
 		
 		totalCount = list.size();
 		
-		page=new pagingAction(currentPage,totalCount,blockCount,blockPage);
+		page=new pagingAction(currentPage,totalCount,blockCount,blockPage, num, "");
 		pagingHtml = page.getPagingHtml().toString();
 		
 		int lastCount=totalCount;
@@ -53,14 +58,50 @@ public class ListAction extends ActionSupport{
 		return SUCCESS;
 	}
 
+	public String search() throws Exception
+	{
+		if(searchNum == 0)
+		{
+			list = sqlMapper.queryForList("talent.selectSearchW", "%"+getSearchKeyword()+"%");
+		}
+		if(searchNum == 1)
+		{
+			list = sqlMapper.queryForList("talent.selectSearchS", "%"+getSearchKeyword()+"%");
+		}
+		if(searchNum == 2)
+		{
+			list = sqlMapper.queryForList("talent.selectSearchC", "%"+getSearchKeyword()+"%");	
+		}
+		
+		totalCount = list.size();
+		page = new pagingAction(currentPage, totalCount, blockCount, blockPage, searchNum, getSearchKeyword());
+		pagingHtml = page.getPagingHtml().toString();
+		
+		int lastCount = totalCount;
+		
+		if(page.getEndCount() < totalCount)
+			lastCount = page.getEndCount() + 1;
+		
+		list = list.subList(page.getStartCount(), lastCount);
+		return SUCCESS;
+	}
 	
 	
-	public List getFirst() {
-		return first;
+	public String getSearchKeyword() {
+		return searchKeyword;
+		}
+	
+
+	public void setSearchKeyword(String searchKeyword) {
+		this.searchKeyword = searchKeyword;
 	}
 
-	public void setFirst(List first) {
-		this.first = first;
+	public int getSearchNum() {
+		return searchNum;
+	}
+
+	public void setSearchNum(int searchNum) {
+		this.searchNum = searchNum;
 	}
 
 	public talentVO getResultClass() {
@@ -71,13 +112,6 @@ public class ListAction extends ActionSupport{
 		this.resultClass = resultClass;
 	}
 
-	public String[] getA() {
-		return a;
-	}
-
-	public void setA(String[] a) {
-		this.a = a;
-	}
 
 	public static Reader getReader() {
 		return reader;

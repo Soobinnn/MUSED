@@ -7,39 +7,51 @@ import com.ibatis.sqlmap.client.SqlMapClient;
 import com.ibatis.sqlmap.client.SqlMapClientBuilder;
 
 import java.util.*;
+
 import java.io.Reader;
 import java.io.IOException;
 
 import product.pagingAction;
 
-public class ListAction extends ActionSupport
+public class ListAction extends ActionSupport 
 {
 	public static Reader reader;
 	public static SqlMapClient sqlMapper;
+	
 
-	private List first = new ArrayList();
 	private List<productVO> list = new ArrayList<productVO>();
 	private productVO resultClass = new productVO(); //쿼리 결과 값을 저장할 객체
 	
+	private String searchKeyword;
+	private int searchNum;
+	private int num =0;
+	
 	private int currentPage=1;	//현재 페이지
 	private int totalCount;		
-	private int blockCount=5;   //5*5 이미지 정렬
+	private int blockCount=25;   //5*5 이미지 정렬
 	private int blockPage=5;
 	private String pagingHtml;
 	private pagingAction page;
-	private String a[];
+
 	public ListAction() throws IOException{
 		reader=Resources.getResourceAsReader("sqlMapConfig.xml");
 		sqlMapper=SqlMapClientBuilder.buildSqlMapClient(reader);
 		reader.close();
 	}
 	
-	public String execute() throws Exception{
+	public String execute() throws Exception
+	{
+		
+		if(getSearchKeyword() != null)
+		{
+			return search();
+		}
+		
 		list=sqlMapper.queryForList("product.selectAll");
 
 		totalCount = list.size();
 		
-		page=new pagingAction(currentPage,totalCount,blockCount,blockPage);
+		page=new pagingAction(currentPage,totalCount,blockCount,blockPage, num, "");
 		pagingHtml = page.getPagingHtml().toString();
 		
 		int lastCount=totalCount;
@@ -51,14 +63,35 @@ public class ListAction extends ActionSupport
 
 		return SUCCESS;
 	}
-
-	public List<String> getFirst() {
-		return first;
+		
+	public String search() throws Exception 
+	{	
+		if(searchNum == 0)
+		{
+			list = sqlMapper.queryForList("product.selectSearchW", "%"+getSearchKeyword()+"%");
+		}
+		if(searchNum == 1)
+		{
+			list = sqlMapper.queryForList("product.selectSearchS", "%"+getSearchKeyword()+"%");
+		}
+		if(searchNum == 2)
+		{
+			list = sqlMapper.queryForList("product.selectSearchC", "%"+getSearchKeyword()+"%");	
+		}
+		
+		totalCount = list.size();
+		page = new pagingAction(currentPage, totalCount, blockCount, blockPage, searchNum, getSearchKeyword());
+		pagingHtml = page.getPagingHtml().toString();
+		
+		int lastCount = totalCount;
+		
+		if(page.getEndCount() < totalCount)
+			lastCount = page.getEndCount() + 1;
+		
+		list = list.subList(page.getStartCount(), lastCount);
+		return SUCCESS;
 	}
 
-	public void setFirst(List<String> first) {
-		this.first = first;
-	}
 
 	public productVO getResultClass() {
 		return resultClass;
@@ -66,14 +99,6 @@ public class ListAction extends ActionSupport
 
 	public void setResultClass(productVO resultClass) {
 		this.resultClass = resultClass;
-	}
-
-	public String[] getA() {
-		return a;
-	}
-
-	public void setA(String[] a) {
-		this.a = a;
 	}
 
 	public static Reader getReader() {
@@ -146,6 +171,30 @@ public class ListAction extends ActionSupport
 
 	public void setPage(pagingAction page) {
 		this.page = page;
+	}
+
+	public String getSearchKeyword() {
+		return searchKeyword;
+	}
+
+	public void setSearchKeyword(String searchKeyword) {
+		this.searchKeyword = searchKeyword;
+	}
+
+	public int getSearchNum() {
+		return searchNum;
+	}
+
+	public void setSearchNum(int searchNum) {
+		this.searchNum = searchNum;
+	}
+
+	public int getNum() {
+		return num;
+	}
+
+	public void setNum(int num) {
+		this.num = num;
 	}
 	
 }
