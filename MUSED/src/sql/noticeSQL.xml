@@ -130,6 +130,11 @@
 		<include refid="where-no" />
 	</delete>
 	
-	
+		<!-- 검색 -->
+	<select id="main_selectSearch" resultMap="nboardRes" parameterClass="string">
+	<include refid="select-all" />
+		WHERE content LIKE #searchKeyword# OR subject LIKE #searchKeyword#
+		ORDER BY no DESC
+	</select>
 	
 </sqlMap>

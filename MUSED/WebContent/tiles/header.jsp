@@ -28,13 +28,8 @@
 		<div class="head">
 			<h1 id="logo">
 
-				<s:if test='%{#session.ID == null}'>
-					<a href="/MUSED/tiles/member.jsp"><img src="/MUSED/tiles/image/logo2.png" width="150" height="150"></a>
-				</s:if>
-				<s:else>
-					<a href="/MUSED/tiles/loginAction.action"><img src="/MUSED/tiles/image/logo2.png" width="150" height="150"></a>
-				</s:else>
-
+				<a href="/MUSED/tiles/main.action"><img src="/MUSED/tiles/image/logo2.png" width="150" height="150"></a>
+			
 			</h1>
 			<hgroup id="title">
 				<h2>MUSED</h2>
@@ -88,7 +83,7 @@
 							</div></li>
 						<s:if test="%{#session.ACCESS_NUM == 1}">
 							<li><div>
-									<a href="#"><img src="/MUSED_MUSED/tiles/image/admin.png"
+									<a href="/MUSED/tiles/admin/admin_main.action"><img src="/MUSED_MUSED/tiles/image/admin.png"
 										width="45" height="45" /></a> <br>Admin
 								</div></li>
 						</s:if>

@@ -185,4 +185,11 @@
 	      where no = #no#
 	</delete>
 	
+	<!-- 검색 -->
+	<select id="main_selectSearch" resultMap="boardRes" parameterClass="string">
+	<include refid="select-all" />
+		WHERE content LIKE #searchKeyword# OR subject LIKE #searchKeyword#
+		ORDER BY no DESC
+	</select>
+	
 </sqlMap>

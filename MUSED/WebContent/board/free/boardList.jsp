@@ -20,7 +20,7 @@ top:500; left:410;}
 
 <body>
 	<div>
-		<a href='#'>공지사항</a>&nbsp;&nbsp; <a href='#'>자유게시판</a> &nbsp;&nbsp; <a href='#'>건의게시판</a>
+		<a href='/MUSED/tiles/notice/listAction.action'>공지사항</a>&nbsp;&nbsp; <a href='/MUSED/tiles/free/listAction.action'>자유게시판</a> &nbsp;&nbsp; <a href='/MUSED/tiles/sug/listAction.action'>건의게시판</a>
 	<br/><br/><br/><br/><br/><br/><br/>	
 	</div>
 	<table width="600" border="0" cellspacing="0" cellpadding="2">

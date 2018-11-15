@@ -126,6 +126,11 @@
 		<include refid="where-no" />
 	</delete>
 	
+	<select id="main_selectSearch" resultMap="sug_boardRes" parameterClass="string">
+	<include refid="select-all" />
+		WHERE content LIKE #searchKeyword# OR subject LIKE #searchKeyword#
+		ORDER BY no DESC
+	</select>
 	
 	
 </sqlMap>
