@@ -29,7 +29,7 @@
 	
 	<!-- 게시판 글쓰기 액션 -->
 	<action name="writeForm" class="board.free.writeAction" method="form"> <!-- writeAction의 form메소드를 실행하면 다음 jsp로 이동한다. -->
-	 	<result>/board/free/boardWrite.jsp</result>
+	 	<result type="tiles">freeboard_write</result>
 	</action>
 	
 	
