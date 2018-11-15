@@ -28,12 +28,9 @@
 		<div class="head">
 			<h1 id="logo">
 
-				<s:if test='%{#session.ID == null}'>
-					<a href="/MUSED/tiles/member.jsp"><img src="/MUSED/tiles/image/logo2.png" width="150" height="150"></a>
-				</s:if>
-				<s:else>
-					<a href="/MUSED/tiles/loginAction.action"><img src="/MUSED/tiles/image/logo2.png" width="150" height="150"></a>
-				</s:else>
+
+				<a href="/MUSED/tiles/main.action"><img src="/MUSED/tiles/image/logo2.png" width="150" height="150"></a>
+			
 
 			</h1>
 			<hgroup id="title">
@@ -41,10 +38,11 @@
 			</hgroup>
 			<div class="search_bar">
 				<form class="searchform" name="search" action="mainSearch.action">
-					<input type="hidden" name="searchNum" value="0"/>
-					<input type="text" placeholder="검색어 입력" id="search_text" name="searchKeyword">	
-					<input name="submit" type="submit" value="검색" id="search_button">
-				</form>	
+					<input type="hidden" name="searchNum" value="0" /> <input
+						type="text" placeholder="검색어 입력" id="search_text"
+						name="searchKeyword"> <input name="submit" type="submit"
+						value="검색" id="search_button">
+				</form>
 			</div>
 			<nav id="main_tnb">
 				<ul>
@@ -55,7 +53,7 @@
 							</div></li>
 						<li><div>
 								<a href="joinConfirm.action"><img
-									src="/MUSED_MUSED/tiles/image/join.png" width="45" height="45" /></a><br>Join
+									src="/tiles/image/join.png" width="45" height="45" /></a><br>Join
 								Us
 							</div></li>
 					</s:if>
@@ -88,7 +86,7 @@
 							</div></li>
 						<s:if test="%{#session.ACCESS_NUM == 1}">
 							<li><div>
-									<a href="#"><img src="/MUSED_MUSED/tiles/image/admin.png"
+									<a href="/MUSED/tiles/admin/admin_main.action"><img src="/MUSED_MUSED/tiles/image/admin.png"
 										width="45" height="45" /></a> <br>Admin
 								</div></li>
 						</s:if>
@@ -107,15 +105,16 @@
 				<ul class="left">
 
 					<li id="menubar"><a href="productList.action?currentPage=1">중고악기거래</a></li>
+
 					<li id="menubar"><a href="talentList.action?currentPage=1">재능거래</a></li>
-					<li id="menubar"><a href="#">커뮤니티</a></li>
+					<li id="menubar"><a href="free/listAction.action?currentPage=1">커뮤니티</a></li>
 
 				</ul>
 				<ul class="right">
 
 					<s:if test='%{#session.ID != null}'>
-					<li id="menubar"><a href="productWriteForm.action">악기판매</a></li>
-					<li id="menubar"><a href="talentWriteForm.action">재능판매</a></li>
+						<li id="menubar"><a href="productWriteForm.action">악기판매</a></li>
+						<li id="menubar"><a href="talentWriteForm.action">재능판매</a></li>
 					</s:if>
 				</ul>
 			</nav>

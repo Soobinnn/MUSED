@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="euc-kr"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD Sql Map 2.0//EN"
+'http://ibatis.apache.org/dtd/sql-map-2.dtd'>
+<sqlMap namespace="zzim">
+<typeAlias alias="zzim" type="product.zzimVO"/>
+
+<resultMap class="zzim" id="zzimRes">
+	<result property="zzim_no" column="zzim_no"/>
+	<result property="zzim_memid" column="zzim_memid"/>
+	<result property="zzim_indexno" column="zzim_indexno"/>
+	<result property="zzim_contno" column="zzim_contno"/>
+</resultMap>
+
+<insert id="insertZzim" parameterClass="zzim">
+	INSERT INTO ZZIM (ZZIM_NO,ZZIM_MEMID,ZZIM_INDEXNO,ZZIM_CONTNO)
+	VALUES (ZZIM_NO_SEQ.NEXTVAL,#zzim_memid#,#zzim_indexno#,#zzim_contno#)
+</insert>
+
+</sqlMap>
