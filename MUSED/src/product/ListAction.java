@@ -8,8 +8,6 @@ import com.ibatis.sqlmap.client.SqlMapClientBuilder;
 
 import java.util.*;
 
-import org.apache.struts2.interceptor.SessionAware;
-
 import java.io.Reader;
 import java.io.IOException;
 
@@ -65,9 +63,9 @@ public class ListAction extends ActionSupport
 
 		return SUCCESS;
 	}
-
+		
 	public String search() throws Exception 
-	{
+	{	
 		if(searchNum == 0)
 		{
 			list = sqlMapper.queryForList("product.selectSearchW", "%"+getSearchKeyword()+"%");

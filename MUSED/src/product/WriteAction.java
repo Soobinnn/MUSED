@@ -51,7 +51,7 @@ public class WriteAction extends ActionSupport implements SessionAware {
 	private String[] uploadFileName;
 	private String[] uploadContentType;
 
-	private String fileUploadPath = "C:\\Users\\DONGKUK\\git\\MUSED\\MUSED\\WebContent\\product\\img\\";
+	private String fileUploadPath = "C:\\Users\\bogiy\\OneDrive\\바탕 화면\\자바\\MUSED\\MUSED\\WebContent\\product\\img\\";
 
 	private String imageName = "";
 	private String MainName = "";

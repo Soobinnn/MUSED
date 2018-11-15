@@ -170,22 +170,22 @@ select, input{
 	<!-- 버튼 말고 check같은 거로 해야됨 -->
 	<br></br>
 		<td colspan="5">
-		  	<input name="type" type="checkbox" id="classic" value="classic">
+		  	<input name="category" type="checkbox" id="classic" value="classic">
    			 	<label for="classic">클래식</label>
    			 	
-   			<input name="type" type="checkbox" id="guiter" value="guiter">
+   			<input name="category" type="checkbox" id="guiter" value="guiter">
    				<label for="guiter">기타</label>
    				
-	   		<input name="type" type="checkbox" id="drum" value="drum">
+	   		<input name="category" type="checkbox" id="drum" value="drum">
 	   			 <label for="drum">드럼/타악기</label>
 	   			 
-	   		<input name="type" type="checkbox" id="piano" value="piano">
+	   		<input name="category" type="checkbox" id="piano" value="piano">
 	   			 <label for="piano">건반악기</label>
 	   			 
-	   		<input name="type" type="checkbox" id="sound" value="sound">
+	   		<input name="category" type="checkbox" id="sound" value="sound">
 	   			 <label for="sound">음향악기</label>
 	   			 
-	   	   	<input name="type" type="checkbox" id="etc" value="etc">
+	   	   	<input name="category" type="checkbox" id="etc" value="etc">
 	   			 <label for="etc">그 외 악기</label>
 	   	
 		</td>

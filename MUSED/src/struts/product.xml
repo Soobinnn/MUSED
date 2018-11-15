@@ -53,11 +53,10 @@
 			<result type="tiles">productDeleteSuccess</result>
 		</action>
 		
-		<!-- 소진이 테스트 
 		<action name="search" class="product.SearchAction">
-			<result>product/test11.jsp</result>
+			<result type="tiles">productList</result>
 		</action>
-		 -->
+		
 	</package>
 
 </struts>

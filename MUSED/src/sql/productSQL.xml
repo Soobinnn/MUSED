@@ -147,4 +147,19 @@
 		WHERE product_content LIKE #searchKeyword# OR product_subject LIKE #searchKeyword#
 		ORDER BY product_no DESC
 	</select>
+	
+	<select id="detailSearch" parameterClass="java.util.HashMap" resultMap="productRes">
+		SELECT * from product
+   	 	WHERE product_category=#product_category1# 
+		or product_category=#product_category2# 
+		or product_category=#product_category3# 
+		or product_category=#product_category4#
+		or product_category=#product_category5# 
+		or product_category=#product_category6#
+		or product_price BETWEEN $product_priceA$ and $product_priceB$
+		or product_sido=#product_sido# or product_gogon=#product_gogon#
+		or product_content LIKE #searchKeyword# OR product_subject LIKE #searchKeyword#
+		ORDER BY product_no DESC
+ </select>
+	
 </sqlMap>
