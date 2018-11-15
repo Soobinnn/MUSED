@@ -145,6 +145,9 @@
 						<s:param name="no">
 						<s:property value="no"/> 
 						</s:param>
+						<s:param name="currentPage">
+						<s:property value="currentPage"/>
+						</s:param>
 						</s:url>
 					<tr>
 						 <td align="left">
@@ -181,6 +184,9 @@
 						<s:param name="no">
 						<s:property value="no"/> 
 						</s:param>
+						<s:param name="currentPage">
+						<s:property value="currentPage"/>
+						</s:param>
 						</s:url>
 					<tr>
 						 <td align="left">
@@ -216,6 +222,9 @@
 						<s:url id="viewURL" action="/tiles/sug/viewAction">
 						<s:param name="no">
 						<s:property value="no"/> 
+						</s:param>
+						<s:param name="currentPage">
+						<s:property value="currentPage"/>
 						</s:param>
 						</s:url>
 					<tr>

@@ -256,4 +256,5 @@ public class MainAction extends ActionSupport
 	public void setPage_s(pagingAction page_s) {
 		this.page_s = page_s;
 	}
+	
 }
