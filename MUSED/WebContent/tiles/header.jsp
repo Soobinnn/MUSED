@@ -9,8 +9,6 @@
 <link href="https://fonts.googleapis.com/css?family=Henny+Penny"
 	rel="stylesheet" />
 
-<link rel="stylesheet" href="/MUSED/tiles/Mused_main.css">
-
 <link rel="stylesheet" href="/MUSED/tiles/style.css">
 
 <link rel="stylesheet"
@@ -29,13 +27,25 @@
 	<header id="main_header">
 		<div class="head">
 			<h1 id="logo">
-				<a href="#"><img src="/MUSED/tiles/image/logo2.png"
-					width="150" height="150"></a>
+
+				<s:if test='%{#session.ID == null}'>
+					<a href="/MUSED/tiles/member.jsp"><img src="/MUSED/tiles/image/logo2.png" width="150" height="150"></a>
+				</s:if>
+				<s:else>
+					<a href="/MUSED/tiles/loginAction.action"><img src="/MUSED/tiles/image/logo2.png" width="150" height="150"></a>
+				</s:else>
+
 			</h1>
 			<hgroup id="title">
 				<h2>MUSED</h2>
 			</hgroup>
-
+			<div class="search_bar">
+				<form class="searchform" name="search" action="mainSearch.action">
+					<input type="hidden" name="searchNum" value="0"/>
+					<input type="text" placeholder="검색어 입력" id="search_text" name="searchKeyword">	
+					<input name="submit" type="submit" value="검색" id="search_button">
+				</form>	
+			</div>
 			<nav id="main_tnb">
 				<ul>
 					<s:if test='%{#session.ID == null}'>
@@ -45,7 +55,7 @@
 							</div></li>
 						<li><div>
 								<a href="joinConfirm.action"><img
-									src="/MUSED/tiles/image/join.png" width="45" height="45" /></a><br>Join
+									src="/MUSED_MUSED/tiles/image/join.png" width="45" height="45" /></a><br>Join
 								Us
 							</div></li>
 					</s:if>
@@ -56,20 +66,16 @@
 							</div>
 							<div>Logout</div></li>
 						<li><div>
-								<a href="mypage.action">
-								<s:if test="%{resultClass.file_savname == null}">
-								<img class="border"
-									src="/MUSED/tiles/image/myPage.png" width="45" height="45"/>
-								</s:if>
-								<s:else>
-								<img class="border"
-									src="C:\\Java\\upload\\thum_<s:property value="%{#session.ID}"/>.jpg"
-									width="45" height="45" />
-								</s:else>
-									<s:if test="%{resultClass.access_num == 1}">
-									<p class="arrow_box">
-										관리자 계정
-									</p>
+								<a href="mypage.action"> <s:if
+										test="%{resultClass.file_savname == null}">
+										<img class="border" src="/MUSED_MUSED/tiles/image/myPage.png"
+											width="45" height="45" />
+									</s:if> <s:else>
+										<img class="border"
+											src="C:/Java/upload/thum_<s:property value="%{#session.ID}"/>.jpg"
+											width="45" height="45" />
+									</s:else> <s:if test="%{#session.ACCESS_NUM == 1}">
+										<p class="arrow_box">관리자 계정</p>
 									</s:if>
 									<p class="arrow_box">
 										MUSED 계정 :
@@ -77,12 +83,13 @@
 										<br> (
 										<s:property value="%{#session.EMAIL}" />
 										)
-									</p> </a>
+									</p>
+								</a>
 							</div></li>
 						<s:if test="%{#session.ACCESS_NUM == 1}">
 							<li><div>
-									<a href="#"><img src="/MUSED_MUSED/tiles/image/admin.png" width="45" height="45"/></a>
-									<br>Admin
+									<a href="#"><img src="/MUSED_MUSED/tiles/image/admin.png"
+										width="45" height="45" /></a> <br>Admin
 								</div></li>
 						</s:if>
 						<br>
@@ -99,16 +106,17 @@
 			<nav id="main_gnb">
 				<ul class="left">
 
-					<li id="menubar"><a href="productList.action">중고악기거래</a></li>
-					<li id="menubar"><a href="talentList.action">재능거래</a></li>
-					<li id="menubar"><a href="#">커뮤니티</a></li>
+					<li id="menubar"><a href="productList.action?currentPage=1">중고악기거래</a></li>
+					<li id="menubar"><a href="talentList.action?currentPage=1">재능거래</a></li>
+					<li id="menubar"><a href="free/listAction.action?currentPage=1">커뮤니티</a></li>
 
 				</ul>
 				<ul class="right">
 
+					<s:if test='%{#session.ID != null}'>
 					<li id="menubar"><a href="productWriteForm.action">악기판매</a></li>
 					<li id="menubar"><a href="talentWriteForm.action">재능판매</a></li>
-
+					</s:if>
 				</ul>
 			</nav>
 		</div>

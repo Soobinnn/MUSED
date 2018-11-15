@@ -9,5 +9,10 @@
 	<action name="main" class="main.MainAction">
 		<result type="tiles">main</result>
 	</action>
+	
+	<action name="mainSearch" class="main.mainSearchAction">
+			<result type="tiles">main_search</result>
+	</action>
+
 </package>
 </struts>

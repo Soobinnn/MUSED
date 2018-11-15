@@ -18,6 +18,15 @@ import member.MemberVO;
 import product.pagingAction;
 import product.productVO;
 
+
+import java.io.File;
+import org.apache.commons.io.FileUtils;
+
+import java.awt.Image;
+import com.sun.jimi.core.Jimi;
+import com.sun.jimi.core.JimiException;
+import com.sun.jimi.core.JimiUtils;
+
 public class MypageAction extends ActionSupport implements SessionAware{
 	public static Reader reader;
 	public static SqlMapClient sqlMapper;
@@ -30,6 +39,11 @@ public class MypageAction extends ActionSupport implements SessionAware{
 	
 	private MemberVO paramClass;
 	private MemberVO resultClass;
+	
+	/*페이징에러때매 임시방편 수정해야함-수빈*/
+	private String searchKeyword;
+	private int searchNum;
+	private int num =0;
 	
 	/*마이페이지 내 이름*/
 	private String id;
@@ -48,7 +62,6 @@ public class MypageAction extends ActionSupport implements SessionAware{
 	
 	private Map session;
 	
-	private List first = new ArrayList();
 	private List<productVO> list = new ArrayList<productVO>();
 	private productVO resultClass2 = new productVO(); //쿼리 결과 값을 저장할 객체
 	
@@ -60,7 +73,16 @@ public class MypageAction extends ActionSupport implements SessionAware{
 	private pagingAction page;
 	private String a[];
 	
+	private String file_orgName; // 업로드 파일의 원래 이름
+	private String file_savName; // 서버에 저장할 업로드 파일의 이름. 고유 번호로 구분한다.
+
+	private File[] upload; // 파일 객체
+	private String[] uploadContentType; // 컨텐츠 타입
+	private String[] uploadFileName; // 파일 이름
+	private String fileUploadPath = "C:\\Java\\upload\\"; // 업로드 경로
 	
+	String file_ext;
+	String filePath = "C:\\Java\\upload\\";
 	
 	/*생성자*/
 	public MypageAction() throws IOException{
@@ -74,6 +96,46 @@ public class MypageAction extends ActionSupport implements SessionAware{
 		return SUCCESS;
 	}
 	
+	public String updateProfile() throws Exception {
+		common();
+		paramClass = new MemberVO();
+		resultClass = new MemberVO();
+
+		if (upload.length > 0) {
+
+			resultClass = (MemberVO) sqlMapper.queryForObject("member.selectOne", (String) session.get("ID"));
+			for (int i = 0; i < upload.length; i++) {
+
+				// 실제 서버에 저장될 파일 이름과 확장자 설정
+				String file_name = "file_" + resultClass.getId();
+				file_ext = getUploadFileName()[i].substring(getUploadFileName()[i].lastIndexOf('.') + 1,
+						getUploadFileName()[i].length());
+
+				// 서버에 파일 저장
+				File destFile = new File(fileUploadPath + file_name + "." + file_ext);
+				FileUtils.copyFile(getUpload()[i], destFile);
+
+				// 파일 정보 파라미터 설정
+				paramClass.setId(resultClass.getId());
+				paramClass.setFile_orgname(getUploadFileName()[i]);
+				paramClass.setFile_savname(file_name + "." + file_ext);
+			}
+			// 파일 정보 업데이트
+			sqlMapper.update("member.updateProfile", paramClass);
+			
+			//썸네일 만들기
+			String orgImg = filePath + "file_" + resultClass.getId() + "." + file_ext;// 원본파일
+			String thumbImg = filePath + "thum_" + resultClass.getId() + "." + file_ext;// 썸네일파일
+			int thumbWidth = 160;// 썸네일 가로
+			int thumbHeight = 160;// 썸네일 세로
+			Image thumbnail = JimiUtils.getThumbnail(orgImg, thumbWidth, thumbHeight, Jimi.IN_MEMORY);// 썸네일 설정
+			Jimi.putImage(thumbnail, thumbImg);// 썸네일 생성
+			
+		}
+
+		return SUCCESS;
+	}
+	
 	/*마이페이지 등록된 상품 리스트*/
 	public String myProductList() throws Exception {
 		common();
@@ -81,7 +143,7 @@ public class MypageAction extends ActionSupport implements SessionAware{
 		
 		totalCount = list.size();
 		
-		page=new pagingAction(currentPage,totalCount,blockCount,blockPage);
+		page=new pagingAction(currentPage,totalCount,blockCount,blockPage,searchNum, getSearchKeyword());
 		pagingHtml = page.getPagingHtml().toString();
 		
 		int lastCount=totalCount;
@@ -101,7 +163,7 @@ public class MypageAction extends ActionSupport implements SessionAware{
 		
 		totalCount = list.size();
 		
-		page=new pagingAction(currentPage,totalCount,blockCount,blockPage);
+		page=new pagingAction(currentPage,totalCount,blockCount,blockPage,searchNum, getSearchKeyword());
 		pagingHtml = page.getPagingHtml().toString();
 		
 		int lastCount=totalCount;
@@ -121,7 +183,7 @@ public class MypageAction extends ActionSupport implements SessionAware{
 		
 		totalCount = list.size();
 		
-		page=new pagingAction(currentPage,totalCount,blockCount,blockPage);
+		page=new pagingAction(currentPage,totalCount,blockCount,blockPage,searchNum, getSearchKeyword());
 		pagingHtml = page.getPagingHtml().toString();
 		
 		int lastCount=totalCount;
@@ -141,7 +203,7 @@ public class MypageAction extends ActionSupport implements SessionAware{
 		
 		totalCount = list.size();
 		
-		page=new pagingAction(currentPage,totalCount,blockCount,blockPage);
+		page=new pagingAction(currentPage,totalCount,blockCount,blockPage,searchNum, getSearchKeyword());
 		pagingHtml = page.getPagingHtml().toString();
 		
 		int lastCount=totalCount;
@@ -226,13 +288,85 @@ public class MypageAction extends ActionSupport implements SessionAware{
 		sum = sellCountProduct + sellCountTalent;
 	
 	}
-	
-	public List getFirst() {
-		return first;
+
+	public static Reader getReader() {
+		return reader;
 	}
 
-	public void setFirst(List first) {
-		this.first = first;
+	public static void setReader(Reader reader) {
+		MypageAction.reader = reader;
+	}
+
+	public static SqlMapClient getSqlMapper() {
+		return sqlMapper;
+	}
+
+	public static void setSqlMapper(SqlMapClient sqlMapper) {
+		MypageAction.sqlMapper = sqlMapper;
+	}
+
+	public String getFile_orgName() {
+		return file_orgName;
+	}
+
+	public void setFile_orgName(String file_orgName) {
+		this.file_orgName = file_orgName;
+	}
+
+	public String getFile_savName() {
+		return file_savName;
+	}
+
+	public void setFile_savName(String file_savName) {
+		this.file_savName = file_savName;
+	}
+
+	public File[] getUpload() {
+		return upload;
+	}
+
+	public void setUpload(File[] upload) {
+		this.upload = upload;
+	}
+
+	public String[] getUploadContentType() {
+		return uploadContentType;
+	}
+
+	public void setUploadContentType(String[] uploadContentType) {
+		this.uploadContentType = uploadContentType;
+	}
+
+	public String[] getUploadFileName() {
+		return uploadFileName;
+	}
+
+	public void setUploadFileName(String[] uploadFileName) {
+		this.uploadFileName = uploadFileName;
+	}
+
+	public String getFileUploadPath() {
+		return fileUploadPath;
+	}
+
+	public void setFileUploadPath(String fileUploadPath) {
+		this.fileUploadPath = fileUploadPath;
+	}
+
+	public String getFile_ext() {
+		return file_ext;
+	}
+
+	public void setFile_ext(String file_ext) {
+		this.file_ext = file_ext;
+	}
+
+	public String getFilePath() {
+		return filePath;
+	}
+
+	public void setFilePath(String filePath) {
+		this.filePath = filePath;
 	}
 
 	public List<productVO> getList() {
@@ -425,6 +559,22 @@ public class MypageAction extends ActionSupport implements SessionAware{
 
 	public void setSession(Map session) {
 		this.session = session;
+	}
+
+	public String getSearchKeyword() {
+		return searchKeyword;
+	}
+
+	public void setSearchKeyword(String searchKeyword) {
+		this.searchKeyword = searchKeyword;
+	}
+
+	public int getSearchNum() {
+		return searchNum;
+	}
+
+	public void setSearchNum(int searchNum) {
+		this.searchNum = searchNum;
 	}
 	
 	

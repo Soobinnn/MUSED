@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">      
+    
+<!-- 용량제한 100MB로 설정 -->
+<struts>
+<constant name="struts.multipart.maxSize" value="104857600" />
+
+<package name="board" extends="struts-default, tiles-default" namespace="/tiles/free">
+
+
+
+	 <!-- 로그인을 위해 loginCheckInterceptor 등록 -->
+	 <interceptors>
+             <interceptor name="loginCheckInterceptor" class="com.common.interceptor.LoginCheckInterceptor" />
+     </interceptors>
+	
+	
+	
+	<!-- 글로벌 예외 처리 화면 설정 -->
+	
+	<!-- 게시판 리스트 액션 -->
+	<action name="listAction" class="board.free.listAction">
+       <result type="tiles">freeboard_list</result>
+	</action>
+
+	
+	
+	<!-- 게시판 글쓰기 액션 -->
+	<action name="writeForm" class="board.free.writeAction" method="form"> <!-- writeAction의 form메소드를 실행하면 다음 jsp로 이동한다. -->
+	 	<result>/board/free/boardWrite.jsp</result>
+	</action>
+	
+	
+	<action name="writeAction" class="board.free.writeAction"> <!-- writeAction의 execute 메소드가 호출되면 -->
+		<result type="redirect-action">    <!-- listAction으로 리다이렉트한다.즉, 글을 쓰고나면 리스트페이지로 이동하도록 한다. -->
+			<param name="actionName">listAction</param>
+		</result>
+	</action>
+	
+	
+	
+	<!-- 게시판 답변글쓰기 액션 -->
+	<action name="replyForm" class="board.free.writeAction" method="reply">
+	 	<result type="chain">writeForm</result>
+	</action>
+	
+	<action name="replyAction" class="board.free.writeAction">
+		<result type="redirect-action">
+		  <param name="actionName">listAction</param>
+		</result>
+    </action>
+    
+	<!-- 게시판 글 읽기 액션 -->
+	<action name="viewAction" class="board.free.viewAction">
+		<result>/board/free/boardView.jsp</result>
+	</action>
+	
+	<!-- 게시판 파일 다운로드 액션 -->
+	<action name="fileDownloadAction" class="board.free.viewAction" method="download">
+		<result name="success" type="stream">
+                <param name="contentType">binary/octet-stream</param>
+                <param name="inputName">inputStream</param>
+                <param name="contentDisposition">${contentDisposition}</param>
+                <param name="contentLength">${contentLength}</param> 
+                <param name="bufferSize">409600</param>
+         </result>
+	</action>
+	
+	<!-- 게시판 수정 액션 -->
+	<action name="modifyForm" class="board.free.viewAction">
+		<result type="chain">writeForm</result>
+	</action>
+	
+	
+	<action name="modifyAction" class="board.free.modifyAction">
+		<result type="chain">viewAction</result>
+	</action>
+	
+	<action name="checkAction2" class="board.free.viewAction" method="checkAction2">
+		<!-- <result name="error">/board/free/checkError.jsp</result> -->
+		<result>/board/free/checkSuccess.jsp</result>
+	</action>	
+	
+	
+	<!-- 비밀번호 체크 액션 -->
+	
+	
+	<action name="checkForm" class="board.free.viewAction" method="checkForm">
+		<result>/board/free/delConfirm.jsp</result>
+	</action>
+	
+	<action name="checkForm2" class="board.free.viewAction" method="checkForm">
+		<result>/board/free/delConfirm2.jsp</result>
+	</action>
+	
+	<action name="checkAction" class="board.free.viewAction" method="checkAction">
+		<result name="error">/board/free/checkError.jsp</result>
+		<result>/board/free/checkSuccess.jsp</result>
+	</action>
+	
+	
+	
+	<action name="deleteAction" class="board.free.deleteAction">
+		<result type="chain">listAction</result>
+	</action>
+	
+	<action name="deleteAction2" class="board.free.deleteAction" method="execute2">
+		<result type="chain">listAction</result>  <!-- listAction으로 변경 -->
+	</action> 
+	
+	<!-- 코멘트작성 관련 액션 -->
+	<action name="writeCommentAction" class="board.free.commentWriteAction">
+		 <result type="chain">listAction</result>
+	</action>
+</package>
+</struts>

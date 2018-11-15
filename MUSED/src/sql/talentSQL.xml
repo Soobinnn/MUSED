@@ -3,17 +3,8 @@
 'http://ibatis.apache.org/dtd/sql-map-2.dtd'>
 <sqlMap namespace="talent">
 <typeAlias alias="talent" type="talent.talentVO"/>
-<!-- <typeAlias type="talent.imgVO" alias="image"/>
-	<resultMap class="image" id="imageRes">
-		<result column="no_p" property="no_p"/>
-		<result column="main_image" property="main_image"/>
-		<result column="image2" property="image2"/>
-		<result column="image3" property="image3"/>
-		<result column="image4" property="image4"/>
-		<result column="image5" property="image5"/>
+<typeAlias alias="Tcomment" type="talent.talent_cVO"/>
 
-	</resultMap>
- -->	
 	<resultMap class="talent" id="talentRes">
 		<result property="talent_no" column="talent_no"/>
 		<result property="talent_id" column="talent_id"/>
@@ -28,6 +19,15 @@
 		<result property="talent_content" column="talent_content"/>	
 		<result property="talent_image" column="talent_image"/>		
 		<result property="main_img" column="main_img"/>		
+		<result property="readhit" column="readhit"/>
+	</resultMap>
+	<resultMap class="Tcomment" id="TcommentRes">
+		<result property="c_no" column="c_no"/>
+		<result property="c_index" column="c_index"/>	
+		<result property="c_contnum" column="c_contnum"/>
+		<result property="c_id" column="c_id"/>
+		<result property="c_content" column="c_content"/>	
+		<result property="c_regdate" column="c_regdate"/>
 	</resultMap>
 
 	<!-- talent 전체 정보 가져오기 -->
@@ -37,7 +37,7 @@
 	
 	<!-- where no 설정 -->
 	<sql id="where-no">
-		WHERE talent_no=#talent_no#
+		WHERE TALENT_NO=#talent_no#
 	</sql>
 	
 	<!-- TALENT 전체 가져오는데 no정렬 -->
@@ -50,28 +50,72 @@
 		select * TALENT where talent_no = (select max(talent_no) from TALENT) 
 	</select>
 
+ 	<select id="TcommentSelectAll" resultMap="TcommentRes" parameterClass="int">
+		SELECT * FROM comments
+		WHERE c_contnum = #c_contnum# and c_index=1
+		ORDER BY c_no DESC
+	</select>
 	
 	<!-- 	talent 일정 no의 전체 정보 가져오기	 -->
 	<select id="selectOne" resultMap="talentRes" parameterClass="int">
 		<include refid="select-all"/>
 		<include refid="where-no"/>
 	</select>
+	
+	<select id="TselectMainImg" resultMap="talentRes" parameterClass="int">
+	<![CDATA[
+		SELECT * FROM 
+		(SELECT * FROM talent WHERE talent_no <= #talent_no# ORDER BY talent_no DESC) 
+		WHERE ROWNUM <= 5 
+	]]>
+	</select>
 
 	<!--talent 상품 등록을 위한 insert -->
  	<insert id="insertTalent" parameterClass="talent">
-		INSERT INTO TALENT (TALENT_NO, TALENT_ID, TALENT_STATE, TALENT_SUBJECT, TALENT_NAME, TALENT_CATEGORY, TALENT_PRICE, TALENT_PHONE, TALENT_SIDO, TALENT_GOGON, TALENT_CONTENT, TALENT_IMAGE,MAIN_IMG)
-		VALUES (TALENT_NO_SEQ.NEXTVAL, #talent_id#, #talent_state#, #talent_subject#, #talent_name#, #talent_category#, #talent_price#, #talent_phone#, #talent_sido#, #talent_gogon#, #talent_content#, #talent_image#,#main_img#)
+		INSERT INTO TALENT (TALENT_NO, TALENT_ID, TALENT_STATE, TALENT_SUBJECT, TALENT_NAME, TALENT_CATEGORY, TALENT_PRICE, TALENT_PHONE, TALENT_SIDO, TALENT_GOGON, TALENT_CONTENT, TALENT_IMAGE,MAIN_IMG, READHIT)
+		VALUES (TALENT_NO_SEQ.NEXTVAL, #talent_id#, #talent_state#, #talent_subject#, #talent_name#, #talent_category#, #talent_price#, #talent_phone#, #talent_sido#, #talent_gogon#, #talent_content#, #talent_image#,#main_img#,0)
 	</insert>
- 	<!-- talent 상품 수정을 위한 update --> 
+	
+		<insert id="TinsertComment" parameterClass="Tcomment">
+		INSERT INTO comments (C_NO, C_INDEX, C_CONTNUM, C_ID, C_CONTENT, C_REGDATE)
+		VALUES (COMMENTS_NO_SEQ.NEXTVAL, 1, #c_contnum#, #c_id#, #c_content#, #c_regdate#)	
+	</insert>
+	
+		<update id="updateReadHit" parameterClass="talent">
+    			UPDATE TALENT SET READHIT = READHIT + 1
+			<include refid="where-no" />
+   		 </update>
+	
+	<!-- talent 상품 수정을 위한 update --> 
 	<update id="updateTalent" parameterClass="talent">
 		UPDATE TALENT SET TALENT_STATE = #talent_state#, TALENT_SUBJECT=#talent_subject#, TALENT_NAME = #talent_name#, TALENT_CATEGORY = #talent_category#, TALENT_PRICE = #talent_price#, TALENT_PHONE = #talent_phone#, TALENT_SIDO=#talent_sido#, TALENT_GOGON=#talent_gogon#, TALENT_CONTENT = #talent_content#, TALENT_IMAGE = #talent_image#, MAIN_IMG=#main_img#
 		<include refid="where-no"/>
 	</update>
 
+	<!-- 게시글 등록 시 점수 증가 -->
+ 	<update id="writeScore" parameterClass="String">
+		UPDATE MEMBER SET SCORE = SCORE + 5
+		WHERE ID = #id#
+	</update>	
+	<!-- 댓글 등록 시 점수 증가 -->
+	 <update id="CwriteScore" parameterClass="String">
+		UPDATE MEMBER SET SCORE = SCORE + 1 
+		WHERE ID = #id#
+	</update>
+	
+
 	<!-- talent 상품 삭제를 위한 delete	 -->
 	<delete id="deleteTalent" parameterClass="talent">
 		DELETE FROM TALENT
 		<include refid="where-no"/>
+	</delete>
+ 
+	
+	<delete id="deleteTComment" parameterClass="Tcomment">
+		DELETE FROM COMMENTS
+		WHERE C_INDEX=1
+		and C_NO=#c_no#
+		and C_ID=#c_id#
 	</delete>
 	
 	<!-- 마이페이지에서 내 재능 등록한 개수 -->
@@ -94,5 +138,11 @@
 	<select id="selectMySellTalent" parameterClass="String" resultMap="talentRes">
 		SELECT * FROM TALENT WHERE TALENT_ID=#talent_id# AND TALENT_STATE='완'
 	</select>
- 
+
+	<!-- 메인검색 -->
+	<select id="main_selectSearch" resultMap="talentRes" parameterClass="string">
+	<include refid="select-all" />
+		 	WHERE talent_content LIKE #searchKeyword# OR talent_subject LIKE #searchKeyword#
+			ORDER BY talent_no DESC
+		</select>
 </sqlMap>

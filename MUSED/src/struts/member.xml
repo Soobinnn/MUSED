@@ -89,10 +89,6 @@
 			<result name="error">/member/authCheckError.jsp</result>
 		</action>
 		<!-- 본인인증 -->	
-		
-		<action name="updateProfile" class="member.ProfileAction">
-			<result type="tiles">mypage</result>
-		</action>
 
 	</package>
 	

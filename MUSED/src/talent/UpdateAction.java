@@ -24,9 +24,7 @@ public class UpdateAction extends ActionSupport {
 	private String talent_subject;
 	private String talent_name;
 	private String talent_category;
-	private String talent_brand;
 	private int talent_price;
-	private String talent_type;
 	private String talent_phone;
 	private String talent_sido;
 	private String talent_gogon;
@@ -34,8 +32,6 @@ public class UpdateAction extends ActionSupport {
 	private String talent_content;
 	private String main_img;
 	
-	private String old_file;
-
 	private File[] upload;
 	private String[] uploadFileName;
 	private String[] uploadContentType;
@@ -43,7 +39,6 @@ public class UpdateAction extends ActionSupport {
 	
 	private String imageName="";
 	private String MainName="";
-	private String type="";
 	// 생성자
 	public UpdateAction() throws IOException {
 		
@@ -64,12 +59,14 @@ public class UpdateAction extends ActionSupport {
 			
 		return SUCCESS;
 	}
+
 	// 게시글 수정
 	public String execute() throws Exception {
 		//파라미터와 리절트 객체 생성.
 		paramClass = new talentVO();
 		resultClass = new talentVO();
 		paramClass.setTalent_no(getTalent_no());
+		
 		// 수정할 항목 설정.
 		paramClass.setTalent_state(getTalent_state());
 		paramClass.setTalent_subject(getTalent_subject());
@@ -96,25 +93,8 @@ public class UpdateAction extends ActionSupport {
 			paramClass.setMain_img(MainName);			
 			paramClass.setTalent_image(imageName);
 		}
-
 		sqlMapper.update("talent.updateTalent", paramClass);
 		return SUCCESS;
-	}
-
-	public static Reader getReader() {
-		return reader;
-	}
-
-	public static void setReader(Reader reader) {
-		UpdateAction.reader = reader;
-	}
-
-	public static SqlMapClient getSqlMapper() {
-		return sqlMapper;
-	}
-
-	public static void setSqlMapper(SqlMapClient sqlMapper) {
-		UpdateAction.sqlMapper = sqlMapper;
 	}
 
 	public talentVO getParamClass() {
@@ -181,28 +161,12 @@ public class UpdateAction extends ActionSupport {
 		this.talent_category = talent_category;
 	}
 
-	public String getTalent_brand() {
-		return talent_brand;
-	}
-
-	public void setTalent_brand(String talent_brand) {
-		this.talent_brand = talent_brand;
-	}
-
 	public int getTalent_price() {
 		return talent_price;
 	}
 
 	public void setTalent_price(int talent_price) {
 		this.talent_price = talent_price;
-	}
-
-	public String getTalent_type() {
-		return talent_type;
-	}
-
-	public void setTalent_type(String talent_type) {
-		this.talent_type = talent_type;
 	}
 
 	public String getTalent_phone() {
@@ -253,14 +217,6 @@ public class UpdateAction extends ActionSupport {
 		this.main_img = main_img;
 	}
 
-	public String getOld_file() {
-		return old_file;
-	}
-
-	public void setOld_file(String old_file) {
-		this.old_file = old_file;
-	}
-
 	public File[] getUpload() {
 		return upload;
 	}
@@ -309,13 +265,21 @@ public class UpdateAction extends ActionSupport {
 		MainName = mainName;
 	}
 
-	public String getType() {
-		return type;
+	public static Reader getReader() {
+		return reader;
 	}
 
-	public void setType(String type) {
-		this.type = type;
+	public static void setReader(Reader reader) {
+		UpdateAction.reader = reader;
 	}
-	
+
+	public static SqlMapClient getSqlMapper() {
+		return sqlMapper;
+	}
+
+	public static void setSqlMapper(SqlMapClient sqlMapper) {
+		UpdateAction.sqlMapper = sqlMapper;
+	}
+
 
 }
