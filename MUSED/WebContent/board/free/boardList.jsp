@@ -54,6 +54,7 @@ top:500; left:410;}
 		<%-- 자바빈에 있는 메소드를 get메소드를 쓴 효과로 가져온다. --%>
 		<s:iterator value="list" status="stat">
 
+			<%-- <s:url id="viewURL" action="viewAction"> --%>
 			<s:url id="viewURL" action="viewAction">
 				<s:param name="no">
 					<s:property value="no"/> <%-- viewAction.java에서 정의한 값을 s:property value를 사용하여 가져온다. --%>

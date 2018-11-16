@@ -22,14 +22,14 @@
 	
 	<!-- 게시판 리스트 액션 -->
 	<action name="listAction" class="board.free.listAction">
-       <result type="tiles">freeboard_list</result>
+       <result type="tiles">fb_list</result>
 	</action>
 
 	
 	
 	<!-- 게시판 글쓰기 액션 -->
 	<action name="writeForm" class="board.free.writeAction" method="form"> <!-- writeAction의 form메소드를 실행하면 다음 jsp로 이동한다. -->
-	 	<result type="tiles">freeboard_write</result>
+	 	<result type="tiles">fb_write</result>
 	</action>
 	
 	
@@ -54,7 +54,7 @@
     
 	<!-- 게시판 글 읽기 액션 -->
 	<action name="viewAction" class="board.free.viewAction">
-		<result>/board/free/boardView.jsp</result>
+		<result type="tiles">fb_view</result>
 	</action>
 	
 	<!-- 게시판 파일 다운로드 액션 -->
@@ -75,7 +75,7 @@
 	
 	
 	<action name="modifyAction" class="board.free.modifyAction">
-		<result type="chain">viewAction</result>
+		<result type="chain">listAction</result>
 	</action>
 	
 	<action name="checkAction2" class="board.free.viewAction" method="checkAction2">

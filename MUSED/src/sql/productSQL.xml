@@ -160,6 +160,7 @@
 		or product_sido=#product_sido# or product_gogon=#product_gogon#
 		or product_content LIKE #searchKeyword# OR product_subject LIKE #searchKeyword#
 		ORDER BY product_no DESC
+		
  </select>
 	
 </sqlMap>

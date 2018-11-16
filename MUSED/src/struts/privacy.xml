@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+		<action name="reportForm" class="report.reportAction" method="form">
+			<result>/footer/reportForm.jsp</result>
+		</action>
+		
+		<action name="reportAction" class="report.reportAction">
+			<result>/footer/reportSuccess.jsp</result>
+		</action>
+		
+		<!-- 게시판 리스트 액션. -->
+		<action name="listAction" class="report.listAction">
+			<result type="tiles">admin_report</result>
+		</action>
+		<action name="admin_main" class="report.listAction" method="admin_main">
+			<result type="tiles">admin</result>
+		</action>
+		
+		<!-- 게시판 상세보기 액션. -->
+		<action name="viewAction" class="report.ViewAction">
+			<result>/admin/reportView.jsp</result>
+		</action>
+		
+		<!-- 파일 다운로드 액션. -->
+		<action name="fileDownloadAction" class="report.ViewAction" method="download">
+    		<result name="success" type="stream">
+                <param name="contentType">binary/octet-stream</param>
+                <param name="inputName">inputStream</param>
+                <param name="contentDisposition">${contentDisposition}</param>
+                <param name="contentLength">${contentLength}</param> 
+                <param name="bufferSize">4096</param>
+         	</result>
+		</action>
+	</package>
+</struts>
