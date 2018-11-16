@@ -14,6 +14,12 @@ import com.ibatis.sqlmap.client.SqlMapClient;
 import com.ibatis.sqlmap.client.SqlMapClientBuilder;
 import com.opensymphony.xwork2.ActionSupport;
 
+import org.apache.tiles.*;
+import org.apache.tiles.access.*;
+
+
+
+
 public class viewAction extends ActionSupport {
 	  public static Reader reader;
 	  public static SqlMapClient sqlMapper;
@@ -39,6 +45,9 @@ public class viewAction extends ActionSupport {
 	  private InputStream inputStream;
 	  private String contentDisposition; //파일명?파일 속성과 관련된 객체 생성
 	  private long contentLength;
+	  
+	  
+	  
 	  
 	  //생성자
 	  public viewAction() throws IOException{

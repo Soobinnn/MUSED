@@ -222,32 +222,46 @@
 	</definition>
 	
 <!--자유 게시판 : KS -->
-  <definition name="freeboard_list" extends="main">
+  <definition name="fb_list" extends="main">
      <put-attribute name="body" value="/board/free/boardList.jsp"/>
    </definition>
    
-   <definition name="freeboard_view" extends="main">
+   <definition name="fb_view" extends="main">
      <put-attribute name="body" value="/board/free/boardView.jsp"/>
     </definition>
     
-    <definition name="freeboard_write" extends="main">
-      <put-attribute name="body" value="board/free/boardWrite.jsp"/>
+    <definition name="fb_write" extends="main">
+      <put-attribute name="body" value="/board/free/boardWrite.jsp"/>
     </definition>
 
 <!-- 자유 게시판 종료 : KS -->
   
-  <!-- 공지사항 게시판 -->
-   <definition name="notice_list" extends="main">
+  <!-- 공지사항 게시판 : KS -->
+   <definition name="nb_list" extends="main">
      <put-attribute name="body" value="/board/notice/boardList.jsp"/>
   </definition>
   
+  <definition name="nb_view" extends="main">
+     <put-attribute name="body" value="/board/notice/boardView.jsp"/>
+  </definition>
+  
+  <definition name="nb_write" extends="main">
+    <put-attribute name="body" value="/board/notice/boardWrite.jsp"/>
+  </definition>
    
    
    
    <!-- 건의사항 게시판 -->
-   <definition name="suggestion_list" extends="main">
+   <definition name="sb_list" extends="main">
      <put-attribute name="body" value="/board/suggestion/boardList.jsp"/>
   </definition>
-		
+	
+	<definition name="sb_view" extends="main">
+	  <put-attribute name="body" value="/board/suggestion/boardView.jsp"/>
+	</definition>
+	
+	<definition name="sb_write" extends="main">
+	  <put-attribute name="body" value="/board/suggestion/boardWrite.jsp"/>
+	</definition>	
 
 </tiles-definitions>
