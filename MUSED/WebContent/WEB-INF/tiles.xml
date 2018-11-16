@@ -264,4 +264,13 @@
 	  <put-attribute name="body" value="/board/suggestion/boardWrite.jsp"/>
 	</definition>	
 
+<!-- 이용약관 & 개인정보처리방침 -->
+   <definition name="privacy" extends="main">
+     <put-attribute name="body" value="/footer/privacy.jsp" />
+   </definition>
+   
+   <definition name="policy" extends="main">
+     <put-attribute name="body" value="/footer/policy.jsp" />
+   </definition>
+
 </tiles-definitions>
