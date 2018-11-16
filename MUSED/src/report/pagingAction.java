@@ -43,6 +43,9 @@ public class pagingAction
 			startCount = (currentPage -1) * blockCount;
 			endCount = startCount + blockCount -1;
 			
+			startPage = (int) ((currentPage-1)/blockPage)*blockPage+1;
+			endPage=startPage+blockPage-1;
+			
 			//마지막 페이지가 전체 페이지 수보다 크면 전체 페이지 수로 설정
 			if(endPage > totalPage)
 			{
@@ -53,7 +56,7 @@ public class pagingAction
 			pagingHtml = new StringBuffer();
 			if (currentPage > blockPage) 
 			{
-				pagingHtml.append("<a href=listAction.action?currentPage=" + (startPage - 1) + ">");
+				pagingHtml.append("<a href=/MUSED/tiles/admin/listAction.action?currentPage=" + (startPage - 1) + ">");
 				pagingHtml.append("이전");
 				pagingHtml.append("</a>");
 			}
@@ -74,7 +77,7 @@ public class pagingAction
 				} 
 				else 
 				{
-					pagingHtml.append("&nbsp;<a href='listAction.action?currentPage=");
+					pagingHtml.append("&nbsp;<a href='/MUSED/tiles/admin/listAction.action?currentPage=");
 					pagingHtml.append(i);
 					pagingHtml.append("'>");
 					pagingHtml.append(i);
@@ -88,7 +91,7 @@ public class pagingAction
 			// 다음 block 페이지
 			if (totalPage - startPage >= blockPage) 
 			{
-				pagingHtml.append("<a href=listAction.action?currentPage="+ (endPage + 1) + ">");
+				pagingHtml.append("<a href=/MUSED/tiles/admin/listAction.action?currentPage="+ (endPage + 1) + ">");
 				pagingHtml.append("다음");
 				pagingHtml.append("</a>");
 			}

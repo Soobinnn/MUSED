@@ -104,8 +104,6 @@ top:500; left:410;}
 		<tr align="right">
 		
 			
-			
-			
 		<%--스트럿츠 태그를 사용해서 로그인아이디값을 받아온다. --%>
 			<s:if test="#session.ID != null">
 			<tr align="right">
@@ -120,9 +118,6 @@ top:500; left:410;}
 						<td colspan="5">                 <%-- 세션아이디값이 없으면(로그인한 상태가 아니면) 로그인 유도 페이지로 이동하게 한다. --%>
 <input type="button" value="글쓰기" class="inputb" onclick="javascript:location.href='/MUSED/tiles/loginForm.action';" />				
 
-
-
-
 						<%-- <input type="button" value="글쓰기" class="inputb">  --%>	
 							<%-- onClick="javascript:location.href='/MUSED/tiles/loginForm.action';"/> --%>
 						
@@ -130,7 +125,6 @@ top:500; left:410;}
 						</tr>
 	  </s:else>
 			
-		
 		<%-- 원래 글쓰기 버튼 주석처리 --%>				
 		<%-- 	<td colspan="5"><input type="button" value="글쓰기" class="inputb"
 				onClick="javascript:location.href='writeForm.action?currentPage=<s:property value="currentPage"/>';"/>

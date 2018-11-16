@@ -26,6 +26,7 @@
 	<definition name="admin" template="/tiles/admin_layout.jsp">
 		<put-attribute name="admin_title" value="MUSED"/>
 		<put-attribute name="admin_header" value="/tiles/header.jsp"/>
+		<put-attribute name="admin_nav" value="/admin/admin_nav.jsp"></put-attribute>
 		<put-attribute name="admin_body" value="/admin/admin_main.jsp"/>
 	</definition>
 	<!-- 메인 검색 -->
@@ -213,14 +214,25 @@
 		<put-attribute name="admin_body" value="/admin/reportList.jsp"/>
 	</definition>
 	
-	<definition name="admin_member" extends="admin">
-		<put-attribute name="admin_body" value="/admin/reportList.jsp"/>
-	</definition>
-
-	<definition name="admin_notice" extends="admin">
-		<put-attribute name="admin_body" value="/admin/reportList.jsp"/>
+	<definition name="admin_reportview" extends="admin">
+		<put-attribute name="admin_body" value="/admin/reportView.jsp"/>
 	</definition>
 	
+	<definition name="admin_member" extends="admin">
+		<put-attribute name="admin_body" value="/admin/admin_memberList.jsp"/>
+	</definition>
+	
+	<definition name="admin_notice" extends="admin">
+		<put-attribute name="admin_body" value="/admin/admin_notice.jsp"/>
+	</definition>
+	
+	<definition name="admin_noticeView" extends="admin">
+		<put-attribute name="admin_body" value="/admin/admin_noticeView.jsp"/>
+	</definition>
+	
+	<definition name="admin_noticeWrite" extends="admin">
+		<put-attribute name="admin_body" value="/admin/admin_noticeWrite.jsp"/>
+	</definition>
 <!--자유 게시판 : KS -->
   <definition name="freeboard_list" extends="main">
      <put-attribute name="body" value="/board/free/boardList.jsp"/>

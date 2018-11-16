@@ -37,15 +37,6 @@
 </head>
 <body>
 	<div class ="container">
-		<section class="admin admin_nav">
-			<ul>
-				<li>관리목록</li>
-				<hr/>
-				<li><a href="#">회원관리</a></li>
-				<li><a href="#">공지사항</a></li>
-				<li><a href='/MUSED/admin/listAction.action'>신고목록</a></li>
-			</ul>
-		</section>
 		<section class="admin admin_body">
   	<table width="600" border="0" cellspacing="0" cellpadding="2">
   	<tr>

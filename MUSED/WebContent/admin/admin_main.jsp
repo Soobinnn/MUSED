@@ -12,20 +12,11 @@
 </head>
 <body>
 		<div class ="container">
-		<section class="admin admin_nav">
-			<ul>
-				<li>관리목록</li>
-				<hr/>
-				<li><a href="#">회원관리</a></li>
-				<li><a href="#">공지사항</a></li>
-				<li><a href='/MUSED/tiles/admin/listAction.action'>신고목록</a></li>
-			</ul>
-		</section>
 		<section class="admin admin_body">
 			<h1><s:property value="%{#session.NAME}"/> 관리자님, 안녕하세요.</h1>
-			<a href="#"><img src="member.png" width="200" height="200"/></a>
-			<a href="#"><img src="notice.png" width="200" height="200"/></a>			
-			<a href='/MUSED/admin/listAction.action'><img src="report.jpg" width="200" height="200"/></a>
+			<a href="/MUSED/admin_memberlist.action?currentPage=1"><img src="/MUSED/tiles/image/member.png" width="200" height="200"/></a>
+			<a href="/MUSED/tiles/notice/admin_notice.action?currentPage=1"><img src="/MUSED/tiles/image/notice.png" width="200" height="200"/></a>			
+			<a href='/MUSED/tiles/admin/listAction.action?currentPage=1'><img src="/MUSED/tiles/image/report.jpg" width="200" height="200"/></a>
 			<br/>
 			<table width="600" border="1" cellspacing="0" cellpadding="0" >
 				<tr>

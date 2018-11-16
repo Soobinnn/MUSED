@@ -23,7 +23,7 @@
 		
 		<!-- 게시판 상세보기 액션. -->
 		<action name="viewAction" class="report.ViewAction">
-			<result>/admin/reportView.jsp</result>
+			<result type="tiles">admin_reportview</result>
 		</action>
 		
 		<!-- 파일 다운로드 액션. -->
