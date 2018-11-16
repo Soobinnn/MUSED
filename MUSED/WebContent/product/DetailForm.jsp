@@ -279,10 +279,9 @@ to {
 							</tr>
 							<s:iterator value="commentList" status="stat">
 								<tr>
-									<td width="170" align="center"><img class="circle"
-										id="blah"
-										src="C:\Java\upload\file_<s:property value="c_id"/>.jpg"
-										width="50" height="50" /><br> <s:property value="c_id" /><br>
+									<td width="170" align="center">
+									<img class="circle"	id="blah"src="C:\Java\upload\file_<s:property value="c_id"/>.jpg" width="50" height="50" /><br> 
+									<s:property value="c_id" /><br>
 												<s:property value="c_regdate" /><br><br></td>
 									<td><s:property value="c_content" /> <s:url
 											id="DeleteURL" action="deletePComment">
