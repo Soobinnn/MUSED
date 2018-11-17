@@ -161,5 +161,11 @@
 		or product_content LIKE #searchKeyword# OR product_subject LIKE #searchKeyword#
 		ORDER BY $sort$
  </select>
+ 
+ 		<!-- ¸ÞÀÎÄõ¸® -->
+ 		<select id="selectAll2" resultMap="productRes">
+		<include refid="select-all" />
+		ORDER BY product_no DESC
+	</select>
 	
 </sqlMap>
