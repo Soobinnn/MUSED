@@ -133,6 +133,33 @@ function initRegion()
  }
 }
 
+function refresh(a){
+	//현재 주소를 가져온다.
+	var renewURL = location.href;
+	//현재 주소 중 sort 부분이 있다면 날려버린다.
+	renewURL = renewURL.replace(/sort=([0-9]+)/ig,'');
+	//주소 추가 할당
+	if(a==0){
+	renewURL += '&sort='+0;
+	}
+	if(a==1){
+		renewURL += '&sort='+1;
+	}
+	if(a==2){
+		renewURL += '&sort='+2;
+	}
+	if(a==3){
+		renewURL += '&sort='+3;
+	}
+	
+	//페이지 갱신 실행!
+	history.pushState(null, null, renewURL);
+	refreshsuccess(location.href);
+}
+function refreshsuccess(a){
+	document.location.reload(a);
+}
+
 </script>
 <style>
 input[type="checkbox"] + label {
@@ -171,6 +198,7 @@ select, input{
 	<tr align="center" height="30px">
 	<!-- 버튼 말고 check같은 거로 해야됨 -->
 	<br></br>
+	<s:hidden name="sort" value="0" />
 		<td colspan="5">
 		  	<input name="category1" type="checkbox" id="classic" value="classic">
    			 	<label for="classic">클래식</label>
@@ -219,22 +247,21 @@ select, input{
 	<tr align="left" height="30px">
 		<td colspan="5">
 				&nbsp;&nbsp;<input type="text" name="searchKeyword" id="searchkeyword" theme="simple" placeholder="내용+제목"/>
-				<input name="submit" type="submit" value="검색" class="inputb">
+				<input name="search" type="submit" value="검색" class="inputb">
 		</td>
 	</tr>
 		</form>
-		
 	<tr align="left">
-		<td colspan="5">
-	<br>
+		<td colspan="5" height="30px">
+			<br>
 				<select name="sort">
-					<option value="0">최신순</option>
-					<option value="1">인기순</option>
-					<option value="2">최저가순</option>
-					<option value="3">최고가순</option>
-					
-				</select>	
-				<br>
+				
+					<option value="0" onclick="refresh(0)">최신순</option>
+					<option value="1" onclick="refresh(1)">인기순</option>
+					<option value="2" onclick="refresh(2)">저가순</option>
+					<option value="3" onclick="refresh(3)">고가순</option>
+				</select>
+			<br>
 		</td>
 	</tr>
 
@@ -257,7 +284,7 @@ select, input{
 			</s:url>
       <td>	 
           &nbsp;<s:a href="%{DetailURL}">
-      			<img src="/MUSED/product/img/<s:property value="main_img"/>" style="height: 100px; width: 100px; display: block;"/>
+      			<img src="/MUSED/product/img/<s:property value='main_img'/>" style="height: 100px; width: 100px; display: block;"/>
 				<br><s:property value="product_subject" />
 				</br></s:a>
 				<br>판매자 : <s:property value="product_id"/>	

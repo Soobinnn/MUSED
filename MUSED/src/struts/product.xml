@@ -10,7 +10,6 @@
 		<!-- 상품 목록-->
 		<action name="productList" class="product.ListAction">
 			<result type="tiles">productList</result>
-
 		</action>
 		
 		<!-- 상품 등록  폼 -->
