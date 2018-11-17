@@ -197,6 +197,7 @@ select, input{
 	<tr align="center" height="30px">
 	<!-- 버튼 말고 check같은 거로 해야됨 -->
 	<br></br>
+		<s:hidden name="sort" value="0" />
 		<td colspan="5">
 		    	<input name="category1" type="checkbox" id="classic" value="classic">
    			 	<label for="classic">클래식</label>
