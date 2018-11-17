@@ -30,7 +30,7 @@
 	<div id = "content">
 		<section id ="product_section">
 			<h1>중고악기거래</h1>
-			&nbsp;<a href='#'>전체보기</a>
+			&nbsp;<a href="productList.action?currentPage=1&sort=0">전체보기</a>
 			<table width="600" border="0" cellspacing="0" cellspadding="2">
 			<tr>
 				<s:if test='%{#session.ID != null}'>
@@ -47,6 +47,8 @@
 					<s:property value="product_subject" /></s:a>
 					<br/>
 					판매자 : <s:property value="product_id"/>	
+	  			<br/>
+					<s:property value="product_price"/>원
 	  			</td>
 	  	     		<s:if test="#stat.count%5==0">
   					<tr></tr>
@@ -63,7 +65,7 @@
 					<br/>
 					<s:property value="product_subject"/></s:a>
 					<br/>
-					<s:property value="product_id"/>	
+					판매자 : <s:property value="product_id"/>	
 					<br/>
 					<s:property value="product_price"/>원
 	  			</td>
@@ -78,7 +80,7 @@
 		
 		<section id ="talent_section">
 			<h1>재능거래</h1>
-			&nbsp;<a href='#'>전체보기</a>
+			&nbsp;<a href="talentList.action?currentPage=1&sort=0">전체보기</a>
 			<table width="600" border="0" cellspacing="0" cellspadding="2">
 			<tr>
 				<!-- 로그인 했을 때 상세보기 들어가짐 -->
@@ -97,6 +99,9 @@
 						<s:property value="talent_subject" /></s:a>
 						<br>
 						판매자 : <s:property value="talent_id"/>	
+						<br/>
+					<s:property value="talent_price"/>원
+	  			
 	    			</td>
 	       				<s:if test="#stat.count%5==0">
         				<tr></tr>
@@ -113,7 +118,10 @@
 						<br>
 						<s:property value="talent_subject" /></s:a>
 						<br>
-						판매자 : <s:property value="talent_id"/>	
+						판매자 : <s:property value="talent_id"/>
+						<br/>
+					<s:property value="talent_price"/>원
+	  				
 	     			</td>
 	       				<s:if test="#stat.count%5==0">
         				<tr></tr>
@@ -127,7 +135,7 @@
 		<section id ="board_section">
 			<div id ="notice_">
 				<h1>공지사항</h1>
-				&nbsp;<a href='#'>전체보기</a>
+				&nbsp;<a href='/MUSED/tiles/notice/listAction.action?currentPage=1'>전체보기</a>
 				<!-- <img src="http://placehold.it/350x250" width="350" height="250"/> -->
 				
 				<table width="350" border="0" cellspacing="0" cellpadding="2">
@@ -167,7 +175,7 @@
 			</div>
 			<div id ="free_">
 				<h1>자유게시판</h1>
-				&nbsp;<a href='#'>전체보기</a>
+				&nbsp;<a href='/MUSED/tiles/free/listAction.action?currentPage=1'>전체보기</a>
 				<!-- <img src="http://placehold.it/350x250" width="350" height="250"/> -->
 				<table width="350" border="0" cellspacing="0" cellpadding="2">
 					<tr>
@@ -207,7 +215,7 @@
 			</div>
 			<div id ="suggestion_">
 				<h1>건의사항</h1>
-				&nbsp;<a href='#'>전체보기</a>
+				&nbsp;<a href='/MUSED/tiles/sug/listAction.action?currentPage=1'>전체보기</a>
 				<!-- <img src="http://placehold.it/350x250" width="350" height="250"/> -->
 					<table width="350" border="0" cellspacing="0" cellpadding="2">
 					<tr>
