@@ -11,6 +11,10 @@ pageEncoding="utf-8"%>
 
 <script type="text/javascript">
 
+function btn(){
+    alert("경고! 수정 버튼을 누르면 원본 파일은 사라집니다.");
+}
+
  function open_win_noresizable(url,name){
 	var oWin = window.open(url, name, "scrollbars=no,status=no, resizable=no, width=300, height=150");
 }
@@ -193,7 +197,6 @@ function showSlides(n) {
 판매자 정보<br> 
 <img class="circle" id="blah" src="C:\Java\upload\file_<s:property value="resultClass.product_id"/>.jpg" width="150" height="150"/><br></br>
 판매자 : <s:property value="resultClass.talent_id"/><br>
-이메일 : <br>
 판매자 연락처 : <s:property value="resultClass.talent_phone"/><br>
 거래 선호 지역 : <s:property value="resultClass.talent_sido"/>&nbsp;
 			<s:property value="resultClass.talent_gogon"/>
@@ -320,7 +323,9 @@ function showSlides(n) {
 <td colspan="2">
 		<input name="list" type="button" value="목록" class="inputb" onClick="javascript:location.href='talent/talentList.action'"/>
       <s:if test="%{#session.ID==resultClass.talent_id}">
-		<input name="update" type="button" value="수정하기" class="inputb" onClick="javascript:location.href='talentUpdateForm.action?talent_no=<s:property value="talent_no"/>&currentPage=<s:property value="currentPage"/>'"/>
+			<s:a href="#" onclick="btn()">
+				<input name="update" type="button" value="수정하기" class="inputb" onClick="javascript:location.href='talentUpdateForm.action?talent_no=<s:property value="talent_no"/>&currentPage=<s:property value="currentPage"/>'"/>
+			</s:a>
 		<input name="delete" type="button" value="삭제하기" class="inputb" onClick="javascript:location.href='talentDelete.action?talent_no=<s:property value="talent_no"/>&currentPage=<s:property value="currentPage"/>'"/>
 	</s:if>
 </td>

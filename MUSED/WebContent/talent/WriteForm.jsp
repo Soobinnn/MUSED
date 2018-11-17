@@ -137,7 +137,7 @@ function initRegion()
 </script>
 <script type="text/javascript">
 		function validation() {
-			var frm = document.forms(0);
+			var frm = document.fwrite;
 			
 			if(frm.talent_id.value == "") {
 				alert("아이디를 입력해주세요.(수정 예정)");
@@ -189,7 +189,7 @@ function initRegion()
 		</s:if>
 		
  		<s:else>
-		  <form action="talentUpdate.action" method="post" enctype="multipart/form-data">
+		  <form name="fwrite" action="talentUpdate.action" method="post" enctype="multipart/form-data" onsubmit="return validation();">
 		  <s:hidden name="talent_no" value="%{resultClass.talent_no}" />
 		  <s:hidden name="currentPage" value="%{currentPage}" />
 		</s:else>
@@ -198,11 +198,7 @@ function initRegion()
        <table width="800" border="0" cellspacing="0" cellpadding="0">
         <tr>
           <td><font color="#FF0000">*</font>는 필수 입력사항입니다.</td>
-          <td bgcolor="#FFFFFF">
-            <s:if test='%{#session.ID != null}'>
-            <s:textfield name="talent_id" theme="simple" value="%{#session.ID}" cssStyle="width:100px" maxlength="50"/>
-       		</s:if>
-          </td>
+          <s:hidden name="talent_id" value="%{#session.ID}" />
         </tr>
         
         <tr bgcolor="#777777">
@@ -307,7 +303,7 @@ function initRegion()
         </tr> 
 
         <tr>
-          <td bgcolor="#F4F4F4">  메인 사진 등록</td> 
+          <td bgcolor="#F4F4F4"><font color="#FF0000">*</font>  메인 사진 등록</td> 
           <td bgcolor="#FFFFFF">
              <s:file name="upload"/>   	      
           </td>
@@ -321,7 +317,10 @@ function initRegion()
              <s:file name="upload"/>   	      
           </td>
         </tr>
-        
+
+        <tr bgcolor="#777777">
+          <td height="1" colspan="2"></td>
+        </tr>       
          
 		<tr>
           <td bgcolor="#F4F4F4"><font color="#FF0000">*</font>  상품 상세 설명 </td>
