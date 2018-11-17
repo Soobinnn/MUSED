@@ -13,8 +13,12 @@
 </tr>
 <tr height="0"></tr>
 <tr>
-	<td valign="top" align="center" bgcolor="#FFFFFF"><tiles:insertAttribute name="admin_body" /></td>
+	<td>
+	<tiles:insertAttribute name="admin_nav"/>
+	</td>
 </tr>
+<tr>
+	<td valign="top" align="center" bgcolor="#FFFFFF"><tiles:insertAttribute name="admin_body" /></td>
 </tr>
 </table>
 </body>

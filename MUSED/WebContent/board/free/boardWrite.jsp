@@ -11,7 +11,7 @@
 
 <script type="text/javascript">
 	function validation() {
-		var frm = document.forms(0);
+		var frm = document.writef;
 
 		if (frm.subject.value == "") {
 			alert("제목을 입력해주세요.");
@@ -22,7 +22,7 @@
 			alert("이름을 입력해주세요");
 			return false;
 		
-		} else if (frm.content.value == "") {
+		}  else if (frm.content.value == "") {
 			alert("내용을 입력해주세요.");
 			return false;
 		}
@@ -44,22 +44,19 @@
 	</table>
 	
 	<s:if test="reply">
-	   <form action="replyAction.action" method="post" enctype="multipart/form-data" onsubmit="return validation();">
-	     <s:hidden name="ref" value="%{resultClass.ref}" /> <%-- html hidden field 태그를 이용해서 자동으로 값을 전송한다. --%>
+	   <form name="writef" action="replyAction.action" method="post" enctype="multipart/form-data" onsubmit="return validation();">
+	     <s:hidden name="ref" value="%{resultClass.ref}" /> 
 	     <s:hidden name="re_level" value="%{resultClass.re_level}" />
 	     <s:hidden name="re_step" value="%{resultClass.re_step}" />
 	</s:if>
 	
 	<s:elseif test="resultClass == NULL">
-		<%-- resultClass가 없으면 첫 입력으로 인식 --%>
-		<form action="writeAction.action" method="post"
-			enctype="multipart/form-data" onsubmit="return validation();">
+		<form name="writef" action="/MUSED/tiles/free/writeAction.action" method="post" enctype="multipart/form-data" onsubmit="return validation();">
 	</s:elseif>
 
 	<s:else>
-		<%-- resultClass가 있으면 수정으로 인식 --%>
-		<form action="modifyAction.action" method="post"
-			enctype="multipart/form-data">
+		
+		<form name="writef" action="modifyAction.action" method="post" enctype="multipart/form-data" onsubmit="return validation();">
 			<s:hidden name="no" value="%{resultClass.no}" />
 			<s:hidden name="currentPage" value="%{currentPage}" />
 			<s:hidden name="old_file" value="%{resultClass.file_savname}" />
@@ -67,8 +64,7 @@
 
 	<table width="600" border="0" cellspacing="0" cellpadding="0">
 		<tr>
-			<td align="right" colspan="2"><font color="#FF0000">*</font>는 필수
-				입력사항입니다.</td>
+			<td align="right" colspan="2"><font color="#FF0000">*</font>는 필수입력사항입니다.</td>
 		</tr>
 
 		<tr bgcolor="#777777">
@@ -89,7 +85,6 @@
 
 		
 		
-		<%-- 원래 값 value="%{resultClass.name}" cssStyle="width:100px" maxlength="20" / >--%>
 		<tr>
 			<td bgcolor="#F4F4F4"><font color="#FF0000">*</font>이름</td>
 			<td bgcolor="#FFFFFF">
@@ -107,13 +102,7 @@
 			<td height="1" colspan="2"></td>
 		</tr>
 
-		<%-- 로그인과 연동해서 로그인한 사람만 글을 쓸 수 있기 때문에 pw입력란은 지운다. <tr>
-			<td bgcolor="#F4F4F4"><font color="#FF0000">*</font>비밀번호</td>
-			<td bgcolor="#FFFFFF"><s:textfield name="password"
-					theme="simple" value="%{resultClass.password}"
-					cssStyle="width:20px" maxlength="30" /></td>
-		</tr> --%>
-
+		
 		<tr bgcolor="#777777">
 			<td height="1" colspan="2"></td>
 		</tr>
@@ -132,10 +121,9 @@
 
 		<tr>
 			<td bgcolor="#F4F4F4">첨부파일</td>
-			<td bgcolor="#FFFFFF"><s:file name="upload" theme="simple" /> <s:if
-					test="resultClass.file_orgname != NULL">
-                     &nbsp; * <s:property
-						value="resultClass.file_orgname" />파일이 등록되어 있습니다. 다시 업로드하면 기존의 파일은 삭제됩니다.
+			<td bgcolor="#FFFFFF"><s:file name="upload" theme="simple" />
+			 <s:if test="resultClass.file_orgname != NULL">
+                     &nbsp; * <s:property value="resultClass.file_orgname" />파일이 등록되어 있습니다. 다시 업로드하면 기존의 파일은 삭제됩니다.
                  </s:if></td>
 		</tr>
 

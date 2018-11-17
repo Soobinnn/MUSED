@@ -7,14 +7,14 @@
 
     <!-- 게시판 리스트 액션 -->
 	<action name="listAction" class="board.notice.listAction">
-		<result type="tiles">notice_list</result>
+		<result type="tiles">nb_list</result>
 	</action>
 
 
 
 	<!-- 게시판 글쓰기 액션 -->
 	<action name="writeForm" class="board.notice.writeAction" method="form"> <!-- writeAction의 form메소드를 실행하면 다음 jsp로 이동한다. -->
-	 	<result>/board/notice/boardWrite.jsp</result>
+	 	<result type="tiles">nb_write</result>
 	</action>
 	
 	
@@ -29,7 +29,7 @@
 	
 	<!-- 게시판 글 읽기 액션 -->
 	<action name="viewAction" class="board.notice.viewAction">
-		<result>/board/notice/boardView.jsp</result>
+		<result type="tiles">nb_view</result>
 	</action>
 	
 	<!-- 게시판 파일 다운로드 액션 -->
@@ -68,6 +68,32 @@
 		<result type="chain">listAction</result>
 	</action>
 	
+	<!-- 관리자 -->
+	<action name="admin_notice" class="board.notice.listAction">
+	<result type="tiles">admin_notice</result>
+	</action>
+	
+	<action name="admin_noticeView" class="board.notice.viewAction">
+	<result type="tiles">admin_noticeView</result>
+	</action>
+	
+	<action name="admin_noticeWrite" class="board.notice.writeAction" method="form">
+	<result type="tiles">admin_noticeWrite</result>
+	</action>
+	
+	<action name="admin_writeAction" class="board.notice.writeAction"> <!-- writeAction의 execute 메소드가 호출되면 -->
+		<result type="redirect-action">    <!-- listAction으로 리다이렉트한다.즉, 글을 쓰고나면 리스트페이지로 이동하도록 한다. -->
+			<param name="actionName">admin_notice</param>
+	</result>
+	</action>
+	
+	<action name="admin_modifyForm" class="board.notice.viewAction">
+		<result type="chain">admin_noticeWrite</result>
+	</action>
+	
+	<action name="admin_modifyAction" class="board.notice.modifyAction">
+		<result type="chain">admin_noticeView</result>
+	</action>
 </package>
 
 </struts>

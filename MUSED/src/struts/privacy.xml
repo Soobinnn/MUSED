@@ -3,8 +3,6 @@
     "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
     "http://struts.apache.org/dtds/struts-2.0.dtd">
 <struts>
-<constant name="struts.multipart.maxSize" value="104857600" />
-	<package name="report" namespace="/tiles/admin" extends="struts-default, tiles-default">    <!-- 수빈 -->
 		<action name="reportForm" class="report.reportAction" method="form">
 			<result>/footer/reportForm.jsp</result>
 		</action>
@@ -23,7 +21,7 @@
 		
 		<!-- 게시판 상세보기 액션. -->
 		<action name="viewAction" class="report.ViewAction">
-			<result type="tiles">admin_reportview</result>
+			<result>/admin/reportView.jsp</result>
 		</action>
 		
 		<!-- 파일 다운로드 액션. -->

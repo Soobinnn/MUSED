@@ -1,16 +1,16 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=utf-8"
+    pageEncoding="utf-8"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
+<meta charset="utf-8">
 <title>Insert title here</title>
 </head>
 <body>
-»èÁ¦µÇ¾ú½À´Ï´Ù.
+ì‚­ì œë˜ì—ˆìŠµë‹ˆë‹¤.
 <br>
-<input name="product_list" type="button" value="»óÇ° ¸ñ·Ïº¸±â" class="inputb" onClick="javascript:location.href='productList.action'"/>
-<input name="main" type="button" value="¸ŞÀÎ È­¸éÀ¸·Î" class="inputb" onClick="javascript:location.href='main.action'"/>
+<input name="product_list" type="button" value="ìƒí’ˆ ëª©ë¡ë³´ê¸°" class="inputb" onClick="javascript:location.href='productList.action'"/>
+<input name="main" type="button" value="ë©”ì¸ í™”ë©´ìœ¼ë¡œ" class="inputb" onClick="javascript:location.href='main.action'"/>
 
 </body>
 </html>

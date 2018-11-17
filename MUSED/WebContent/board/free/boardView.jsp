@@ -47,11 +47,7 @@ top:500; left:410;}
        </tr>
 
 
-		<%-- <tr>
-			<td width="70">이름</td>
-			<td width="1000"><s:property value="resultClass.name" /></td>
-		</tr> --%>
-        <tr>
+		       <tr>
 		　　　<td colspan="8" align="right"><s:property value="resultClass.regdate"/></td>
 		</tr>
 		<tr>
@@ -164,8 +160,8 @@ top:500; left:410;}
       </s:if>
       </td>
 		</tr>
-		
-
+		</table>
+<table width="950" border="0" cellspacing="0" cellpadding="5">
 		<tr bgcolor="#777777">
 			<td colspan="8" height="1"></td>
 		</tr>

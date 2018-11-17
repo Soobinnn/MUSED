@@ -89,7 +89,11 @@
 			<result name="error">/member/authCheckError.jsp</result>
 		</action>
 		<!-- 본인인증 -->	
-
+		
+		<!-- 관리자회원관리 -->
+		<action name="admin_memberlist" class="admin.memberListAction">
+			<result type="tiles">admin_member</result>
+		</action>
 	</package>
 	
 </struts>
