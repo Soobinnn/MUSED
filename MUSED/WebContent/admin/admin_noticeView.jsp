@@ -121,7 +121,7 @@ top:500; left:410;}
 				<%-- <input name="list" type="button" value="답변달기" class="inputb" onClick="javascript:location.href='replyForm.action?no=<s:property value="no" />&currentPage=<s:property value="currentPage" />','reply'"> --%>
 				
 				<input name="list" type="button" value="수정" class="inputb" onClick="javascript:location.href='/MUSED/tiles/notice/admin_modifyForm.action?no=<s:property value="no" />&currentPage=<s:property value="currentPage"/>'">
-			    <input type="button" value="삭제" onClick="javascript:window.open('checkForm.action?no=<s:property value="resultClass.no" />&currentPage=<s:property value="currentPage" />','delete','width=450, height=100')">
+			    <input type="button" value="삭제" onClick="javascript:window.open('/MUSED/tiles/notice/admin_checkForm.action?no=<s:property value="resultClass.no" />&currentPage=<s:property value="currentPage" />','delete','width=450, height=100')">
 			</s:if>
 		<s:else>             
 			       	  </s:else>

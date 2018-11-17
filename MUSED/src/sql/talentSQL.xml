@@ -159,5 +159,10 @@
 		or talent_content LIKE #searchKeyword# OR talent_subject LIKE #searchKeyword#
 		ORDER BY $sort$
  </select>
+  		<!-- ¸ÞÀÎÄõ¸® -->
+ 		<select id="selectAll2" resultMap="talentRes">
+		<include refid="select-all" />
+		ORDER BY talent_no DESC
+	</select>
 	
 </sqlMap>

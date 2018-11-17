@@ -1,17 +1,17 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=utf-8"
+    pageEncoding="utf-8"%>
 <%@ taglib prefix="s" uri="/struts-tags"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
+<meta charset="utf-8">
 <title>Insert title here</title>
 </head>
 <body>
 
-È¸¿ø ÀÌ¹ÌÁö<br>
-¾ÆÀÌµğ:<s:property value="%{id}"/><br>
-µî±Ş:<s:property value="%{grade}"/>
+íšŒì› ì´ë¯¸ì§€<br>
+ì•„ì´ë””:<s:property value="%{id}"/><br>
+ë“±ê¸‰:<s:property value="%{grade}"/>
 (<s:property value="%{paramClass.score}"/>)<br>
 
 
