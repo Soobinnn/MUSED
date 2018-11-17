@@ -33,6 +33,12 @@
       <tr bgcolor="#777777">
         <td height="1" colspan="2"></td>	
       </tr>
+         <tr>
+        <td width="100" bgcolor="#F4F4F4">  처리</td>
+        <td width="500" bgcolor="#FFFFFF">
+          &nbsp;&nbsp;<s:property value="resultClass.report_state" />
+        </td>
+      </tr>
         <tr>
         <td width="100" bgcolor="#F4F4F4">  카테고리</td>
         <td width="500" bgcolor="#FFFFFF">
@@ -74,7 +80,7 @@
       <tr>
         <td bgcolor="#F4F4F4">  내용 </td>
         <td bgcolor="#FFFFFF">
-          &nbsp;&nbsp;<s:property value="resultClass.content" />
+          &nbsp;&nbsp;<s:property value="resultClass.report_content" />
         </td>
       </tr>
       <tr bgcolor="#777777">
@@ -105,9 +111,15 @@
       
       
       <tr>
+      	 <td align="right" colspan="2">
+       		<form action="/MUSED/tiles/admin/processviewAction.action" method="post">
+			  	<input name="report_state" type="hidden" value="처리완료"/>
+			  	<input name="report_no" type="hidden" value="<s:property value="resultClass.report_no"/>"/>
+			  	<input name="submit" type="submit" value="처리" class="inputb"/>
+			</form> 
+		</td> 
         <td align="right" colspan="2">
-        
-	     <input name="list" type="button" value="목록" class="inputb" onClick="javascript:location.href='listAction.action?currentPage=<s:property value="currentPage" />'">
+	    	 <input name="list" type="button" value="목록" class="inputb" onClick="javascript:location.href='listAction.action?currentPage=<s:property value="currentPage" />'"/>
         </td>
       </tr>
 

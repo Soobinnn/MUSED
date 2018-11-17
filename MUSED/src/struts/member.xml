@@ -94,6 +94,11 @@
 		<action name="admin_memberlist" class="admin.memberListAction">
 			<result type="tiles">admin_member</result>
 		</action>
+		
+		<action name="admin_processAction" class="admin.memberListAction" method="test">
+			<result type="tiles">admin_member</result>
+		</action>
+		
 	</package>
 	
 </struts>

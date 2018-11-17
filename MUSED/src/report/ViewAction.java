@@ -26,6 +26,7 @@ public class ViewAction extends ActionSupport
 
 	private int currentPage;
 	
+	private String report_state;
 	private int report_no;
 	private String fileUploadPath = "C:\\Users\\user\\Desktop\\Java\\upload";
 	
@@ -47,12 +48,23 @@ public class ViewAction extends ActionSupport
 
 		return SUCCESS;
 	}
+	public String process() throws Exception
+	{
+		resultClass = (reportVO) sqlMapper.queryForObject("report.selectOne", getReport_no());
+		
+		paramClass.setReport_no(getReport_no());
+		paramClass.setReport_state(getReport_state());
+		sqlMapper.update("report.checkprocess",paramClass);
+		
+		return SUCCESS;
+	}
 	public String download() throws Exception 
 	{
 
 		// 해당 번호의 파일 정보를 가져온다.
 		resultClass = (reportVO) sqlMapper.queryForObject("report.selectOne", getReport_no());
 
+	
 		// 파일 경로와 파일명을 file 객체에 넣는다.
 		File fileInfo = new File(fileUploadPath + resultClass.getFile_savname());
 
@@ -126,6 +138,14 @@ public class ViewAction extends ActionSupport
 
 	public void setReport_no(int report_no) {
 		this.report_no = report_no;
+	}
+
+	public String getReport_state() {
+		return report_state;
+	}
+
+	public void setReport_state(String report_state) {
+		this.report_state = report_state;
 	}
 	
 	

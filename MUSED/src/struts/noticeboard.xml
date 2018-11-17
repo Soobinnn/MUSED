@@ -94,6 +94,19 @@
 	<action name="admin_modifyAction" class="board.notice.modifyAction">
 		<result type="chain">admin_noticeView</result>
 	</action>
+	
+	<action name="admin_checkForm" class="board.notice.viewAction" method="checkForm">
+		<result>/admin/admin_delConfirm.jsp</result>
+	</action>
+	
+	<action name="admin_checkAction" class="board.notice.viewAction" method="checkAction">
+		<result name="error">/board/notice/checkError.jsp</result>
+		<result>/admin/admin_checkSuccess.jsp</result>
+	</action>
+	
+		<action name="admin_deleteAction" class="board.notice.deleteAction">
+		<result type="chain">admin_notice</result>
+	</action>
 </package>
 
 </struts>

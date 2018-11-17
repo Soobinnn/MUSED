@@ -18,7 +18,7 @@ public class pagingAction
 		private StringBuffer pagingHtml; // ??
 		
 		//페이징 생성자			현재 페이지		   , 전체 게시물 수 	   , 한 페이지의 게시물의 수, 한 화면에 보여줄 페이지 수
-			public pagingAction(int currentPage, int totalCount, int blockCount, int blockPage)
+			public pagingAction(int currentPage, int totalCount, int blockCount, int blockPage, int searchNum, String isSearch)
 			{
 				this.blockCount = blockCount;
 				this.blockPage = blockPage;
@@ -57,6 +57,9 @@ public class pagingAction
 				pagingHtml = new StringBuffer();
 				if (currentPage > blockPage) 
 				{
+					if(isSearch != "") 
+						   pagingHtml.append("<a href=admin_memberlist.action?currentPage=" + (startPage -1) + "&searchKeyword=" + isSearch + "&searchNum="+searchNum+">");     
+					else 
 					pagingHtml.append("<a href=admin_memberlist.action?currentPage=" + (startPage - 1) + ">");
 					pagingHtml.append("이전");
 					pagingHtml.append("</a>");
@@ -80,6 +83,7 @@ public class pagingAction
 					{
 						pagingHtml.append("&nbsp;<a href='admin_memberlist.action?currentPage=");
 						pagingHtml.append(i);
+						if(isSearch != "") pagingHtml.append("&searchKeyword="+isSearch);
 						pagingHtml.append("'>");
 						pagingHtml.append(i);
 						pagingHtml.append("</a>");
@@ -93,6 +97,8 @@ public class pagingAction
 				if (totalPage - startPage >= blockPage) 
 				{
 					pagingHtml.append("<a href=admin_memberlist.action?currentPage="+ (endPage + 1) + ">");
+					 if(isSearch != "")
+			    	       pagingHtml.append("&searchKeyword="+isSearch);
 					pagingHtml.append("다음");
 					pagingHtml.append("</a>");
 				}

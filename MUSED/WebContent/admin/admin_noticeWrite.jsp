@@ -58,7 +58,7 @@
 
 	<s:else>
 		<%-- resultClass가 있으면 수정으로 인식 --%>
-		<form action="modifyAction.action" method="post"
+		<form action="/MUSED/tiles/notice/admin_modifyAction.action" method="post"
 			enctype="multipart/form-data">
 			<s:hidden name="no" value="%{resultClass.no}" />
 			<s:hidden name="currentPage" value="%{currentPage}" />
