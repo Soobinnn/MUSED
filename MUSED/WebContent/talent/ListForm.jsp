@@ -132,6 +132,34 @@ function initRegion()
  }
 }
 
+
+function refresh(a){
+	//현재 주소를 가져온다.
+	var renewURL = location.href;
+	//현재 주소 중 sort 부분이 있다면 날려버린다.
+	renewURL = renewURL.replace(/sort=([0-9]+)/ig,'');
+	//주소 추가 할당
+	if(a==0){
+	renewURL += '&sort='+0;
+	}
+	if(a==1){
+		renewURL += '&sort='+1;
+	}
+	if(a==2){
+		renewURL += '&sort='+2;
+	}
+	if(a==3){
+		renewURL += '&sort='+3;
+	}
+	
+	//페이지 갱신 실행!
+	history.pushState(null, null, renewURL);
+	refreshsuccess(location.href);
+}
+function refreshsuccess(a){
+	document.location.reload(a);
+}
+
 </script>
 <style>
 input[type="checkbox"] + label {
@@ -224,16 +252,16 @@ select, input{
 		
 		
 	<tr align="left">
-		<td colspan="5">
-	<br>
+		<td colspan="5" height="30px">
+			<br>
 				<select name="sort">
-					<option value="0">최신순</option>
-					<option value="1">인기순</option>
-					<option value="2">최저가순</option>
-					<option value="3">최고가순</option>
-					
-				</select>	
-				<br>
+				
+					<option value="0" onclick="refresh(0)">최신순</option>
+					<option value="1" onclick="refresh(1)">인기순</option>
+					<option value="2" onclick="refresh(2)">저가순</option>
+					<option value="3" onclick="refresh(3)">고가순</option>
+				</select>
+			<br>
 		</td>
 	</tr>
 

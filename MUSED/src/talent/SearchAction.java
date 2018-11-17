@@ -33,6 +33,7 @@ public class SearchAction extends ActionSupport{
 	private String sido;
 	private String gogon;
 	private String searchKeyword;
+	private String sort;
 	
 	private int currentPage=1;	//현재 페이지
 	private int totalCount;		
@@ -116,8 +117,26 @@ public class SearchAction extends ActionSupport{
 	    }else {
 	    	map.put("searchKeyword", "%"+getSearchKeyword()+"%");
 	    }
+	    
+
+	    //정렬 : if 문
+	    if(getSort().equals("0")) {
+	    	map.put("sort", "talent_no desc");  // 최신순
+	    }
+	    if(getSort().equals("1")) {
+	    	map.put("sort", "readhit desc");  // 인기순
+	    }
+	    if(getSort().equals("2")) {
+	    	map.put("sort", "talent_price asc");  // 저가순
+	    }
+	    if(getSort().equals("3")) {
+	    	map.put("sort", "talent_price desc");  // 고가순
+	    }
+	    
 	    System.out.println(map);
 		list=sqlMapper.queryForList("talent.detailSearch", map);
+		
+	
 		
 		//페이징
 		totalCount = list.size();
@@ -137,6 +156,18 @@ public class SearchAction extends ActionSupport{
 	}
 
 
+
+	public String getSort() {
+		return sort;
+	}
+
+	public void setSort(String sort) {
+		this.sort = sort;
+	}
+
+	public void setMap(HashMap map) {
+		this.map = map;
+	}
 
 	public String getCategory1() {
 		return category1;

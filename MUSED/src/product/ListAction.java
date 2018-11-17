@@ -25,6 +25,8 @@ public class ListAction extends ActionSupport
 	private String searchKeyword;
 	private int searchNum;
 	private int num =0;
+	private String sort;
+	HashMap map = new HashMap();
 	
 	private int currentPage=1;	//현재 페이지
 	private int totalCount;		
@@ -32,6 +34,7 @@ public class ListAction extends ActionSupport
 	private int blockPage=5;
 	private String pagingHtml;
 	private pagingAction page;
+	
 
 	public ListAction() throws IOException{
 		reader=Resources.getResourceAsReader("sqlMapConfig.xml");
@@ -42,12 +45,25 @@ public class ListAction extends ActionSupport
 	public String execute() throws Exception
 	{
 		
-		if(getSearchKeyword() != null)
-		{
-			return search();
-		}
-		
-		list=sqlMapper.queryForList("product.selectAll");
+		System.out.println("list:"+map);
+
+	    //정렬 : if 문
+		    if(getSort().equals("0")) {
+		    	map.put("sort", "product_no desc");  // 최신순
+		    }
+		    else if(getSort().equals("1")) {
+		    	map.put("sort", "readhit desc");  // 인기순
+		    }
+		    else if(getSort().equals("2")) {
+		    	map.put("sort", "product_price asc");  // 저가순
+		    }
+		    else if(getSort().equals("3")) {
+		    	map.put("sort", "product_price desc");  // 고가순
+		    }
+		 
+	    System.out.println(map);
+	    
+		list=sqlMapper.queryForList("product.selectAll",map);
 
 		totalCount = list.size();
 		
@@ -63,35 +79,23 @@ public class ListAction extends ActionSupport
 
 		return SUCCESS;
 	}
-		
-	public String search() throws Exception 
-	{	
-		if(searchNum == 0)
-		{
-			list = sqlMapper.queryForList("product.selectSearchW", "%"+getSearchKeyword()+"%");
-		}
-		if(searchNum == 1)
-		{
-			list = sqlMapper.queryForList("product.selectSearchS", "%"+getSearchKeyword()+"%");
-		}
-		if(searchNum == 2)
-		{
-			list = sqlMapper.queryForList("product.selectSearchC", "%"+getSearchKeyword()+"%");	
-		}
-		
-		totalCount = list.size();
-		page = new pagingAction(currentPage, totalCount, blockCount, blockPage, searchNum, getSearchKeyword());
-		pagingHtml = page.getPagingHtml().toString();
-		
-		int lastCount = totalCount;
-		
-		if(page.getEndCount() < totalCount)
-			lastCount = page.getEndCount() + 1;
-		
-		list = list.subList(page.getStartCount(), lastCount);
-		return SUCCESS;
+
+
+	public String getSort() {
+		return sort;
 	}
 
+	public void setSort(String sort) {
+		this.sort = sort;
+	}
+
+	public HashMap getMap() {
+		return map;
+	}
+
+	public void setMap(HashMap map) {
+		this.map = map;
+	}
 
 	public productVO getResultClass() {
 		return resultClass;

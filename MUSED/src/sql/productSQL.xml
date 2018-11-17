@@ -43,9 +43,9 @@
 	</sql>
 	
 	<!-- product 전체 가져오는데 no정렬 -->
-	<select id="selectAll" resultMap="productRes">
+	<select id="selectAll" resultMap="productRes" parameterClass="java.util.HashMap" >
 		SELECT * FROM PRODUCT
-		ORDER BY product_no DESC
+		ORDER BY $sort$
 	</select>
 	
 	<select id="selectLastNo" resultMap="productRes" parameterClass="int">
@@ -159,8 +159,7 @@
 		or product_price BETWEEN $product_priceA$ and $product_priceB$
 		or product_sido=#product_sido# or product_gogon=#product_gogon#
 		or product_content LIKE #searchKeyword# OR product_subject LIKE #searchKeyword#
-		ORDER BY product_no DESC
-		
+		ORDER BY $sort$
  </select>
 	
 </sqlMap>

@@ -41,9 +41,9 @@
 	</sql>
 	
 	<!-- TALENT 전체 가져오는데 no정렬 -->
-	<select id="selectAll" resultMap="talentRes">
+	<select id="selectAll" resultMap="talentRes" parameterClass="java.util.HashMap">
 		SELECT * FROM TALENT
-		ORDER BY talent_no DESC
+		ORDER BY $sort$
 	</select>
 	
 	<select id="selectLastNo" resultMap="talentRes">
@@ -157,7 +157,7 @@
 		or talent_price BETWEEN $talent_priceA$ and $talent_priceB$
 		or talent_sido=#talent_sido# or talent_gogon=#talent_gogon#
 		or talent_content LIKE #searchKeyword# OR talent_subject LIKE #searchKeyword#
-		ORDER BY talent_no DESC
+		ORDER BY $sort$
  </select>
 	
 </sqlMap>
