@@ -336,7 +336,7 @@ function initRegion()
         <tr>
           <td align="right" colspan="2">
           	<input name="submit" type="submit" value="작성완료" class="inputb">
-            <input name="list" type="button" value="목록" class="inputb" onClick="javascript:location.href='talentList.action'">
+            <input name="list" type="button" value="목록" class="inputb" onClick="javascript:location.href='talentList.action?sort=0&currentPage=1'">
           </td>
         </tr>
 

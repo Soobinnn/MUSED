@@ -16,13 +16,14 @@
 
 <script type="text/javascript">
 
-function btn(){
-	if(confirm("경고! 수정 버튼을 누르면 원본 파일은 사라집니다.")==true){
-		return true;
+ 
+function btn(currentPage, no){
+	if(confirm("경고! 수정 버튼을 누르면 원본 파일은 사라집니다.")){
+		location.href="productUpdateForm.action?product_no="+no+"&currentPage="+currentPage;
 	}else{
 		return false;
 	}
-}
+	}
 
  function open_win_noresizable(url,name){
 	var oWin = window.open(url, name, "scrollbars=no,status=no, resizable=no, width=300, height=150");
@@ -352,11 +353,7 @@ to {
 					class="inputb"
 					onClick="javascript:location.href='product/productList.action?currentPage=<s:property value="currentPage"/>'" />
 					<s:if test="%{#session.ID==resultClass.product_id}">
-						<s:url id="update" action='productUpdateForm.action?product_no=<s:property value="product_no"/>&currentPage=<s:property value="currentPage"/>'>
-						<s:a href="${update}" onclick="btn()">
-						<input name="update" type="button" value="수정하기" class="inputb"
-							 />
-							</s:a></s:url>
+						<input type="button" value="수정하기" class="inputb" onclick='btn(<s:property value="currentPage"/>,<s:property value="product_no"/>)'/>
 						<input name="delete" type="button" value="삭제하기" class="inputb"
 							onClick="javascript:location.href='productDelete.action?product_no=<s:property value="product_no"/>&currentPage=<s:property value="currentPage"/>'" />
 					</s:if></td>
