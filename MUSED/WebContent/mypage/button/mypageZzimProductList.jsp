@@ -2,16 +2,16 @@
     pageEncoding="utf-8"%>
 <%@ taglib prefix="s" uri="/struts-tags" %>
 <%@ page import ="java.util.HashMap" %>
-<%@ taglib prefix="s" uri="/struts-tags" %>
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<title>상품 판매 내역</title>
+
+<title>내가 찜한 상품</title>
 </head>
 <body>
 
-<h1><center>내가 판매한 상품!</center></h1><br/>
+<h1><center>내가 찜한 상품!</center></h1><br>
 
 <table width="600" border="0" cellspacing="0" cellspadding="2">
 <tr bgcolor="#777777">
@@ -19,6 +19,7 @@
 </tr>
 <tr>
     <s:iterator value="list" status="stat">
+    	<td>
 	     <s:url id="DetailURL" action="productDetail">
 			<s:param name="product_no">
 				<s:property value="product_no"/>
@@ -27,7 +28,7 @@
 				<s:property value="currentPage"/>
 			</s:param>
 		</s:url>
-      <td>	 
+   	 
           &nbsp;<s:a href="%{DetailURL}">
       			<img src="/MUSED/product/img/<s:property value="main_img"/>" style="height: 100px; width: 100px; display: block;"/>
 				<br><s:property value="product_subject" />
@@ -41,7 +42,7 @@
 </tr>
    	  <s:if test="list.size()<=0">
 			<tr bgcolor="#FFFFFF" align="center">
-				<td colspan="5">판매된 제품이 없습니다.</td>
+				<td colspan="5">등록된 상품 찜이 없습니다.</td>
 			</tr>
 	 </s:if>
 	

@@ -42,6 +42,10 @@ function showSlides(n) {
   }
   slides[slideIndex-1].style.display = "block"; 
 }
+
+function zzim_hagi(){
+	alert("찜하기가 완료되었습니다.");
+}
 </script>
 <style>
 
@@ -150,6 +154,9 @@ function showSlides(n) {
 	<s:property value="resultClass.talent_subject"/>
 <br>
 	조회수 : &nbsp; &nbsp;<s:property value="resultClass.readhit"/>
+	
+	<input name="list" type="button" value="찜하기" class="inputb" onclick="zzim_hagi();javascript:location.href='talentZzim.action?zzim_contno=<s:property value="talent_no"/>&zzim_indexno=2'">
+	
 <table width="100%" height="400" border="0">
 <tr>
 <td width="60%" align="middle">

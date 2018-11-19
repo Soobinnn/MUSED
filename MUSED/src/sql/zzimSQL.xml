@@ -2,7 +2,7 @@
 <!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD Sql Map 2.0//EN"
 'http://ibatis.apache.org/dtd/sql-map-2.dtd'>
 <sqlMap namespace="zzim">
-<typeAlias alias="zzim" type="product.zzimVO"/>
+<typeAlias alias="zzim" type="product.ZzimVO"/>
 
 <resultMap class="zzim" id="zzimRes">
 	<result property="zzim_no" column="zzim_no"/>
@@ -11,9 +11,15 @@
 	<result property="zzim_contno" column="zzim_contno"/>
 </resultMap>
 
+<!-- 찜하기 --> 
 <insert id="insertZzim" parameterClass="zzim">
 	INSERT INTO ZZIM (ZZIM_NO,ZZIM_MEMID,ZZIM_INDEXNO,ZZIM_CONTNO)
 	VALUES (ZZIM_NO_SEQ.NEXTVAL,#zzim_memid#,#zzim_indexno#,#zzim_contno#)
 </insert>
+
+<!-- mypage에서 내가 찜한 상품,재능 합친 수 -->
+<select id="zzimCount" parameterClass="String" resultClass="java.lang.Integer">
+SELECT COUNT(*) as zpro FROM ZZIM WHERE ZZIM_MEMID=#zzim_memid#
+</select>
 
 </sqlMap>

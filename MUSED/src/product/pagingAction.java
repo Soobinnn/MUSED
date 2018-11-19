@@ -34,6 +34,7 @@ public class pagingAction
 		startCount = (currentPage-1)*blockCount;
 		endCount = startCount + blockCount -1;
 		
+		/*추가부분*/
 		startPage = (int) ((currentPage-1)/blockPage)*blockPage+1;
 		endPage=startPage+blockPage-1;
 		

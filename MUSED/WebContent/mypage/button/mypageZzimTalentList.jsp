@@ -7,19 +7,18 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 
-<title>재능 판매 내역</title>
+<title>내가 찜한 재능</title>
 </head>
 <body>
 
-<h1><center>내가 판매한 재능!</center></h1><br>
+<h1><center>내가 찜한 재능!</center></h1><br>
 
 <table width="600" border="0" cellspacing="0" cellspadding="2">
 <tr bgcolor="#777777">
     	<td height="1" colspan="5"></td>
-   	</tr>
-    
-	<tr>
-     	<s:iterator value="list2" status="stat">
+</tr>
+<tr>
+     <s:iterator value="list2" status="stat">
   	      <td>	 
 	      	<s:url id="DetailURL" action="talentDetail">
 				<s:param name="talent_no">
@@ -40,7 +39,7 @@
 
 	<s:if test="list2.size()<=0">
 		<tr bgcolor="#FFFFFF" align="center">
-			<td colspan="5">판매된 재능이 없습니다.</td>
+			<td colspan="5">등록된 재능 찜이 없습니다.</td>
 		</tr>
 	</s:if>
 	

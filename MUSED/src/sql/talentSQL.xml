@@ -138,6 +138,13 @@
 	<select id="selectMySellTalent" parameterClass="String" resultMap="talentRes">
 		SELECT * FROM TALENT WHERE TALENT_ID=#talent_id# AND TALENT_STATE='완'
 	</select>
+	
+	<!-- mypage에서 내가 찜한 재능 -->
+	<select id="selectMyZzimTalent" parameterClass="String" resultMap="talentRes">
+		SELECT T.TALENT_NO,T.TALENT_ID,T.TALENT_STATE,T.TALENT_SUBJECT,T.TALENT_NAME,T.TALENT_CATEGORY,T.TALENT_PRICE,T.TALENT_PHONE,T.TALENT_SIDO,T.TALENT_GOGON,T.TALENT_IMAGE,T.TALENT_CONTENT,T.MAIN_IMG,T.READHIT
+		FROM ZZIM,TALENT T
+		WHERE ZZIM.ZZIM_CONTNO = T.TALENT_NO AND ZZIM.ZZIM_MEMID=#zzim_memid#
+	</select>
 
 	<!-- 메인검색 -->
 	<select id="main_selectSearch" resultMap="talentRes" parameterClass="string">

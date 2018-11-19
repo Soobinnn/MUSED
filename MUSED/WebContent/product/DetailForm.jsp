@@ -47,8 +47,8 @@ function showSlides(n) {
   slides[slideIndex-1].style.display = "block"; 
 }
 
-function zzim_click(){
-	alert("찜 등록이 완료되었습니다.")
+function zzim_hagi(){
+	alert("찜하기가 완료되었습니다.");
 }
 
 </script>
@@ -182,7 +182,7 @@ to {
 	<br> 조회수 : &nbsp; &nbsp;<s:property value="resultClass.readhit" />
 
 		
-	<input name="list" type="button" value="찜하기" class="inputb" onclick="zzim_click();javascript:location.href='productZzim.action'"/>
+	<input name="list" type="button" value="찜하기" class="inputb" onclick="zzim_hagi();javascript:location.href='productZzim.action?zzim_contno=<s:property value="product_no"/>&zzim_indexno=1'">
 
 
 
@@ -223,7 +223,7 @@ to {
 							<s:subset source="image" count="4">
 								<s:iterator status="stat">
 									<td><img src='<s:property/>'
-										style="height: 100px; width: 100px; display: block;"
+										style="height:100px; width:100px; display:block;"
 										onclick="currentSlide(<s:property value='#stat.index+1'/>)" />
 									</td>
 								</s:iterator>
