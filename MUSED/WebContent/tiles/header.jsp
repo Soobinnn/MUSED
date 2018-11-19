@@ -86,7 +86,7 @@
 							</div></li>
 						<s:if test="%{#session.ACCESS_NUM == 1}">
 							<li><div>
-									<a href="/MUSED/tiles/admin/admin_main.action"><img src="/MUSED_MUSED/tiles/image/admin.png"
+									<a href="/MUSED/tiles/admin/admin_main.action"><img src="/MUSED/tiles/image/admin.png"
 										width="45" height="45" /></a> <br>Admin
 								</div></li>
 						</s:if>

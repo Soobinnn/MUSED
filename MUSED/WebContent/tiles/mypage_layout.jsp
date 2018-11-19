@@ -26,8 +26,14 @@ div#left {
 	float: left;
 }
 
+#right {
+	width:130px;
+	height:400px;
+	float:right;
+}
+
 #contents {
-	width: 700px;
+	width: 1100px;
 	height: 400px;
 	float: left;
 }
@@ -64,6 +70,9 @@ div#left {
 		</div>
 		<div id="contents">
 			<tiles:insertAttribute name="mypage_body" />
+		</div>
+		<div id="right">
+			<tiles:insertAttribute name="mypage_right"/>
 		</div>
 	</div>
 	<div id="footer">

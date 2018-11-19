@@ -11,7 +11,6 @@
 <h2>상품관리</h2><br>
 <input type="button" value="등록된 상품" onclick="javascript:location.href='myProduct.action'"><br>
 <input type="button" value="등록된 재능" onclick="javascript:location.href='myTalent.action'"><br>
-<input type="button" value="최근본 상품" onclick="javascript:location.href='myRecent.action'"><br>
 <input type="button" value="찜한 상품" onclick="javascript:location.href='myZzim.action'"><br>
 <h2>판매내역</h2><br>
 <input type="button" value="제품 판매 내역" onclick="javascript:location.href='mySellProduct.action'"><br>

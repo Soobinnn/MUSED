@@ -1,39 +1,48 @@
+<%@ page import="util.CookieBox"%>
+<%@ taglib prefix="s" uri="/struts-tags"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"%>
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<style>
-input {             /*input tag 공통 스타일*/
-  width: 200px;
-  height: 100px;
-  border-radius: 3px;
-  font-weight: 600;
-  border-color: transparent;
-  font-size: 25px;
-  background: hotpink;
-  color: #fff;
- cursor: pointer;
-}
-input.upload {  
-  opacity: 0;       /*input type="file" tag 투명하게 처리*/
-  position: relative;
-}
-button.replace {    /*button tag 에 원하는 스타일 적용*/
-  position: absolute;
-  width: 200px;
-  height: 100px;
-  border-radius: 3px;
-  font-weight: 600;
-  border-color: transparent;
-  font-size: 25px;
-  background: hotpink;
-  color: #fff;
-  cursor: pointer;
-}
-</style>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+
 </head>
 <body>
-<input type="submit" value="등록">
-<button class="replace">파일 업로드</button>
-<input type="file" value="파일 업로드" class="upload">
+	<%
+		CookieBox cookieBox = new CookieBox(request);
+
+		int num = 5;
+	%>
+	오늘본 상품 목록
+	
+		<table>
+			<s:url id="DetailURL" action="productDetail">
+				<s:param name="product_no">	
+					<s:property value="product_no" />
+				</s:param>
+				<s:param name="currentPage">
+					<s:property value="currentPage" />
+				</s:param>
+			</s:url>
+	
+			<%
+				for (int i = 0; i < num; i++) {
+			%>
+			<tr>
+				<td align="center"><s:a href="%{DetailURL}">
+						<img src="<%=cookieBox.getValue("IMAGE" + i) %>"
+							style="height: 100px; width: 100px; display: block;" />
+					</s:a><%=cookieBox.getValue("CID" + i)%></td>
+			</tr>
+			<%
+				}
+			%>
+		</table>
+
 </body>
 </html>
 

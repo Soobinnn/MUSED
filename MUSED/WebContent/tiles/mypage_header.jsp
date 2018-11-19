@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<link rel="stylesheet" href="/MUSED_MUSED/tiles/style.css">
+<link rel="stylesheet" href="/MUSED/tiles/style.css">
 <meta charset="EUC-KR">
 <title>Insert title here</title>
 
@@ -114,39 +114,39 @@
 									value="%{#session.ID}" /> <br>등급: <s:if
 									test="#session.ACCESS_NUM == 1">
 									<img class="border"
-										src="/MUSED_MUSED/tiles/image/supervisor.jpg" width="15"
+										src="/MUSED/tiles/image/supervisor.jpg" width="15"
 										height="15" />
 								</s:if> <s:if
 									test="#session.ACCESS_NUM != 1 && paramClass.score >= 0 && paramClass.score < 100">
-									<img class="border" src="/MUSED_MUSED/tiles/image/bronze.png"
+									<img class="border" src="/MUSED/tiles/image/bronze.png"
 										width="15" height="15" />
 								</s:if> <s:if
 									test="#session.ACCESS_NUM != 1 && paramClass.score >= 100 && paramClass.score < 150">
-									<img class="border" src="/MUSED_MUSED/tiles/image/silver.png"
+									<img class="border" src="/MUSED/tiles/image/silver.png"
 										width="15" height="15" />
 								</s:if> <s:if
 									test="#session.ACCESS_NUM != 1 && paramClass.score >= 150 && paramClass.score < 200">
-									<img class="border" src="/MUSED_MUSED/tiles/image/gold.png"
+									<img class="border" src="/MUSED/tiles/image/gold.png"
 										width="15" height="15" />
 								</s:if> <s:if
 									test="#session.ACCESS_NUM != 1 && paramClass.score >= 200 && paramClass.score < 500">
-									<img class="border" src="/MUSED_MUSED/tiles/image/vip.png"
+									<img class="border" src="/MUSED/tiles/image/vip.png"
 										width="15" height="15" />
 								</s:if> <s:if test="%{#session.ACCESS_NUM == 1}">관리자</s:if> <s:else>
 									<s:property value="%{grade}" />
 								</s:else>(<s:property value="%{paramClass.score}" />) <img
-								class="border" src="/MUSED_MUSED/tiles/image/grade.png"
+								class="border" src="/MUSED/tiles/image/grade.png"
 								width="15" height="15" />
 								<p class="arrow_box">
-									<img class="border" src="/MUSED_MUSED/tiles/image/bronze.png"
+									<img class="border" src="/MUSED/tiles/image/bronze.png"
 										width="15" height="15" />BRONZE : ~99<br> <img
-										class="border" src="/MUSED_MUSED/tiles/image/silver.png"
+										class="border" src="/MUSED/tiles/image/silver.png"
 										width="15" height="15" />SILVER : ~149<br> <img
-										class="border" src="/MUSED_MUSED/tiles/image/gold.png"
+										class="border" src="/MUSED/tiles/image/gold.png"
 										width="15" height="15" />GOLD : ~199<br> <img
-										class="border" src="/MUSED_MUSED/tiles/image/vip.png"
+										class="border" src="/MUSED/tiles/image/vip.png"
 										width="15" height="15" />VIP : ~499<br> <img
-										class="border" src="/MUSED_MUSED/tiles/image/supervisor.jpg"
+										class="border" src="/MUSED/tiles/image/supervisor.jpg"
 										width="15" height="15" />관리자<br>
 								</p> <br> 가입일: <s:property value="%{#session.JOINDATE}" />
 							</td>
