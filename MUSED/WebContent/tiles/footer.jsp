@@ -17,9 +17,10 @@
 	<footer id="main_footer">
 		<div id="footer_nav">
 			<ul>
-				<li id="pr"><a href="#">개인정보처리방침</a></li>
-				<li id="use"><a href="#">이용약관</a></li>
-				<li id="rep"><a href='/MUSED/admin/reportForm.action' onclick="window.open(this.href,'신고하기','width=610,height=470'); return false;">신고하기</a></li>	
+
+				<li id="pr"><a href="/MUSED/footer/footer_privacy.jsp">개인정보처리방침</a></li>
+				<li id="use"><a href="/MUSED/footer/footer_policy.jsp">이용약관</a></li>
+				<li id="rep"><a href='/MUSED/tiles/admin/reportForm.action' onclick="window.open(this.href,'신고하기','width=610,height=470'); return false;">신고하기</a></li>	
 			</ul>
 		</div>
 		<div id="footer_descrip">

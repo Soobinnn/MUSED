@@ -55,6 +55,11 @@
 		<action name="talent_search" class="talent.ListAction">
 			<result type="tiles">talent_search</result>
 		</action>
+		
+		<action name="Tsearch" class="talent.SearchAction">
+			<result type="tiles">talentList</result>
+		</action>
+		
 	</package>
 
 </struts>

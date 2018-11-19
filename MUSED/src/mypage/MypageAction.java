@@ -153,6 +153,7 @@ public class MypageAction extends ActionSupport implements SessionAware{
 		
 		page1=new pagingAction1(currentPage,totalCount,blockCount,blockPage);
 		pagingHtml = page1.getPagingHtml().toString();
+
 		
 		int lastCount=totalCount;
 		

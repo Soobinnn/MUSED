@@ -16,6 +16,8 @@ public class reportVO
 	private String file_savname;
 	private String report_state;
 	
+	private String check;
+	
 	public String getReport_state() {
 		return report_state;
 	}
@@ -95,6 +97,12 @@ public class reportVO
 	}
 	public void setReport_reportid(String report_reportid) {
 		this.report_reportid = report_reportid;
+	}
+	public String getCheck() {
+		return check;
+	}
+	public void setCheck(String check) {
+		this.check = check;
 	}
 
 	

@@ -30,7 +30,7 @@ top:500; left:410;}
 		</tr>
 	</table>
 
-	<table width="950" border="1" cellspacing="0" cellpadding="5">
+	<table width="950" border="0" cellspacing="0" cellpadding="5">
 		<tr bgcolor="#777777">
 			<td colspan="8" height="1"></td>
 		</tr>
@@ -42,57 +42,24 @@ top:500; left:410;}
 
 		<tr>
 			<td width="70">제목</td>	<td colspan="3" width="450"><s:property value="resultClass.subject" /></td>
-		                           <td width="100">이름</td><td width="100"><s:property value="resultClass.name" /></td>
-		                           <td width="100">조회수</td><td width="50"><s:property value="resultClass.readhit"/></td>
+		    <td width="100">이름</td><td width="100"><s:property value="resultClass.name" /></td>
+		    <td width="100">조회수</td><td width="50"><s:property value="resultClass.readhit"/></td>
 		                           
 		
 		</tr>
 
 
-		<%-- <tr>
-			<td width="70">이름</td>
-			<td width="1000"><s:property value="resultClass.name" /></td>
-		</tr> --%>
-
 		<tr>
 	　　　　　	<td width="70" height="250">내용</td>
-			<td colspan ="7" width="1000">
-			<table width="950" border="0" cellspacing="0" cellpadding="2">
+			<td colspan ="7" width="1000"><pre>${resultClass.content}</pre>
+			
 		<tr>
-		　　　<td align="right"><s:property value="resultClass.regdate"/></td>
+		　　　<td colspan="8" align="right"><s:property value="resultClass.regdate"/></td>
 		</tr>
 	</table>
-			<pre>${resultClass.content}</pre></td>
+			
 		
-		
-		
-		
-		
-		</tr>
-
-		<%-- <tr>
-			<td width="70">조회수</td>
-			<td width="1000"><s:property value="resultClass.readhit" /></td>
-		</tr> --%>
-
-		<%-- <tr>
-			<td width="70">등록날짜</td>
-			<td width="1000"><s:property value="resultClass.regdate" /></td>
-		</tr>  얘를 어디로 보내지?--%>
-
-		<tr>
-			<td width="70">첨부파일</td>
-			<td colspan="7" width="1000">&nbsp;&nbsp; <s:url id="download"
-					action="fileDownloadAction">
-					<s:param name="no">
-						<s:property value="no" />
-					</s:param>
-				</s:url> <s:a href="%{download}">
-					<s:property value="resultClass.file_orgname" />
-				</s:a>
-			</td>
-		</tr>
-
+<table width="950" border="0" cellspacing="0" cellpadding="5">
 		<tr bgcolor="#777777">
 			<td colspan="8" height="1"></td>
 		</tr>
@@ -101,8 +68,8 @@ top:500; left:410;}
 			<td colspan="8" height="10"></td>
 		</tr>
 
-		
-				<tr>
+
+		<tr>
 			<td colspan="8" align="right">
 			<s:url id="modifyURL" action="modifyForm">
 					<s:param name="no">
@@ -116,17 +83,24 @@ top:500; left:410;}
 				</s:url> 
 				
 				
-								
+				
+				<%-- id세션 값이 같거나 관리자에게만  답글, 수정, 삭제 버튼이 보이도록 수정한다. --%>
+				
 				<s:if test="#session.ACCESS_NUM == 1">			
-				<%-- <input name="list" type="button" value="답변달기" class="inputb" onClick="javascript:location.href='replyForm.action?no=<s:property value="no" />&currentPage=<s:property value="currentPage" />','reply'"> --%>
+				<input name="list" type="button" value="답변달기" class="inputb" onClick="javascript:location.href='replyForm.action?no=<s:property value="no" />&currentPage=<s:property value="currentPage" />','reply'">
 				
 				<input name="list" type="button" value="수정" class="inputb" onClick="javascript:location.href='modifyForm.action?no=<s:property value="no" />&currentPage=<s:property value="currentPage"/>'">
-			    <input type="button" value="삭제" onClick="javascript:window.open('checkForm.action?no=<s:property value="resultClass.no" />&currentPage=<s:property value="currentPage" />','delete','width=450, height=100')">
-			</s:if>
+	 
+                <input type="button" value="삭제" onClick="javascript:window.open('checkForm.action?no=<s:property value="resultClass.no" />&currentPage=<s:property value="currentPage" />','delete','width=450, height=100')">
+
+                <%--    window.open("파일명", "윈도우이름","창속성"); 또는 "javascript:window.open('파일명 및 경로', '윈도우 이름', '창 속성')" 이렇게 쓸 수도 있다.--%>
+</s:if>
 		<s:else>             
 			       	  </s:else>
-				
-                <input name="list" type="button" value="목록" class="inputb" onClick="javascript:location.href='listAction.action?currentPage=<s:property value="currentPage" />'">
+			
+            	
+	<input name="list" type="button" value="목록" class="inputb" onClick="javascript:location.href='listAction.action?currentPage=<s:property value="currentPage" />'">
+ 
 			</td>
 		</tr>
 	</table>

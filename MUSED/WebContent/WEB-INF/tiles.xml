@@ -26,6 +26,7 @@
 	<definition name="admin" template="/tiles/admin_layout.jsp">
 		<put-attribute name="admin_title" value="MUSED"/>
 		<put-attribute name="admin_header" value="/tiles/header.jsp"/>
+		<put-attribute name="admin_nav" value="/admin/admin_nav.jsp"></put-attribute>
 		<put-attribute name="admin_body" value="/admin/admin_main.jsp"/>
 	</definition>
 	<!-- 메인 검색 -->
@@ -209,41 +210,75 @@
 		<put-attribute name="admin_body" value="/admin/reportList.jsp"/>
 	</definition>
 	
-	<definition name="admin_member" extends="admin">
-		<put-attribute name="admin_body" value="/admin/reportList.jsp"/>
-	</definition>
-
-	<definition name="admin_notice" extends="admin">
-		<put-attribute name="admin_body" value="/admin/reportList.jsp"/>
+	<definition name="admin_reportview" extends="admin">
+		<put-attribute name="admin_body" value="/admin/reportView.jsp"/>
 	</definition>
 	
+	<definition name="admin_member" extends="admin">
+		<put-attribute name="admin_body" value="/admin/admin_memberList.jsp"/>
+	</definition>
+	
+	<definition name="admin_notice" extends="admin">
+		<put-attribute name="admin_body" value="/admin/admin_notice.jsp"/>
+	</definition>
+	
+	<definition name="admin_noticeView" extends="admin">
+		<put-attribute name="admin_body" value="/admin/admin_noticeView.jsp"/>
+	</definition>
+	
+	<definition name="admin_noticeWrite" extends="admin">
+		<put-attribute name="admin_body" value="/admin/admin_noticeWrite.jsp"/>
+	</definition>
 <!--자유 게시판 : KS -->
-  <definition name="freeboard_list" extends="main">
+  <definition name="fb_list" extends="main">
      <put-attribute name="body" value="/board/free/boardList.jsp"/>
    </definition>
    
-   <definition name="freeboard_view" extends="main">
+   <definition name="fb_view" extends="main">
      <put-attribute name="body" value="/board/free/boardView.jsp"/>
     </definition>
     
-    <definition name="freeboard_write" extends="main">
-      <put-attribute name="body" value="board/free/boardWrite.jsp"/>
+    <definition name="fb_write" extends="main">
+      <put-attribute name="body" value="/board/free/boardWrite.jsp"/>
     </definition>
 
 <!-- 자유 게시판 종료 : KS -->
   
-  <!-- 공지사항 게시판 -->
-   <definition name="notice_list" extends="main">
+  <!-- 공지사항 게시판 : KS -->
+   <definition name="nb_list" extends="main">
      <put-attribute name="body" value="/board/notice/boardList.jsp"/>
   </definition>
   
+  <definition name="nb_view" extends="main">
+     <put-attribute name="body" value="/board/notice/boardView.jsp"/>
+  </definition>
+  
+  <definition name="nb_write" extends="main">
+    <put-attribute name="body" value="/board/notice/boardWrite.jsp"/>
+  </definition>
    
    
    
    <!-- 건의사항 게시판 -->
-   <definition name="suggestion_list" extends="main">
+   <definition name="sb_list" extends="main">
      <put-attribute name="body" value="/board/suggestion/boardList.jsp"/>
   </definition>
-		
+	
+	<definition name="sb_view" extends="main">
+	  <put-attribute name="body" value="/board/suggestion/boardView.jsp"/>
+	</definition>
+	
+	<definition name="sb_write" extends="main">
+	  <put-attribute name="body" value="/board/suggestion/boardWrite.jsp"/>
+	</definition>	
+
+<!-- 이용약관 & 개인정보처리방침 -->
+   <definition name="privacy" extends="main">
+     <put-attribute name="body" value="/footer/privacy.jsp" />
+   </definition>
+   
+   <definition name="policy" extends="main">
+     <put-attribute name="body" value="/footer/policy.jsp" />
+   </definition>
 
 </tiles-definitions>
