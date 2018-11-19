@@ -333,7 +333,7 @@ function zzim_hagi(){
 
 <tr>
 <td colspan="2">
-		<input name="list" type="button" value="목록" class="inputb" onClick="javascript:location.href='talent/talentList.action'"/>
+		<input name="list" type="button" value="목록" class="inputb" onClick="javascript:location.href='talent/talentList.action?currentPage=<s:property value="currentPage"/>&sort=0'"/>
       <s:if test="%{#session.ID==resultClass.talent_id}">
 		<input type="button" value="수정하기" class="inputb" onclick='btn(<s:property value="currentPage"/>,<s:property value="talent_no"/>)'/>
 		<input name="delete" type="button" value="삭제하기" class="inputb" onClick="javascript:location.href='talentDelete.action?talent_no=<s:property value="talent_no"/>&currentPage=<s:property value="currentPage"/>'"/>

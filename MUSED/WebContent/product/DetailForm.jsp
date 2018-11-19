@@ -351,7 +351,7 @@ to {
 			<tr>
 				<td colspan="2"><input name="list" type="button" value="목록"
 					class="inputb"
-					onClick="javascript:location.href='product/productList.action?currentPage=<s:property value="currentPage"/>'" />
+					onClick="javascript:location.href='product/productList.action?currentPage=<s:property value="currentPage"/>&sort=0'" />
 					<s:if test="%{#session.ID==resultClass.product_id}">
 						<input type="button" value="수정하기" class="inputb" onclick='btn(<s:property value="currentPage"/>,<s:property value="product_no"/>)'/>
 						<input name="delete" type="button" value="삭제하기" class="inputb"
