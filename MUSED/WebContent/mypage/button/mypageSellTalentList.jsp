@@ -11,13 +11,15 @@
 </head>
 <body>
 
+<h1><center>내가 판매한 재능!</center></h1><br>
+
 <table width="600" border="0" cellspacing="0" cellspadding="2">
 <tr bgcolor="#777777">
     	<td height="1" colspan="5"></td>
    	</tr>
     
 	<tr>
-     	<s:iterator value="list" status="stat">
+     	<s:iterator value="list2" status="stat">
   	      <td>	 
 	      	<s:url id="DetailURL" action="talentDetail">
 				<s:param name="talent_no">
@@ -36,7 +38,7 @@
 		</s:iterator>
 	</tr>
 
-	<s:if test="list.size()<=0">
+	<s:if test="list2.size()<=0">
 		<tr bgcolor="#FFFFFF" align="center">
 			<td colspan="5">판매된 재능이 없습니다.</td>
 		</tr>

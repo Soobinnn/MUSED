@@ -137,7 +137,7 @@ function initRegion()
 <script type="text/javascript">
 
 		function validation() {
-			var frm = document.forms(0);
+			var frm = document.fwrite;
 			
 			if(frm.product_id.value == "") {
 				alert("아이디를 입력해주세요.(수정 예정)");
@@ -179,8 +179,9 @@ function initRegion()
 				frm.product_price.focus();
 				return false;			
 			} 
-			else if(document.getElementById('file').value==""){
-				
+			else if(frm.file.value==""){
+				alert("파일을 업로드해주세요.");
+				return false;
 			}
 			return true;
 		}
@@ -192,7 +193,7 @@ function initRegion()
 		</s:if>
 		
 		<s:else>
-		  	<form action="productUpdate.action" method="post" enctype="multipart/form-data" onsubmit="return validation();">
+		  <form name="fwrite" action="productUpdate.action" method="post" enctype="multipart/form-data" onsubmit="return validation();">
 		  <s:hidden name="product_no" value="%{resultClass.product_no}" />
 		  <s:hidden name="currentPage" value="%{currentPage}" />
 		 
@@ -201,12 +202,7 @@ function initRegion()
        <table width="800" border="0" cellspacing="0" cellpadding="0">
         <tr>
           <td><font color="#FF0000">*</font>는 필수 입력사항입니다.</td>
-          <td bgcolor="#FFFFFF">
-                <s:if test='%{#session.ID != null}'>
-       		     <s:textfield name="product_id" theme="simple" value="%{#session.ID}" cssStyle="width:100px" maxlength="50"/>
- 				</s:if>
-          </td>
-          
+                   <s:hidden name="product_id" value="%{#session.ID}" />         
         </tr>
         
         <tr bgcolor="#777777">
@@ -349,7 +345,9 @@ function initRegion()
              <s:file name="upload"/>   	      
           </td>
         </tr>
-         
+                <tr bgcolor="#777777">
+          <td height="1" colspan="2"></td>
+        </tr>
 		<tr>
           <td bgcolor="#F4F4F4"><font color="#FF0000">*</font>  상품 상세 설명 </td>
           <td bgcolor="#FFFFFF">
@@ -364,7 +362,7 @@ function initRegion()
         <tr>
           <td align="right" colspan="2">
           	<input name="submit" type="submit" value="작성완료" class="inputb">
-            <input name="list" type="button" value="목록" class="inputb" onClick="javascript:location.href='productList.action'">
+            <input name="list" type="button" value="목록" class="inputb" onClick="javascript:location.href='productList.action?sort=0&currentPage=1'">
           </td>
         </tr>
 

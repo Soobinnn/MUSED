@@ -43,6 +43,9 @@ public class pagingAction
 			startCount = (currentPage -1) * blockCount;
 			endCount = startCount + blockCount -1;
 			
+			startPage = (int) ((currentPage-1)/blockPage)*blockPage+1;
+			endPage=startPage+blockPage-1;
+			
 			//마지막 페이지가 전체 페이지 수보다 크면 전체 페이지 수로 설정
 			if(endPage > totalPage)
 			{

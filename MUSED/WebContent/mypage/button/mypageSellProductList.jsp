@@ -11,6 +11,8 @@
 </head>
 <body>
 
+<h1><center>내가 판매한 상품!</center></h1><br/>
+
 <table width="600" border="0" cellspacing="0" cellspadding="2">
 <tr bgcolor="#777777">
     <td height="1" colspan="5"></td>
@@ -41,11 +43,11 @@
 			<tr bgcolor="#FFFFFF" align="center">
 				<td colspan="5">판매된 제품이 없습니다.</td>
 			</tr>
-	</s:if>
+	 </s:if>
 	
 <tr align="center">
      <td colspan="5"><s:property value="pagingHtml"  escape="false" /></td>
 </tr>
-
+</table>
 </body>
 </html>

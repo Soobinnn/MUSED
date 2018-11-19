@@ -8,7 +8,7 @@
 	<script type="text/javascript">
 		function locationURL() 
 		{
-			window.opener.parent.location.href='/MUSED/tiles/member.jsp';
+			window.opener.parent.location.href='/MUSED/tiles/main.action';
 			alert("신고가 접수되었습니다.");
 			window.close();
 		}

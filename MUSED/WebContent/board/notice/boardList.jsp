@@ -24,9 +24,6 @@ top:500; left:410;}
 				return true;
 			}
 			return false;
-		
-		
-		
 	}
 		
 </script>

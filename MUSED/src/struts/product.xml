@@ -10,7 +10,6 @@
 		<!-- 상품 목록-->
 		<action name="productList" class="product.ListAction">
 			<result type="tiles">productList</result>
-
 		</action>
 		
 		<!-- 상품 등록  폼 -->
@@ -30,7 +29,7 @@
 		
 		<!-- 상품 찜하기 처리 -->
 		<action name="productZzim" class="product.ZzimAction">
-			<result type="chain">productDetail</result>
+			<result type="chain">productList</result>
 		</action>
 
 		<!-- 댓글 달기 -->
@@ -58,7 +57,7 @@
 			<result type="tiles">productDeleteSuccess</result>
 		</action>
 		
-		<action name="search" class="product.SearchAction">
+		<action name="Psearch" class="product.SearchAction">
 			<result type="tiles">productList</result>
 		</action>
 		

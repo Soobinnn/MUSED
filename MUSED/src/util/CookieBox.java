@@ -22,12 +22,12 @@ public class CookieBox {
 	}
 
 	public static Cookie createCookie(String name, String value) throws IOException { //name 와 value의 인자를 받는다
-		return new Cookie(name, URLEncoder.encode(value, "euc-kr"));//쿠키를 생성하여 리턴한다., 인자 둘
+		return new Cookie(name, URLEncoder.encode(value, "utf-8"));//쿠키를 생성하여 리턴한다., 인자 둘
 	}
 
 	//쿠키의 인자로 네개의 값을 받는다 , 패치와 시간이 추가
 	public static Cookie createCookie(String name, String value, String path, int maxAge) throws IOException {
-		Cookie cookie = new Cookie(name, URLEncoder.encode(value, "euc-kr"));
+		Cookie cookie = new Cookie(name, URLEncoder.encode(value, "utf-8"));
 		cookie.setPath(path);
 		cookie.setMaxAge(maxAge);
 		return cookie;
@@ -36,7 +36,7 @@ public class CookieBox {
 	//인자로 다섯개의 값을 받는다. 도메인이 추가.
 	public static Cookie createCookie(String name, String value, String domain, String path, int maxAge)
 			throws IOException {
-		Cookie cookie = new Cookie(name, URLEncoder.encode(value, "euc-kr"));
+		Cookie cookie = new Cookie(name, URLEncoder.encode(value, "utf-8"));
 		cookie.setDomain(domain);
 		cookie.setPath(path);
 		cookie.setMaxAge(maxAge);
@@ -56,7 +56,7 @@ public class CookieBox {
 		if (cookie == null) {
 			return null;
 		}
-		return URLDecoder.decode(cookie.getValue(), "euc-kr");
+		return URLDecoder.decode(cookie.getValue(), "utf-8");
 	}
 	
 	//전달받은 인자의 이름을 가지는 쿠키의 존재유무를 리턴

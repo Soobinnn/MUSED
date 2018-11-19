@@ -30,10 +30,12 @@ public class DetailAction extends ActionSupport {
 
 	private HttpServletRequest request;
 	private HttpServletResponse response;
+	
 
 	private static int num = 0;
 
-	private Cookie[] c;
+	private Cookie[] c = new Cookie[5];
+	
 
 	// 객체 전달을 위해
 	private productVO paramClass = new productVO();
@@ -112,16 +114,30 @@ public class DetailAction extends ActionSupport {
 		response = ServletActionContext.getResponse();
 		
 		request.setCharacterEncoding("UTF-8");
-
+	
 		response.addCookie(CookieBox.createCookie("CID" + num,resultClass.getProduct_name() , "/", -1));
+		response.addCookie(CookieBox.createCookie("IMAGE" + num, resultClass.getMain_img(), "/", -1));
+		response.addCookie(CookieBox.createCookie("PNO" + num, Integer.toString(resultClass.getProduct_no()), "/",-1));
+		response.addCookie(CookieBox.createCookie("PAGE" + num, Integer.toString(getCurrentPage()),"/",-1));
+		
+		System.out.println(num);
 		num++;
-		c = request.getCookies();
-		for (int i = 0; i < c.length; i++) {
-			System.out.println("쿠키이름 : " + c[i].getValue());
+		if(num > 4) {
+			num = 0;
 		}
+		
+		//최근 본 상품 테스트
+		/*c = request.getCookies();
+			
+		for (int i = 0; i < c.length; i++) {
+			System.out.println("게시물이름 : " + c[i].getValue());
+		}*/
+		
 
 		return SUCCESS;
 	}
+	
+	
 
 	public String commentDelete() throws Exception {
 		cClass = new product_cVO();

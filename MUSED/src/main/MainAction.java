@@ -63,8 +63,8 @@ public class MainAction extends ActionSupport
 	
 	public String execute() throws Exception
 	{
-		list_p = sqlMapper.queryForList("product.selectAll");
-		list_t = sqlMapper.queryForList("talent.selectAll");
+		list_p = sqlMapper.queryForList("product.selectAll2");
+		list_t = sqlMapper.queryForList("talent.selectAll2");
 		list_f = sqlMapper.queryForList("free.selectAll");
 		list_n = sqlMapper.queryForList("notice.selectAll");
 		list_s = sqlMapper.queryForList("sug.selectAll");

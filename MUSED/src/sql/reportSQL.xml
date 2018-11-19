@@ -57,4 +57,26 @@
    		UPDATE REPORT SET STATE_STATE = #report_state#
    		<include refid="where-no" />
    	</update>
+   	
+   	<update id="checkprocess" parameterClass="report">
+   		UPDATE REPORT SET report_state=#report_state#
+   		<include refid="where-no" />
+   	</update>
+   	
+   	   <select id ="selectSearchR" resultMap="reportRes" parameterClass="string">
+           <include refid="select-all"/>
+             WHERE report_reportid like #searchKeyword#
+              ORDER BY report_reportid DESC
+    </select>	
+    
+    <select id ="selectSearchS" resultMap="reportRes" parameterClass="string">
+           <include refid="select-all"/>
+             WHERE report_subject like #searchKeyword#
+              ORDER BY report_no DESC
+    </select>
+  	<select id ="selectSearchC" resultMap="reportRes" parameterClass="string">
+           <include refid="select-all"/>
+             WHERE report_category like #searchKeyword#
+              ORDER BY report_no DESC
+    </select>	
 </sqlMap>

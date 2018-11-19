@@ -21,14 +21,19 @@ public class SearchAction extends ActionSupport{
 	private List<productVO> list = new ArrayList<productVO>();
 	private productVO resultClass = new productVO(); //쿼리 결과 값을 저장할 객체
 	private productVO paramClass = new productVO();
-	
-	private String category;
-	private String[] cateList = new String[6];	//cateList[0]~[6]->product123456
+
+	private String category1;
+	private String category2;
+	private String category3;
+	private String category4;
+	private String category5;
+	private String category6;
 	private String priceA;
 	private String priceB;
 	private String sido;
 	private String gogon;
 	private String searchKeyword;
+	private String sort;
 	
 	private int currentPage=1;	//현재 페이지
 	private int totalCount;		
@@ -48,47 +53,55 @@ public class SearchAction extends ActionSupport{
 	}
 	
 	public String execute() throws Exception{
-		System.out.println(getCategory());
+		System.out.println(getCategory1());
+		System.out.println(getCategory2());
+		System.out.println(getCategory3());
+		System.out.println(getCategory4());
+		System.out.println(getCategory5());
+		System.out.println(getCategory6());
 		System.out.println(getPriceA());
 		System.out.println(getPriceB());
 		System.out.println(getSido());
 		System.out.println(getGogon());
 		System.out.println(getSearchKeyword());
 
-		cateList=getCategory().split(", ");	
-		
-		
-		for(int i=0;i<6;i++) {
-			System.out.println(cateList[i]);
-		}
 	
-	/*	if(cateList[0]=="") {
+		if(getCategory1()=="") {
 			map.put("product_category1", "null");
-			}else {map.put("product_category1", cateList[0]);}
-		if(cateList[1]=="") {
-		    map.put("product_category2", "null");
-			}else {map.put("product_category2", cateList[1]);}
-		if(cateList[2]=="") {
-		    map.put("product_category3", "null");
-			}else {map.put("product_category3", cateList[2]);}
-		if(cateList[3]=="") {
-		    map.put("product_category4", "null");
-			}else {map.put("product_category4", cateList[3]);}
-		if(cateList[4]=="") {
+			}else {map.put("product_category1", getCategory1());}
+		if(getCategory2()=="") {
+			map.put("product_category2", "null");
+			}else {map.put("product_category2", getCategory2());}
+		if(getCategory3()=="") {
+			map.put("product_category3", "null");
+			}else {map.put("product_category3", getCategory3());}
+		if(getCategory4()=="") {
+			map.put("product_category4", "null");
+			}else {map.put("product_category4", getCategory4());}
+		if(getCategory5()=="") {
 			map.put("product_category5", "null");
-			}else {map.put("product_category5", cateList[4]);}
-		if(cateList[5]=="") {
+			}else {map.put("product_category5", getCategory5());}
+		if(getCategory6()=="") {
 			map.put("product_category6", "null");
-			}else {map.put("product_category6", cateList[5]);}*/
-
+			}else {map.put("product_category6", getCategory6());}
+		
+		
 	    System.out.println(map);
 	    if(getPriceA().equals("")&&getPriceB().equals("")) {
+	    	map.put("product_priceA", "null");
+		    map.put("product_priceB", "null");
+	    }else if(getPriceA().equals("")) {
 	    	map.put("product_priceA", "0");
-		    map.put("product_priceB", "10000000000000000");
+		    map.put("product_priceB", getPriceB());
+	    }else if(getPriceB().equals("")) {
+	    	map.put("product_priceA", getPriceA());
+	    	map.put("product_priceB", "1000000000000000");
 	    }else {
 		    map.put("product_priceA", getPriceA());
 		    map.put("product_priceB", getPriceB());
 	    }
+
+	 
 	    if(getSido().equals("시도선택")) {
 	    	map.put("product_sido","null");
 	    }else {
@@ -104,7 +117,23 @@ public class SearchAction extends ActionSupport{
 	    }else {
 	    	map.put("searchKeyword", "%"+getSearchKeyword()+"%");
 	    }
+	    //정렬 : if 문
+	    if(getSort().equals("0")) {
+	    	map.put("sort", "product_no desc");  // 최신순
+	    }
+	    if(getSort().equals("1")) {
+	    	map.put("sort", "readhit desc");  // 인기순
+	    }
+	    if(getSort().equals("2")) {
+	    	map.put("sort", "product_price asc");  // 저가순
+	    }
+	    if(getSort().equals("3")) {
+	    	map.put("sort", "product_price desc");  // 고가순
+	    }
+	
 	    System.out.println(map);
+	    
+	    
 		list=sqlMapper.queryForList("product.detailSearch", map);
 		
 		//페이징
@@ -126,12 +155,69 @@ public class SearchAction extends ActionSupport{
 
 
 
-	public HashMap<String, Object> getMap() {
-		return map;
+	public String getSort() {
+		return sort;
 	}
 
-	public void setMap(HashMap<String, Object> map) {
+	public void setSort(String sort) {
+		this.sort = sort;
+	}
+
+	public void setMap(HashMap map) {
 		this.map = map;
+	}
+
+	public String getCategory1() {
+		return category1;
+	}
+
+	public void setCategory1(String category1) {
+		this.category1 = category1;
+	}
+
+	public String getCategory2() {
+		return category2;
+	}
+
+	public void setCategory2(String category2) {
+		this.category2 = category2;
+	}
+
+	public String getCategory3() {
+		return category3;
+	}
+
+	public void setCategory3(String category3) {
+		this.category3 = category3;
+	}
+
+	public String getCategory4() {
+		return category4;
+	}
+
+	public void setCategory4(String category4) {
+		this.category4 = category4;
+	}
+
+	public String getCategory5() {
+		return category5;
+	}
+
+	public void setCategory5(String category5) {
+		this.category5 = category5;
+	}
+
+	public String getCategory6() {
+		return category6;
+	}
+
+	public void setCategory6(String category6) {
+		this.category6 = category6;
+	}
+
+
+	public HashMap<String, Object> getMap() {
+		return map;
 	}
 
 	public productVO getParamClass() {
@@ -140,14 +226,6 @@ public class SearchAction extends ActionSupport{
 
 	public void setParamClass(productVO paramClass) {
 		this.paramClass = paramClass;
-	}
-
-	public String[] getCateList() {
-		return cateList;
-	}
-
-	public void setCateList(String[] cateList) {
-		this.cateList = cateList;
 	}
 
 	public static Reader getReader() {
@@ -237,18 +315,6 @@ public class SearchAction extends ActionSupport{
 	public void setNum(int num) {
 		this.num = num;
 	}
-
-	public String getCategory() {
-		return category;
-	}
-
-
-
-	public void setCategory(String category) {
-		this.category = category;
-	}
-
-
 
 	public String getPriceA() {
 		return priceA;

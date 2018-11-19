@@ -43,9 +43,9 @@
 	</sql>
 	
 	<!-- product 전체 가져오는데 no정렬 -->
-	<select id="selectAll" resultMap="productRes">
+	<select id="selectAll" resultMap="productRes" parameterClass="java.util.HashMap" >
 		SELECT * FROM PRODUCT
-		ORDER BY product_no DESC
+		ORDER BY $sort$
 	</select>
 	
 	<select id="selectLastNo" resultMap="productRes" parameterClass="int">
@@ -140,6 +140,13 @@
 	<select id="selectMySellProduct" parameterClass="String" resultMap="productRes">
 		SELECT * FROM PRODUCT WHERE PRODUCT_ID=#product_id# AND PRODUCT_STATE='완'
 	</select>
+	
+	<!-- mypage에서 찜한 상품 -->
+	<select id="selectMyZzimProduct" parameterClass="String" resultMap="productRes">
+		SELECT PRODUCT.PRODUCT_NO,PRODUCT.PRODUCT_ID,PRODUCT.PRODUCT_STATE,PRODUCT.PRODUCT_SUBJECT,PRODUCT.PRODUCT_NAME,PRODUCT.PRODUCT_CATEGORY,PRODUCT.PRODUCT_BRAND,PRODUCT.PRODUCT_PRICE,PRODUCT.PRODUCT_TYPE,PRODUCT.PRODUCT_PHONE,PRODUCT.PRODUCT_SIDO,PRODUCT.PRODUCT_GOGON,PRODUCT.PRODUCT_IMAGE,PRODUCT.PRODUCT_CONTENT,PRODUCT.MAIN_IMG,PRODUCT.READHIT
+		FROM ZZIM,PRODUCT
+		WHERE ZZIM.ZZIM_CONTNO = PRODUCT.PRODUCT_NO AND ZZIM.ZZIM_MEMID=#zzim_memid#
+	</select>
 
 	<!-- 검색 -->
 	<select id="main_selectSearch" resultMap="productRes" parameterClass="string">
@@ -159,7 +166,13 @@
 		or product_price BETWEEN $product_priceA$ and $product_priceB$
 		or product_sido=#product_sido# or product_gogon=#product_gogon#
 		or product_content LIKE #searchKeyword# OR product_subject LIKE #searchKeyword#
-		ORDER BY product_no DESC
+		ORDER BY $sort$
  </select>
+ 
+ 		<!-- 메인쿼리 -->
+ 		<select id="selectAll2" resultMap="productRes">
+		<include refid="select-all" />
+		ORDER BY product_no DESC
+	</select>
 	
 </sqlMap>

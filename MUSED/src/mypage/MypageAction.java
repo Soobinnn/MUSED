@@ -15,9 +15,8 @@ import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 
 import member.MemberVO;
-import product.pagingAction;
 import product.productVO;
-
+import talent.talentVO;
 
 import java.io.File;
 import org.apache.commons.io.FileUtils;
@@ -60,9 +59,12 @@ public class MypageAction extends ActionSupport implements SessionAware{
 	private int countPro;
 	private int countTal;
 	
+	private int zzimCount;
+	
 	private Map session;
 	
 	private List<productVO> list = new ArrayList<productVO>();
+	private List<talentVO> list2 = new ArrayList<talentVO>();
 	private productVO resultClass2 = new productVO(); //쿼리 결과 값을 저장할 객체
 	
 	private int currentPage=1;	//현재 페이지
@@ -70,7 +72,13 @@ public class MypageAction extends ActionSupport implements SessionAware{
 	private int blockCount=5;   //5*5 이미지 정렬
 	private int blockPage=5;
 	private String pagingHtml;
-	private pagingAction page;
+	
+	private pagingAction1 page1;//등록된 상품 페이징
+	private pagingAction2 page2;//등록된 재능 페이징
+	private pagingAction3 page3;//판매한 상품 페이징
+	private pagingAction4 page4;//판매한 재능 페이징
+	private pagingAction5 page5;//찜한 상품 페이징
+	private pagingAction6 page6;//찜한 재능 페이징
 	private String a[];
 	
 	private String file_orgName; // 업로드 파일의 원래 이름
@@ -143,15 +151,16 @@ public class MypageAction extends ActionSupport implements SessionAware{
 		
 		totalCount = list.size();
 		
-		page=new pagingAction(currentPage,totalCount,blockCount,blockPage,searchNum, getSearchKeyword());
-		pagingHtml = page.getPagingHtml().toString();
+		page1=new pagingAction1(currentPage,totalCount,blockCount,blockPage);
+		pagingHtml = page1.getPagingHtml().toString();
+
 		
 		int lastCount=totalCount;
 		
-		if(page.getEndCount()<totalCount) {
-			lastCount=page.getEndCount()+1;
+		if(page1.getEndCount()<totalCount) {
+			lastCount=page1.getEndCount()+1;
 		}
-		list=list.subList(page.getStartCount(), lastCount);
+		list=list.subList(page1.getStartCount(), lastCount);
 		
 		return SUCCESS;
 	}
@@ -159,19 +168,19 @@ public class MypageAction extends ActionSupport implements SessionAware{
 	/*마이페이지 등록된 재능 리스트*/
 	public String myTalentList() throws Exception{
 		common();
-		list=sqlMapper.queryForList("talent.selectMyTalent",(String)session.get("ID"));
+		list2=sqlMapper.queryForList("talent.selectMyTalent",(String)session.get("ID"));
 		
-		totalCount = list.size();
+		totalCount = list2.size();
 		
-		page=new pagingAction(currentPage,totalCount,blockCount,blockPage,searchNum, getSearchKeyword());
-		pagingHtml = page.getPagingHtml().toString();
+		page2=new pagingAction2(currentPage,totalCount,blockCount,blockPage);
+		pagingHtml = page2.getPagingHtml().toString();
 		
 		int lastCount=totalCount;
 		
-		if(page.getEndCount()<totalCount) {
-			lastCount=page.getEndCount()+1;
+		if(page2.getEndCount()<totalCount) {
+			lastCount=page2.getEndCount()+1;
 		}
-		list=list.subList(page.getStartCount(), lastCount);
+		list2=list2.subList(page2.getStartCount(), lastCount);
 		return SUCCESS;
 	}
 	
@@ -183,15 +192,15 @@ public class MypageAction extends ActionSupport implements SessionAware{
 		
 		totalCount = list.size();
 		
-		page=new pagingAction(currentPage,totalCount,blockCount,blockPage,searchNum, getSearchKeyword());
-		pagingHtml = page.getPagingHtml().toString();
+		page3=new pagingAction3(currentPage,totalCount,blockCount,blockPage);
+		pagingHtml = page3.getPagingHtml().toString();
 		
 		int lastCount=totalCount;
 		
-		if(page.getEndCount()<totalCount) {
-			lastCount=page.getEndCount()+1;
+		if(page3.getEndCount()<totalCount) {
+			lastCount=page3.getEndCount()+1;
 		}
-		list=list.subList(page.getStartCount(), lastCount);
+		list=list.subList(page3.getStartCount(), lastCount);
 		return SUCCESS;
 	}
 	
@@ -199,19 +208,56 @@ public class MypageAction extends ActionSupport implements SessionAware{
 	public String mySellTalentList() throws Exception{
 		common();
 		
-		list=sqlMapper.queryForList("talent.selectMySellTalent",(String)session.get("ID"));
+		list2=sqlMapper.queryForList("talent.selectMySellTalent",(String)session.get("ID"));
 		
-		totalCount = list.size();
+		totalCount = list2.size();
 		
-		page=new pagingAction(currentPage,totalCount,blockCount,blockPage,searchNum, getSearchKeyword());
-		pagingHtml = page.getPagingHtml().toString();
+		page4=new pagingAction4(currentPage,totalCount,blockCount,blockPage);
+		pagingHtml = page4.getPagingHtml().toString();
 		
 		int lastCount=totalCount;
 		
-		if(page.getEndCount()<totalCount) {
-			lastCount=page.getEndCount()+1;
+		if(page4.getEndCount()<totalCount) {
+			lastCount=page4.getEndCount()+1;
 		}
-		list=list.subList(page.getStartCount(), lastCount);
+		list2=list2.subList(page4.getStartCount(), lastCount);
+		return SUCCESS;
+	}
+	
+	/*마이페이지 찜 상품*/
+	public String myZzimProductList() throws Exception{
+		common();
+		
+		list=sqlMapper.queryForList("product.selectMyZzimProduct",(String)session.get("ID"));
+		
+		totalCount = list.size();
+		
+		page5=new pagingAction5(currentPage,totalCount,blockCount,blockPage);
+		pagingHtml = page5.getPagingHtml().toString();
+		
+		int lastCount=totalCount;
+		
+		if(page5.getEndCount()<totalCount) {
+			lastCount=page5.getEndCount()+1;
+		}
+		list=list.subList(page5.getStartCount(), lastCount);
+		return SUCCESS;
+	}
+	/*마이페이지 찜 재능*/
+	public String myZzimTalentList() throws Exception{
+		common();
+		list2=sqlMapper.queryForList("talent.selectMyZzimTalent",(String)session.get("ID"));
+		totalCount = list2.size();
+		
+		page6=new pagingAction6(currentPage,totalCount,blockCount,blockPage);
+		pagingHtml = page6.getPagingHtml().toString();
+		
+		int lastCount=totalCount;
+		
+		if(page6.getEndCount()<totalCount) {
+			lastCount=page6.getEndCount()+1;
+		}
+		list2=list2.subList(page6.getStartCount(), lastCount);
 		return SUCCESS;
 	}
 	
@@ -281,12 +327,72 @@ public class MypageAction extends ActionSupport implements SessionAware{
 		countPro = (Integer)sqlMapper.queryForObject("product.countProduct",(String)session.get("ID"));
 		/*마이페이지 등록되 재능 수*/
 		countTal = (Integer)sqlMapper.queryForObject("talent.countTalent",(String)session.get("ID"));
-		
+		/*마이페이지 찜 한 수*/
+		zzimCount = (Integer)sqlMapper.queryForObject("zzim.zzimCount",(String)session.get("ID"));
 		/*마이페이지 판매 내역*/
 		sellCountProduct = (Integer)sqlMapper.queryForObject("product.countSellProduct",(String)session.get("ID"));
 		sellCountTalent = (Integer)sqlMapper.queryForObject("talent.countSellTalent",(String)session.get("ID"));
 		sum = sellCountProduct + sellCountTalent;
 	
+	}
+	
+	
+	
+
+	public List<talentVO> getList2() {
+		return list2;
+	}
+
+	public void setList2(List<talentVO> list2) {
+		this.list2 = list2;
+	}
+
+	public int getZzimCount() {
+		return zzimCount;
+	}
+
+	public void setZzimCount(int zzimCount) {
+		this.zzimCount = zzimCount;
+	}
+
+	public int getNum() {
+		return num;
+	}
+
+	public void setNum(int num) {
+		this.num = num;
+	}
+
+	public pagingAction1 getPage1() {
+		return page1;
+	}
+
+	public void setPage1(pagingAction1 page1) {
+		this.page1 = page1;
+	}
+
+	public pagingAction2 getPage2() {
+		return page2;
+	}
+
+	public void setPage2(pagingAction2 page2) {
+		this.page2 = page2;
+	}
+
+	public pagingAction3 getPage3() {
+		return page3;
+	}
+
+	public void setPage3(pagingAction3 page3) {
+		this.page3 = page3;
+	}
+
+	public pagingAction4 getPage4() {
+		return page4;
+	}
+
+	public void setPage4(pagingAction4 page4) {
+		this.page4 = page4;
 	}
 
 	public static Reader getReader() {
@@ -423,14 +529,6 @@ public class MypageAction extends ActionSupport implements SessionAware{
 
 	public void setPagingHtml(String pagingHtml) {
 		this.pagingHtml = pagingHtml;
-	}
-
-	public pagingAction getPage() {
-		return page;
-	}
-
-	public void setPage(pagingAction page) {
-		this.page = page;
 	}
 
 	public String[] getA() {
