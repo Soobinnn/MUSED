@@ -27,7 +27,7 @@ public class ListAction extends ActionSupport
 	private int num =0;
 	private String sort;
 	HashMap map = new HashMap();
-	
+	 
 	private int currentPage=1;	//현재 페이지
 	private int totalCount;		
 	private int blockCount=25;   //5*5 이미지 정렬
