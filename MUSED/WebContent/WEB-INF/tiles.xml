@@ -39,19 +39,23 @@
 	</definition>
 	<!-- 마이페이지 등록된상품 -->
 	<definition name="myProduct" extends="mypage">
-		<put-attribute name="mypage_body" value="/product/ListForm.jsp"/>
+		<put-attribute name="mypage_body" value="/mypage/button/myProductList.jsp"/>
 	</definition>
 	<!-- 마이페이지 등록된 재능 -->
 	<definition name="myTalent" extends="mypage">
-		<put-attribute name="mypage_body" value="/talent/ListForm.jsp"/>
+		<put-attribute name="mypage_body" value="/mypage/button/myTalentList.jsp"/>
 	</definition>
 	<!-- 마이페이지 최근 본 상품 -->
 	<definition name="myRecent" extends="mypage">
 		<put-attribute name="mypage_body" value="/mypage/button/mypageRecentList.jsp"/>
 	</definition>
 	<!-- 마이페이지 찜한 상품 -->
-	<definition name="myZzim" extends="mypage">
-		<put-attribute name="mypage_body" value="/mypage/button/mypageZzimList.jsp"/>
+	<definition name="myZzimProduct" extends="mypage">
+		<put-attribute name="mypage_body" value="/mypage/button/mypageZzimProductList.jsp"/>
+	</definition>
+	<!-- 마이페이지 찜한 재능 -->
+	<definition name="myZzimTalent" extends="mypage">
+		<put-attribute name="mypage_body" value="/mypage/button/mypageZzimTalentList.jsp"/>
 	</definition>
 	<!-- 마이페이지 상품 판매 내역 -->
 	<definition name="mySellProduct" extends="mypage">
@@ -72,14 +76,6 @@
 	<!-- 마이페이지 보낸 쪽지 -->
 	<definition name="sendedMessage" extends="mypage">
 		<put-attribute name="mypage_body" value="/mypage/button/mypageSendedMessage.jsp"/>
-	</definition>
-	<!-- 마이페이지 내가 쓴 댓글 -->
-	<definition name="myComment" extends="mypage">
-		<put-attribute name="mypage_body" value="/mypage/button/mypageWritenComment.jsp"/>
-	</definition>
-	<!-- 마이페이지 내 게시글 댓글 -->
-	<definition name="myBoardComment" extends="mypage">
-		<put-attribute name="mypage_body" value="/mypage/button/mypageMyboardComment.jsp"/>
 	</definition>
 	<!-- 마이페이지 개인정보 수정 폼 -->
 	<definition name="memberUpdate" extends="mypage">

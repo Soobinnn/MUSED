@@ -29,7 +29,7 @@
 		
 		<!-- 상품 찜하기 처리 -->
 		<action name="productZzim" class="product.ZzimAction">
-			<result type="chain">productDetail</result>
+			<result type="chain">productList</result>
 		</action>
 
 		<!-- 댓글 달기 -->

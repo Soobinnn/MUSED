@@ -26,8 +26,12 @@
 			<result type="tiles">myRecent</result>
 		</action>
 		<!-- 찜한 상품 -->
-		<action name="myZzim" class="mypage.zzimListAction">
-			<result type="tiles">myZzim</result>
+		<action name="myZzimProduct" class="mypage.MypageAction" method="myZzimProductList">
+			<result type="tiles">myZzimProduct</result>
+		</action>
+		<!-- 찜한 재능 -->
+		<action name="myZzimTalent" class="mypage.MypageAction" method="myZzimTalentList">
+			<result type="tiles">myZzimTalent</result>
 		</action>
 		<!-- 제품 판매 내역 -->
 		<action name="mySellProduct" class="mypage.MypageAction"
@@ -39,30 +43,7 @@
 			method="mySellTalentList">
 			<result type="tiles">mySellTalent</result>
 		</action>
-		<!-- 쪽지 보내기 -->
-		<action name="sendMessage" class="mypage.sendMessageAction">
-			<result type="tiles">sendMessage</result>
-		</action>
-		<!-- 받은 쪽지 -->
-		<action name="receivedMessage"
-			class="mypage.receivedMessageAction">
-			<result type="tiles">receivedMessage</result>
-		</action>
-		<!-- 보낸 쪽지 -->
-		<action name="sendedMessage" class="mypage.sendedMessageAction">
-			<result type="tiles">sendedMessage</result>
-		</action>
-		<!-- 내가 쓴 댓글 -->
-		<action name="myComment" class="mypage.myCommentAction">
-			<result type="tiles">myComment</result>
-		</action>
-		<!-- 내 게시글 댓글 -->
-		<action name="myBoardComment"
-			class="mypage.myBoardCommentAction">
-			<result type="tiles">myBoardComment</result>
-		</action>
-
-
+		
 		<!-- 개인 정보 수정 -->
 		<action name="memberUpdateForm" class="mypage.MypageAction"
 			method="modifyForm">

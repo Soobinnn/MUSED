@@ -152,7 +152,7 @@
 							</td>
 							<td width="35%" align="left">등록된 상품:<s:property
 									value="%{countPro}" /><br> 등록된 재능:<s:property
-									value="%{countTal}" /><br> 찜한 상품:2<br> 판매 내역:<s:property
+									value="%{countTal}" /><br> 찜한 상품:<s:property value="%{zzimCount}"/><br> 판매 내역:<s:property
 									value="%{sum}" /><br>
 							</td>
 						</tr>
