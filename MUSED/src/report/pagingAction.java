@@ -17,7 +17,7 @@ public class pagingAction
 	private StringBuffer pagingHtml; // ??
 	
 	//페이징 생성자			현재 페이지		   , 전체 게시물 수 	   , 한 페이지의 게시물의 수, 한 화면에 보여줄 페이지 수
-		public pagingAction(int currentPage, int totalCount, int blockCount, int blockPage)
+		public pagingAction(int currentPage, int totalCount, int blockCount, int blockPage, int searchNum, String isSearch)
 		{
 			this.blockCount = blockCount;
 			this.blockPage = blockPage;
@@ -43,6 +43,9 @@ public class pagingAction
 			startCount = (currentPage -1) * blockCount;
 			endCount = startCount + blockCount -1;
 			
+			startPage = (int) ((currentPage-1)/blockPage)*blockPage+1;
+			endPage=startPage+blockPage-1;
+			
 			//마지막 페이지가 전체 페이지 수보다 크면 전체 페이지 수로 설정
 			if(endPage > totalPage)
 			{
@@ -53,7 +56,11 @@ public class pagingAction
 			pagingHtml = new StringBuffer();
 			if (currentPage > blockPage) 
 			{
-				pagingHtml.append("<a href=listAction.action?currentPage=" + (startPage - 1) + ">");
+
+				if(isSearch != "") 
+				   pagingHtml.append("<a href=/MUSED/tiles/admin/listAction.action?currentPage=" + (startPage -1) + "&searchKeyword=" + isSearch + "&searchNum="+searchNum+">");     
+				else 
+				pagingHtml.append("<a href=/MUSED/tiles/admin/listAction.action?currentPage=" + (startPage - 1) + ">");
 				pagingHtml.append("이전");
 				pagingHtml.append("</a>");
 			}
@@ -74,8 +81,9 @@ public class pagingAction
 				} 
 				else 
 				{
-					pagingHtml.append("&nbsp;<a href='listAction.action?currentPage=");
+					pagingHtml.append("&nbsp;<a href='/MUSED/tiles/admin/listAction.action?currentPage=");
 					pagingHtml.append(i);
+					if(isSearch != "") pagingHtml.append("&searchKeyword="+isSearch);
 					pagingHtml.append("'>");
 					pagingHtml.append(i);
 					pagingHtml.append("</a>");
@@ -88,7 +96,9 @@ public class pagingAction
 			// 다음 block 페이지
 			if (totalPage - startPage >= blockPage) 
 			{
-				pagingHtml.append("<a href=listAction.action?currentPage="+ (endPage + 1) + ">");
+				pagingHtml.append("<a href=/MUSED/tiles/admin/listAction.action?currentPage="+ (endPage + 1) + ">");
+			    if(isSearch != "")
+			    	       pagingHtml.append("&searchKeyword="+isSearch);
 				pagingHtml.append("다음");
 				pagingHtml.append("</a>");
 			}

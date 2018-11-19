@@ -1,4 +1,4 @@
-package product;
+package talent;
 
 import com.opensymphony.xwork2.ActionSupport;
 
@@ -12,15 +12,15 @@ import java.util.*;
 import java.io.Reader;
 import java.io.IOException;
 
-import product.pagingAction;
+import talent.pagingAction;
 
 public class SearchAction extends ActionSupport{
 	public static Reader reader;
 	public static SqlMapClient sqlMapper;
 	
-	private List<productVO> list = new ArrayList<productVO>();
-	private productVO resultClass = new productVO(); //쿼리 결과 값을 저장할 객체
-	private productVO paramClass = new productVO();
+	private List<talentVO> list = new ArrayList<talentVO>();
+	private talentVO resultClass = new talentVO(); //쿼리 결과 값을 저장할 객체
+	private talentVO paramClass = new talentVO();
 
 	private String category1;
 	private String category2;
@@ -67,74 +67,76 @@ public class SearchAction extends ActionSupport{
 
 	
 		if(getCategory1()=="") {
-			map.put("product_category1", "null");
-			}else {map.put("product_category1", getCategory1());}
+			map.put("talent_category1", "null");
+			}else {map.put("talent_category1", getCategory1());}
 		if(getCategory2()=="") {
-			map.put("product_category2", "null");
-			}else {map.put("product_category2", getCategory2());}
+			map.put("talent_category2", "null");
+			}else {map.put("talent_category2", getCategory2());}
 		if(getCategory3()=="") {
-			map.put("product_category3", "null");
-			}else {map.put("product_category3", getCategory3());}
+			map.put("talent_category3", "null");
+			}else {map.put("talent_category3", getCategory3());}
 		if(getCategory4()=="") {
-			map.put("product_category4", "null");
-			}else {map.put("product_category4", getCategory4());}
+			map.put("talent_category4", "null");
+			}else {map.put("talent_category4", getCategory4());}
 		if(getCategory5()=="") {
-			map.put("product_category5", "null");
-			}else {map.put("product_category5", getCategory5());}
+			map.put("talent_category5", "null");
+			}else {map.put("talent_category5", getCategory5());}
 		if(getCategory6()=="") {
-			map.put("product_category6", "null");
-			}else {map.put("product_category6", getCategory6());}
+			map.put("talent_category6", "null");
+			}else {map.put("talent_category6", getCategory6());}
 		
 		
 	    System.out.println(map);
 	    if(getPriceA().equals("")&&getPriceB().equals("")) {
-	    	map.put("product_priceA", "null");
-		    map.put("product_priceB", "null");
+	    	map.put("talent_priceA", "null");
+		    map.put("talent_priceB", "null");
 	    }else if(getPriceA().equals("")) {
-	    	map.put("product_priceA", "0");
-		    map.put("product_priceB", getPriceB());
+	    	map.put("talent_priceA", "0");
+		    map.put("talent_priceB", getPriceB());
 	    }else if(getPriceB().equals("")) {
-	    	map.put("product_priceA", getPriceA());
-	    	map.put("product_priceB", "1000000000000000");
-	    }else {
-		    map.put("product_priceA", getPriceA());
-		    map.put("product_priceB", getPriceB());
+	    	map.put("talent_priceA", getPriceA());
+	    	map.put("talent_priceB", "1000000000000000");
+	    }	else{
+		    map.put("talent_priceA", getPriceA());
+		    map.put("talent_priceB", getPriceB());
 	    }
-
-	 
+	    
+	    
 	    if(getSido().equals("시도선택")) {
-	    	map.put("product_sido","null");
+	    	map.put("talent_sido","null");
 	    }else {
-	    	map.put("product_sido", getSido());
+	    	map.put("talent_sido", getSido());
 	    }
 	    if(getGogon().equals("시군구선택")) {
-	    	map.put("product_gogon","null");
+	    	map.put("talent_gogon","null");
 	    }else {
-	    	map.put("product_gogon", getGogon());
+	    	map.put("talent_gogon", getGogon());
 	    }
 	    if(getSearchKeyword().equals("")) {
 	    	map.put("searchKeyword", "null"); 	
 	    }else {
 	    	map.put("searchKeyword", "%"+getSearchKeyword()+"%");
 	    }
+	    
+
 	    //정렬 : if 문
 	    if(getSort().equals("0")) {
-	    	map.put("sort", "product_no desc");  // 최신순
+	    	map.put("sort", "talent_no desc");  // 최신순
 	    }
 	    if(getSort().equals("1")) {
 	    	map.put("sort", "readhit desc");  // 인기순
 	    }
 	    if(getSort().equals("2")) {
-	    	map.put("sort", "product_price asc");  // 저가순
+	    	map.put("sort", "talent_price asc");  // 저가순
 	    }
 	    if(getSort().equals("3")) {
-	    	map.put("sort", "product_price desc");  // 고가순
+	    	map.put("sort", "talent_price desc");  // 고가순
 	    }
-	
+	    
 	    System.out.println(map);
-	    
-	    
-		list=sqlMapper.queryForList("product.detailSearch", map);
+		list=sqlMapper.queryForList("talent.detailSearch", map);
+		
+	
 		
 		//페이징
 		totalCount = list.size();
@@ -220,11 +222,11 @@ public class SearchAction extends ActionSupport{
 		return map;
 	}
 
-	public productVO getParamClass() {
+	public talentVO getParamClass() {
 		return paramClass;
 	}
 
-	public void setParamClass(productVO paramClass) {
+	public void setParamClass(talentVO paramClass) {
 		this.paramClass = paramClass;
 	}
 
@@ -244,19 +246,19 @@ public class SearchAction extends ActionSupport{
 		SearchAction.sqlMapper = sqlMapper;
 	}
 
-	public List<productVO> getList() {
+	public List<talentVO> getList() {
 		return list;
 	}
 
-	public void setList(List<productVO> list) {
+	public void setList(List<talentVO> list) {
 		this.list = list;
 	}
 
-	public productVO getResultClass() {
+	public talentVO getResultClass() {
 		return resultClass;
 	}
 
-	public void setResultClass(productVO resultClass) {
+	public void setResultClass(talentVO resultClass) {
 		this.resultClass = resultClass;
 	}
 

@@ -121,5 +121,22 @@
 		WHERE ID = #id#
 	</delete>
 	
+	<!-- 블랙회원 -->
+	<update id="blackprocess" parameterClass="member">
+		UPDATE MEMBER SET access_num = $access_num$
+		WHERE ID = #id#
+	</update>
+	
+ 	<select id ="selectSearchI" resultMap="memberRes" parameterClass="string">
+     <include refid="select-all"/>
+       WHERE id like #searchKeyword#
+       ORDER BY id DESC
+    </select>	
+
+  	<select id ="selectSearchN" resultMap="memberRes" parameterClass="string">
+    <include refid="select-all"/>
+    WHERE name like #searchKeyword#
+    ORDER BY id DESC
+    </select>	
 
 </sqlMap>

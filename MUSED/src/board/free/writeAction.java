@@ -25,7 +25,6 @@ public class writeAction extends ActionSupport {
 	    private int no;
 	    private String subject;
 	    private String name;
-	    private String password;
 	    private String content;
 	    private String file_orgName; //업로드 파일의 원래 이름
 	    private String file_savName; //서버에 저장할 업로드 파일의 이름, 고유 번호로 구분한다.
@@ -109,7 +108,6 @@ public class writeAction extends ActionSupport {
 	    	  //등록할 항목 설정, boardVO에서 생성한 객체들을 가져와서 쓸 수 있게 세팅한다.
 	    	  paramClass.setSubject(getSubject()); 
 	    	  paramClass.setName(getName());
-	    	  paramClass.setPassword(getPassword());
 	    	  paramClass.setContent(getContent());
 	    	  paramClass.setRegdate(today.getTime());
 	    	  
@@ -211,10 +209,7 @@ public class writeAction extends ActionSupport {
 			return name;
 		}
 
-		public String getPassword() {
-			return password;
-		}
-
+		
 		public String getContent() {
 			return content;
 		}
@@ -279,11 +274,7 @@ public class writeAction extends ActionSupport {
 			this.name = name;
 		}
 
-		public void setPassword(String password) {
-			this.password = password;
-		}
-
-		public void setContent(String content) {
+			public void setContent(String content) {
 			this.content = content;
 		}
 

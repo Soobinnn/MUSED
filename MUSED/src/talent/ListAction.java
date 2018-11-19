@@ -26,6 +26,8 @@ public class ListAction extends ActionSupport {
 	private String searchKeyword;
 	private int searchNum;
 	private int num =0;
+	private String sort;
+	HashMap map = new HashMap();
 	
 	private int currentPage=1;	//현재 페이지
 	private int totalCount;		
@@ -41,7 +43,26 @@ public class ListAction extends ActionSupport {
 	}
 	
 	public String execute() throws Exception{
-		list=sqlMapper.queryForList("talent.selectAll");
+		System.out.println("list:"+map);
+
+	    //정렬 : if 문
+		    if(getSort().equals("0")) {
+		    	map.put("sort", "talent_no desc");  // 최신순
+		    }
+		    else if(getSort().equals("1")) {
+		    	map.put("sort", "readhit desc");  // 인기순
+		    }
+		    else if(getSort().equals("2")) {
+		    	map.put("sort", "talent_price asc");  // 저가순
+		    }
+		    else if(getSort().equals("3")) {
+		    	map.put("sort", "talent_price desc");  // 고가순
+		    }
+		 
+	    System.out.println(map);
+	    
+		
+		list=sqlMapper.queryForList("talent.selectAll",map);
 		
 		totalCount = list.size();
 		
@@ -87,6 +108,30 @@ public class ListAction extends ActionSupport {
 	}
 	
 	
+	public int getNum() {
+		return num;
+	}
+
+	public void setNum(int num) {
+		this.num = num;
+	}
+
+	public String getSort() {
+		return sort;
+	}
+
+	public void setSort(String sort) {
+		this.sort = sort;
+	}
+
+	public HashMap getMap() {
+		return map;
+	}
+
+	public void setMap(HashMap map) {
+		this.map = map;
+	}
+
 	public String getSearchKeyword() {
 		return searchKeyword;
 		}

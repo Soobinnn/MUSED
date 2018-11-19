@@ -107,7 +107,7 @@
         <tr>
           <td align="right" colspan="2">    
           	<input name="submit" type="submit" value="작성" class="inputb">
-            <input name="list" type="button" value="취소" class="inputb" >
+            <input name="list" type="button" value="취소" class="inputb" onclick="window.parent.close();">
           </td>
         </tr>
 

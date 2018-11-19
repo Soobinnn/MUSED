@@ -8,8 +8,8 @@
 </head>
 <body>
 삭제되었습니다.
-<br>
-<input name="talent_list" type="button" value="상품 목록보기" class="inputb" onClick="javascript:location.href='talentList.action'"/>
+<br> 
+<input name="talent_list" type="button" value="상품 목록보기" class="inputb" onClick="javascript:location.href='talentList.action?sort=0&currentPage=1'"/>
 <input name="main" type="button" value="메인 화면으로" class="inputb" onClick="javascript:location.href='main.action'"/>
 
 </body>

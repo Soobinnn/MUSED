@@ -73,7 +73,6 @@ public class writeAction extends ActionSupport {
 	    	  //등록할 항목 설정, boardVO에서 생성한 객체들을 가져와서 쓸 수 있게 세팅한다.
 	    	  paramClass.setSubject(getSubject()); 
 	    	  paramClass.setName(getName());
-	    	  paramClass.setPassword(getPassword());
 	    	  paramClass.setContent(getContent());
 	    	  paramClass.setRegdate(today.getTime());
 	    	  

@@ -53,7 +53,7 @@
 							</div></li>
 						<li><div>
 								<a href="joinConfirm.action"><img
-									src="/tiles/image/join.png" width="45" height="45" /></a><br>Join
+									src="/MUSED/tiles/image/join.png" width="45" height="45" /></a><br>Join
 								Us
 							</div></li>
 					</s:if>
@@ -66,7 +66,7 @@
 						<li><div>
 								<a href="mypage.action"> <s:if
 										test="%{resultClass.file_savname == null}">
-										<img class="border" src="/MUSED_MUSED/tiles/image/myPage.png"
+										<img class="border" src="/MUSED/tiles/image/myPage.png"
 											width="45" height="45" />
 									</s:if> <s:else>
 										<img class="border"
@@ -104,10 +104,10 @@
 			<nav id="main_gnb">
 				<ul class="left">
 
-					<li id="menubar"><a href="productList.action?currentPage=1">중고악기거래</a></li>
+					<li id="menubar"><a href="productList.action?currentPage=1&sort=0">중고악기거래</a></li>
 
-					<li id="menubar"><a href="talentList.action?currentPage=1">재능거래</a></li>
-					<li id="menubar"><a href="free/listAction.action?currentPage=1">커뮤니티</a></li>
+					<li id="menubar"><a href="talentList.action?currentPage=1&sort=0">재능거래</a></li>
+					<li id="menubar"><a href="/MUSED/tiles/free/listAction.action?currentPage=1">커뮤니티</a></li>
 
 				</ul>
 				<ul class="right">

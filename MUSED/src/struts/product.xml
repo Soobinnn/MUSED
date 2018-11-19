@@ -10,7 +10,6 @@
 		<!-- 상품 목록-->
 		<action name="productList" class="product.ListAction">
 			<result type="tiles">productList</result>
-
 		</action>
 		
 		<!-- 상품 등록  폼 -->
@@ -58,7 +57,7 @@
 			<result type="tiles">productDeleteSuccess</result>
 		</action>
 		
-		<action name="search" class="product.SearchAction">
+		<action name="Psearch" class="product.SearchAction">
 			<result type="tiles">productList</result>
 		</action>
 		

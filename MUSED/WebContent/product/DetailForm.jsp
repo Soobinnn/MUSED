@@ -16,9 +16,14 @@
 
 <script type="text/javascript">
 
-function btn(){
-    alert("경고! 수정 버튼을 누르면 원본 파일은 사라집니다.");
-}
+ 
+function btn(currentPage, no){
+	if(confirm("경고! 수정 버튼을 누르면 원본 파일은 사라집니다.")){
+		location.href="productUpdateForm.action?product_no="+no+"&currentPage="+currentPage;
+	}else{
+		return false;
+	}
+	}
 
  function open_win_noresizable(url,name){
 	var oWin = window.open(url, name, "scrollbars=no,status=no, resizable=no, width=300, height=150");
@@ -234,8 +239,8 @@ to {
 				<td width="40%">판매자 정보<br> <img class="circle" id="blah"
 						src="C:\Java\upload\file_<s:property value="resultClass.product_id"/>.jpg"
 						width="150" height="150" /><br> 판매자 : <s:property
-								value="resultClass.product_id" /><br> 이메일 : <br> 판매자
-									연락처 : <s:property value="resultClass.product_phone" /><br>
+								value="resultClass.product_id" /><br>
+								 판매자 연락처 : <s:property value="resultClass.product_phone" /><br>
 										거래 선호 지역 : <s:property value="resultClass.product_sido" />&nbsp;
 										<s:property value="resultClass.product_gogon" /> <br></td>
 			</tr>
@@ -279,10 +284,9 @@ to {
 							</tr>
 							<s:iterator value="commentList" status="stat">
 								<tr>
-									<td width="170" align="center"><img class="circle"
-										id="blah"
-										src="C:\Java\upload\file_<s:property value="c_id"/>.jpg"
-										width="50" height="50" /><br> <s:property value="c_id" /><br>
+									<td width="170" align="center">
+									<img class="circle"	id="blah"src="C:\Java\upload\file_<s:property value="c_id"/>.jpg" width="50" height="50" /><br> 
+									<s:property value="c_id" /><br>
 												<s:property value="c_regdate" /><br><br></td>
 									<td><s:property value="c_content" /> <s:url
 											id="DeleteURL" action="deletePComment">
@@ -349,8 +353,7 @@ to {
 					class="inputb"
 					onClick="javascript:location.href='product/productList.action?currentPage=<s:property value="currentPage"/>'" />
 					<s:if test="%{#session.ID==resultClass.product_id}">
-						<input name="update" type="button" value="수정하기" class="inputb"
-							onClick="javascript:location.href='productUpdateForm.action?product_no=<s:property value="product_no"/>&currentPage=<s:property value="currentPage"/>'" />
+						<input type="button" value="수정하기" class="inputb" onclick='btn(<s:property value="currentPage"/>,<s:property value="product_no"/>)'/>
 						<input name="delete" type="button" value="삭제하기" class="inputb"
 							onClick="javascript:location.href='productDelete.action?product_no=<s:property value="product_no"/>&currentPage=<s:property value="currentPage"/>'" />
 					</s:if></td>

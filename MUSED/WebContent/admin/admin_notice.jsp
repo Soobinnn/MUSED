@@ -35,10 +35,6 @@ top:500; left:410;}
 </head>
 
 <body>
-<div>
-		<a href='/MUSED/tiles/notice/listAction.action?currentPage=1'>공지사항</a>&nbsp;&nbsp; <a href='/MUSED/tiles/free/listAction.action'>자유게시판</a> &nbsp;&nbsp; <a href='/MUSED/tiles/sug/listAction.action'>건의게시판</a>
-	<br/><br/><br/><br/><br/><br/><br/>	
-	</div>
 	<table width="600" border="0" cellspacing="0" cellpadding="2">
 		<tr>
 			<td align="center"><h2>공 지 사 항</h2></td>
@@ -68,7 +64,7 @@ top:500; left:410;}
 		<!-- 자바빈에 있는 메소드를 get메소드를 쓴 효과로 가져온다. -->
 		<s:iterator value="list" status="stat">
 
-			<s:url id="viewURL" action="viewAction">
+			<s:url id="viewURL" action="admin_noticeView">
 				<s:param name="no">
 					<s:property value="no"/> <%-- viewAction.java에서 정의한 값을 s:property value를 사용하여 가져온다. --%>
 				 
@@ -138,7 +134,7 @@ top:500; left:410;}
 			<tr align="right">
 				<td colspan="5">                        <%-- writeForm으로 이동하도록 한다. --%>
 					<input type="button" value="글쓰기" class="inputb" 
-					onclick="javascript:location.href='writeForm.action?currentPage=<s:property value="currentPage"/>';"/>
+					onclick="javascript:location.href='/MUSED/tiles/notice/admin_noticeWrite.action?currentPage=<s:property value="currentPage"/>';"/>
 			</s:if>
 		<s:else>
 		  		  </s:else>
