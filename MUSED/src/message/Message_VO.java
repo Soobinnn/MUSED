@@ -5,11 +5,11 @@ import java.util.Date;
 
 public class Message_VO {
 
-	private int msg_no; // ¹øÈ£
-	private String msg_wrt_id; // º¸³»´Â »ç¶÷ id
-	private String msg_rec_id; // ¹Þ´Â »ç¶÷ id
-	private String msg_content; // ³»¿ë
-	private Date msg_regdate; // º¸³»´Â ³¯Â¥
+	private int msg_no; // ë²ˆí˜¸
+	private String msg_wrt_id; // ë³´ë‚´ëŠ” ì‚¬ëžŒ id
+	private String msg_rec_id; // ë°›ëŠ” ì‚¬ëžŒ id
+	private String msg_content; // ë‚´ìš©
+	private Date msg_regdate; // ë³´ë‚´ëŠ” ë‚ ì§œ
 	
 	public int getMsg_no() {
 		return msg_no;
@@ -41,6 +41,4 @@ public class Message_VO {
 	public void setMsg_regdate(Date msg_regdate) {
 		this.msg_regdate = msg_regdate;
 	}
-	
-
 }

@@ -16,12 +16,12 @@
 		
 		<!-- 받은 Msg 리스트 -->
 		<select id="Msg_select_Rec"   resultMap="messageRes" parameterClass="String" remapResults="true" >
-			select * from message WHERE message_read=#msg_rec_id# order by Message_REGDATE desc
+			select * from message WHERE message_read=#msg_rec_id# and Read_no = 1 order by Message_REGDATE desc
 		</select>
 
 		<!-- 내가 쓴 Msg 리스트 -->
 		<select id="Msg_select_Wrt" resultMap="messageRes" parameterClass="String" remapResults="true">
-			select * from message WHERE message_SEND=#msg_wrt_id# order by Message_REGDATE desc
+			select * from message WHERE message_SEND=#msg_wrt_id# and Send_no = 1 order by Message_REGDATE desc
 			<!-- select * from message join member on message.Message_SEND = member.id order by Message_NO desc  -->
 		</select>
 		<!-- Msg 리스트 개수 -->
@@ -32,13 +32,15 @@
 		<insert id="WriteMessage" parameterClass="message">
 			insert into message (Message_NO,
 			Message_SEND, Message_READ,
-			Message_REGDATE, Message_CONTENT)
+			Message_REGDATE, Message_CONTENT , Send_no, Read_no)
 			 values(
 			 MESSAGE_NO_SEQ.NEXTVAL,
 			 #msg_wrt_id#,
 			 #msg_rec_id#, 
 			 #msg_regdate#, 
-			 #msg_content#)
+			 #msg_content#,
+			 1,
+			 1)
 		</insert>
 		
 		<!-- 글 하나 정보 가져오기 -->
@@ -69,4 +71,19 @@
 		 WHERE Message_REGDATE like #searchKeyword#
 		 ORDER BY Message_NO DESC
 	</select>
+	
+	<!-- Msg 삭제 -->
+		<update id= "delete_Send"  parameterClass="message">
+		update Message set Send_no = 0 where Message_no = #msg_no# and Message_Send = #msg_wrt_id#
+		</update>
+		
+		<update id= "delete_Read" parameterClass="message">
+		update Message set Read_no = 0 where Message_no = #msg_no# and Message_Read = #msg_rec_id#
+		</update>
+		
+	
+	
+	
+	
+	
 </sqlMap>

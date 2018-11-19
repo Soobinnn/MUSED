@@ -1,12 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<meta charset="UTF-8">
+
 <%@ taglib prefix = "s" uri = "/struts-tags" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html>
 <head>
 <title>Message</title>
+<meta charset="utf-8">
  <script language="javascript">
 /* function openMessage() {
 	var url = "sendMessageForm.action"
@@ -47,12 +50,16 @@ function open_win_noresizable(url, name){
 			<td width="12%">
 				<strong>받은 사람</strong>
 			</td>
-			<td width="66%">
+			<td width="61%">
 				<strong>내용</strong>
 			</td>
 
 			<td width="13%">
 				<strong>날짜</strong>
+			</td>
+			
+			<td width="4%">
+				<strong>삭제</strong>
 			</td>
 			
 		</tr>
@@ -79,6 +86,19 @@ function open_win_noresizable(url, name){
 				<td align="center">
 					<s:property value="msg_regdate"/>
 				</td>
+				<td>
+				<td><s:url id="DeleteURL" action="deleteSend">
+						<s:param name="msg_no">
+							<s:property value="msg_no" />
+						</s:param>
+						<s:param name="msg_wrt_id">
+							<s:property value="%{#session.ID}" />
+						</s:param>
+						<s:param name="currentPage">
+							<s:property value="currentPage" />
+						</s:param>
+					</s:url> <s:a href="%{DeleteURL}">X</s:a></td>
+				</td>
 			</tr>
 			<tr bgcolor="#777777">
 				<td height="1" colspan="4">
@@ -98,7 +118,7 @@ function open_win_noresizable(url, name){
 			</tr>
 			
 		</s:if>
-			
+			  <s:hidden name="currentPage" value="%{currentPage}" />
 			<tr align="center">
 				<td colspan="4">
 					<s:property value="pagingHtml" escape="false"/>

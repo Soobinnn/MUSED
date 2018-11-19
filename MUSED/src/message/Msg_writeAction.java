@@ -17,18 +17,18 @@ import java.io.IOException;
 
 
 public class Msg_writeAction extends ActionSupport{
-	public static Reader reader;	//파일 스트림을 위한 reader
-	public static SqlMapClient sqlMapper;	//SqlMapClient API를 사용하기 위한 sqlMapper객체
+	public static Reader reader;	//�뙆�씪 �뒪�듃由쇱쓣 �쐞�븳 reader
+	public static SqlMapClient sqlMapper;	//SqlMapClient API瑜� �궗�슜�븯湲� �쐞�븳 sqlMapper媛앹껜
 	
-	private Message_VO paramClass;	//파라미터를 저장할 객체
-	private Message_VO resultClass;	//쿼리 결과 값을 저장할 객체
-	private MemberVO paramClass2;	//파라미터를 저장할 객체
-	private MemberVO resultClass2;	//쿼리 결과 값을 저장할 객체
+	private Message_VO paramClass;	//�뙆�씪誘명꽣瑜� ���옣�븷 媛앹껜
+	private Message_VO resultClass;	//荑쇰━ 寃곌낵 媛믪쓣 ���옣�븷 媛앹껜
+	private MemberVO paramClass2;	//�뙆�씪誘명꽣瑜� ���옣�븷 媛앹껜
+	private MemberVO resultClass2;	//荑쇰━ 寃곌낵 媛믪쓣 ���옣�븷 媛앹껜
 	private List<Message_VO> list = new ArrayList<Message_VO>();
 	
 	
 	
-	private int currentPage;	//현재 페이지
+	private int currentPage;	//�쁽�옱 �럹�씠吏�
 	
 	private int Msg_No;
 	private String msg_wrt_id;
@@ -44,25 +44,25 @@ public class Msg_writeAction extends ActionSupport{
 
 
 	
-	//생성자
+	//�깮�꽦�옄
 	public Msg_writeAction() throws IOException{
 		
-		reader = Resources.getResourceAsReader("sqlMapConfig.xml");//sqlMapConfig.xml파일의 설정내용을 가져온다.
-		sqlMapper = SqlMapClientBuilder.buildSqlMapClient(reader);	//sqlMapConfig.xml의 내용을 적용한 sqlMapper객체 생성.
+		reader = Resources.getResourceAsReader("sqlMapConfig.xml");//sqlMapConfig.xml�뙆�씪�쓽 �꽕�젙�궡�슜�쓣 媛��졇�삩�떎.
+		sqlMapper = SqlMapClientBuilder.buildSqlMapClient(reader);	//sqlMapConfig.xml�쓽 �궡�슜�쓣 �쟻�슜�븳 sqlMapper媛앹껜 �깮�꽦.
 		
 		reader.close();
 	}
 	
 	public String form() throws Exception{
-		//등록 폼
+		//�벑濡� �뤌
 		return SUCCESS;
 	}
 	
 	
-	//게시판 WRITE액션
+	//寃뚯떆�뙋 WRITE�븸�뀡
 	public String execute() throws Exception{
 		
-		//파라미터와 리절트 객체 생성
+		//�뙆�씪誘명꽣�� 由ъ젅�듃 媛앹껜 �깮�꽦
 		paramClass=new Message_VO();
 		resultClass=new Message_VO();
 		paramClass2=new MemberVO();
@@ -72,11 +72,11 @@ public class Msg_writeAction extends ActionSupport{
 		setMember_ID(session.get("id"));
 		
 		
-		//등록할 항목 설정
+		//�벑濡앺븷 �빆紐� �꽕�젙
 		paramClass.setMsg_wrt_id(getMsg_wrt_id());
 		paramClass.setMsg_content(getMsg_content());
 		paramClass.setMsg_rec_id(getMsg_rec_id());
-		paramClass.setMsg_regdate(today.getTime());// 오늘 날짜 설정
+		paramClass.setMsg_regdate(today.getTime());// �삤�뒛 �궇吏� �꽕�젙
 
 	/*	paramClass2.setId(getRec_id());
 		*/
@@ -97,7 +97,7 @@ public class Msg_writeAction extends ActionSupport{
 		         sqlMapper.insert("Message.WriteMessage", paramClass);
 	/*}*/
 		
-		//첨부파일을 선택했다면 파일을 업로드한다.
+		//泥⑤��뙆�씪�쓣 �꽑�깮�뻽�떎硫� �뙆�씪�쓣 �뾽濡쒕뱶�븳�떎.
 		return SUCCESS;
 	}
 	

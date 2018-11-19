@@ -1,11 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="s" uri="/struts-tags" %>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+ <%@ taglib prefix = "s" uri = "/struts-tags" %>
+    
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Msg_writeForm</title>
+<meta charset="utf-8">
 	<script type="text/javascript">
 		function check(){
 			
@@ -59,9 +61,8 @@
 				&nbsp;<font size="2">보내는 사람</font>
 			</td>
 			<td bgcolor="#FFFFFF">
-		<%-- 	 <s:property name="msg_wrt_id" value="%{#session.ID}"/>  --%>
-			${#session.ID}
-			 <input type="hidden" name="msg_wrt_id" value="${#session.ID}"/>  
+				<s:property value="%{#session.ID}"/>
+			 <input type="hidden" name="msg_wrt_id" value="<s:property value='%{#session.ID}'/>"/>  
 			</td>
 		</tr>
 		<tr bgcolor="#777777">

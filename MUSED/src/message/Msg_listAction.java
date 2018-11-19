@@ -1,4 +1,3 @@
-
 package message;
 
 	import com.opensymphony.xwork2.ActionContext;
@@ -17,23 +16,23 @@ package message;
 
 	public class Msg_listAction extends ActionSupport{
 		
-		public static Reader reader;		//파일 스트림을 위한 reader.
-		public static SqlMapClient sqlMapper;		//SqkMapClient API를 사용하기 위한 sqlMapper객체.
+		public static Reader reader;		//�뙆�씪 �뒪�듃由쇱쓣 �쐞�븳 reader.
+		public static SqlMapClient sqlMapper;		//SqkMapClient API瑜� �궗�슜�븯湲� �쐞�븳 sqlMapper媛앹껜.
 		
 		private List<Message_VO> list = new ArrayList<Message_VO>();
 		
 		
 
-		private int currentPage = 1;	//현재 페이지
-		private int totalCount;			//총 게시물의 수
-		private int blockCount = 10;	//한 페이지의 게시물의 수
-		private int blockPage = 5;		//한 화면에 보여줄 페이지 수
+		private int currentPage = 1;	//�쁽�옱 �럹�씠吏�
+		private int totalCount;			//珥� 寃뚯떆臾쇱쓽 �닔
+		private int blockCount = 10;	//�븳 �럹�씠吏��쓽 寃뚯떆臾쇱쓽 �닔
+		private int blockPage = 5;		//�븳 �솕硫댁뿉 蹂댁뿬以� �럹�씠吏� �닔
 		private String pagingHtml;
-		private String pagingHtml2;//페이징을 구현한 HTML
+		private String pagingHtml2;//�럹�씠吏뺤쓣 援ы쁽�븳 HTML
 		
 
 		private Msg_pagingAction page;
-		private Msg_pagingAction2 page2;//페이징 클래스
+		private Msg_pagingAction2 page2;//�럹�씠吏� �겢�옒�뒪
 		
 		private Message_VO paramClass;
 		private String msg_rec_id;
@@ -47,17 +46,17 @@ package message;
 
 
 		
-		//생성자
+		//�깮�꽦�옄
 		public Msg_listAction() throws IOException{
-			reader = Resources.getResourceAsReader("sqlMapConfig.xml");	//sqlMapConfig.xml파일의 설정 내용을 가져온다.
-			sqlMapper = SqlMapClientBuilder.buildSqlMapClient(reader);	//sqlMapConfig.xml의 내용을 적용한 sqlMapper객체 생성.
+			reader = Resources.getResourceAsReader("sqlMapConfig.xml");	//sqlMapConfig.xml�뙆�씪�쓽 �꽕�젙 �궡�슜�쓣 媛��졇�삩�떎.
+			sqlMapper = SqlMapClientBuilder.buildSqlMapClient(reader);	//sqlMapConfig.xml�쓽 �궡�슜�쓣 �쟻�슜�븳 sqlMapper媛앹껜 �깮�꽦.
 			
 			reader.close();
 		}
 		
-		//게시판 LIST액션 , 받은 쪽지함
+		//寃뚯떆�뙋 LIST�븸�뀡 , 諛쏆� 履쎌��븿
 				public String execute() throws Exception{
-					//모든 글을 가져와 list에 넣는다.
+					//紐⑤뱺 湲��쓣 媛��졇�� list�뿉 �꽔�뒗�떎.
 					
 					paramClass=new Message_VO();
 					
@@ -65,36 +64,36 @@ package message;
 					
 					ActionContext context = ActionContext.getContext();
 					Map<String, Object> session = context.getSession();
-					System.out.println("세션아이디::" + (String) session.get("ID"));
+					System.out.println("�꽭�뀡�븘�씠�뵒::" + (String) session.get("ID"));
 					
-					if(getSearchKeyword() != null)		//검색어가 있으면
+					if(getSearchKeyword() != null)		//寃��깋�뼱媛� �엳�쑝硫�
 					{
-						return search();				//search()로 리턴
+						return search();				//search()濡� 由ы꽩
 					}			
 					list = sqlMapper.queryForList("Message.Msg_select_Rec", (String) session.get("ID"));
 					
 					
-					totalCount = list.size(); //전체 글 갯수를 구한다.
-					//pagingAction 객체 생성.
+					totalCount = list.size(); //�쟾泥� 湲� 媛��닔瑜� 援ы븳�떎.
+					//pagingAction 媛앹껜 �깮�꽦.
 					page2 = new Msg_pagingAction2(currentPage, totalCount, blockCount, blockPage, num, "");
-					pagingHtml2 = page2.getPagingHtml2().toString();//페이지HTML생성.
+					pagingHtml2 = page2.getPagingHtml2().toString();//�럹�씠吏�HTML�깮�꽦.
 					
-					//현재 페이지에서 보여줄 마지막 글의 번호 설정.
+					//�쁽�옱 �럹�씠吏��뿉�꽌 蹂댁뿬以� 留덉�留� 湲��쓽 踰덊샇 �꽕�젙.
 					int lastCount = totalCount;
 					
-					//현재 페이지의 마지막 글의 번호가 전체의 마지막 글 번호보다 작으면 lastCount를 +1번호로 설정.
+					//�쁽�옱 �럹�씠吏��쓽 留덉�留� 湲��쓽 踰덊샇媛� �쟾泥댁쓽 留덉�留� 湲� 踰덊샇蹂대떎 �옉�쑝硫� lastCount瑜� +1踰덊샇濡� �꽕�젙.
 					if(page2.getEndCount() < totalCount)
 						lastCount = page2.getEndCount() + 1;
 					
-					//전체 리스트에서 현재 페이지만큼의 리스트만 가져온다.
+					//�쟾泥� 由ъ뒪�듃�뿉�꽌 �쁽�옱 �럹�씠吏�留뚰겮�쓽 由ъ뒪�듃留� 媛��졇�삩�떎.
 					list = list.subList(page2.getStartCount(), lastCount);
 					
 					
 					return SUCCESS;
 				}
-				//보낸 쪽지함
+				//蹂대궦 履쎌��븿
 				public String execute2() throws Exception{
-					//모든 글을 가져와 list에 넣는다.
+					//紐⑤뱺 湲��쓣 媛��졇�� list�뿉 �꽔�뒗�떎.
 					
 					paramClass=new Message_VO();
 					list = new ArrayList<Message_VO>();
@@ -102,51 +101,51 @@ package message;
 					ActionContext context = ActionContext.getContext();
 					Map<String, Object> session = context.getSession();
 					
-					System.out.println("세션아이디::" +(String) session.get("ID"));
+					System.out.println("�꽭�뀡�븘�씠�뵒::" +(String) session.get("ID"));
 					
-					if(getSearchKeyword() != null)		//검색어가 있으면
+					if(getSearchKeyword() != null)		//寃��깋�뼱媛� �엳�쑝硫�
 					{
-						return search();				//search()로 리턴
+						return search();				//search()濡� 由ы꽩
 					}			
 					list = sqlMapper.queryForList("Message.Msg_select_Wrt", (String) session.get("ID"));
 
 					
-					totalCount = list.size(); //전체 글 갯수를 구한다.
-					//pagingAction 객체 생성.
+					totalCount = list.size(); //�쟾泥� 湲� 媛��닔瑜� 援ы븳�떎.
+					//pagingAction 媛앹껜 �깮�꽦.
 					page = new Msg_pagingAction(currentPage, totalCount, blockCount, blockPage, num, "");
-					pagingHtml = page.getPagingHtml().toString();//페이지HTML생성.
+					pagingHtml = page.getPagingHtml().toString();//�럹�씠吏�HTML�깮�꽦.
 					
-					//현재 페이지에서 보여줄 마지막 글의 번호 설정.
+					//�쁽�옱 �럹�씠吏��뿉�꽌 蹂댁뿬以� 留덉�留� 湲��쓽 踰덊샇 �꽕�젙.
 					int lastCount = totalCount;
 					
-					//현재 페이지의 마지막 글의 번호가 전체의 마지막 글 번호보다 작으면 lastCount를 +1번호로 설정.
+					//�쁽�옱 �럹�씠吏��쓽 留덉�留� 湲��쓽 踰덊샇媛� �쟾泥댁쓽 留덉�留� 湲� 踰덊샇蹂대떎 �옉�쑝硫� lastCount瑜� +1踰덊샇濡� �꽕�젙.
 					if(page.getEndCount() < totalCount)
 						lastCount = page.getEndCount() + 1;
 					
-					//전체 리스트에서 현재 페이지만큼의 리스트만 가져온다.
+					//�쟾泥� 由ъ뒪�듃�뿉�꽌 �쁽�옱 �럹�씠吏�留뚰겮�쓽 由ъ뒪�듃留� 媛��졇�삩�떎.
 					list = list.subList(page.getStartCount(), lastCount);
 					
 					
 		
 					return SUCCESS;
 				}
-		public String search() throws Exception{		//맨 위에(execute.if()에) 검색어가 있을때(null이 아닐때)여기로 리턴
+		public String search() throws Exception{		//留� �쐞�뿉(execute.if()�뿉) 寃��깋�뼱媛� �엳�쓣�븣(null�씠 �븘�땺�븣)�뿬湲곕줈 由ы꽩
 			
-			if(searchNum == 0){				//boardList.jsp의 select Name.searchNum부분에 option value가 0일때
+			if(searchNum == 0){				//boardList.jsp�쓽 select Name.searchNum遺�遺꾩뿉 option value媛� 0�씪�븣
 				list = sqlMapper.queryForList("Message.Msg_selectSearchW", "%"+getSearchKeyword()+"%");	
-								//보낸 사람 컬럼의 서치키워드가 포함된 모든 행 가져와 list에 저장
+								//蹂대궦 �궗�엺 而щ읆�쓽 �꽌移섑궎�썙�뱶媛� �룷�븿�맂 紐⑤뱺 �뻾 媛��졇�� list�뿉 ���옣
 			}
-			if(searchNum == 1){				//boardList.jsp의 select Name.searchNum부분에 option value가 0일때
+			if(searchNum == 1){				//boardList.jsp�쓽 select Name.searchNum遺�遺꾩뿉 option value媛� 0�씪�븣
 				list = sqlMapper.queryForList("Message.Msg_selectSearchR", "%"+getSearchKeyword()+"%");	
-								//받는 사람 컬럼의 서치키워드가 포함된 모든 행 가져와 list에 저장
+								//諛쏅뒗 �궗�엺 而щ읆�쓽 �꽌移섑궎�썙�뱶媛� �룷�븿�맂 紐⑤뱺 �뻾 媛��졇�� list�뿉 ���옣
 			}
-			if(searchNum == 2){				//option value가 1일때
+			if(searchNum == 2){				//option value媛� 1�씪�븣
 				list = sqlMapper.queryForList("Message.Msg_selectSearchC", "%"+getSearchKeyword()+"%");	
-								//내용 (Content)컬럼의 서치키워드가 포함된 모든 행 가져와 list에 저장
+								//�궡�슜 (Content)而щ읆�쓽 �꽌移섑궎�썙�뱶媛� �룷�븿�맂 紐⑤뱺 �뻾 媛��졇�� list�뿉 ���옣
 			}
-			if(searchNum == 3){				//option value가 2일때
+			if(searchNum == 3){				//option value媛� 2�씪�븣
 				list = sqlMapper.queryForList("Message.Msg_selectSearchD", "%"+getSearchKeyword()+"%");	
-								//날자(content)컬럼에 서치키워드가 포함된 모든 행 가져와 list에 저장
+								//�궇�옄(content)而щ읆�뿉 �꽌移섑궎�썙�뱶媛� �룷�븿�맂 紐⑤뱺 �뻾 媛��졇�� list�뿉 ���옣
 			}
 			
 			totalCount = list.size();
@@ -310,3 +309,4 @@ package message;
 		
 		
 }
+

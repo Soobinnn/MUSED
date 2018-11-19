@@ -40,5 +40,14 @@
 		<action name="ReMessageForm" class="message.Msg_writeAction" method="Form">
 			<result>/mypage/button/mypageSendMessage2.jsp</result>	
 		</action>
+		
+		<!-- 메시지 삭제 -->
+		<action name="deleteSend" class = "message.Msg_deleteAction" >
+			<result type="chain">sendedMessage</result>
+		</action>
+		
+		<action name="deleteRead" class = "message.Msg_deleteAction" method="execute2">
+			<result type="chain">receivedMessage</result>
+		</action>
 </package>
 </struts>
