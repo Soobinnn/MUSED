@@ -3,15 +3,10 @@
 <%@ taglib prefix="s" uri="/struts-tags"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<style type="text/css">
-.size{border:solid 0px; position:absolute; float:left; overflow:hidden; width:824; height:1800;
-top:500; left:410;}
-</style>
-
+<link rel="stylesheet" href="/MUSED/css/board.css"/>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>공 지 사 항</title>
-<link rel="stylesheet" href="/StrutsBoard/board/common/css/css.css" type="text/css">
 
 <script type="text/javascript">
   function open_win_noresizable(url, name){
@@ -24,15 +19,17 @@ top:500; left:410;}
 
 
 <body>
-	<table width="950" border="0" cellspacing="0" cellpadding="2">
+<div id="board" align="center">
+	<table width="95%" border="0" cellspacing="0" cellpadding="2">
+			<tr><td><br/><br/><br/></td></tr>
 		<tr>
 			<td align="center"><h2>공 지 사 항</h2></td>
 		</tr>
 	</table>
 
-	<table width="950" border="0" cellspacing="0" cellpadding="5">
+	<table width="80%" border="0" cellspacing="0" cellpadding="5">
 		<tr bgcolor="#777777">
-			<td colspan="8" height="1"></td>
+			<td colspan="8" height="2"></td>
 		</tr>
 
 		<tr>
@@ -40,32 +37,32 @@ top:500; left:410;}
 			<td width="500"><s:property value="resultClass.no" /></td> --%>
 		</tr>
 
-		<tr>
-			<td width="70">제목</td>	<td colspan="3" width="450"><s:property value="resultClass.subject" /></td>
-		    <td width="100">이름</td><td width="100"><s:property value="resultClass.name" /></td>
-		    <td width="100">조회수</td><td width="50"><s:property value="resultClass.readhit"/></td>
+		<tr height="30">
+			<td class="free" width="70">제목</td>	<td class="free" colspan="3" width="450"><s:property value="resultClass.subject" /></td>
+		    <td  class="free" width="100">이름</td><td class="free" width="100"><s:property value="resultClass.name" /></td>
+		    <td class="free" width="100">조회수</td><td class="free" width="50"><s:property value="resultClass.readhit"/></td>
 		                           
 		
 		</tr>
 
 
-		<tr>
-	　　　　　	<td width="70" height="250">내용</td>
-			<td colspan ="7" width="1000"><pre>${resultClass.content}</pre>
-			
-		<tr>
 		　　　<td colspan="8" align="right"><s:property value="resultClass.regdate"/></td>
 		</tr>
+		<tr>
+	　　　　　	<td width="70" height="250">내용</td>
+			<td colspan ="7" width="100"><pre>${resultClass.content}</pre>
+			
+		<tr>
 	</table>
 			
 		
 <table width="950" border="0" cellspacing="0" cellpadding="5">
 		<tr bgcolor="#777777">
-			<td colspan="8" height="1"></td>
+			<td colspan="8" height="2"></td>
 		</tr>
 
 		<tr>
-			<td colspan="8" height="10"></td>
+			<td colspan="8" height="15"></td>
 		</tr>
 
 
@@ -103,6 +100,8 @@ top:500; left:410;}
  
 			</td>
 		</tr>
+		<tr><td><br><br></td></tr>
 	</table>
+	</div>
 </body>
 </html>

@@ -105,7 +105,6 @@
 				<ul class="left">
 
 					<li id="menubar"><a href="productList.action?currentPage=1&sort=0">중고악기거래</a></li>
-
 					<li id="menubar"><a href="talentList.action?currentPage=1&sort=0">재능거래</a></li>
 					<li id="menubar"><a href="/MUSED/tiles/free/listAction.action?currentPage=1">커뮤니티</a></li>
 

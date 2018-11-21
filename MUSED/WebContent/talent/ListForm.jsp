@@ -7,6 +7,8 @@ pageEncoding="utf-8"%>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 
+<link rel="stylesheet" href="/MUSED/css/productList.css"/>
+
 <script language=javascript>
 
 function deleteAll(f)
@@ -161,70 +163,45 @@ function refreshsuccess(a){
 }
 
 </script>
-<style>
-input[type="checkbox"] + label {
-	display: inline-block;
-	width: 90px;
-	height: 20px;
-	border: 2px solid #4e4e4e;
-	cursor: pointer;
-	font-weight:bold
-}
-input[type="checkbox"]:checked + label {
-	background-color: #292929;
-	color:#ffffff;
-}
-input[type="checkbox"]{
-	display: none;
-}
-input[type="submit"]{
-	 width:40;
-}
-#searchkeyword{
-	width:350px;
-}
-select, input{
-	height:25px
-}
-</style>
 
 <title>재능 게시판</title>
 </head>
 <body>
-<table width="600" border="0" cellspacing="0" cellspadding="2">
+<div id="main" align="center">
+<table width="95%" border="0" cellspacing="0" cellspadding="2">
   <s:hidden name="currentPage" value="%{currentPage}" />
 	 <form name="fwrite" action="Tsearch.action">
 	<tr align="center" height="30px">
 	<!-- 버튼 말고 check같은 거로 해야됨 -->
 	<br></br>
 		<s:hidden name="sort" value="0" />
-		<td colspan="5">
-		    	<input name="category1" type="checkbox" id="classic" value="classic">
-   			 	<label for="classic">클래식</label>
+			<td colspan="5">
+		  	<input name="category1" type="checkbox" id="classic" value="classic">
+   			 	<label for="classic"><img src="/MUSED/product/ui_img/클래식.png"/>클래식</label>
    			 	
+	   		<input name="category5" type="checkbox" id="sound" value="sound">
+	   			 <label for="sound"><img src="/MUSED/product/ui_img/음악.png"/>음향악기</label>
+	   			 
    			<input name="category2" type="checkbox" id="guiter" value="guiter">
-   				<label for="guiter">기타</label>
-   				
-	   		<input name="category3" type="checkbox" id="drum" value="drum">
-	   			 <label for="drum">드럼/타악기</label>
+   				<label for="guiter"><img src="/MUSED/product/ui_img/기타.png"/>기타</label>
 	   			 
 	   		<input name="category4" type="checkbox" id="piano" value="piano">
-	   			 <label for="piano">건반악기</label>
-	   			 
-	   		<input name="category5" type="checkbox" id="sound" value="sound">
-	   			 <label for="sound">음향악기</label>
+	   			 <label for="piano"><img src="/MUSED/product/ui_img/피아노.png"/>건반악기</label>
+   				
+	   		<input name="category3" type="checkbox" id="drum" value="drum">
+	   			 <label for="drum"><img src="/MUSED/product/ui_img/드럼.png"/>드럼/타악기</label>
 	   			 
 	   	   	<input name="category6" type="checkbox" id="etc" value="etc">
-	   			 <label for="etc">그 외 악기</label>
+	   			 <label for="etc"><img src="/MUSED/product/ui_img/그외.png"/>그 외 악기</label>
 		</td>
 	</tr>
-		<tr align="left" height="30px">
+		<tr align="center" height="30px">
 		<td colspan="5">
 		&nbsp;&nbsp;가 격 
-		<input name="priceA" type="text">원 ~ <input name="priceB" type="text">원
+		<input name="priceA" type="text">&nbsp;원 ~ <input name="priceB" type="text">&nbsp;원
 		</td>
 		</tr>
-	<tr align="left" height="30px">
+	<tr align="center" height="30px">
 		<td colspan="5">
 
 		&nbsp;&nbsp;지 역 
@@ -243,7 +220,7 @@ select, input{
 
 		</td>
 	</tr>
-	<tr align="left" height="30px">
+	<tr align="center" height="30px">
 		<td colspan="5">
 				&nbsp;&nbsp;<input type="text" name="searchKeyword" id="searchkeyword" theme="simple" placeholder="내용+제목"/>
 				<input name="submit" type="submit" value="검색" class="inputb">
@@ -255,7 +232,7 @@ select, input{
 	<tr align="left">
 		<td colspan="5" height="30px">
 			<br>
-				<select name="sort">
+				<select name="sort" class="sort">
 				
 					<option value="0" onclick="refresh(0)">최신순</option>
 					<option value="1" onclick="refresh(1)">인기순</option>
@@ -266,10 +243,7 @@ select, input{
 		</td>
 	</tr>
 
-	<tr bgcolor="#777777">
-    	<td height="1" colspan="5"></td>
-   	</tr>
-    
+
 	<tr>
 	<!-- 로그인 했을 때 상세보기 들어가짐 -->
 	<s:if test='%{#session.ID != null}'>
@@ -284,11 +258,12 @@ select, input{
 				</s:param>
 			</s:url>
    			&nbsp;<s:a href="%{DetailURL}">
-   	      			<img src="/MUSED/talent/img/<s:property value="main_img"/>" style="height: 100px; width: 100px; display: block;"/>
-					<br><s:property value="talent_subject" />
+   	      			<img src="/MUSED/talent/img/<s:property value="main_img"/>" style="height: 200px; width: 200px; display: block;"/>
+					<br><s:property value="talent_subject" /></br>
 				  </s:a>
-			<br>판매자 : <s:property value="talent_id"/>	<br>
-			<s:property value="talent_price"/>원	
+			<br><font size="2p">판매자 : <s:property value="talent_id"/>	</font>
+			<br><br><s:property value="talent_price"/>원	
+			</br>
 	     </td>
 	       	<s:if test="#stat.count%5==0">
         		<tr></tr>
@@ -301,11 +276,11 @@ select, input{
 	 <s:iterator value="list" status="stat">
       <td>	 
           &nbsp;<s:a href="loginForm.action">
-      			<img src="/MUSED/talent/img/<s:property value="main_img"/>" style="height: 100px; width: 100px; display: block;"/>
-				<br><s:property value="talent_subject" />
+      			<img src="/MUSED/talent/img/<s:property value="main_img"/>" style="height: 200px; width: 200px; display: block;"/>
+				<br><s:property value="talent_subject" /></br>
 				</s:a>
-			<br>판매자 : <s:property value="talent_id"/>	<br>
-			<s:property value="talent_price"/>원	
+			<br><font size="2p">판매자 : <s:property value="talent_id"/></font></br>
+			<br><s:property value="talent_price"/>원	</br>
 	     </td>
 	       	<s:if test="#stat.count%5==0">
         		<tr></tr>
@@ -321,9 +296,11 @@ select, input{
 	</s:if>
 	
     <tr align="center">
-  		<td colspan="5"><s:property value="pagingHtml"  escape="false" /></td>
+  		<td colspan="5"><br></br><s:property value="pagingHtml"  escape="false" /></td>
     </tr>
-
+<tr>
+	<td><br></br></td>
+	</tr>
 </table>
 </body>
 </html>

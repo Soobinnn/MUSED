@@ -8,6 +8,7 @@
 <head>
 <title>악기 입력 폼</title>
 
+<link rel="stylesheet" href="/MUSED/css/productList.css"/>
 <script language=javascript>
 
 function deleteAll(f)
@@ -150,12 +151,12 @@ function initRegion()
 				frm.product_state.focus();
 				return false;
 			}
-
+/* 
 			else if(frm.product_type.value == "") {
 				alert("거래 형식을 입력해주세요.");
 				return false;			
 			} 
-			
+			 */
 			else if(frm.product_subject.value == "") {
 				alert("제목을 입력해주세요.");
 				frm.product_subject.focus();
@@ -188,6 +189,7 @@ function initRegion()
 	</script>
 </head>
 <body>
+<div id="main" align="center">
 	<s:if test="resultClass == NULL">
 			<form name="fwrite" action="productWrite.action" method="post" enctype="multipart/form-data" onsubmit="return validation();">
 		</s:if>
@@ -199,29 +201,34 @@ function initRegion()
 		 
 		</s:else>
 
-       <table width="800" border="0" cellspacing="0" cellpadding="0">
+       <table width="80%" border="0" cellspacing="0" cellpadding="0">
         <tr>
-          <td><font color="#FF0000">*</font>는 필수 입력사항입니다.</td>
+          <td><br></br></td>
+          </tr>
+        <tr>
+          <td colspan="2"><br/>&nbsp;<font size="2p" color="#FF0000">* 는 필수 입력사항입니다.</font></td>
                    <s:hidden name="product_id" value="%{#session.ID}" />         
         </tr>
-        
-        <tr bgcolor="#777777">
+         <tr>
+          <td><br></br></td>
+          </tr>
+        <tr>
           <td height="1" colspan="2"></td>
         </tr>
         <tr>
-          <td bgcolor="#F4F4F4"><font color="#FF0000">*</font>  판매 상태</td>
-          <td bgcolor="#FFFFFF">
+          <td>&nbsp;<font color="#FF0000">*</font>  판매 상태</td>
+          <td>
           <!-- 나중에 checkbox 선택 시 저장.. 이런거 다시 구현 -->
-			<input type="radio" checked="checked" name="product_state" value="현">판매중</input>
-			<input type="radio" name="product_state" value="완">판매 완료</input>
+			<input class="state" type="radio" checked="checked" name="product_state" value="현">&nbsp;판매중</input>
+			<input class="state" type="radio" name="product_state" value="완">&nbsp;판매 완료</input>
           </td>
         </tr>
-        <tr bgcolor="#777777">
+        <tr>
           <td height="1" colspan="2"></td>	
         </tr>
 				
         <tr>
-          <td width="200" bgcolor="#F4F4F4"><font color="#FF0000">*</font>   카테고리</td>
+          <td>&nbsp;<font color="#FF0000">*</font>   카테고리</td>
           <td>
           
           <!-- 나중에 category 선택 시 저장.. 이런거 다시 구현 -->
@@ -237,80 +244,92 @@ function initRegion()
 		
        	</td>
        </tr>							
-        <tr bgcolor="#777777">
+        <tr>
           <td height="1" colspan="2"></td>
         </tr>
         
         <tr>
-          <td bgcolor="#F4F4F4"><font color="#FF0000">*</font>  상품 판매 형식</td>
-          <td bgcolor="#FFFFFF">
+          <td>&nbsp;<font color="#FF0000">*</font>  상품 판매 형식</td>
+          <td>
           <!-- 나중에 checkbox 선택 시 저장.. 이런거 다시 구현 -->
-			<input type="checkbox" name="product_type" value="직">일반형(비배송형)</input>
-			<input type="checkbox" name="product_type" value="포" checked="checked">배송형(택배 비 포함)</input>
-			<input type="checkbox" name="product_type" value="미">배송형(택배 비 미포함)</input>
+			<input type="checkbox" name="product_type" value="직" id="직">
+				<label for="직" style="width:160px">
+					일반형
+					<font size="2p">(비배송형)</font>
+					</label></input>
+			<input type="checkbox" name="product_type" value="포" id="포" checked="checked">
+				<label for="포" style="width:160px">
+					배송형 
+					<font size="2p">(택배비 포함)</font>
+					</label></input>
+			<input type="checkbox" name="product_type" value="미" id="미">
+				<label for="미" style="width:160px">
+					배송형 
+					<font size="2p">(택배비 미포함)</font>
+					</label></input>
           </td>
         </tr>
         
-        <tr bgcolor="#777777">
+        <tr>
           <td height="1" colspan="2"></td>	
         </tr>
  
     	<tr>
-          <td bgcolor="#F4F4F4"><font color="#FF0000">*</font>  제목</td>
-          <td bgcolor="#FFFFFF">
-            <s:textfield name="product_subject" theme="simple" value="%{resultClass.product_subject}" cssStyle="width:100px" maxlength="50"/>
+          <td>&nbsp;<font color="#FF0000">*</font>  제목</td>
+          <td>
+            <s:textfield id="text" name="product_subject" theme="simple" value="%{resultClass.product_subject}" cssStyle="width:300px" maxlength="50"/>
           </td>
         </tr>
-        <tr bgcolor="#777777">
+        <tr>
           <td height="1" colspan="2"></td>	
         </tr>
      
         <tr>
-          <td bgcolor="#F4F4F4"><font color="#FF0000">*</font>  상품명</td>
-          <td bgcolor="#FFFFFF">
-            <s:textfield name="product_name" theme="simple" value="%{resultClass.product_name}" cssStyle="width:100px" maxlength="50"/>
+          <td>&nbsp;<font color="#FF0000">*</font>  상품명</td>
+          <td>
+            <s:textfield name="product_name" theme="simple" value="%{resultClass.product_name}" cssStyle="width:300px" maxlength="50"/>
           </td>
         </tr>
-        <tr bgcolor="#777777">
+        <tr>
           <td height="1" colspan="2"></td>	
         </tr>
         	
         <tr>
-          <td bgcolor="#F4F4F4">  브랜드 및 모델명</td>
-          <td bgcolor="#FFFFFF">
-            <s:textfield name="product_brand" theme="simple" value="%{resultClass.product_brand}" cssStyle="width:100px" maxlength="50"/>
+          <td> &nbsp;&nbsp; 브랜드 및 모델명</td>
+          <td>
+            <s:textfield name="product_brand" theme="simple" value="%{resultClass.product_brand}" cssStyle="width:300px" maxlength="50"/>
           </td>
         </tr>
-        <tr bgcolor="#777777">
+        <tr>
           <td height="1" colspan="2"></td>	
         </tr>
         	
         <tr>
-          <td bgcolor="#F4F4F4"><font color="#FF0000">*</font>  가격</td>
-          <td bgcolor="#FFFFFF">
-            <s:textfield name="product_price" theme="simple" value="%{resultClass.product_price}" cssStyle="width:100px" maxlength="20"/>원
+          <td>&nbsp;<font color="#FF0000">*</font>  가격</td>
+          <td>
+            <s:textfield name="product_price" theme="simple" value="%{resultClass.product_price}" cssStyle="width:160px" maxlength="20"/>원
           </td>
         </tr>
-        <tr bgcolor="#777777">
+        <tr>
           <td height="1" colspan="2"></td>	
         </tr>
         
         
         <tr>
-          <td bgcolor="#F4F4F4">  거래 시 연락처</td>	
-          <td bgcolor="#FFFFFF">
-            <s:textfield name="product_phone" theme="simple" value="%{resultClass.product_phone}" cssStyle="width:100px" maxlength="11"/>
+          <td>  &nbsp;&nbsp;&nbsp;거래 시 연락처</td>	
+          <td>
+            <s:textfield name="product_phone" theme="simple" value="%{resultClass.product_phone}" cssStyle="width:88px" maxlength="11"/>
           </td>
         </tr>
-        <tr bgcolor="#777777">
+        <tr>
           <td height="1" colspan="2"></td>	
         </tr>
         <tr>
-          <td bgcolor="#F4F4F4">  거래 선호 지역</td>
-          <td bgcolor="#FFFFFF">
+          <td> &nbsp;&nbsp; 거래 선호 지역</td>
+          <td>
   
 					<select name="product_sido" OnChange="changeRegion(fwrite)"></select>
-					<select name="product_gogon"></select> * 지역을 선택하세요.<br>
+					<select name="product_gogon"></select><br><font size="2p">* 직거래를 선택하셨다면 거래 지역을 선택하세요.</font></br>
 					
 					
 					<script language="javascript">
@@ -326,49 +345,55 @@ function initRegion()
           </td>
         </tr>
        
-        <tr bgcolor="#777777">
+        <tr>
           <td height="1" colspan="2"></td>	
         </tr> 
-
         <tr>
-          <td bgcolor="#F4F4F4"><font color="#FF0000">*</font>  메인 사진 등록</td>  
-          <td bgcolor="#FFFFFF">
+        <td colspan="2">
+			<br><font size="2p" color="red">&nbsp;&nbsp;&nbsp; * 파일을 하나 이상 첨부 하지 않을 시 에러가 발생하여 상품이 등록되지 않습니다.</font></br><br/>
+		</td>
+		</tr>
+		
+        <tr>
+          <td>&nbsp;<font color="#FF0000">*</font>  메인 사진 등록</td>  
+          <td>
              <s:file id="f" name="upload"/>   	      
           </td>
         </tr>
         <tr>
-          <td bgcolor="#F4F4F4">  추가 사진 등록</td> 
-          <td bgcolor="#FFFFFF">
+          <td>  &nbsp;&nbsp;&nbsp;추가 사진 등록</td> 
+          <td>
              <s:file name="upload"/>  
              <s:file name="upload"/>  
-             <s:file name="upload"/>  
-             <s:file name="upload"/>   	      
+             <s:file name="upload"/>       
           </td>
         </tr>
-                <tr bgcolor="#777777">
+                <tr>
           <td height="1" colspan="2"></td>
         </tr>
 		<tr>
-          <td bgcolor="#F4F4F4"><font color="#FF0000">*</font>  상품 상세 설명 </td>
-          <td bgcolor="#FFFFFF">
-            <s:textarea name="product_content" theme="simple" value="%{resultClass.product_content}" cols="50" rows="10" />
+          <td>&nbsp;<font color="#FF0000">*</font>  상품 상세 설명 </td>
+          <td >
+            <s:textarea id="texthigh" name="product_content" theme="simple" value="%{resultClass.product_content}" cols="50" rows="10" />
           </td>
         </tr>
-        <tr bgcolor="#777777">
-          <td height="1" colspan="2"></td>
+        <tr>
+          <td height="3" colspan="2"></td>
         </tr>
         
         
         <tr>
           <td align="right" colspan="2">
-          	<input name="submit" type="submit" value="작성완료" class="inputb">
+          	<input id="write" name="submit" type="submit" value="작성완료" class="inputb">
             <input name="list" type="button" value="목록" class="inputb" onClick="javascript:location.href='productList.action?sort=0&currentPage=1'">
           </td>
         </tr>
-
+        <tr>
+          <td><br></br></td>
+          </tr> 
     </table>
     </form>
-
+</div>
 
 </body>
 </html>

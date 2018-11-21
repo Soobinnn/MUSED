@@ -6,6 +6,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 
 
+<link rel="stylesheet" href="/MUSED/css/productList.css"/>
 
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -57,207 +58,124 @@ function zzim_hagi(){
 }
 
 </script>
-<style>
-* {
-	box-sizing: border-box
-}
 
-/* Slideshow container */
-.slideshow-container {
-	max-width: 1000px;
-	position: relative;
-	margin: auto;
-}
-
-/* Hide the images by default */
-.mySlides {
-	display: none;
-}
-
-/* Next & previous buttons */
-.prev, .next {
-	cursor: pointer;
-	position: absolute;
-	top: 50%;
-	width: auto;
-	margin-top: -22px;
-	padding: 16px;
-	color: white;
-	font-weight: bold;
-	font-size: 18px;
-	transition: 0.6s ease;
-	border-radius: 0 3px 3px 0;
-}
-
-/* Position the "next button" to the right */
-.next {
-	right: 0;
-	border-radius: 3px 0 0 3px;
-}
-
-/* On hover, add a black background color with a little bit see-through */
-.prev:hover, .next:hover {
-	background-color: rgba(0, 0, 0, 0.8);
-}
-
-/* Caption text */
-.text {
-	color: #f2f2f2;
-	font-size: 15px;
-	padding: 8px 12px;
-	position: absolute;
-	bottom: 8px;
-	width: 100%;
-	text-align: center;
-}
-
-/* Number text (1/3 etc) */
-.numbertext {
-	color: #f2f2f2;
-	font-size: 12px;
-	padding: 8px 12px;
-	position: absolute;
-	top: 0;
-}
-
-/* The dots/bullets/indicators */
-.dot {
-	cursor: pointer;
-	height: 50px;
-	width: 50px;
-	margin: 0 2px;
-	background-color: #808080;
-	border-radius: 50%;
-	display: inline-block;
-	transition: background-color 0.6s ease;
-}
-
-.active, .dot:hover {
-	background-color: #717171;
-}
-
-/* Fading animation */
-.fade {
-	-webkit-animation-name: fade;
-	-webkit-animation-duration: 1.5s;
-	animation-name: fade;
-	animation-duration: 1.5s;
-}
-
-@
--webkit-keyframes fade {
-	from {opacity: .4
-}
-
-to {
-	opacity: 1
-}
-
-}
-@
-keyframes fade {
-	from {opacity: .4
-}
-
-to {
-	opacity: 1
-}
-
-}
-.circle {
-	border-radius: 1200px !important;
-	overflow: hidden;
-	width: 80px;
-	height: 80px;
-	border: 8px solid rgba(255, 255, 255, 0.7);
-	position: relative;
-	top: 0px;
-}
-</style>
 
 </head>
 <body>
-
+    <div id="main" align="center">
+    <table width="80%" height="70" border="0">
 	<s:hidden name="currentPage" value="%{currentPage}" />
-
-	제목 : &nbsp;&nbsp;(
-	<s:property value="resultClass.product_state" />
-	)
-	<s:property value="resultClass.product_subject" />
-	<br> 조회수 : &nbsp; &nbsp;<s:property value="resultClass.readhit" />
-
-		
-	<input name="list" type="button" value="찜하기" class="inputb" onclick="zzim_hagi();javascript:location.href='productZzim.action?zzim_contno=<s:property value="product_no"/>&zzim_indexno=1'">
-
-
-
-		<table width="100%" height="400" border="1">
+<tr><td colspan="2"> <br></br></td></tr>
+<tr>
+<td align="right" width="30%">
+	<s:if test='resultClass.product_state=="현"'>
+		<img src="/MUSED/product/ui_img/현재진행중.png" style="width:50px;height:50px"/>
+	</s:if>
+		<s:if test='resultClass.product_state=="완"'>
+		<img src="/MUSED/product/ui_img/판매완료.png" style="width:50px;height:50px"/>
+	</s:if>
+	</td>
+	<td align="left" width="70%">
+<h3 class="DetailSubject">
+	&nbsp;&nbsp;<s:property value="resultClass.product_subject" /></h3>
+</td>
+</tr>
+	<tr>
+	<td colspan="2" align="right">
+	 조회수 : &nbsp; &nbsp;<s:property value="resultClass.readhit" />
+	&nbsp;&nbsp;<input name="list" type="button" value="찜하기" class="inputb" onclick="zzim_hagi();javascript:location.href='productZzim.action?zzim_contno=<s:property value="product_no"/>&zzim_indexno=1'">
+	</td>
+</tr>
+</table>
+		<table width="80%" height="400" border="10">
 
 			<tr>
-				<td width="60%" align="middle"><img id="img"
+			
+				<td width="50%" align="center" height="250">
+				
+				<img id="img"
 					src="<s:property value="resultClass.main_img"/>"
 					style="width: 350px; height: 350px" />
-
-					<div class="slideshow-container">
+				<div class="slideshow-container">
 						<s:subset source="image" count="4">
 							<s:iterator status="stat">
 
 								<!-- Full-width images with number and caption text -->
 								<div class="mySlides fade">
-									<img src="<s:property/>" style="width: 350px; height: 350px" />
-
+									<img id="imgs" src='<s:property/>' style="width: 350px; height: 350px;" />
 								</div>
 							</s:iterator>
 						</s:subset>
-					</div></td>
-
-				<td width="40%" height="250">상품 카테고리 : <s:property
-						value="resultClass.product_category" /><br> 택배 : <s:iterator
-							value="type" status="stat">
-							<s:property />
-							<!-- image로 출력하기 -->
-						</s:iterator> <br> 제목 : <s:property value="resultClass.product_subject" /><br>
-								제품명 : <s:property value="resultClass.product_name" /><br>
-									브랜드 : <s:property value="resultClass.product_brand" /><br>
-										가격 : <s:property value="resultClass.product_price" /><br></td>
-			</tr>
-			<tr>
-				<td width="60%">
-					<table width="130px" height="100%" border="1" align="center">
+					</div><br/>
+					 	<table width="100px" border="1" align="center">
 						<tr>
 							<s:subset source="image" count="4">
 								<s:iterator status="stat">
 									<td><img src='<s:property/>'
-										style="height:100px; width:100px; display:block;"
+										style='height:100px; width:100px; display:block;'
 										onclick="currentSlide(<s:property value='#stat.index+1'/>)" />
-									</td>
+									</td><td>&nbsp;</td>
 								</s:iterator>
 							</s:subset>
 						</tr>
-					</table>
+					</table> 
 				</td>
-				<td width="40%">판매자 정보<br> <img class="circle" id="blah"
+
+				<td width="50%" height="250">
+				<div class="detail">
+				<s:iterator value="type" status="stat">
+							<img src='<s:property/>' style="width:40px; height:40px"/>
+							<!-- image로 출력하기 -->
+						</s:iterator><br>
+					<input type="checkbox" id="cateLabel">
+   			 	<label for="cateLabel"><s:property value="resultClass.product_category" /></label></input>
+   			<br><br>
+					&nbsp;&nbsp;<h3 class="DetailSubject">	<s:property value="resultClass.product_subject" /><br/></h3>
+						<br/><br/>
+						&nbsp;&nbsp; 제품명 : <s:property value="resultClass.product_name" /><br/><br/>
+						&nbsp;&nbsp; 브랜드 : <s:property value="resultClass.product_brand" /><br/><br/>
+						&nbsp;&nbsp; 가격 : <s:property value="resultClass.product_price" />원<br/><br/><br/><br/>
+						&nbsp;판매자 정보<br/><br/> 
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img class="circle" id="blah"
 						src="C:\Java\upload\file_<s:property value="resultClass.product_id"/>.jpg"
-						width="150" height="150" /><br> 판매자 : <s:property
-								value="resultClass.product_id" /><br>
-								 판매자 연락처 : <s:property value="resultClass.product_phone" /><br>
-										거래 선호 지역 : <s:property value="resultClass.product_sido" />&nbsp;
-										<s:property value="resultClass.product_gogon" /> <br></td>
-			</tr>
-			<tr>
-				<td colspan="2">
-					<hr style="color: gray" />
+						width="150" height="150" /><br><br/> 
+						&nbsp;&nbsp; 판매자 : <s:property
+								value="resultClass.product_id" /><br><br/>
+						&nbsp;&nbsp; 판매자 연락처 : <s:property value="resultClass.product_phone" /><br><br/>
+										&nbsp;&nbsp; 거래 선호 지역 : <s:property value="resultClass.product_sido" />&nbsp;
+										<s:property value="resultClass.product_gogon" /> <br>
+				</div>
 				</td>
 			</tr>
-
+			
 			<tr>
-				<td colspan="2">상품 설명 : <s:property
-						value="resultClass.product_content" /> <br></td>
+				<td colspan="3">
+				<br></br>
+				</td>
 			</tr>
-
+			<tr bgcolor="#777777">
+				<td colspan="3" height="3">
+				</td>
+			</tr>
 			<tr>
 				<td colspan="2">
-					<hr style="color: gray" />
+				<br></br>
+				</td>
+			</tr>
+			<tr><td>상품 설명 :</td></tr>
+			<tr>
+				<td id="Pcontent" colspan="2">
+				<br/>
+				<s:property 
+						value="resultClass.product_content" /></td>
+			</tr>
+			<tr>
+				<td colspan="3">
+				<br></br>
+				</td>
+			</tr>
+			<tr bgcolor="#777777">
+				<td colspan="2" height="2">
 				</td>
 			</tr>
 			<!-- 댓글 입력 -->
@@ -267,29 +185,30 @@ to {
 					<form action="writeCommentAction.action" method="post">
 						<table align="center">
 							<tr>
-								<td width="170">아이디 : <s:property value="%{#session.ID}" />
+								<td width="170"><br/>&nbsp; 아이디 : <s:property value="%{#session.ID}" />
 								</td>
 								<s:hidden name="c_contnum" value="%{resultClass.product_no}" />
 								<s:hidden name="product_no" value="%{resultClass.product_no}" />
 								<s:hidden name="currentPage" value="%{currentPage}" />
-								<td align="left"><s:textarea name="c_content"
-										theme="simple" value="" cols="60" rows="3" /></td>
-							</tr>
-							<tr>
+								<td align="left"><s:textarea name="c_content" value="" id="p_comment"/></td>
 								<td colspan="2" align="right"><input name="submit"
-									type="submit" value="작성완료" class="inputb"></td>
+									type="submit" value="작성완료" class="inputb" style="width:120px"><br/><br/></td>
 							</tr>
 							<tr bgcolor="#777777">
-								<td colspan="2" height="1"></td>
+								<td colspan="2" height="2"></td>
 							</tr>
+							<tr>
+							<table width="100%">
 							<s:iterator value="commentList" status="stat">
 								<tr>
-									<td width="170" align="center">
-									<img class="circle"	id="blah"src="C:\Java\upload\file_<s:property value="c_id"/>.jpg" width="50" height="50" /><br> 
+									<td width="20%" align="center">
+									<br/>
+									<img class="circle"	id="blah" src="C:\Java\upload\file_<s:property value='c_id'/>.jpg" width="50" height="50" /><br/> 
 									<s:property value="c_id" /><br>
 												<s:property value="c_regdate" /><br><br></td>
-									<td><s:property value="c_content" /> <s:url
-											id="DeleteURL" action="deletePComment">
+									<td width="70%" align="center"><br/><br/><br/><br/><s:property value="c_content" /> </td>
+									<td width="10%" align="center"><br/><br/><br/><br/>
+									<s:url id="DeleteURL" action="deletePComment">
 											<s:param name="c_no">
 												<s:property value="c_no" />
 											</s:param>
@@ -303,15 +222,21 @@ to {
 												<s:property value="currentPage" />
 											</s:param>
 										</s:url> <s:a href="%{DeleteURL}">X</s:a></td>
+										
 								</tr>
+								
 								<tr bgcolor="#777777">
-									<td colspan="2" height="1"></td>
+									<td colspan="3" height="1"></td>
 								</tr>
 							</s:iterator>
+							</tr>
+							</table>
 							<tr>
 								<td colspan="2" height="10"><s:if
 										test="commentList.size() <= 0">
+										<br/>
 			댓글 없음
+			<br/><br/>
 			</s:if></td>
 							</tr>
 						</table>
@@ -321,11 +246,11 @@ to {
 			</tr>
 
 			<tr bgcolor="#777777">
-				<td colspan="2" height="1"></td>
+				<td colspan="2" height="2"></td>
 			</tr>
 
 			<tr>
-				<td colspan="2">
+				<td align="center" colspan="2">
 					<table width="60%" height="150" border="1" align="center">
 
 						<tr>
@@ -348,16 +273,20 @@ to {
 				</td>
 			</tr>
 
-			<tr>
-				<td colspan="2"><input name="list" type="button" value="목록"
-					class="inputb"
-					onClick="javascript:location.href='product/productList.action?currentPage=<s:property value="currentPage"/>'" />
+			<tr align="right">
+				<td colspan="2">
 					<s:if test="%{#session.ID==resultClass.product_id}">
 						<input type="button" value="수정하기" class="inputb" onclick='btn(<s:property value="currentPage"/>,<s:property value="product_no"/>)'/>
 						<input name="delete" type="button" value="삭제하기" class="inputb"
 							onClick="javascript:location.href='productDelete.action?product_no=<s:property value="product_no"/>&currentPage=<s:property value="currentPage"/>'" />
-					</s:if></td>
+					</s:if>
+				<input name="list" type="button" value="목록"
+					class="inputb"
+					onClick="javascript:location.href='product/productList.action?currentPage=<s:property value="currentPage"/>'" />
+					</td>
 			</tr>
+			<tr><td colspan="2"><br></br></td></tr>
 		</table>
+		</div>
 </body>
 </html>

@@ -1,134 +1,167 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
 <%@ taglib prefix="s" uri="/struts-tags"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<style type="text/css">
-.size{border:solid 0px; position:absolute; float:left; overflow:hidden; width:824; height:1800;
-top:500; left:410;}
-</style>
 
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>공 지 사 항</title>
-<link rel="stylesheet" href="/StrutsBoard/board/common/css/css.css" type="text/css">
-
+<link rel="stylesheet" href="/MUSED/css/board.css"/>
 <script type="text/javascript">
-  function open_win_noresizable(url, name){
-          var oWin = window.open(url, name, "scrollbars=no, status=no, resizable=no, width=300, height=150");
-                                           }
+	function validation()
+	{
+		var frm = document.writef;
+
+		if(frm.subject.value == "")
+		{
+			alert("제목을 입력해주세요");
+			return false;
+		}
+		else if(frm.name.value == "")
+		{
+			alert("이름을 입력해주세요");
+			return false;
+		}
+		else if(frm.password.value == "")
+		{
+			alert("비밀번호를 입력해주세요");
+			return false;
+		}
+		else if(frm.content.value == "")
+		{
+			alert("내용을 입력해주세요");
+			return false;
+		}
+
+		return true;
+	}
+	
+	 $(document).ready(function(){
+		 $("#content").cleditor();
+	 });
 </script>
 </head>
 
-<%-- jsp파일에서의 주석은 웬만하면 %를 이용하도록 한다. --%>
-
 
 <body>
-	<table width="950" border="0" cellspacing="0" cellpadding="2">
+<div id="board" align="center">
+	<table width="95%" border="0" cellspacing="0" cellpadding="2">
+	<tr>
+	<td><br></br></td>
+	</tr>
 		<tr>
 			<td align="center"><h2>공 지 사 항</h2></td>
 		</tr>
 	</table>
+	
+	<s:if test="reply">
+	   <form name="writef" action="replyAction.action" method="post" enctype="multipart/form-data" onsubmit="return validation();">
+	     <s:hidden name="ref" value="%{resultClass.ref}" /> <%-- html hidden field 태그를 이용해서 자동으로 값을 전송한다. --%>
+	     <s:hidden name="re_level" value="%{resultClass.re_level}" />
+	     <s:hidden name="re_step" value="%{resultClass.re_step}" />
+	</s:if>
+	
+	<s:elseif test="resultClass == NULL">
+		<%-- resultClass가 없으면 첫 입력으로 인식 --%>
+		<form name="writef" action="/MUSED/tiles/notice/writeAction.action" method="post"
+			enctype="multipart/form-data" onsubmit="return validation();">
+	</s:elseif>
 
-	<table width="950" border="1" cellspacing="0" cellpadding="5">
-		<tr bgcolor="#777777">
-			<td colspan="8" height="1"></td>
+	<s:else>
+		<%-- resultClass가 있으면 수정으로 인식 --%>
+		<form name="writef" action="modifyAction.action" method="post"
+			enctype="multipart/form-data" onsubmit="return validation();">
+			<s:hidden name="no" value="%{resultClass.no}" />
+			<s:hidden name="currentPage" value="%{currentPage}" />
+			<s:hidden name="old_file" value="%{resultClass.file_savname}" />
+	</s:else>
+
+	<table width="80%" height="100%" border="0" cellspacing="0" cellpadding="0">
+		<tr height="30">
+			<td align="right" colspan="2"> &nbsp;<font size="2p" color="#FF0000">*</font>는 필수
+				입력사항입니다.</td>
 		</tr>
 
 		<tr>
-			<%-- <td width="100">번호</td>
-			<td width="500"><s:property value="resultClass.no" /></td> --%>
-		</tr>
-
-		<tr>
-			<td width="70">제목</td>	<td colspan="3" width="450"><s:property value="resultClass.subject" /></td>
-		                           <td width="100">이름</td><td width="100"><s:property value="resultClass.name" /></td>
-		                           <td width="100">조회수</td><td width="50"><s:property value="resultClass.readhit"/></td>
-		                           
-		
-		</tr>
-
-
-		<%-- <tr>
-			<td width="70">이름</td>
-			<td width="1000"><s:property value="resultClass.name" /></td>
-		</tr> --%>
-
-		<tr>
-	　　　　　	<td width="70" height="250">내용</td>
-			<td colspan ="7" width="1000">
-			<table width="950" border="0" cellspacing="0" cellpadding="2">
-		<tr>
-		　　　<td align="right"><s:property value="resultClass.regdate"/></td>
-		</tr>
-	</table>
-			<pre>${resultClass.content}</pre></td>
-		
-		
-		
-		
-		
-		</tr>
-
-		<%-- <tr>
-			<td width="70">조회수</td>
-			<td width="1000"><s:property value="resultClass.readhit" /></td>
-		</tr> --%>
-
-		<%-- <tr>
-			<td width="70">등록날짜</td>
-			<td width="1000"><s:property value="resultClass.regdate" /></td>
-		</tr>  얘를 어디로 보내지?--%>
-
-		<tr>
-			<td width="70">첨부파일</td>
-			<td colspan="7" width="1000">&nbsp;&nbsp; <s:url id="download"
-					action="fileDownloadAction">
-					<s:param name="no">
-						<s:property value="no" />
-					</s:param>
-				</s:url> <s:a href="%{download}">
-					<s:property value="resultClass.file_orgname" />
-				</s:a>
+			<td width="20%" bgcolor="#F4F4F4" class="freewrite">&nbsp;<font color="#FF0000">*</font>
+				 &nbsp;제&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;목</td>
+			<td width="80%" bgcolor="#FFFFFF" class="freewrite">
+			     <s:textfield name="subject" theme="simple" value="%{resultClass.subject}" cssStyle="width:370px" maxlength="50" />
 			</td>
 		</tr>
 
-		<tr bgcolor="#777777">
-			<td colspan="8" height="1"></td>
+			<tr>
+			<td height="2" colspan="2"></td>
+		</tr>
+		<tr height="30">
+			<td bgcolor="#F4F4F4"  class="freewrite">&nbsp;<font color="#FF0000">*</font>  &nbsp;이&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;름</td>
+			<td bgcolor="#FFFFFF"  class="freewrite">
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			<%-- 세션에서 ID 가져오기 --%>
+			<font color="#3B0B0B"><s:property value="%{#session.ID}" /></font>
+		<input type="hidden" name="name" value="<s:property value='%{#session.ID}' />"/>
+			 <%-- 종료 --%>
+			</td>
+		</tr>
+		<tr>
+			<td height="2" colspan="2"></td>
+		</tr>
+
+
+	<%-- 	<tr>
+			<td bgcolor="#F4F4F4"><font color="#FF0000">*</font>비밀번호</td>
+			<td bgcolor="#FFFFFF"><s:textfield name="password"
+					theme="simple" value="%{resultClass.password}"
+					cssStyle="width:20px" maxlength="30" /></td>
+		</tr> --%>
+
+		<tr height="350">
+			<td bgcolor="#F4F4F4" class="freewrite"><font color="#FF0000">*</font>내용</td>
+			<td bgcolor="#FFFFFF" class="freeup"><s:textarea name="content" theme="simple"
+					value="%{resultClass.content}" cols="90%" rows="20" /><pre></pre></td>
 		</tr>
 
 		<tr>
-			<td colspan="8" height="10"></td>
+			<td height="2" colspan="2"></td>
+		</tr>
+<%-- 
+
+		<tr>
+			<td bgcolor="#F4F4F4">첨부파일</td>
+			<td bgcolor="#FFFFFF"><s:file name="upload" theme="simple" /> <s:if
+					test="resultClass.file_orgname != NULL">
+                     &nbsp; * <s:property
+						value="resultClass.file_orgname" />파일이 등록되어 있습니다. 다시 업로드하면 기존의 파일은 삭제됩니다.
+                 </s:if></td>
+		</tr>
+		 --%>
+				<tr height="30">
+			<td bgcolor="#F4F4F4"  class="freewrite">  &nbsp;&nbsp;&nbsp;&nbsp;첨부파일</td>
+			<td bgcolor="#FFFFFF"  class="freewrite">			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<s:file name="upload" theme="simple" />
+			 <s:if test="resultClass.file_orgname != NULL">
+                     &nbsp; * <s:property value="resultClass.file_orgname" />파일이 등록되어 있습니다. 다시 업로드하면 기존의 파일은 삭제됩니다.
+                 </s:if></td>
 		</tr>
 
-		
-				<tr>
-			<td colspan="8" align="right">
-			<s:url id="modifyURL" action="modifyForm">
-					<s:param name="no">
-						<s:property value="no" />
-					</s:param>
-				</s:url> 
-				  <s:url id="deleteURL" action="deleteAction">
-					<s:param name="no">
-						<s:property value="no" />
-					</s:param>
-				</s:url> 
-				
-				
-									
-				<s:if test="#session.ACCESS_NUM == 1">			
-				<%-- <input name="list" type="button" value="답변달기" class="inputb" onClick="javascript:location.href='replyForm.action?no=<s:property value="no" />&currentPage=<s:property value="currentPage" />','reply'"> --%>
-				
-				<input name="list" type="button" value="수정" class="inputb" onClick="javascript:location.href='/MUSED/tiles/notice/admin_modifyForm.action?no=<s:property value="no" />&currentPage=<s:property value="currentPage"/>'">
-			    <input type="button" value="삭제" onClick="javascript:window.open('/MUSED/tiles/notice/admin_checkForm.action?no=<s:property value="resultClass.no" />&currentPage=<s:property value="currentPage" />','delete','width=450, height=100')">
-			</s:if>
-		<s:else>             
-			       	  </s:else>
-				
-                <input name="list" type="button" value="목록" class="inputb" onClick="javascript:location.href='admin_notice.action?currentPage=<s:property value="currentPage" />'">
-			</td>
+	<tr>
+			<td height="2" colspan="2"></td>
+		</tr>
+
+
+		<tr>
+			<td height="10" colspan="2"></td>
+		</tr>
+
+
+		<tr>
+			<td align="right" colspan="2">
+ 			   <input name="list" type="button" value="목록" class="inputb"
+					onClick="javascript:location.href='listAction.action?currentPage=<s:property value="currentPage"/>'"></td>
+				</td>
 		</tr>
 	</table>
+
+	</form>
 </body>
 </html>

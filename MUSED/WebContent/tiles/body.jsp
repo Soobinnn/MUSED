@@ -4,30 +4,14 @@
 <!DOCTYPE html>
 <html>
 <head>
-<!-- 웹 폰트 적용  -->
-<!-- css 적용 -->
-<link href="https://fonts.googleapis.com/css?family=Henny+Penny" rel="stylesheet"/>
-
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
-<script type="text/javascript" src="main.js"></script>
-<link rel="stylesheet" href="style.css">
 
 <title>MUSED_Main</title>
 </head>
 <body>	
 	<!-- Article부분 -->
 	<article id="main_article">
-	<div class="slide">
-<ul class="slide_ul">
-<li><a href="#"><img src="images/a1.jpg" width="1500px" height="350px" alt="dane"></a></li>
-<li><a href="#"><img src="images/a2.jpg" width="1500px" height="350px" alt="dane"></a></li>
-<li><a href="#"><img src="images/a3.jpg" width="1500px" height="350px" alt="dane"></a></li>
-<li><a href="#"><img src="images/a4.jpg" width="1500px" height="350px" alt="dane"></a></li>
-<li><a href="#"><img src="images/a5.jpg" width="1500px" height="350px" alt="dane"></a></li>
-<li><a href="#"><img src="images/a6.jpg" width="1500px" height="350px" alt="dane"></a></li>
-</ul>
-</div>
-	<div id = "content">
+	
+	<div id = "main">
 		<section id ="product_section">
 			<h1>중고악기거래</h1>
 			&nbsp;<a href="productList.action?currentPage=1&sort=0">전체보기</a>

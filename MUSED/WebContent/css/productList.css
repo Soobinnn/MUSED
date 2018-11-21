@@ -1,0 +1,379 @@
+@charset "utf-8";
+
+*
+{
+	margin:0px;
+	padding:0px;
+}
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video 
+{
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section 
+{
+	display: block;
+}
+body {
+	
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table 
+{
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+
+input[type="submit"],input[type="button"]{
+ -moz-appearance: none;
+  -webkit-appearance: none;
+  -ms-appearance: none;
+  appearance: none;
+  -moz-transition: background-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out, color 0.2s ease-in-out;
+  -webkit-transition: background-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out, color 0.2s ease-in-out;
+  -ms-transition: background-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out, color 0.2s ease-in-out;
+  transition: background-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out, color 0.2s ease-in-out;
+  border: 0;
+  border-radius: 13px;
+  cursor: pointer;
+  display: inline-block;
+  font-weight: 600;
+	 height: 2rem;
+	  line-height: 2rem;
+  padding: 0 1rem;
+  text-align: center;
+  text-decoration: none;
+  white-space: nowrap; }
+
+input[type="submit"]{
+  background-color: transparent;
+  box-shadow: inset 0 0 0 1px #848484;
+  color: #404040 !important; }
+  input[type="submit"]:hover{
+    box-shadow: inset 0 0 0 1px #0c0075;
+    color: #0c0075 !important; }
+   
+  input[type="button"]{
+  background-color: transparent;
+  box-shadow: inset 0 0 0 1px #8d8c8c;
+  color: #404040 !important; }
+  input[type="button"]:hover{
+    box-shadow: inset 0 0 0 1px #0B2161;
+    color: #0B2161 !important; }
+   
+body:before
+{
+    content: ' ';
+    background-image: url(/MUSED/product/back.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    display: block;
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    opacity: 0.35; 
+ }
+    #main {
+      background-color: #fbf5ef;
+      position: relative;
+      margin: 0 auto;
+      width: calc(100% - 4rem);
+      max-width: 75%;
+      z-index: 2;
+      opacity:0.7;
+   }
+ 
+ 
+input[type="checkbox"] + label {
+	 border-radius: 13px;
+  text-align: center;
+	display: inline-block;
+	width: 35px;
+	 height: 2rem;
+	  line-height: 2rem;
+	border: 2px solid #101e45;
+	cursor: pointer;
+	font-weight: bold;
+	font-size: 16;
+	color: #101e45;
+	 margin-top: 15px;
+}
+input[type="checkbox"]:checked + label {
+	background-color: #101e45;
+	border: 2px solid #101e45;
+	color:#aca296;
+	
+}
+input[type="checkbox"]{
+	display: none;
+}
+input[type="submit"]{
+	 width:70;
+	 margin-left: 15px;
+	 margin-top: 20px;
+}
+#write{
+	width:85;
+}
+#searchkeyword{
+	width:350px;
+}
+input{
+	height:2rem
+	
+}
+
+select {
+  background-size: 1.25rem;
+  background-repeat: no-repeat;
+  background-position: calc(100% - 1rem) center;
+  height: 2rem;
+  width: 12rem;
+  padding-right: 2rem;
+  text-overflow: ellipsis; }
+    
+input[type="text"],
+select{
+ border-radius: 13px;
+  background-color: rgba(0, 0, 0, 0.075);
+  border-color: rgba(0, 0, 0, 0.25); 
+  margin-top: 15px;
+  }
+
+
+.sort{
+	width: 100px
+}
+
+input[type="radio"]{
+	vertical-align:middle;
+}
+
+ textarea{
+  border: 0;
+  border-radius: 13px;
+  cursor: pointer;
+  font-weight: 600;
+  	width:100%;
+	 height: 250;
+   background-color: rgba(0, 0, 0, 0.075);
+  margin-top: 20px;
+   }
+
+
+/* detail */
+* {
+	box-sizing: border-box
+}
+
+/* Slideshow container */
+.slideshow-container {
+	max-width: 1000px;
+	position: relative;
+	margin: auto;
+}
+
+/* Hide the images by default */
+.mySlides {
+	display: none;
+}
+
+/* Next & previous buttons */
+.prev, .next {
+	cursor: pointer;
+	position: absolute;
+	top: 50%;
+	width: auto;
+	margin-top: -22px;
+	padding: 16px;
+	color: white;
+	font-weight: bold;
+	font-size: 18px;
+	transition: 0.6s ease;
+	border-radius: 0 3px 3px 0;
+}
+
+/* Position the "next button" to the right */
+.next {
+	right: 0;
+	border-radius: 3px 0 0 3px;
+}
+
+/* On hover, add a black background color with a little bit see-through */
+.prev:hover, .next:hover {
+	background-color: rgba(0, 0, 0, 0.8);
+}
+
+/* Caption text */
+.text {
+	color: #f2f2f2;
+	font-size: 15px;
+	padding: 8px 12px;
+	position: absolute;
+	bottom: 8px;
+	width: 100%;
+	text-align: center;
+}
+
+/* Number text (1/3 etc) */
+.numbertext {
+	color: #f2f2f2;
+	font-size: 12px;
+	padding: 8px 12px;
+	position: absolute;
+	top: 0;
+}
+
+/* The dots/bullets/indicators */
+.dot {
+	cursor: pointer;
+	height: 50px;
+	width: 50px;
+	margin: 0 2px;
+	background-color: #808080;
+	border-radius: 50%;
+	display: inline-block;
+	transition: background-color 0.6s ease;
+}
+
+.active, .dot:hover {
+	background-color: #717171;
+}
+
+/* Fading animation */
+.fade {
+	-webkit-animation-name: fade;
+	-webkit-animation-duration: 1.5s;
+	animation-name: fade;
+	animation-duration: 1.5s;
+}
+
+@
+-webkit-keyframes fade {
+	from {opacity: .4
+}
+
+to {
+	opacity: 1
+}
+
+}
+@
+keyframes fade {
+	from {opacity: .4
+}
+
+to {
+	opacity: 1
+}
+
+}
+.circle {
+	border-radius: 1200px !important;
+	overflow: hidden;
+	width: 80px;
+	height: 80px;
+	border: 8px solid rgba(255, 255, 255, 0.7);
+	position: relative;
+	top: 0px;
+}
+#img{
+	vertical-align: text-top;
+	border-radius:15px
+}
+#imgs{
+	vertical-align: text-top;
+	border-radius:15px
+}
+#c_content{
+	width:400px;
+	height:100px	
+}
+.detail{
+	text-align:left;
+	margin-top:30px;
+	font-weight:600;
+}
+
+.DetailSubject{
+	font-size:35px;
+	font-weight:900;
+	color:#070719;
+	position:relative;
+	bottom:0.7rem
+}
+#cateLabel{
+	 	display: none;
+}
+
+#cateLabel + label{
+		 border-radius: 13px;
+  text-align: center;
+	display: inline-block;
+	width: 100px;
+	 height: 1.4rem;
+	  line-height:1rem;
+	cursor: pointer;
+	font-weight: bold;
+	font-size: 16;
+	 margin-top:0;
+	 	background-color: #101e45;
+	border: 2px solid #101e45;
+	color:#aca296;
+}
+#Pcontent{
+	line-height:1.3rem;
+	padding-left:50
+}
+#p_comment{
+	width:750px;
+	height:100px;
+	margin:0;
+}
+.PPcomment{
+	
+}
+/* detail */
+#texthigh{
+	line-height:;
+}
+a{
+	text-decoration:none;
+}
+
+

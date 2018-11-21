@@ -8,6 +8,7 @@ pageEncoding="utf-8"%>
 <head>
 <title>재능 상세보기</title>
 
+<link rel="stylesheet" href="/MUSED/css/productList.css"/>
 
 <script type="text/javascript">
 
@@ -156,6 +157,7 @@ function zzim_hagi(){
 </script>
 </head>
 <body>
+<div id="main" align="center">
 <s:hidden name="currentPage" value="%{currentPage}" />
 
 
@@ -342,5 +344,6 @@ function zzim_hagi(){
 </tr>
 
 </table>
+</div>
 </body>
 </html>
