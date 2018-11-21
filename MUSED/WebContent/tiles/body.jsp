@@ -1,37 +1,53 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
 <%@ taglib prefix="s" uri="/struts-tags" %>
+
 <!DOCTYPE html>
 <html>
 <head>
 <!-- 웹 폰트 적용  -->
 <!-- css 적용 -->
 <link href="https://fonts.googleapis.com/css?family=Henny+Penny" rel="stylesheet"/>
+<link rel="stylesheet" href="/MUSED/css/testtest.css"/>
 
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
-<script type="text/javascript" src="main.js"></script>
-<link rel="stylesheet" href="style.css">
 
 <title>MUSED_Main</title>
 </head>
-<body>	
+<body class="is-preload">
+
+	<section id="banner">
+				<div class="inner">
+					<h1>MUSED</h1>
+					
+					<p>Just Music It</p>
+					<p> Where there's music there can be no cheat.</p>
+				</div>
+				<video autoplay loop muted playsinline src="/MUSED/css/lost_star.mp4"></video>
+	</section>
+		
+	<section id="body_nav">	
+		     <nav id="main_gnb">
+				<ul class="left">
+					<li><a href="productList.action?currentPage=1&sort=0">중고악기거래</a></li>
+					<li><a href="talentList.action?currentPage=1&sort=0">재능거래</a></li>
+					<li><a href="/MUSED/tiles/free/listAction.action?currentPage=1">커뮤니티</a></li>
+
+				</ul>
+				<ul class="right">
+					<s:if test='%{#session.ID != null}'>
+						<li><a href="productWriteForm.action">악기판매</a></li>
+						<li><a href="talentWriteForm.action">재능판매</a></li>
+					</s:if>
+				</ul>
+			</nav>
+	</section>		
 	<!-- Article부분 -->
 	<article id="main_article">
-	<div class="slide">
-<ul class="slide_ul">
-<li><a href="#"><img src="images/a1.jpg" width="1500px" height="350px" alt="dane"></a></li>
-<li><a href="#"><img src="images/a2.jpg" width="1500px" height="350px" alt="dane"></a></li>
-<li><a href="#"><img src="images/a3.jpg" width="1500px" height="350px" alt="dane"></a></li>
-<li><a href="#"><img src="images/a4.jpg" width="1500px" height="350px" alt="dane"></a></li>
-<li><a href="#"><img src="images/a5.jpg" width="1500px" height="350px" alt="dane"></a></li>
-<li><a href="#"><img src="images/a6.jpg" width="1500px" height="350px" alt="dane"></a></li>
-</ul>
-</div>
-	<div id = "content">
-		<section id ="product_section">
+		<div id="main">
+			<section id ="product_section">
 			<h1>중고악기거래</h1>
 			&nbsp;<a href="productList.action?currentPage=1&sort=0">전체보기</a>
-			<table width="600" border="0" cellspacing="0" cellspadding="2">
+			<table width="95%" border="0" cellspacing="0" cellspadding="2">
 			<tr>
 				<s:if test='%{#session.ID != null}'>
       				<s:iterator value="list_p" status="stat">
@@ -42,7 +58,7 @@
 					</s:url>
       			<td>	 
           			&nbsp;<s:a href="%{DetailURL}">
-      				<img src="/MUSED/product/img/<s:property value="main_img"/>" style="height: 100px; width: 100px; display: block;"/>
+      				<img src="/MUSED/product/img/<s:property value="main_img"/>" style="height: 200px; width: 200px; display: block;"/>
 					<br/>
 					<s:property value="product_subject" /></s:a>
 					<br/>
@@ -61,7 +77,7 @@
 	 			<s:iterator value="list_p" status="stat">
       			<td>	 
          			 &nbsp;<s:a href="loginForm.action">
-      					<img src="/MUSED/product/img/<s:property value='main_img'/>" style="height: 100px; width: 100px; display: block;"/>
+      					<img src="/MUSED/product/img/<s:property value='main_img'/>" style="height: 200px; width: 200px; display: block;"/>
 					<br/>
 					<s:property value="product_subject"/></s:a>
 					<br/>
@@ -81,7 +97,7 @@
 		<section id ="talent_section">
 			<h1>재능거래</h1>
 			&nbsp;<a href="talentList.action?currentPage=1&sort=0">전체보기</a>
-			<table width="600" border="0" cellspacing="0" cellspadding="2">
+			<table width="95%" border="0" cellspacing="0" cellspadding="2">
 			<tr>
 				<!-- 로그인 했을 때 상세보기 들어가짐 -->
 				<s:if test='%{#session.ID != null}'>
@@ -92,15 +108,14 @@
 						<s:property value="talent_no"/>
 						</s:param>
 						</s:url>
-					<td>
    						&nbsp;<s:a href="%{DetailURL}">
-   	      				<img src="/MUSED/talent/img/<s:property value="main_img"/>" style="height: 100px; width: 100px; display: block;"/>
+   	      				<img src="/MUSED/talent/img/<s:property value="main_img"/>" style="height: 200px; width: 200px; display: block;"/>
 						<br>
 						<s:property value="talent_subject" /></s:a>
 						<br>
 						판매자 : <s:property value="talent_id"/>	
 						<br/>
-					<s:property value="talent_price"/>원
+						<s:property value="talent_price"/>원
 	  			
 	    			</td>
 	       				<s:if test="#stat.count%5==0">
@@ -114,7 +129,7 @@
 	 				<s:iterator value="list_t" status="stat">
       				<td>	 
           				&nbsp;<s:a href="loginForm.action">
-      					<img src="/MUSED/talent/img/<s:property value="main_img"/>" style="height: 100px; width: 100px; display: block;"/>
+      					<img src="/MUSED/talent/img/<s:property value="main_img"/>" style="height: 200px; width: 200px; display: block;"/>
 						<br>
 						<s:property value="talent_subject" /></s:a>
 						<br>
@@ -131,20 +146,29 @@
 			</tr>
 			</table>
 		</section>
-				
-		<section id ="board_section">
-			<div id ="notice_">
-				<h1>공지사항</h1>
+		</div>
+		<section class="wrapper">
+				<div class="inner">
+					<header class="special">
+						<h2>Communication</h2>
+						<p>Listen to the words of the talking partner and look at the person's eyes, you can know the character of the person. People can not hide their personality as much as they say it, no matter how they use it.</p>
+					</header>
+		</section>
+		<div class="testimonials">
+		<section>
+							<div class="content">
+								<h1>공지사항</h1>
 				&nbsp;<a href='/MUSED/tiles/notice/listAction.action?currentPage=1'>전체보기</a>
 				<!-- <img src="http://placehold.it/350x250" width="350" height="250"/> -->
 				
-				<table width="350" border="0" cellspacing="0" cellpadding="2">
+				<table width="300" border="1" cellspacing="0" cellpadding="2">
+					<thead>
 					<tr>
-						<td width="150"><strong>제목</strong></td>
-						<td width="50"><strong>글쓴이</strong></td>
-						<td width="100"><strong>날짜</strong></td>
-						<td width="50"><strong>조회</strong></td>
+						<td width="130" align="center"><strong>제목</strong></td>
+						<td width="60" align="center"><strong>날짜</strong></td>
+						<td width="50" align="center"><strong>조회수</strong></td>
 					</tr>
+					</thead>
 					<tr bgcolor="#777777">
 						<td height="1" colspan="5"></td>
 					</tr>
@@ -157,33 +181,38 @@
 					<s:property value="currentPage"/>
 				</s:param>	
 						</s:url>
+					<tbody>
 					<tr>
-						 <td align="left">
+						 <td class="boardtd" align="left">
 			      			<s:if test="re_level != 0">
 			          			<c:forEach var = "i" begin ="${re_level}" end = "0">&nbsp;</c:forEach>→
 			      			</s:if>		
 						 	<s:a href="%{viewURL}"><s:property value="subject" /></s:a>
 						 </td>
-						 <td> <s:property value="name" /></td>
-						 <td> <s:property value="regdate" /></td>
-			 			<td><s:property value="readhit" /></td>
+						 <td align="center"> <s:property value="regdate" /></td>
+			 			<td align="center"><s:property value="readhit" /></td>
 			 		<tr bgcolor="#777777">
 			     		<td height="1" colspan="5"></td>
-					</tr>		
+					</tr>
+					</tbody>		
 					</s:iterator>
 				</table>
-			</div>
-			<div id ="free_">
-				<h1>자유게시판</h1>
+							</div>
+							
+		</section>
+		<section>
+							<div class="content">
+								<h1>자유게시판</h1>
 				&nbsp;<a href='/MUSED/tiles/free/listAction.action?currentPage=1'>전체보기</a>
 				<!-- <img src="http://placehold.it/350x250" width="350" height="250"/> -->
-				<table width="350" border="0" cellspacing="0" cellpadding="2">
+				<table width="300" border="0" cellspacing="0" cellpadding="2">
+					<thead>
 					<tr>
-						<td width="150"><strong>제목</strong></td>
-						<td width="50"><strong>글쓴이</strong></td>
-						<td width="100"><strong>날짜</strong></td>
-						<td width="50"><strong>조회</strong></td>
+						<td width="130" align="center"><strong>제목</strong></td>
+						<td width="60" align="center"><strong>ID</strong></td>
+						<td width="50" align="center"><strong>조회수</strong></td>
 					</tr>
+					</thead>
 					<tr bgcolor="#777777">
 						<td height="1" colspan="5"></td>
 					</tr>
@@ -197,33 +226,37 @@
 						</s:param>
 						
 						</s:url>
+					<tbody>
 					<tr>
-						 <td align="left">
+						 <td class="boardtd" align="left">
 			      			<s:if test="re_level != 0">
 			          			<c:forEach var = "i" begin ="${re_level}" end = "0">&nbsp;</c:forEach>→
 			      			</s:if>		
 						 	<s:a href="%{viewURL}"><s:property value="subject" /></s:a>
 						 </td>
-						 <td> <s:property value="name" /></td>
-						 <td> <s:property value="regdate" /></td>
-			 			<td><s:property value="readhit" /></td>
+						 <td align="center"> <s:property value="name" /></td>
+			 			<td align="center"><s:property value="readhit" /></td>
 			 		<tr bgcolor="#777777">
 			     		<td height="1" colspan="5"></td>
-					</tr>		
+					</tr>
+					</tbody>		
 					</s:iterator>
 				</table>
-			</div>
-			<div id ="suggestion_">
-				<h1>건의사항</h1>
+							</div>
+		</section>		
+			<section>
+							<div class="content">
+								<h1>건의사항</h1>
 				&nbsp;<a href='/MUSED/tiles/sug/listAction.action?currentPage=1'>전체보기</a>
 				<!-- <img src="http://placehold.it/350x250" width="350" height="250"/> -->
-					<table width="350" border="0" cellspacing="0" cellpadding="2">
+					<table width="300" border="0" cellspacing="0" cellpadding="2">
+					<thead>
 					<tr>
-						<td width="150"><strong>제목</strong></td>
-						<td width="50"><strong>글쓴이</strong></td>
-						<td width="100"><strong>날짜</strong></td>
-						<td width="50"><strong>조회</strong></td>
+						<td width="150" align="center"><strong>제목</strong></td>
+						<td width="60" align="center"><strong>ID</strong></td>
+						<td width="50" align="center"><strong>조회</strong></td>
 					</tr>
+					</thead>
 					<tr bgcolor="#777777">
 						<td height="1" colspan="5"></td>
 					</tr>
@@ -237,25 +270,27 @@
 				</s:param>
 						
 						</s:url>
+					<tbody>
 					<tr>
-						 <td align="left">
+						 <td class="boardtd" align="left">
 			      			<s:if test="re_level != 0">
 			          			<c:forEach var = "i" begin ="${re_level}" end = "0">&nbsp;</c:forEach>→
 			      			</s:if>		
 						 	<s:a href="%{viewURL}"><s:property value="subject" /></s:a>
 						 </td>
-						 <td> <s:property value="name" /></td>
-						 <td> <s:property value="regdate" /></td>
-			 			<td><s:property value="readhit" /></td>
+						 <td align="center"> <s:property value="name" /></td>
+			 			<td align="center"><s:property value="readhit" /></td>
 			 		<tr bgcolor="#777777">
 			     		<td height="1" colspan="5"></td>
-					</tr>		
+					</tr>	
+					</tbody>	
 					</s:iterator>
 				</table>
 			</div>
 		</section>
-	</div>
+
 	</article>	
+		
 	
 
 </body>

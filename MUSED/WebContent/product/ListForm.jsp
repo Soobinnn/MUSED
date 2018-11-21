@@ -5,6 +5,7 @@ pageEncoding="utf-8"%>
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
+<link rel="stylesheet" href="/MUSED/css/testtest.css"/>
 <head>
 <title>악기 게시판</title>
 
@@ -191,7 +192,26 @@ select, input{
 </head>
 
 <body>
+	<div id="heading" >
+			<h1>MUSED</h1>
+	</div>
+	<section id="body_nav">	
+		     <nav id="main_gnb">
+				<ul class="left">
+					<li class="active"><a href="productList.action?currentPage=1&sort=0">중고악기거래</a></li>
+					<li><a href="talentList.action?currentPage=1&sort=0">재능거래</a></li>
+					<li><a href="/MUSED/tiles/free/listAction.action?currentPage=1">커뮤니티</a></li>
 
+				</ul>
+				<ul class="right">
+					<s:if test='%{#session.ID != null}'>
+						<li id="menubar"><a href="productWriteForm.action">악기판매</a></li>
+						<li id="menubar"><a href="talentWriteForm.action">재능판매</a></li>
+					</s:if>
+				</ul>
+			</nav>
+	</section>
+	<div id="main">
 <table width="600" border="0" cellspacing="0" cellspadding="2">
 		  <s:hidden name="currentPage" value="%{currentPage}" />
 		  <form name="fwrite" action="Psearch.action">
@@ -320,5 +340,6 @@ select, input{
 		<td colspan="5"><s:property value="pagingHtml" escape="false" /></td>
 	</tr>
 </table>
+</div>	
 </body>
 </html>

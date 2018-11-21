@@ -1,6 +1,6 @@
 <%@ page contentType="text/html; charset=utf-8" %>
 <%@ taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles" %>
-<link rel="stylesheet" href="style.css"type="text/css">
+<link rel="stylesheet" href="/MUSED/css/testtest.css"/>
 <html>
 <head> 
 	<title><tiles:getAsString name="title" /></title>

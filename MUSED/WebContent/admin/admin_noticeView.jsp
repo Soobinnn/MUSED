@@ -11,7 +11,6 @@ top:500; left:410;}
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>공 지 사 항</title>
-<link rel="stylesheet" href="/StrutsBoard/board/common/css/css.css" type="text/css">
 
 <script type="text/javascript">
   function open_win_noresizable(url, name){

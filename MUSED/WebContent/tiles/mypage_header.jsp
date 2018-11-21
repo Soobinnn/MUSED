@@ -1,12 +1,11 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-	pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=utf-8"
+	pageEncoding="utf-8"%>
 <%@ taglib prefix="s" uri="/struts-tags"%>
 <!DOCTYPE html>
 <html>
 <head>
-<link rel="stylesheet" href="/MUSED/tiles/style.css">
-<meta charset="EUC-KR">
-<title>¸¶ÀÌÆäÀÌÁöÇì´õ</title>
+<meta charset="utf-8">
+<title>ë§ˆì´í˜ì´ì§€í—¤ë”</title>
 
 <script type="text/javascript"
 	src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
@@ -30,9 +29,9 @@
 	}
 </script>
 
-<!-- ÀÌ ÆäÀÌÁö¿¡¼­¸¸ styleÀû¿ëÇÏ´Â °Í. Àı´ë style.css·Î ÇÕÄ¡Áö ¸»°Í. -->
+<!-- ì´ í˜ì´ì§€ì—ì„œë§Œ styleì ìš©í•˜ëŠ” ê²ƒ. ì ˆëŒ€ style.cssë¡œ í•©ì¹˜ì§€ ë§ê²ƒ. -->
 <style>
-.in { /*input tag °øÅë ½ºÅ¸ÀÏ*/
+.in { /*input tag ê³µí†µ ìŠ¤íƒ€ì¼*/
 	width: 100px;
 	height: 30px;
 	border-radius: 10px;
@@ -54,11 +53,11 @@
 	background: black;
 	color: #fff;
 	cursor: pointer;
-	opacity: 0; /*input type="file" tag Åõ¸íÇÏ°Ô Ã³¸®*/
+	opacity: 0; /*input type="file" tag íˆ¬ëª…í•˜ê²Œ ì²˜ë¦¬*/
 	position: relative;
 }
 
-.replace { /*button tag ¿¡ ¿øÇÏ´Â ½ºÅ¸ÀÏ Àû¿ë*/
+.replace { /*button tag ì— ì›í•˜ëŠ” ìŠ¤íƒ€ì¼ ì ìš©*/
 	position: absolute;
 	width: 100px;
 	height: 30px;
@@ -85,14 +84,17 @@
 	border-radius: 50%;
 }
 </style>
-<!-- ÀÌ ÆäÀÌÁö¿¡¼­¸¸ styleÀû¿ëÇÏ´Â °Í. Àı´ë style.css·Î ÇÕÄ¡Áö ¸»°Í. -->
+<!-- ì´ í˜ì´ì§€ì—ì„œë§Œ styleì ìš©í•˜ëŠ” ê²ƒ. ì ˆëŒ€ style.cssë¡œ í•©ì¹˜ì§€ ë§ê²ƒ. -->
 
 </head>
 <body>
+	<div id="heading" >
+			<h1>ë§ˆì´í˜ì´ì§€</h1>
+	</div>
 	<form method="post" enctype="multipart/form-data"
 		action="updateProfile.action">
 		<div>
-			<!-- ÀÌ¹ÌÁöÀ§¿¡ ÀÌ¹ÌÁö ¿Ã¸®±â -->
+			<!-- ì´ë¯¸ì§€ìœ„ì— ì´ë¯¸ì§€ ì˜¬ë¦¬ê¸° -->
 			<div style="position: absolute;">
 				<div style="position: relative; top: 20px; left: 100px;">
 					<table width="100%">
@@ -100,18 +102,18 @@
 							<td width="20%" align="center">
 
 
-								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ÇÁ·ÎÇÊ »çÁø <br> <img
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;í”„ë¡œí•„ ì‚¬ì§„ <br> <img
 								class="circle" id="blah"
 								src="/MUSED/mypage/image/file_<s:property value="%{#session.ID}"/>.jpg"
 
 								width="150" height="150" /><br>
-								<button class="replace">ÀÌ¹ÌÁö ¾÷·Îµå</button> <input type="file"
-								class="upload" id="imgInp" name="upload" accept="image/*"><input
-								type="submit" class="in" value="È®ÀÎ">
+								<button class="replace">ì´ë¯¸ì§€ ì—…ë¡œë“œ</button> <input type="file"
+								class="upload" id="imgInp" name="upload" accept="/MUSED/mypage/image/*"><input
+								type="submit" class="in" value="í™•ì¸">
 							</td>
 							<td width="10%"></td>
-							<td width="35%" align="left">¾ÆÀÌµğ: <s:property
-									value="%{#session.ID}" /> <br>µî±Ş: <s:if
+							<td width="35%" align="left">ì•„ì´ë””: <s:property
+									value="%{#session.ID}" /> <br>ë“±ê¸‰: <s:if
 									test="#session.ACCESS_NUM == 1">
 									<img class="border"
 										src="/MUSED/tiles/image/supervisor.jpg" width="15"
@@ -132,7 +134,7 @@
 									test="#session.ACCESS_NUM != 1 && paramClass.score >= 200 && paramClass.score < 500">
 									<img class="border" src="/MUSED/tiles/image/vip.png"
 										width="15" height="15" />
-								</s:if> <s:if test="%{#session.ACCESS_NUM == 1}">°ü¸®ÀÚ</s:if> <s:else>
+								</s:if> <s:if test="%{#session.ACCESS_NUM == 1}">ê´€ë¦¬ì</s:if> <s:else>
 									<s:property value="%{grade}" />
 								</s:else>(<s:property value="%{paramClass.score}" />) <img
 								class="border" src="/MUSED/tiles/image/grade.png"
@@ -147,19 +149,19 @@
 										class="border" src="/MUSED/tiles/image/vip.png"
 										width="15" height="15" />VIP : ~499<br> <img
 										class="border" src="/MUSED/tiles/image/supervisor.jpg"
-										width="15" height="15" />°ü¸®ÀÚ<br>
-								</p> <br> °¡ÀÔÀÏ: <s:property value="%{#session.JOINDATE}" />
+										width="15" height="15" />ê´€ë¦¬ì<br>
+								</p> <br> ê°€ì…ì¼: <s:property value="%{#session.JOINDATE}" />
 							</td>
-							<td width="35%" align="left">µî·ÏµÈ »óÇ°:<s:a href="javascript:location.href='myProduct.action'"><s:property value="%{countPro}" /></s:a><br>
-														  µî·ÏµÈ Àç´É:<s:a href="javascript:location.href='myTalent.action'"><s:property value="%{countTal}" /></s:a><br>
-														  Âò ¸ñ·Ï:<s:property value="%{zzimCount}"/><br>
-														  ÆÇ¸Å ³»¿ª:<s:property value="%{sum}" /><br>
+							<td width="35%" align="left">ë“±ë¡ëœ ìƒí’ˆ:<s:a href="javascript:location.href='myProduct.action'"><s:property value="%{countPro}" /></s:a><br>
+														  ë“±ë¡ëœ ì¬ëŠ¥:<s:a href="javascript:location.href='myTalent.action'"><s:property value="%{countTal}" /></s:a><br>
+														  ì°œ ëª©ë¡:<s:property value="%{zzimCount}"/><br>
+														  íŒë§¤ ë‚´ì—­:<s:property value="%{sum}" /><br>
 							</td>
 						</tr>
 					</table>
 				</div>
 			</div>
-			<!-- ¹è°æÀÌ µÉ ÀÌ¹ÌÁö -->
+			<!-- ë°°ê²½ì´ ë  ì´ë¯¸ì§€ -->
 			<img src="/MUSED/tiles/images/background3.jpg" width="1500px" height="230px"
 				align="center"></img>
 		</div>

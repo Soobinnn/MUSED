@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
 <%@ taglib prefix="s" uri="/struts-tags"%>
+<link rel="stylesheet" href="/MUSED/css/testtest.css"/>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -166,14 +167,18 @@
 </head>
 <center>
 	<body>
-
-		<h1>Join Us</h1>
+		<div id="heading" >
+			<h1>회원가입</h1>
+		</div>
+		<div id="main">
+		<h1>회원가입</h1>
 		<br />
 		<br />
 		<form name="join_form" action="joinAction.action" method="post"
 			onsubmit="return check()">
 			<input type="hidden" name="idCheckOn" value="0" />
-			<table>
+
+			<table id="joinformtable">
 				<tr>
 					<td><img
 						src="//img.echosting.cafe24.com/skin/base/common/ico_required.gif">Name</td>
@@ -212,8 +217,8 @@
 				<tr>
 					<td><img
 						src="//img.echosting.cafe24.com/skin/base/common/ico_required.gif">Sex</td>
-					<td><input type="radio" name="sex" value="M">&nbsp;Male
-						<input type="radio" name="sex" value="F">&nbsp;Female</td>
+					<td><input type="radio" id="sex_m" name="sex" value="M"><label for="sex_m">&nbsp;Male</label>
+						<input type="radio" id="sex_f" name="sex" value="F"><label for="sex_f">&nbsp;Female</label></td>
 				</tr>
 				<tr>
 					<td><img
@@ -251,6 +256,7 @@
 				</tr>
 			</table>
 		</form>
+		</div>
 	</body>
 </center>
 </html>

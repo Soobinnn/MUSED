@@ -3,7 +3,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-
+<link rel="stylesheet" href="/MUSED/css/testtest.css"/>
 <script type="text/JavaScript">
 	function check() {
 		
@@ -27,15 +27,19 @@
 </head>
 <center>
 	<body>
+		<div id="heading" >
+			<h1>회원가입</h1>
+		</div>
+		
+		<div id="main">
 		<h1>이용 약관</h1>
 		<form name="join_agree" action="joinForm.action" method="post"
 			onsubmit="return check()">
-			<table width="100%" border="0" cellspacing="0" cellpadding="0">
+			<table id="jointable"width="100%" border="0" cellspacing="0" cellpadding="0">
 				<tr>
-					<td><input type="checkbox" id="agreeUse" name="join" value="">&nbsp;MUSED
-						이용 약관(필수)</td>
+					<td id="jointable1"><input type="checkbox" id="agreeUse" name="join" value=""><label for="agreeUse">&nbsp;MUSED이용 약관(필수)</label></td>
 				<tr>
-					<td><textarea rows="10" cols="100">
+					<td id="jointable2"><textarea rows="10" cols="100">
 					여러분을 환영합니다.
  
 
@@ -79,11 +83,11 @@ MUSED는 여러분의 생각과 감정이 표현된 콘텐츠를 소중히 보�
 					</textarea></td>
 				</tr>
 				<tr>
-					<td><input type="checkbox" id="agreePrivacy" name="join" value="">&nbsp;개인정보
-						수집 및 이용에 대한 안내(필수)</td>
+					<td id="jointable3"><input type="checkbox" id="agreePrivacy" name="join" value=""><label for="agreePrivacy">&nbsp;개인정보수집 및 이용에 대한 안내(필수)</label>
+						</td>
 				</tr>
 				<tr>
-					<td><textarea rows="10" cols="100">
+					<td id="jointable4"><textarea rows="10" cols="100">
 					여러분을 환영합니다.
  
 
@@ -125,19 +129,21 @@ MUSED는 여러분의 생각과 감정이 표현된 콘텐츠를 소중히 보�
 한편, MUSED 서비스를 통해 여러분이 게재한 게시물을 적법하게 제공하려면 해당 콘텐츠에 대한 저장, 복제, 수정, 공중 송신, 전시, 배포, 2차적 저작물 작성(단, 번역에 한함) 등의 이용 권한(기한과 지역 제한에 정함이 없으며, 별도 대가 지급이 없는 라이선스)이 필요합니다.
 게시물 게재로 여러분은 MUSED에게 그러한 권한을 부여하게 되므로, 여러분은 이에 필요한 권리를 보유하고 있어야 합니다. 
 					</textarea></td>
-					<tr>
-						<br><td><input type="checkbox" id="agreeEvent" name="join">&nbsp;이벤트 등 프로모션 알림 메일 수신(선택)</td>
+					<tr >
+						<br><td id="jointable5"><input type="checkbox" id="agreeEvent" name="join"><label for="agreeEvent">&nbsp;이벤트 등 프로모션 알림 메일 수신(선택)</label></td>
 					</tr>
 					<br>
-					<tr>
-						<td><input type="checkbox" id="agreeAll" value="" clas="checkbox" onclick=chkBox(this.checked)>&nbsp;모두 동의 합니다.</td>
+					<tr >
+						<td id="jointable6"><input type="checkbox" id="agreeAll" value="" class="checkbox" onclick=chkBox(this.checked)><label for="agreeAll">&nbsp;모두 동의 합니다.</label></td>
 					</tr>
-					<tr>
-						<td><input type="submit" value="Agree"></td>
+					<tr >
+						<td id="jointable7"><input id="join_agree" type="submit" value="Agree"></td>
 						&nbsp;&nbsp;
-						<td><input type="button" value="Disagree" onclick="javascript:history.back(-1)"></td>
+						<td id="jointable8"><input type="button" value="Disagree" onclick="javascript:history.back(-1)"></td>
 					</tr>
 			</table>
+			</form>
+			</div>
 	</body>
 </center>
 </html>
