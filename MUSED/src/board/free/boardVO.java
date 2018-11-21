@@ -6,6 +6,7 @@ import java.util.Date;
 
 public class boardVO {
 
+
 	private int no;
 	private String subject;
 	private String name;
@@ -24,9 +25,11 @@ public class boardVO {
 	// get�쓣 �넻�빐 jsp媛숈� 怨녹쑝濡� �뜲�씠�꽣瑜� 蹂대궪 �닔 �엳�떎.
 	// set�쓣 �넻�빐 form �뜲�씠�꽣 媛믪쓣 媛��졇���꽌 ���옣�븳�떎
 
+
 	public int getRef() {
 		return ref;
 	}
+
 
 	public int getCommentcnt() {
 		return commentcnt;
@@ -35,6 +38,7 @@ public class boardVO {
 	public void setCommentcnt(int commentcnt) {
 		this.commentcnt = commentcnt;
 	}
+
 
 	public void setRef(int ref) {
 		this.ref = ref;

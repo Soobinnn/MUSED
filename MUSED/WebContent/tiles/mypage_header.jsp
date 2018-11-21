@@ -6,7 +6,7 @@
 <head>
 <link rel="stylesheet" href="/MUSED/tiles/style.css">
 <meta charset="EUC-KR">
-<title>Insert title here</title>
+<title>마이페이지헤더</title>
 
 <script type="text/javascript"
 	src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
@@ -150,10 +150,10 @@
 										width="15" height="15" />관리자<br>
 								</p> <br> 가입일: <s:property value="%{#session.JOINDATE}" />
 							</td>
-							<td width="35%" align="left">등록된 상품:<s:property
-									value="%{countPro}" /><br> 등록된 재능:<s:property
-									value="%{countTal}" /><br> 찜 목록:<s:property value="%{zzimCount}"/><br> 판매 내역:<s:property
-									value="%{sum}" /><br>
+							<td width="35%" align="left">등록된 상품:<s:a href="javascript:location.href='myProduct.action'"><s:property value="%{countPro}" /></s:a><br>
+														  등록된 재능:<s:a href="javascript:location.href='myTalent.action'"><s:property value="%{countTal}" /></s:a><br>
+														  찜 목록:<s:property value="%{zzimCount}"/><br>
+														  판매 내역:<s:property value="%{sum}" /><br>
 							</td>
 						</tr>
 					</table>

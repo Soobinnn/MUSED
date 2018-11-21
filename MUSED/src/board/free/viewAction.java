@@ -50,6 +50,7 @@ public class viewAction extends ActionSupport {
 	  
 	  
 	  //�깮�꽦�옄
+
 	  public viewAction() throws IOException{	   
 		  reader = Resources.getResourceAsReader("sqlMapConfig.xml"); //sqlMapConfig.xml xml�뙆�씪�쓽 �꽕�젙 �궡�슜�쓣 媛��졇���꽌 reader 媛앹껜瑜� �깮�꽦�븳�떎.
 		  sqlMapper = SqlMapClientBuilder.buildSqlMapClient(reader);//sqilMapConfig.xml�쓽 �궡�슜�쓣 �쟻�슜�븳 sqlMapper媛앹껜 �깮�꽦
@@ -134,6 +135,8 @@ public class viewAction extends ActionSupport {
 	    		    return ERROR;
 	    	return SUCCESS;
 	    }
+	    
+	    
 
 		public static Reader getReader() {
 			return reader;

@@ -174,7 +174,6 @@
 			onsubmit="return check()">
 			<input type="hidden" name="idCheckOn" value="0" />
 			<table>
-
 				<tr>
 					<td><img
 						src="//img.echosting.cafe24.com/skin/base/common/ico_required.gif">Name</td>
@@ -249,7 +248,6 @@
 					<td align="center"><input type="submit" value="Join">&nbsp;<input
 						type="button" value="Cancle"
 						onclick="location.href='loginForm.action'"></td>
-
 				</tr>
 			</table>
 		</form>
