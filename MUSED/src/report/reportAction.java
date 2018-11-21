@@ -40,7 +40,7 @@ public class reportAction extends ActionSupport
 	private File upload; //파일 객체
 	private String uploadContentType; //컨텐츠 타입
 	private String uploadFileName; //파일 이름
-	private String fileUploadPath = "C:\\Users\\user\\Desktop\\Java\\upload"; //업로드 경로.
+	private String fileUploadPath = "C:\\Java\\upload\\"; //업로드 경로.
 	
 	public reportAction() throws IOException
 	{

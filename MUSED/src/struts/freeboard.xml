@@ -112,7 +112,7 @@
 	
 	<!-- 코멘트작성 관련 액션 -->
 	<action name="writeCommentAction" class="board.free.commentWriteAction">
-		 <result type="chain">listAction</result>
+		 <result type="chain">viewAction</result>
 	</action>
 </package>
 </struts>

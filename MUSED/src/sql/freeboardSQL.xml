@@ -20,6 +20,7 @@
 		<result property="file_savname" column="file_savName" />
 		<result property="readhit" column="readhit" />
 		<result property="regdate" column="regdate" />
+		<result property="commentcnt" column="commentcnt"/>
 	    <result property="ref" column="ref"/>
 	    <result property="re_step" column="re_step" />
 	    <result property="re_level" column="re_level" />
@@ -131,9 +132,9 @@
 
 	<!-- insert 쿼리문 정의 public void insertBoard(boardVO board) -->
 	<insert id="insertBoard" parameterClass="board">
-		INSERT INTO FREEBOARD(NO, SUBJECT, WRITER, CONTENT, REGDATE, RE_STEP, RE_LEVEL, REF)
+		INSERT INTO FREEBOARD(NO, SUBJECT, WRITER, CONTENT, REGDATE, RE_STEP, RE_LEVEL, REF, COMMENTCNT)
 		            VALUES (FREEBOARD_NO_SEQ.NEXTVAL, #subject#, #name#,
-		                                              #content#, #regdate#, #re_step#, #re_level#, FREEBOARD_NO_SEQ.CURRVAL) <!-- ref로 넘어가는 것은 시퀀스의 현재값으로 채운다.자바빈 board로부터 전송된 값들 -->
+		                                              #content#, #regdate#, #re_step#, #re_level#, FREEBOARD_NO_SEQ.CURRVAL,0) <!-- ref로 넘어가는 것은 시퀀스의 현재값으로 채운다.자바빈 board로부터 전송된 값들 -->
 	</insert>
 
     <insert id="insertBoardReply" parameterClass="board">
@@ -160,9 +161,13 @@
 		                     FILE_SAVNAME = #file_savname#
 		<include refid="where-no" />
 	</update>
+	
 
 	
-	
+	<update id="updateCommentCount" parameterClass="Integer">
+		UPDATE FREEBOARD SET COMMENTCNT = COMMENTCNT + 1
+		WHREE NO = #ORIGINNO#
+	</update>
 	
 	
 	<update id="updateReadHit" parameterClass="board">

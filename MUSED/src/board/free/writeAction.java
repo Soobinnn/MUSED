@@ -33,7 +33,7 @@ public class writeAction extends ActionSupport {
 	    private File upload; //파일 객체, 객체값을 upload로 하고 초기화 한다.
 	    private String uploadContentType; //업로드파일의 컨텐츠 타입
 	    private String uploadFileName; //업로드 파일의 이름
-	    private String fileUploadPath = "c:\\Java\\upload"; //업로드된 파일이 저장될 경로
+	    private String fileUploadPath = "C:\\Java\\upload\\"; //업로드된 파일이 저장될 경로
 	    
 	    	    
 	    /*답변글 객체 생성 추가 ref는 원글의 글번호를 따라가고 re_step과 re_level은 답변글이면 1씩 추가된다.*/

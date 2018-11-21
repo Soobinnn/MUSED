@@ -53,6 +53,7 @@ public class commentWriteAction extends ActionSupport {
 		  paramClass.setRegdate(today.getTime());
 		  
 		  sqlMapper.insert("free.insertComment", paramClass);
+		  sqlMapper.update("free.updateCommentCount",getOriginno());
 		  
 		  return SUCCESS;
 	  }

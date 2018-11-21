@@ -15,7 +15,7 @@ public class boardVO {
 	  private String file_savname;
 	  private int readhit;
 	  private Date regdate;
-	
+	  private int commentcnt;
 	  private int ref;
 	  private int re_step;
 	  private int re_level;
@@ -24,8 +24,14 @@ public class boardVO {
 	  //get을 통해 jsp같은 곳으로 데이터를 보낼 수 있다.
 	  //set을 통해 form 데이터 값을 가져와서 저장한다
 	  
-	  public int getRef() {
+	public int getRef() {
 		return ref;
+	}
+	public int getCommentcnt() {
+		return commentcnt;
+	}
+	public void setCommentcnt(int commentcnt) {
+		this.commentcnt = commentcnt;
 	}
 	public void setRef(int ref) {
 		this.ref = ref;
