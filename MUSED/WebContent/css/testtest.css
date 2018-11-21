@@ -1134,7 +1134,116 @@ body:before
 	position : relative;
 	right : 3.5rem;
 }
-
+/* 아이디찾기 */
+#find_auth
+{
+	position :relative;
+	left : 18rem;
+	top : 1rem;
+}
+#findtable1
+{
+	position : relative;
+	right : 6rem;
+}
+#findtable
+{
+	position :relative;
+	top : 2.5rem;
+}
+#findtable4
+{
+	position : relative;
+	left : 20rem;
+	top : 0.5rem;
+}
+#findtable3
+{
+	position :relative;
+}
+#findtable2_2
+{
+	position : relative;
+	right : 9rem;
+	top : 2rem;
+	font-weight : 1000;
+}
+#findtable2_1
+{
+	position : relative;
+	width : 7rem;
+	height :2rem;
+	bottom : 1.3rem;
+	left : 6rem;
+}
+#findtable3_0
+{
+	position : relative;
+	right : 9rem;
+	top : 1.3rem;
+	font-weight : 1000;
+}
+#findtable3_1
+{
+	position : relative;
+	width : 5rem;
+	height : 2rem;
+	right : 4rem;
+}
+#findtable3_2
+{
+	position:relative;
+	bottom : 3.9rem;
+	height : 2rem;
+	left : 3rem;
+	width :5rem;
+}
+#findtable3_3
+{
+	position:relative;
+	bottom : 2.5rem;
+	right: 0.5rem;
+	font-weight : bolder;
+}
+#findtable_s
+{
+	position :relative;
+	bottom : 3rem;
+	right : 1rem;
+}
+#findtable4_1
+{
+	position :relative;
+	right : 10rem;
+	font-weight :bolder;
+	top : 2rem;
+}
+#findtable4_2
+{
+	position:relative;
+	height :2rem;
+	top :0.7rem;
+	right : 2rem;
+}
+#findtable4_3
+{
+	position :relative;
+	right : 10rem;
+	font-weight :bolder;
+	top : 1.4rem;
+}
+#findtable4_4
+{
+	position:relative;
+	height :2rem;
+	right : 2rem;
+}
+#findtable4_5
+{
+	position:relative;
+	top : 1rem;
+	right : 2rem;
+}
 /* 회원가입 */
 #jointable
 {
