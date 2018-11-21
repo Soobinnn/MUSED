@@ -6,6 +6,10 @@
 <style type="text/css">
 .size{border:solid 0px; position:absolute; float:left; overflow:hidden; width:824; height:1800;
 top:500; left:410;}
+
+.border {
+	border-radius: 50%;
+}
 </style>
 
 <head>
@@ -125,7 +129,9 @@ top:500; left:410;}
 		<s:iterator value="commentlist" status="stat">
 
 			<tr>
-				<td height="10" width="130" align="center"><s:property
+				<td height="10" width="130" align="center">
+				<img class="border" id="blah" src="/MUSED/mypage/image/thum_<s:property value="name"/>.jpg"  width="50px" height="50px"/><br>
+				<s:property
 						value="name" /><br> <s:property value="regdate" /><br>
 				<br></td>
 

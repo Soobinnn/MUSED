@@ -102,7 +102,7 @@
 
 								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;프로필 사진 <br> <img
 								class="circle" id="blah"
-								src="C:/Java/upload/file_<s:property value="%{#session.ID}"/>.jpg"
+								src="/MUSED/mypage/image/file_<s:property value="%{#session.ID}"/>.jpg"
 
 								width="150" height="150" /><br>
 								<button class="replace">이미지 업로드</button> <input type="file"
@@ -160,7 +160,7 @@
 				</div>
 			</div>
 			<!-- 배경이 될 이미지 -->
-			<img src="images/background.jpg" width="1500px" height="230px"
+			<img src="/MUSED/tiles/images/background3.jpg" width="1500px" height="230px"
 				align="center"></img>
 		</div>
 	</form>

@@ -118,6 +118,10 @@ function zzim_hagi(){
   top: 0;
 }
 
+.border {
+	border-radius: 50%;
+}
+
 /* The dots/bullets/indicators */
 .dot {
   cursor: pointer;
@@ -207,7 +211,7 @@ function zzim_hagi(){
 </td>
 <td width="40%">
 판매자 정보<br> 
-<img class="circle" id="blah" src="C:\Java\upload\file_<s:property value="resultClass.talent_id"/>.jpg" width="150" height="150"/><br></br>
+<img class="circle" id="blah" src="/MUSED/mypage/image/file_<s:property value="resultClass.talent_id"/>.jpg" width="150" height="150"/><br></br>
 판매자 : <s:property value="resultClass.talent_id"/><br>
 판매자 연락처 : <s:property value="resultClass.talent_phone"/><br>
 거래 선호 지역 : <s:property value="resultClass.talent_sido"/>&nbsp;
@@ -269,7 +273,7 @@ function zzim_hagi(){
 <s:iterator value="TcommentList" status="stat">
 	<tr>
 		<td height="10" width="130" align="center">
-			<img class="circle"	id="blah"src="C:\Java\upload\file_<s:property value="c_id"/>.jpg" width="50" height="50" /><br> 
+			<img class="border"	id="blah"src="/MUSED/mypage/image/file_<s:property value="c_id"/>.jpg" width="50" height="50" /><br> 
 			<s:property value="c_id"/><br>
 			<s:property value="c_regdate"/><br><br>
 		</td>

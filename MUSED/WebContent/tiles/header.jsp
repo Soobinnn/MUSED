@@ -70,7 +70,7 @@
 											width="45" height="45" />
 									</s:if> <s:else>
 										<img class="border"
-											src="C:/Java/upload/thum_<s:property value="%{#session.ID}"/>.jpg"
+											src="/MUSED/mypage/image/thum_<s:property value="%{#session.ID}"/>.jpg"
 											width="45" height="45" />
 									</s:else> <s:if test="%{#session.ACCESS_NUM == 1}">
 										<p class="arrow_box">관리자 계정</p>

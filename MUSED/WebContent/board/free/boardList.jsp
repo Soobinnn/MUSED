@@ -73,6 +73,11 @@ top:500; left:410;}
 			          <c:forEach var = "i" begin ="${re_level}" end = "0">&nbsp;</c:forEach>→
 			      </s:if>
 			       <s:a href="%{viewURL}"><s:property value="subject" /></s:a>
+			       <s:if test="commentcnt < 1">
+			       </s:if>
+			       <s:else>
+			       (<s:property value="commentcnt"/>)
+			       </s:else>
 			   </td>
 			  <td> <s:property value="name" /></td>
 			 <td> <s:property value="regdate" /></td>

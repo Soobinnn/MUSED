@@ -104,7 +104,7 @@
 	
 	<!-- 회원정보 변경 -->
 	<update id="modifyInfo" parameterClass="member">
-		UPDATE MEMBER SET EMAIL = #email#, PHONE = #phone#, ZIPCODE = #zipcode#,ADDRESS1 = #address1#,ADDRESS2 = #address2#
+		UPDATE MEMBER SET EMAIL = #email#, PHONE = #phone#, ZIPCODE = #zipcode#, ADDRESS1 = #address1#, ADDRESS2 = #address2#
 		WHERE ID = #id#
 	</update>
 	

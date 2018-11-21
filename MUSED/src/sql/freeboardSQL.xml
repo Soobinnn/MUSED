@@ -23,7 +23,7 @@
 	    <result property="ref" column="ref"/>
 	    <result property="re_step" column="re_step" />
 	    <result property="re_level" column="re_level" />
-	    
+	    <result property="commentcnt" column="commentcnt" nullValue="0"/>
 	</resultMap>
 	
 	<resultMap id="commentRes" class="comment">
@@ -122,18 +122,18 @@
 	    <!--  AND PASSWORD = #password# -->
     </select>
 
-    <!-- <select id="select_cmt_name" resultMap="commentRes">
+    <select id="select_cmt_name" resultMap="commentRes">
       <include refid="select-com"/>
        where WRITER=#name#
-    </select> -->
+    </select>
 
 
 
 	<!-- insert 쿼리문 정의 public void insertBoard(boardVO board) -->
 	<insert id="insertBoard" parameterClass="board">
-		INSERT INTO FREEBOARD(NO, SUBJECT, WRITER, CONTENT, REGDATE, RE_STEP, RE_LEVEL, REF)
+		INSERT INTO FREEBOARD(NO, SUBJECT, WRITER, CONTENT, REGDATE, RE_STEP, RE_LEVEL, REF, COMMENTCNT)
 		            VALUES (FREEBOARD_NO_SEQ.NEXTVAL, #subject#, #name#,
-		                                              #content#, #regdate#, #re_step#, #re_level#, FREEBOARD_NO_SEQ.CURRVAL) <!-- ref로 넘어가는 것은 시퀀스의 현재값으로 채운다.자바빈 board로부터 전송된 값들 -->
+		                                              #content#, #regdate#, #re_step#, #re_level#, FREEBOARD_NO_SEQ.CURRVAL, 0) <!-- ref로 넘어가는 것은 시퀀스의 현재값으로 채운다.자바빈 board로부터 전송된 값들 -->
 	</insert>
 
     <insert id="insertBoardReply" parameterClass="board">
@@ -160,10 +160,18 @@
 		                     FILE_SAVNAME = #file_savname#
 		<include refid="where-no" />
 	</update>
-
 	
+	<!-- 댓글개수 UP -->
+	<update id="updateCommentCount" parameterClass="Integer">
+		UPDATE FREEBOARD SET COMMENTCNT = commentcnt + 1
+		WHERE NO = #no#
+	</update>
 	
-	
+	<!-- 댓글개수 DOWN -->
+	<update id="deleteCommentCount" parameterClass="Integer">
+		UPDATE FREEBOARD SET COMMENTCNT = commentcnt - 1
+		WHERE NO = #originno#
+	</update>
 	
 	<update id="updateReadHit" parameterClass="board">
 		UPDATE FREEBOARD SET READHIT = readHit + 1

@@ -24,12 +24,12 @@ public class viewAction extends ActionSupport {
 	  public static Reader reader;
 	  public static SqlMapClient sqlMapper;
 	  
-	  private boardVO paramClass = new boardVO(); //boardVO에서 생성한 parameter들을 저장할 객체 paramClass
-	  private boardVO resultClass = new boardVO(); //처리된 쿼리 결과 값을 저장하기 위한 객체
+	  private boardVO paramClass = new boardVO(); //boardVO�뿉�꽌 �깮�꽦�븳 parameter�뱾�쓣 ���옣�븷 媛앹껜 paramClass
+	  private boardVO resultClass = new boardVO(); //泥섎━�맂 荑쇰━ 寃곌낵 媛믪쓣 ���옣�븯湲� �쐞�븳 媛앹껜
 	  private List<cboardVO> commentlist = new ArrayList<cboardVO>();
 	  
-	  private cboardVO cClass = new cboardVO(); //cboardVO에서 생성한 parameter를 저장할 객체 cClass
-	  private cboardVO cResult = new cboardVO(); //처리된 쿼리 결과값을 저장하기 위한 객체
+	  private cboardVO cClass = new cboardVO(); //cboardVO�뿉�꽌 �깮�꽦�븳 parameter瑜� ���옣�븷 媛앹껜 cClass
+	  private cboardVO cResult = new cboardVO(); //泥섎━�맂 荑쇰━ 寃곌낵媛믪쓣 ���옣�븯湲� �쐞�븳 媛앹껜
 	  
 	  private int currentPage = 1;
 	  
@@ -43,31 +43,29 @@ public class viewAction extends ActionSupport {
 	  private String fileUploadPath = "c:\\Java\\upload\\";
 	  
 	  private InputStream inputStream;
-	  private String contentDisposition; //파일명?파일 속성과 관련된 객체 생성
+	  private String contentDisposition; //�뙆�씪紐�?�뙆�씪 �냽�꽦怨� 愿��젴�맂 媛앹껜 �깮�꽦
 	  private long contentLength;
 	  
 	  
 	  
 	  
-	  //생성자
-	  public viewAction() throws IOException{
-		   
-		  reader = Resources.getResourceAsReader("sqlMapConfig.xml"); //sqlMapConfig.xml xml파일의 설정 내용을 가져와서 reader 객체를 생성한다.
-		  sqlMapper = SqlMapClientBuilder.buildSqlMapClient(reader);//sqilMapConfig.xml의 내용을 적용한 sqlMapper객체 생성
-		  
+	  //�깮�꽦�옄
+	  public viewAction() throws IOException{	   
+		  reader = Resources.getResourceAsReader("sqlMapConfig.xml"); //sqlMapConfig.xml xml�뙆�씪�쓽 �꽕�젙 �궡�슜�쓣 媛��졇���꽌 reader 媛앹껜瑜� �깮�꽦�븳�떎.
+		  sqlMapper = SqlMapClientBuilder.buildSqlMapClient(reader);//sqilMapConfig.xml�쓽 �궡�슜�쓣 �쟻�슜�븳 sqlMapper媛앹껜 �깮�꽦
 		  reader.close();
 	  }
 
-	  //실행 메소드
+	  //�떎�뻾 硫붿냼�뱶
 	  public String execute() throws Exception{
 		  
-		   // 해당 글의 조회수 +1
-		    paramClass.setNo(getNo()); //글 번호 생성
-		    sqlMapper.update("free.updateReadHit", paramClass); // 조회수 증가
+		   // �빐�떦 湲��쓽 議고쉶�닔 +1
+		    paramClass.setNo(getNo()); //湲� 踰덊샇 �깮�꽦
+		    sqlMapper.update("free.updateReadHit", paramClass); // 議고쉶�닔 利앷�
 		    
-		    //해당 번호의 글을 가져온다.
-		    //queryForObect : DB로부터 1개의 레코드를 가져와 저장한다. 두개 이상의 레코드가 반환되는 경우 예외처리되며 값이 없을 경우 null을 반환한다.
-		    //queryForList : DB로부터 2개 이상의 레코드를 가져와 자바 객체의 List를 만드는 데 사용한다.
+		    //�빐�떦 踰덊샇�쓽 湲��쓣 媛��졇�삩�떎.
+		    //queryForObect : DB濡쒕��꽣 1媛쒖쓽 �젅肄붾뱶瑜� 媛��졇�� ���옣�븳�떎. �몢媛� �씠�긽�쓽 �젅肄붾뱶媛� 諛섑솚�릺�뒗 寃쎌슦 �삁�쇅泥섎━�릺硫� 媛믪씠 �뾾�쓣 寃쎌슦 null�쓣 諛섑솚�븳�떎.
+		    //queryForList : DB濡쒕��꽣 2媛� �씠�긽�쓽 �젅肄붾뱶瑜� 媛��졇�� �옄諛� 媛앹껜�쓽 List瑜� 留뚮뱶�뒗 �뜲 �궗�슜�븳�떎.
 		    resultClass = (boardVO) sqlMapper.queryForObject("free.selectOne", getNo());
 		    
 		    commentlist = sqlMapper.queryForList("free.commentSelectAll", getNo());
@@ -75,20 +73,20 @@ public class viewAction extends ActionSupport {
 		    return SUCCESS;
 	  }
 
-       //첨부 파일 다운로드
+       //泥⑤� �뙆�씪 �떎�슫濡쒕뱶
 	  public String download() throws Exception{
 		    
-		  //해당 번호의 파일 정보를 가져온다.
+		  //�빐�떦 踰덊샇�쓽 �뙆�씪 �젙蹂대�� 媛��졇�삩�떎.
 		  resultClass = (boardVO) sqlMapper.queryForObject("free.selectOne", getNo());
 		  
-		  //파일 경로와 파일명을 file객체에 넣는다.
+		  //�뙆�씪 寃쎈줈�� �뙆�씪紐낆쓣 file媛앹껜�뿉 �꽔�뒗�떎.
 		  File fileInfo = new File(fileUploadPath + resultClass.getFile_savname());
 		  
 		  System.out.print(resultClass.getFile_savname());
 		  
-		  //다운로드 파일 정보 설정
+		  //�떎�슫濡쒕뱶 �뙆�씪 �젙蹂� �꽕�젙
 		  setContentLength(fileInfo.length());
-		  setContentDisposition("attachment;filename=" + URLEncoder.encode(resultClass.getFile_orgname(), "utf-8")); //파일이 한글인 경우 깨지는 것을 방지
+		  setContentDisposition("attachment;filename=" + URLEncoder.encode(resultClass.getFile_orgname(), "utf-8")); //�뙆�씪�씠 �븳湲��씤 寃쎌슦 源⑥��뒗 寃껋쓣 諛⑹�
 		  setInputStream(new FileInputStream(fileUploadPath + resultClass.getFile_savname()));
 		  
 	      /*File fileInfo = new File(fileUploadPath + fileDownloadName);
@@ -99,40 +97,40 @@ public class viewAction extends ActionSupport {
 		  return SUCCESS;
 	  }
 	  
-	   //비밀번호 체크 폼 -> checkPassword.jsp로 연결된다
+	   //鍮꾨�踰덊샇 泥댄겕 �뤌 -> checkPassword.jsp濡� �뿰寃곕맂�떎
 	    public String checkForm() throws Exception{
 	    	
 	    	return SUCCESS;
 	    }
 	    
-	    //비밀번호 체크 액션 -> checkAction 메소드는 error리턴 시 checkError.jsp로 연결되고 success리턴 시 checkSuccess.jsp로 연결된다.
+	    //鍮꾨�踰덊샇 泥댄겕 �븸�뀡 -> checkAction 硫붿냼�뱶�뒗 error由ы꽩 �떆 checkError.jsp濡� �뿰寃곕릺怨� success由ы꽩 �떆 checkSuccess.jsp濡� �뿰寃곕맂�떎.
 	    public String checkAction() throws Exception{
 	    	
-	    	  // 비밀번호 입력값 파라미터 설정
-	    	paramClass.setNo(getNo()); //글 번호를 받는다
-	    	paramClass.setPassword(getPassword()); //비밀번호를 받는다
+	    	  // 鍮꾨�踰덊샇 �엯�젰媛� �뙆�씪誘명꽣 �꽕�젙
+	    	paramClass.setNo(getNo()); //湲� 踰덊샇瑜� 諛쏅뒗�떎
+	    	paramClass.setPassword(getPassword()); //鍮꾨�踰덊샇瑜� 諛쏅뒗�떎
 	    	
-	    	//현재 글의 비밀번호 가져오기
+	    	//�쁽�옱 湲��쓽 鍮꾨�踰덊샇 媛��졇�삤湲�
 	    	resultClass = (boardVO) sqlMapper.queryForObject("free.selectPassword", paramClass);
 	    	
-	    	//입력 시 비밀번호가 틀리면 ERROR 리턴
+	    	//�엯�젰 �떆 鍮꾨�踰덊샇媛� ��由щ㈃ ERROR 由ы꽩
 	    	if(resultClass == null)
 	    		return ERROR;
 	    	
 	    	return SUCCESS;
 	    }
 
-             // 코멘트입력,삭제와 연관된 메소드. 위와 마찬가지로 error, success 리턴 시 각각 해당 jsp로 연결된다.
+             // 肄붾찘�듃�엯�젰,�궘�젣�� �뿰愿��맂 硫붿냼�뱶. �쐞�� 留덉갔媛�吏�濡� error, success 由ы꽩 �떆 媛곴컖 �빐�떦 jsp濡� �뿰寃곕맂�떎.
 	    public String checkAction2() throws Exception{
 	    	
 	    	
 	    	
 	    	
-	    	cClass.setNo(getNo()); // boardVO의 no와 다른 cboardVO에서 생성한 댓글의 no
+	    	cClass.setNo(getNo()); // boardVO�쓽 no�� �떎瑜� cboardVO�뿉�꽌 �깮�꽦�븳 �뙎湲��쓽 no
 	    	/*cClass.setPassword(getPassword());*/
-	    	cClass.setOriginno(getOriginno()); //댓글이 속한 원 글의 번호를 가져온다.
-	    	cResult = (cboardVO) sqlMapper.queryForObject("free.selectPassword2", cClass); // 현재 댓글의 비밀번호를 DB로부터 가져온다.
-	        if(cResult == null) //DB에서 가져온 비밀번호와 일치하는 것이 없으면 error, 일치하면 success를 리턴
+	    	cClass.setOriginno(getOriginno()); //�뙎湲��씠 �냽�븳 �썝 湲��쓽 踰덊샇瑜� 媛��졇�삩�떎.
+	    	cResult = (cboardVO) sqlMapper.queryForObject("free.selectPassword2", cClass); // �쁽�옱 �뙎湲��쓽 鍮꾨�踰덊샇瑜� DB濡쒕��꽣 媛��졇�삩�떎.
+	        if(cResult == null) //DB�뿉�꽌 媛��졇�삩 鍮꾨�踰덊샇�� �씪移섑븯�뒗 寃껋씠 �뾾�쑝硫� error, �씪移섑븯硫� success瑜� 由ы꽩
 	    		    return ERROR;
 	    	return SUCCESS;
 	    }
