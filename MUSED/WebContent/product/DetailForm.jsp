@@ -205,7 +205,8 @@ function zzim_hagi(){
 									<br/>
 									<img class="circle"	id="blah" src="C:\Java\upload\file_<s:property value='c_id'/>.jpg" width="50" height="50" /><br/> 
 									<s:property value="c_id" /><br>
-												<s:property value="c_regdate" /><br><br></td>
+												<s:property value="c_regdate" /><br><br>
+												</td>
 									<td width="70%" align="center"><br/><br/><br/><br/><s:property value="c_content" /> </td>
 									<td width="10%" align="center"><br/><br/><br/><br/>
 									<s:url id="DeleteURL" action="deletePComment">
@@ -229,8 +230,8 @@ function zzim_hagi(){
 									<td colspan="3" height="1"></td>
 								</tr>
 							</s:iterator>
-							</tr>
 							</table>
+							</tr>
 							<tr>
 								<td colspan="2" height="10"><s:if
 										test="commentList.size() <= 0">
@@ -239,11 +240,6 @@ function zzim_hagi(){
 			<br/><br/>
 			</s:if></td>
 							</tr>
-						</table>
-					</form>
-
-				</td>
-			</tr>
 
 			<tr bgcolor="#777777">
 				<td colspan="2" height="2"></td>
@@ -265,7 +261,7 @@ function zzim_hagi(){
 											<img src="/MUSED/product/img/<s:property value="main_img"/>"
 												style="height: 100px; width: 100px; display: block;" />
 										</s:a>
-									</td>
+									</td><td>&nbsp;&nbsp;</td>
 								</s:iterator>
 							</s:subset>
 						</tr>

@@ -141,16 +141,16 @@ function refresh(a){
 	renewURL = renewURL.replace(/sort=([0-9]+)/ig,'');
 	//주소 추가 할당
 	if(a==0){
-	renewURL += '&sort='+0;
+	renewURL += '&sort='+"0";
 	}
 	if(a==1){
-		renewURL += '&sort='+1;
+		renewURL += '&sort='+"1";
 	}
 	if(a==2){
-		renewURL += '&sort='+2;
+		renewURL += '&sort='+"2";
 	}
 	if(a==3){
-		renewURL += '&sort='+3;
+		renewURL += '&sort='+"3";
 	}
 	
 	//페이지 갱신 실행!
@@ -223,20 +223,20 @@ function refreshsuccess(a){
 	<tr align="center" height="30px">
 		<td colspan="5">
 				&nbsp;&nbsp;<input type="text" name="searchKeyword" id="searchkeyword" theme="simple" placeholder="내용+제목"/>
-				<input name="search" type="submit" value="검색" class="inputb">
+				<input name="search" type="submit" value="검색" class="inputb"/>
 		</td>
 	</tr>
 		</form>
 	<tr align="left">
 		<td colspan="5" height="30px">
-			<br>
+			<br/>
 				<select name="sort" class="sort">
 					<option value="0" onclick="refresh(0)">최신순</option>
 					<option value="1" onclick="refresh(1)">인기순</option>
 					<option value="2" onclick="refresh(2)">저가순</option>
 					<option value="3" onclick="refresh(3)">고가순</option>
 				</select>
-			<br>
+			<br/>
 		</td>
 	</tr>
 
