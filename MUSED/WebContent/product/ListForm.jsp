@@ -5,10 +5,10 @@ pageEncoding="utf-8"%>
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
-<link rel="stylesheet" href="/MUSED/css/testtest.css"/>
 <head>
 <title>악기 게시판</title>
 
+<link rel="stylesheet" href="/MUSED/css/productList.css"/>
 <script language=javascript>
 
 function deleteAll(f)
@@ -141,16 +141,16 @@ function refresh(a){
 	renewURL = renewURL.replace(/sort=([0-9]+)/ig,'');
 	//주소 추가 할당
 	if(a==0){
-	renewURL += '&sort='+0;
+	renewURL += '&sort='+"0";
 	}
 	if(a==1){
-		renewURL += '&sort='+1;
+		renewURL += '&sort='+"1";
 	}
 	if(a==2){
-		renewURL += '&sort='+2;
+		renewURL += '&sort='+"2";
 	}
 	if(a==3){
-		renewURL += '&sort='+3;
+		renewURL += '&sort='+"3";
 	}
 	
 	//페이지 갱신 실행!
@@ -162,36 +162,11 @@ function refreshsuccess(a){
 }
 
 </script>
-<style>
-input[type="checkbox"] + label {
-	display: inline-block;
-	width: 90px;
-	height: 20px;
-	border: 2px solid #4e4e4e;
-	cursor: pointer;
-	font-weight:bold
-}
-input[type="checkbox"]:checked + label {
-	background-color: #292929;
-	color:#ffffff;
-}
-input[type="checkbox"]{
-	display: none;
-}
-input[type="submit"]{
-	 width:40;
-}
-#searchkeyword{
-	width:350px;
-}
-select, input{
-	height:25px
-}
-</style>
 
 </head>
 
 <body>
+
 	<div id="heading" >
 			<h1>MUSED</h1>
 	</div>
@@ -211,8 +186,8 @@ select, input{
 				</ul>
 			</nav>
 	</section>
-	<div id="main">
-<table width="600" border="0" cellspacing="0" cellspadding="2">
+	<div id="main" align="center">
+<table width="95%" border="0" cellspacing="0" cellspadding="2">
 		  <s:hidden name="currentPage" value="%{currentPage}" />
 		  <form name="fwrite" action="Psearch.action">
 	<tr align="center" height="30px">
@@ -221,31 +196,32 @@ select, input{
 	<s:hidden name="sort" value="0" />
 		<td colspan="5">
 		  	<input name="category1" type="checkbox" id="classic" value="classic">
-   			 	<label for="classic">클래식</label>
+   			 	<label for="classic"><img src="/MUSED/product/ui_img/클래식.png"/>클래식</label>
    			 	
+	   		<input name="category5" type="checkbox" id="sound" value="sound">
+	   			 <label for="sound"><img src="/MUSED/product/ui_img/음악.png"/>음향악기</label>
+	   			 
    			<input name="category2" type="checkbox" id="guiter" value="guiter">
-   				<label for="guiter">기타</label>
-   				
-	   		<input name="category3" type="checkbox" id="drum" value="drum">
-	   			 <label for="drum">드럼/타악기</label>
+   				<label for="guiter"><img src="/MUSED/product/ui_img/기타.png"/>기타</label>
 	   			 
 	   		<input name="category4" type="checkbox" id="piano" value="piano">
-	   			 <label for="piano">건반악기</label>
-	   			 
-	   		<input name="category5" type="checkbox" id="sound" value="sound">
-	   			 <label for="sound">음향악기</label>
+	   			 <label for="piano"><img src="/MUSED/product/ui_img/피아노.png"/>건반악기</label>
+   				
+	   		<input name="category3" type="checkbox" id="drum" value="drum">
+	   			 <label for="drum"><img src="/MUSED/product/ui_img/드럼.png"/>드럼/타악기</label>
 	   			 
 	   	   	<input name="category6" type="checkbox" id="etc" value="etc">
-	   			 <label for="etc">그 외 악기</label>
+	   			 <label for="etc"><img src="/MUSED/product/ui_img/그외.png"/>그 외 악기</label>
 		</td>
 	</tr>
-		<tr align="left" height="30px">
-		<td colspan="5">
+	
+		<tr align="center" height="30px">
+		<td colspan="5" >
 		&nbsp;&nbsp;가 격 
-		<input name="priceA" type="text">원 ~ <input name="priceB" type="text">원
+		<input name="priceA" type="text">&nbsp;원 ~ <input name="priceB" type="text">&nbsp;원
 		</td>
 		</tr>
-	<tr align="left" height="30px">
+	<tr align="center" height="30px">
 		<td colspan="5">
 
 		&nbsp;&nbsp;지 역 
@@ -264,24 +240,23 @@ select, input{
 
 		</td>
 	</tr>
-	<tr align="left" height="30px">
+	<tr align="center" height="30px">
 		<td colspan="5">
 				&nbsp;&nbsp;<input type="text" name="searchKeyword" id="searchkeyword" theme="simple" placeholder="내용+제목"/>
-				<input name="search" type="submit" value="검색" class="inputb">
+				<input name="search" type="submit" value="검색" class="inputb"/>
 		</td>
 	</tr>
 		</form>
 	<tr align="left">
 		<td colspan="5" height="30px">
-			<br>
-				<select name="sort">
-				
+			<br/>
+				<select name="sort" class="sort">
 					<option value="0" onclick="refresh(0)">최신순</option>
 					<option value="1" onclick="refresh(1)">인기순</option>
 					<option value="2" onclick="refresh(2)">저가순</option>
 					<option value="3" onclick="refresh(3)">고가순</option>
 				</select>
-			<br>
+			<br/>
 		</td>
 	</tr>
 
@@ -304,15 +279,18 @@ select, input{
 			</s:url>
       <td>	 
           &nbsp;<s:a href="%{DetailURL}">
-      			<img src="/MUSED/product/img/<s:property value='main_img'/>" style="height: 100px; width: 100px; display: block;"/>
+      			<img src="/MUSED/product/img/<s:property value='main_img'/>" style='height: 200px; width: 200px; display: block;'/>
 				<br><s:property value="product_subject" />
 				</br></s:a>
-				<br>판매자 : <s:property value="product_id"/>	
-				 
-				<br><s:property value="product_price"/>원
+				<br>
+				<font size="2p">판매자 : <s:property value="product_id"/>	</font>
+				</br>
+				<br>
+				<s:property value="product_price"/>원
+				</br>
 	  </td>
 	  	     	<s:if test="#stat.count%5==0">
-  					<tr></tr>
+  					<tr align="center"></tr>
 				</s:if>	  
 		</s:iterator>  		
 		</s:if>
@@ -322,24 +300,28 @@ select, input{
 	 <s:iterator value="list" status="stat">
       <td>	 
           &nbsp;<s:a href="loginForm.action">
-      			<img src="/MUSED/product/img/<s:property value="main_img"/>" style="height: 100px; width: 100px; display: block;"/>
+      			<img src="/MUSED/product/img/<s:property value="main_img"/>" style="height: 200px; width: 200px; display: block;"/>
 				<br><s:property value="product_subject"/>
-				</br></s:a>
-				<br><s:property value="product_id"/>	
-				<br><s:property value="product_price"/>원
+				<br></s:a>
+				<br><font size="2p">판매자 : <s:property value="product_id"/>	</font>
+				<br><br><s:property value="product_price"/>원
 	  </td>
 	  	     	<s:if test="#stat.count%5==0">
   					<tr></tr>
 				</s:if>	  
 		</s:iterator>  		
 	 </s:if>
+	 
 	</tr>
-   	
 
 	<tr align="center">
-		<td colspan="5"><s:property value="pagingHtml" escape="false" /></td>
+		<td colspan="5"><br></br><s:property value="pagingHtml" escape="false" /></td>
+		
+	</tr>
+	<tr>
+	<td><br></br></td>
 	</tr>
 </table>
-</div>	
+</div>
 </body>
 </html>

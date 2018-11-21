@@ -9,15 +9,16 @@
  
  <head>
    <title>게시판 오류 발생</title>
-   <link rel="stylesheet" href="/board/common/css/css.css" type="text/css">
+  <link rel="stylesheet" href="/MUSED/css/board.css"/>
  </head>
  
  <body>
-   <h2>게시판 오류 발생</h2>
-     <table width="600" border="0" cellspacing="0" cellpadding="0">
+<div id="board" align="center">
+  <h2 >게시판 오류 발생</h2>
+     <table width="600" align="center" border="0" cellspacing="0" cellpadding="0">
    
    <tr>
-     <td>게시판에 오류가 발생했습니다. 관리자에게 문의바랍니다.</td>
+     <td align="center"><br></br>게시판에 오류가 발생했습니다. 관리자에게 문의바랍니다.</td>
    </tr>
    
    <tr>
@@ -25,11 +26,12 @@
    </tr>
    
    <tr>
-     <td> <a href="listAction.action">리스트 화면으로 이동</a></td>
+     <td align="center">
+     <input name="free_list" type="button" value="자유 게시판 목록으로" class="inputb" onClick="javascript:location.href='listAction.action'"/>
+   </td>
    </tr>
    
    </table>
-   
-     </form>
+     </div>
      </body>
  </html>

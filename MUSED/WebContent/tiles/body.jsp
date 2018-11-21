@@ -5,11 +5,14 @@
 <!DOCTYPE html>
 <html>
 <head>
+<<<<<<< HEAD
+=======
 <!-- 웹 폰트 적용  -->
 <!-- css 적용 -->
 <link href="https://fonts.googleapis.com/css?family=Henny+Penny" rel="stylesheet"/>
 <link rel="stylesheet" href="/MUSED/css/testtest.css"/>
 
+>>>>>>> branch 'master' of https://github.com/Soobinnn/MUSED.git
 
 <title>MUSED_Main</title>
 </head>
@@ -43,8 +46,9 @@
 	</section>		
 	<!-- Article부분 -->
 	<article id="main_article">
-		<div id="main">
-			<section id ="product_section">
+
+	<div id = "main">
+		<section id ="product_section">
 			<h1>중고악기거래</h1>
 			&nbsp;<a href="productList.action?currentPage=1&sort=0">전체보기</a>
 			<table width="95%" border="0" cellspacing="0" cellspadding="2">

@@ -57,6 +57,8 @@
 			<result type="tiles">productDeleteSuccess</result>
 		</action>
 		
+		
+		
 		<action name="Psearch" class="product.SearchAction">
 			<result type="tiles">productList</result>
 		</action>

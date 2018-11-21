@@ -44,6 +44,7 @@
 						</s:if>
 				</s:else>
 			</nav>
+
 			</div>
 		</header>
 		
@@ -52,6 +53,7 @@
 					<li>	
 					<a href="mypage.action"><s:if test="%{resultClass.file_savname == null}">
 					<img class="border" src="/MUSED/tiles/image/myPage.png"width="130px" height="130px" />
+
 					</s:if>
 					<s:else>
 					<img class="border"src="/MUSED/mypage/image/thum_<s:property value="%{#session.ID}"/>.jpg" width="130px" height="130px" /> 

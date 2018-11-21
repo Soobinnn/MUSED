@@ -100,11 +100,11 @@ public class DetailAction extends ActionSupport {
 			System.out.println(t[i]);
 			if (t[i].indexOf("직") == 0) // 이미지 추가!
 			{
-				type.add("직거래");
+				type.add("/MUSED/product/ui_img/직.png");
 			} else if (t[i].indexOf("포") == 0) {
-				type.add("배송비 포함 택배");
+				type.add("/MUSED/product/ui_img/택배_포.png");
 			} else if (t[i].indexOf("미") == 0) {
-				type.add("배송비 미포함 택배");
+				type.add("/MUSED/product/ui_img/택배_미.png");
 			}
 		}
 

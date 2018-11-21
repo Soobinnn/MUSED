@@ -7,10 +7,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
-<style type="text/css">
-.size{border:solid 0px; position:absolute; float:left; overflow:hidden; width:824; height:1800;
-top:500; left:410;}
-</style>
 <head>
 <title>공 지 사 항</title>
 <script language="javascript">
@@ -27,11 +23,8 @@ top:500; left:410;}
 	}
 		
 </script>
+<link rel="stylesheet" href="/MUSED/css/board.css"/>
 
-
-
-
-<link rel="stylesheet" href="/StrutsBoard/board/common/css/css.css" type="text/css">
 </head>
 
 <body>
@@ -39,7 +32,9 @@ top:500; left:410;}
 		<a href='/MUSED/tiles/notice/listAction.action?currentPage=1'>공지사항</a>&nbsp;&nbsp; <a href='/MUSED/tiles/free/listAction.action'>자유게시판</a> &nbsp;&nbsp; <a href='/MUSED/tiles/sug/listAction.action'>건의게시판</a>
 	<br/><br/><br/><br/><br/><br/><br/>	
 	</div>
+	<div id="board" align="center">
 	<table width="600" border="0" cellspacing="0" cellpadding="2">
+			<tr><td><br></br><br></br></td></tr>
 		<tr>
 			<td align="center"><h2>공 지 사 항</h2></td>
 		</tr>
@@ -49,13 +44,13 @@ top:500; left:410;}
 		</tr>
 	</table>
 
-	<table width="600" border="0" cellspacing="0" cellpadding="2">
-		<tr align="center" bgcolor="#F3F3F3">
-			<td width="50"><strong>번호</strong></td>
-			<td width="350"><strong>제목</strong></td>
-			<td width="70"><strong>글쓴이</strong></td>
-			<td width="80"><strong>날짜</strong></td>
-			<td width="50"><strong>조회</strong></td>
+	<table width="90%" border="0" cellspacing="0" cellpadding="2">
+		<tr height="40" align="center" bgcolor="#F2F2F2">
+			<td class="free" width="50"><strong>번호</strong></td>
+			<td class="free" width="350"><strong>제목</strong></td>
+			<td class="free" width="70"><strong>글쓴이</strong></td>
+			<td class="free" width="80"><strong>날짜</strong></td>
+			<td class="free" width="50"><strong>조회</strong></td>
 		</tr>
 
 		<tr bgcolor="#777777">
@@ -79,17 +74,17 @@ top:500; left:410;}
 				</s:param>
 			</s:url>
 			
-			<tr>
-			   <td><s:property value="no" /></td>
-			   <td align="left">
+			<tr height="30">
+			   <td class="free" align="center"><s:property value="no" /></td>
+			   <td class="free" align="left">
 			      <%-- <s:if test="re_level != 0">
 			          <c:forEach var = "i" begin ="${re_level}" end = "0">&nbsp;</c:forEach>→
 			      </s:if> 공지사항은 답변글을 하지 않을것이므로 주석처리--%>
 			       <s:a href="%{viewURL}"><s:property value="subject" /></s:a>
 			   </td>
-			  <td> <s:property value="name" /></td>
-			 <td> <s:property value="regdate" /></td>
-			 <td><s:property value="readhit" /></td>
+			  <td class="free" align="center"> <s:property value="name" /></td>
+			 <td class="free" align="center"> <s:property value="regdate" /></td>
+			 <td class="free" align="center"><s:property value="readhit" /></td>
              </tr>
              
 			<tr bgcolor="#777777">
@@ -117,7 +112,7 @@ top:500; left:410;}
 		<s:if test="list.size() <=0">
 
 			<!-- <tr bgcolor="#FFFFFF" align="center"> -->
-			<tr>	
+			<tr align="center">	
 				<td colspan="5">등록된 게시물이 없습니다.</td>
 			</tr>
          </s:if>
@@ -126,11 +121,11 @@ top:500; left:410;}
 			</tr>
 
 		</s:if> --%>
-
+<tr><td><br></br></td></tr>
 		<tr align="center">
 			<td colspan="5"><s:property value="pagingHtml" escape="false" /></td>
 		</tr>
-
+<tr><td><br></br></td></tr>
 		<tr align="right">
 			
 			<%-- 글쓰기 로직 시작 --%>
@@ -164,6 +159,8 @@ top:500; left:410;}
 	        </form>
 	    </td>
 	  </tr>
+	  	  <tr><td><br></br></td></tr>
 </table>
+</div>
 </body>
 </html>

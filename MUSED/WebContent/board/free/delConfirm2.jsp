@@ -7,7 +7,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 	<title>삭제 확인</title>
-	<link rel="stylesheet" href="/StrutsBoard/board/common/css/css.css" type="text/css">
+<link rel="stylesheet" href="/MUSED/css/board.css"/>
 <script language="javascript">
 
 
@@ -20,19 +20,24 @@ function javascript(){
   
   <body>
   
-  	<h2>삭제 확인</h2>
-   <table>
+  	<h1 align="center">댓글 삭제 확인</h1><br></br>
+   <table align="center" width="100%">
    <form action="checkAction2.action" method="post">
-     <s:hidden name="no" value="%{no}"/>  <%-- 글 번호 전송 --%>
+   <tr><td align="center">
+   댓글을 삭제하시겠습니까?
+   </td>
+</tr>
+  <tr>
+  <td align="center">
+      <s:hidden name="no" value="%{no}"/>  <%-- 글 번호 전송 --%>
      <s:hidden name="originno" value="%{originno}" />
      <s:hidden name="currentPage" value="%{currentPage}"/> <%-- 수정 후 리스트로 넘어가지 않도록 --%>
-     
-   <input name="submit" type="submit" value="확인 " class="inputb">
+     <br>
+   <input name="submit" type="submit" value="확인 " class="inputb"/>
   
   &nbsp;
   <input type="button" onclick="javascript()" value="취소"/>
-    </input>
-      
+ </td></tr>
   </form>
   </table>
   

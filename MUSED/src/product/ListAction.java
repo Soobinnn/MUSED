@@ -45,7 +45,6 @@ public class ListAction extends ActionSupport
 	public String execute() throws Exception
 	{
 		
-		System.out.println("list:"+map);
 
 	    //정렬 : if 문
 		    if(getSort().equals("0")) {
@@ -60,8 +59,8 @@ public class ListAction extends ActionSupport
 		    else if(getSort().equals("3")) {
 		    	map.put("sort", "product_price desc");  // 고가순
 		    }
-		 
-	    System.out.println(map);
+			System.out.println("list:"+map);
+
 	    
 		list=sqlMapper.queryForList("product.selectAll",map);
 
