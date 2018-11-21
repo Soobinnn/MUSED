@@ -19,7 +19,7 @@
 		
 		<!--  상품 등록 처리   -->
 		<action name="productWrite" class="product.WriteAction">
-			<result type="tiles">productWriteSuccess</result>
+			<result type="tiles">productWriteSuccess</result>	
 		</action>
 		
 		<!-- 상품 상세보기 폼 -->

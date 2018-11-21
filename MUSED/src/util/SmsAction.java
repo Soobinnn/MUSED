@@ -45,13 +45,13 @@ public class SmsAction extends ActionSupport {
 		tempNum = new GenerateCertNumber();
 		authNum = tempNum.executeGenerate();
 			
-		api_key = "NCSBZXPOIHJQ9DLG";
-		api_secret = "LDM9UTPY7PQIYHEDZF2LNWRRFDRAKZDW";
+		api_key = "NCSDWXRYDLI0MN1B";
+		api_secret = "T4LZGIPEXI5IUFCO036UF1G5B61CHYI9";
 		coolsms = new Coolsms(api_key, api_secret);
 		
 		HashMap<String,String> set = new HashMap<String, String>();
 		set.put("to", phone);
-		set.put("from", "01027565694");
+		set.put("from", "01071027146");
 		set.put("text", "안녕하세요. MUSED입니다. 고객님의 본인인증 번호는 " + authNum + " 입니다.");
 		set.put("type", "sms");
 		

@@ -25,7 +25,7 @@ public class ListAction extends ActionSupport
 	private String searchKeyword;
 	private int searchNum;
 	private int num =0;
-	private String sort;
+	private String sort="0";
 	HashMap map = new HashMap();
 	 
 	private int currentPage=1;	//현재 페이지

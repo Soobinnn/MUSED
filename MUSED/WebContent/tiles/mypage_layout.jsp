@@ -1,11 +1,11 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-	pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=utf-8"
+	pageEncoding="utf-8"%>
 <%@ taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles"%>
-
+<link rel="stylesheet" href="/MUSED/css/testtest.css"/>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
+<meta charset="utf-8">
 <title><tiles:getAsString name="title" /></title>
 
 <style type="text/css">
@@ -22,7 +22,7 @@ body {
 
 div#left {
 	width: 200px;
-	height: 400px;
+	height: 600px;
 	float: left;
 }
 
@@ -38,22 +38,6 @@ div#left {
 	float: left;
 }
 
-#footer {
-	position : relative;
-	/* 중앙 정렬 */
-	width: 100%;
-	margin: 0 auto;
-	margin-bottom: 10px;
-	
-	/* 테두리 */
-	box-sizing : border-box;
-	padding: 10px;
-	border: 1px solid black;
-	top:400px;
-	bottom : 0px;
-	/* 글자 정렬 */
-	text-align: center;
-}
 </style>
 
 </head>

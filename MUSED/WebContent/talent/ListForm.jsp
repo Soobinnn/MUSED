@@ -7,6 +7,7 @@ pageEncoding="utf-8"%>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 
+
 <link rel="stylesheet" href="/MUSED/css/productList.css"/>
 
 <script language=javascript>
@@ -167,6 +168,27 @@ function refreshsuccess(a){
 <title>재능 게시판</title>
 </head>
 <body>
+
+	<div id="heading" >
+			<h1>MUSED</h1>
+	</div>
+	<section id="body_nav">	
+		     <nav id="main_gnb">
+				<ul class="left">
+					<li><a href="productList.action?currentPage=1&sort=0">중고악기거래</a></li>
+					<li class="active"><a href="talentList.action?currentPage=1&sort=0">재능거래</a></li>
+					<li><a href="/MUSED/tiles/free/listAction.action?currentPage=1">커뮤니티</a></li>
+
+				</ul>
+				<ul class="right">
+					<s:if test='%{#session.ID != null}'>
+						<li id="menubar"><a href="productWriteForm.action">악기판매</a></li>
+						<li id="menubar"><a href="talentWriteForm.action">재능판매</a></li>
+					</s:if>
+				</ul>
+			</nav>
+	</section>
+	
 <div id="main" align="center">
 <table width="95%" border="0" cellspacing="0" cellspadding="2">
   <s:hidden name="currentPage" value="%{currentPage}" />
@@ -302,5 +324,6 @@ function refreshsuccess(a){
 	<td><br></br></td>
 	</tr>
 </table>
+</div>
 </body>
 </html>

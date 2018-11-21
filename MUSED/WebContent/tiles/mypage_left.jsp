@@ -1,29 +1,35 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
+<link rel="stylesheet" href="/MUSED/css/testtest.css"/>
 <head>
-<meta charset="EUC-KR">
-<title>Insert title here</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 </head>
 <body>
-
-<h2>»óÇ°°ü¸®</h2><br>
-<input type="button" value="µî·ÏµÈ »óÇ°" onclick="javascript:location.href='myProduct.action'"><br>
-<input type="button" value="µî·ÏµÈ Àç´É" onclick="javascript:location.href='myTalent.action'"><br>
-<input type="button" value="ÂòÇÑ »óÇ°" onclick="javascript:location.href='myZzimProduct.action'"><br>
-<input type="button" value="ÂòÇÑ Àç´É" onclick="javascript:location.href='myZzimTalent.action'"><br>
-<h2>ÆÇ¸Å³»¿ª</h2><br>
-<input type="button" value="Á¦Ç° ÆÇ¸Å ³»¿ª" onclick="javascript:location.href='mySellProduct.action'"><br>
-<input type="button" value="Àç´É ÆÇ¸Å ³»¿ª" onclick="javascript:location.href='mySellTalent.action'"><br>
-<h2>ÂÊÁö</h2><br>
-<input type="button" value="ÂÊÁö º¸³»±â" onclick="javascript:location.href='sendMessageForm.action'"><br>
-<input type="button" value="¹ÞÀº ÂÊÁö" onclick="javascript:location.href='receivedMessage.action?check=0'"><br>
-<input type="button" value="º¸³½ ÂÊÁö" onclick="javascript:location.href='sendedMessage.action?check=1'"><br>
-<h2>°³ÀÎÁ¤º¸ °ü¸®</h2>
-<input type="button" value="°³ÀÎÁ¤º¸¼öÁ¤" onclick="javascript:location.href='memberUpdateForm.action'"><br>
-<input type="button" value="ºñ¹Ð¹øÈ£º¯°æ" onclick="javascript:location.href='modifyPwForm.action'"><br>
-<input type="button" value="È¸¿ø Å»Åð" onclick="javascript:location.href='memberDeleteForm.action'"><br>
+<section class="mypage_nav">
+	<ul><h2>ìƒí’ˆê´€ë¦¬</h2><hr/>
+		<li><input id="mypage_nav1" type="button" value="ë“±ë¡ëœ ìƒí’ˆ" onclick="javascript:location.href='myProduct.action'"></li>
+		<li><input id="mypage_nav2" type="button" value="ë“±ë¡ëœ ìž¬ëŠ¥" onclick="javascript:location.href='myTalent.action'"></li>
+		<li><input id="mypage_nav3" type="button" value="ì°œí•œ ìƒí’ˆ" onclick="javascript:location.href='myZzimProduct.action'"></li>
+		<li><input id="mypage_nav4" type="button" value="ì°œí•œ ìž¬ëŠ¥" onclick="javascript:location.href='myZzimTalent.action'"></li>
+	</ul>
+	<ul><h2>íŒë§¤ë‚´ì—­</h2><hr/>
+		<li><input id="mypage_nav5" type="button" value="ì œí’ˆ íŒë§¤ ë‚´ì—­" onclick="javascript:location.href='mySellProduct.action'"></li>
+		<li><input id="mypage_nav6" type="button" value="ìž¬ëŠ¥ íŒë§¤ ë‚´ì—­" onclick="javascript:location.href='mySellTalent.action'"></li>
+	</ul>
+	<ul><h2>ìª½ì§€</h2><hr/>	
+		<li><input id="mypage_nav7" type="button" value="ìª½ì§€ ë³´ë‚´ê¸°" onclick="javascript:location.href='sendMessageForm.action'"></li>
+		<li><input id="mypage_nav8" type="button" value="ë°›ì€ ìª½ì§€" onclick="javascript:location.href='receivedMessage.action?check=0'"></li>
+		<li><input id="mypage_nav9" type="button" value="ë³´ë‚¸ ìª½ì§€" onclick="javascript:location.href='sendedMessage.action?check=1'"></li>
+	</ul>
+	<ul><h2>ê°œì¸ì •ë³´ ê´€ë¦¬</h2><hr/>
+		<li><input id="mypage_nav10" type="button" value="ê°œì¸ì •ë³´ìˆ˜ì •" onclick="javascript:location.href='memberUpdateForm.action'"></li>
+		<li><input id="mypage_nav11" type="button" value="ë¹„ë°€ë²ˆí˜¸ë³€ê²½" onclick="javascript:location.href='modifyPwForm.action'"></li>
+		<li><input id="mypage_nav12" type="button" value="íšŒì› íƒˆí‡´" onclick="javascript:location.href='memberDeleteForm.action'"></li>
+	</ul>
+</section>
 
 </body>
 </html>

@@ -145,6 +145,7 @@ function zzim_hagi(){
 										&nbsp;&nbsp; 거래 선호 지역 : <s:property value="resultClass.product_sido" />&nbsp;
 										<s:property value="resultClass.product_gogon" /> <br>
 				</div>
+
 				</td>
 			</tr>
 			
@@ -201,9 +202,10 @@ function zzim_hagi(){
 							<table width="100%">
 							<s:iterator value="commentList" status="stat">
 								<tr>
-									<td width="20%" align="center">
-									<br/>
-									<img class="circle"	id="blah" src="C:\Java\upload\file_<s:property value='c_id'/>.jpg" width="50" height="50" /><br/> 
+
+									<td width="20%" align="center"><br/>
+									<img class="circle"	id="blah"src="/MUSED/mypage/image/file_<s:property value="c_id"/>.jpg" width="50" height="50" /><br> 
+
 									<s:property value="c_id" /><br>
 												<s:property value="c_regdate" /><br><br>
 												</td>
@@ -269,8 +271,10 @@ function zzim_hagi(){
 				</td>
 			</tr>
 
+
 			<tr align="right">
 				<td colspan="2">
+
 					<s:if test="%{#session.ID==resultClass.product_id}">
 						<input type="button" value="수정하기" class="inputb" onclick='btn(<s:property value="currentPage"/>,<s:property value="product_no"/>)'/>
 						<input name="delete" type="button" value="삭제하기" class="inputb"

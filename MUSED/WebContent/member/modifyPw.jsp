@@ -55,7 +55,7 @@ function checkPw(){
 				<table>
 					<tr>
 						<td>ID&nbsp;<input type="text" name="id"
-							value="<s:property value="id"/>"></td>
+							value="<s:property value="id"/>" readOnly></td>
 					</tr>
 					<tr>
 						<td>PWD&nbsp;<input type="password" name="password" /></td>

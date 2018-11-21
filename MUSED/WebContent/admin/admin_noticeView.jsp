@@ -7,7 +7,6 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <title>공 지 사 항</title>
-<link rel="stylesheet" href="/MUSED/css/board.css"/>
 <script type="text/javascript">
 	function validation()
 	{
@@ -45,7 +44,6 @@
 
 
 <body>
-<div id="board" align="center">
 	<table width="95%" border="0" cellspacing="0" cellpadding="2">
 	<tr>
 	<td><br></br></td>

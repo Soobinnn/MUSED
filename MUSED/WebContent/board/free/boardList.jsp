@@ -72,6 +72,13 @@
 			          <c:forEach var = "i" begin ="${re_level}" end = "0">&nbsp;</c:forEach>→
 			      </s:if>
 			       <s:a href="%{viewURL}"><s:property value="subject" /></s:a>
+
+				   <s:if test="commentcnt > 0">
+			       (<s:property value="commentcnt"/>)
+			       </s:if>
+			       <s:if test="readhit >= 20">
+			       	<img src="./image/hot.gif"/> 
+			       </s:if>
 			   </td>
 			  <td class="free" align="center"> <s:property value="name" /></td>
 			 <td class="free" align="center"> <s:property value="regdate" /></td>

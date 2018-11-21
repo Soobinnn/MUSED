@@ -1,14 +1,12 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=utf-8"
+    pageEncoding="utf-8"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
-<title>Insert title here</title>
+<meta charset="utf-8">
 </head>
 <body>
 
-<center><h3>여기에 각각에 해당하는 JSP보여주자!</h3></center>
 
 </body>
 </html>

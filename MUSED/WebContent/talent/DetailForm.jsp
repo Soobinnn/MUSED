@@ -73,7 +73,7 @@ function zzim_hagi(){
 		</td>
 	<td align="left" width="70%">
 	<h3 class="DetailSubject">
-	&nbsp;&nbsp;;
+	&nbsp;&nbsp;
 	<s:property value="resultClass.talent_subject"/></h3>
 </td>
 </tr>
@@ -121,10 +121,10 @@ function zzim_hagi(){
 				<s:iterator value="type" status="stat">
 							<img src='<s:property/>' style="width:40px; height:40px"/>
 							<!-- image로 출력하기 -->
-						</s:iterator><br>
+						</s:iterator><br/>
 					<input type="checkbox" id="cateLabel">
    			 	<label for="cateLabel"><s:property value="resultClass.talent_category" /></label></input>
-   			<br><br>
+   			<br><br/>
 					&nbsp;&nbsp;<h3 class="DetailSubject">	<s:property value="resultClass.talent_subject" /><br/></h3>
 						<br/><br/>
 						&nbsp;&nbsp; 제품명 : <s:property value="resultClass.talent_name" /><br/><br/>
@@ -140,6 +140,7 @@ function zzim_hagi(){
 										&nbsp;&nbsp; 거래 선호 지역 : <s:property value="resultClass.talent_sido" />&nbsp;
 										<s:property value="resultClass.talent_gogon" /> <br>
 				</div>
+
 </td>
 </tr>
 
@@ -201,7 +202,8 @@ function zzim_hagi(){
 <s:iterator value="TcommentList" status="stat">
 	<tr>
 			<td width="20%" align="center"><br/>
-			<img class="circle"	id="blah" src="C:\Java\upload\file_<s:property value="c_id"/>.jpg" width="50" height="50" /><br> 
+			<img class="border"	id="blah"src="/MUSED/mypage/image/file_<s:property value="c_id"/>.jpg" width="50" height="50" /><br> 
+
 			<s:property value="c_id"/><br>
 			<s:property value="c_regdate"/><br><br>
 		</td>
@@ -266,6 +268,7 @@ function zzim_hagi(){
 
 <tr align="right">
 <td colspan="2">
+
       <s:if test="%{#session.ID==resultClass.talent_id}">
 		<input type="button" value="수정하기" class="inputb" onclick='btn(<s:property value="currentPage"/>,<s:property value="talent_no"/>)'/>
 		<input name="delete" type="button" value="삭제하기" class="inputb" onClick="javascript:location.href='talentDelete.action?talent_no=<s:property value="talent_no"/>&currentPage=<s:property value="currentPage"/>'"/>

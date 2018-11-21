@@ -35,6 +35,11 @@ top:500; left:410;}
 </head>
 
 <body>
+	<div id="heading" >
+			<h1>공지사항</h1>
+	</div>
+	
+	<div id="main">
 	<table width="600" border="0" cellspacing="0" cellpadding="2">
 		<tr>
 			<td align="center"><h2>공 지 사 항</h2></td>
@@ -161,5 +166,6 @@ top:500; left:410;}
 	    </td>
 	  </tr>
 </table>
+</div>
 </body>
 </html>

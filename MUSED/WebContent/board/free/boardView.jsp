@@ -3,7 +3,9 @@
 <%@ taglib prefix="s" uri="/struts-tags"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
+
 <link rel="stylesheet" href="/MUSED/css/board.css"/>
+
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>자유 게시판</title>
@@ -22,6 +24,9 @@
 <div id="board" align="center">
 	<table width="95%" border="0" cellspacing="0" cellpadding="2">
 		<tr><td><br/><br/><br/></td></tr>
+
+	<s:hidden name="currentPage" value="%{currentPage}" />
+
 		<tr>
 			<td align="center"><h2>자유 게시판 게시글</h2></td>
 		</tr>
@@ -126,8 +131,11 @@
 		<s:iterator value="commentlist" status="stat">
 
 			<tr>
-				<td class="free" height="10" width="130" align="center"><s:property
-						value="name" /><br> <s:property value="regdate" /><br>
+
+				<td class="free" height="10" width="130" align="center">
+				<img class="border" id="blah" src="/MUSED/mypage/image/thum_<s:property value="name"/>.jpg"  width="50px" height="50px"/><br>
+				<s:property value="name" />
+						<br> <s:property value="regdate" /><br>
 				<br></td>
 
 				<td>
@@ -190,7 +198,7 @@
 				<%-- id세션 값이 같거나 관리자에게만  답글, 수정, 삭제 버튼이 보이도록 수정한다. --%>
 				
 				<s:if test="#session.ID == resultClass.name || #session.ACCESS_NUM == 1">			
-				<input name="list" type="button" value="답변달기" class="inputb" onClick="javascript:location.href='replyForm.action?no=<s:property value="no" />&currentPage=<s:property value="currentPage" />','reply'">
+				<input name="list" type="button" value="답변달기" class="inputb" onClick="javascript:location.href='replyAction.action?no=<s:property value="no" />&currentPage=<s:property value="currentPage" />','reply'">
 				
 				<input name="list" type="button" value="수정" class="inputb" onClick="javascript:location.href='modifyForm.action?no=<s:property value="no" />&currentPage=<s:property value="currentPage"/>'">
 	 
