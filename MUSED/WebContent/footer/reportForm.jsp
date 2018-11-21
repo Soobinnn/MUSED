@@ -40,11 +40,13 @@
         <tr>
          	<td width="100" bgcolor="#F4F4F4"><font color="#FF0000">*</font>  본인 아이디</td>
         	<td width="500" bgcolor="#FFFFFF">
-        	<s:if test='%{#session.ID == null}'>
-            	<s:textfield name="report_memid" theme="simple" value="%{resultClass.report_memid}" cssStyle="width:370px" maxlength="50"/>
+        	<s:if test='%{#session.ID == null}'> <%--ID세션값이 없으면 ID란을 공란으로 한다. --%>
+            	<%-- <s:textfield name="report_memid" theme="simple" value="%{resultClass.report_memid}" cssStyle="width:370px" maxlength="50"/> --%>
           	</s:if>
-          	<s:else>
-          		<s:textfield name="report_memid" theme="simple" value="%{#session.ID}" cssStyle="width:370px" maxlength="50"/>
+          	<s:else> <%--ID세션값이 있으면(로그인한 상태이면) --%>
+          		<s:property value="%{#session.ID}"/>
+          		<input type="hidden" name="name" value="<s:property value='%{#session.ID}' />"/>
+          		<input type="hidden" name="report_memid" theme="simple" value="%{#session.ID}" cssStyle="width:370px" maxlength="50"/>
         	</s:else>			
           	</td>
         </tr>
@@ -106,7 +108,13 @@
 
         <tr>
           <td align="right" colspan="2">    
+          	
+          	<%--로그인한 사람과 관리자에게만 작성 버튼이 보이도록 수정 --%>
+          	<s:if test="#session.ACCESS_NUM ==0 || #session.ACCESS_NUM ==1">
           	<input name="submit" type="submit" value="작성" class="inputb">
+            </s:if>
+               <s:else>
+                  </s:else>
             <input name="list" type="button" value="취소" class="inputb" onclick="window.parent.close();">
           </td>
         </tr>

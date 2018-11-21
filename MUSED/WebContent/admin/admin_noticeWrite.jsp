@@ -11,7 +11,7 @@
 
 <script type="text/javascript">
 	function validation() {
-		var frm = document.forms(0);
+		var frm = document.writef;
 
 		if (frm.subject.value == "") {
 			alert("제목을 입력해주세요.");
@@ -44,7 +44,7 @@
 	</table>
 	
 	<s:if test="reply">
-	   <form action="replyAction.action" method="post" enctype="multipart/form-data" onsubmit="return validation();">
+	   <form name="writef" action="replyAction.action" method="post" enctype="multipart/form-data" onsubmit="return validation();">
 	     <s:hidden name="ref" value="%{resultClass.ref}" /> <%-- html hidden field 태그를 이용해서 자동으로 값을 전송한다. --%>
 	     <s:hidden name="re_level" value="%{resultClass.re_level}" />
 	     <s:hidden name="re_step" value="%{resultClass.re_step}" />
@@ -52,14 +52,14 @@
 	
 	<s:elseif test="resultClass == NULL">
 		<%-- resultClass가 없으면 첫 입력으로 인식 --%>
-		<form action="/MUSED/tiles/notice/admin_writeAction.action" method="post"
+		<form name="writef" action="/MUSED/tiles/notice/admin_writeAction.action" method="post"
 			enctype="multipart/form-data" onsubmit="return validation();">
 	</s:elseif>
 
 	<s:else>
 		<%-- resultClass가 있으면 수정으로 인식 --%>
-		<form action="/MUSED/tiles/notice/admin_modifyAction.action" method="post"
-			enctype="multipart/form-data">
+		<form name="writef" action="/MUSED/tiles/notice/admin_modifyAction.action" method="post"
+			enctype="multipart/form-data" onsubmit="return validation();">
 			<s:hidden name="no" value="%{resultClass.no}" />
 			<s:hidden name="currentPage" value="%{currentPage}" />
 			<s:hidden name="old_file" value="%{resultClass.file_savname}" />

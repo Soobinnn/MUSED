@@ -11,7 +11,7 @@
 	<h1 class="bor_btm266 ">(주)Mused 이용약관
 </h1>
 
-	<div class="service_box">
+	<div style="width:60%; height:200px;overflow:auto" class="service_box">
 
 	<div class="service_box_top">
 	<h4>제 1장 총칙</h4>

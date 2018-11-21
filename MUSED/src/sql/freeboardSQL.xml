@@ -183,6 +183,7 @@
 	<delete id="deleteComment" parameterClass="comment">
 	   DELETE FROM freeBOARD_COMMENT
 	      where no = #no#
+	      and writer =#name#
 	</delete>
 	
 	<!-- 검색 -->

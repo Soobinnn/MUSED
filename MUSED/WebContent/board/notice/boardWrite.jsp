@@ -154,6 +154,7 @@
 
 		<tr>
 			<td align="right" colspan="2">
+ 			   <input name="submit" type="submit" value="작성완료" class="inputb">
  			   <input name="list" type="button" value="목록" class="inputb"
 					onClick="javascript:location.href='listAction.action?currentPage=<s:property value="currentPage"/>'"></td>
 				</td>

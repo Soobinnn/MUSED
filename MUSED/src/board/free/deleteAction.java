@@ -26,7 +26,7 @@ public class deleteAction extends ActionSupport {
 	
 	private int no; // 글 번호 객체 no
 	
-	private int name;
+	private String name;
 	// 생성자
 	public deleteAction() throws IOException{
 		
@@ -66,7 +66,7 @@ public class deleteAction extends ActionSupport {
 	    	cResult = new cboardVO();
 	    	
 	    	cClass.setNo(getNo());
-	    	
+	    	cClass.setName(getName());
 	    	
 	    sqlMapper.update("free.deleteComment", cClass);
 	    	
@@ -76,12 +76,15 @@ public class deleteAction extends ActionSupport {
 	    
 
 
-	public int getName() {
+	
+
+
+	public String getName() {
 			return name;
 		}
 
 
-		public void setName(int name) {
+		public void setName(String name) {
 			this.name = name;
 		}
 
