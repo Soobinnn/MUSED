@@ -33,11 +33,12 @@
 					</s:if>
 				</ul>
 			</nav>
+			<div id="board_nav1">
+				<a id="board_navd" href='/MUSED/tiles/notice/listAction.action'>공지사항</a>&nbsp;&nbsp; 
+				<a id="board_navd" href='/MUSED/tiles/free/listAction.action'>자유게시판</a> &nbsp;&nbsp; 
+				<a id="board_navd" href='/MUSED/tiles/sug/listAction.action'>건의게시판</a>
+			</div>
 	</section>
-<div>
-		<a href='/MUSED/tiles/notice/listAction.action'>공지사항</a>&nbsp;&nbsp; <a href='/MUSED/tiles/free/listAction.action'>자유게시판</a> &nbsp;&nbsp; <a href='/MUSED/tiles/sug/listAction.action'>건의게시판</a>
-	<br/><br/><br/><br/><br/><br/><br/>	
-	</div>
 	<div id="board_" align="center">
 	<table width="600" border="0" cellspacing="0" cellpadding="2">
 		<tr><td><br></br><br></br></td></tr>

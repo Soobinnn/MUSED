@@ -1117,6 +1117,28 @@ body:before
 	color : #0B2161;
 	font-weight :600;
 }
+#board_nav1
+{
+	position : relative;
+ 	left : 32rem;
+ 	margin : 1rem;
+ 	
+}
+#board_navd
+{
+	display :inline-block;
+	padding-right : 1rem;
+	text-decoration : none;
+	color:#fbf5ef;
+	font-weight : 600;
+	padding-top 
+	line-height : 1rem;
+}
+#board_navd:hover
+{
+	background-color : gray;
+	opacity : 0.4;
+}
 /* 로그인  */
 #login_logo
 {
@@ -2866,4 +2888,148 @@ select.product_select{
 
 .sort{
 	width: 100px
-} 
+}
+/*  소진마이페이지 */
+#myheading{
+   color:#ffffff;
+}
+#myheading .circle {
+   border-radius: 1200px !important;
+   overflow: hidden;
+   width: 128px;
+   height: 128px;
+   border: 8px solid rgba(255, 255, 255, 0.7);
+   position: relative;
+   top: 0px;
+   left:9
+}
+
+#myheading .replace { 
+   position: absolute;
+   width: 100px;
+   height: 30px;
+   border-radius: 10px;
+   font-weight: 600;
+   cursor: pointer;
+}
+
+ #myheading .in { 
+   width: 100px;
+   height: 30px;
+   border-radius: 10px;
+   font-weight: 600;
+   border-color: transparent;
+   font-size: 12px;
+   background: black;
+   color: #fff;
+   cursor: pointer;
+}
+
+#myheading .upload {
+   width: 100px;
+   height: 30px;
+   border-radius: 10px;
+   font-weight: 600;
+   border-color: transparent;
+   font-size: 12px;
+   background: black;
+   color: #fff;
+   cursor: pointer;
+   opacity: 0;
+   position: relative;
+}
+
+#myheading .border {
+   border-radius: 50%;
+   vertical-align:middle
+}
+
+#myheading #light:hover~ #arrow_box{
+   opacity:1;
+      margin-left:10rem;
+  width: 10em;
+  height: 8em;
+  border: 2px solid #0B2161;
+  border-radius: 12px;
+  padding: 5px;
+}
+
+#myheading .profileimg{
+   font-weight:bold;
+}
+
+#myheading td{ 
+   line-height:1.7rem;
+}
+
+
+#myheading #list{ 
+   line-height:2.5rem;
+}
+#myheading #arrow_box {
+   opacity:0;
+}
+
+
+
+#myPage{
+      background-color: #fbf5ef;
+      position: relative;
+      margin: 0 auto;
+      width: calc(100% - 4rem);
+      max-width: 100%;
+      height:41rem;
+      z-index: 2;
+      opacity : 0.8;
+      padding-top:0.5rem;
+      padding-bottom : 2rem;
+      border-radius: 13px;
+      margin-bottom : 2rem;
+}
+#myPage a{
+   text-decoration:none;
+   color:black;
+}
+#myPage h1{
+   font-weight:bold;
+}
+#myMessage{
+   background-color: #fbf5ef;
+      position: relative;
+      margin: 0 auto;
+      width: calc(100% - 4rem);
+      max-width: 100%;
+      height:41rem;
+      z-index: 2;
+      opacity : 0.8;
+      padding-top:0.5rem;
+      padding-bottom : 2rem;
+      border-radius: 13px;
+      margin-bottom : 2rem;
+}
+#myMessage .line{
+padding:10;
+}
+
+#myMessage #MsearchA{
+   position:relative;
+   
+   width:130px;
+   height:30px;
+   font-size:30p
+}
+#myMessage #MsearchB{
+   width:200px;
+   height:30px;
+   font-size:30p
+}
+#myMessage #MsearchC{
+   width:50px;
+   height:30px;
+   font-size:30p;
+   padding:0;
+}
+
+
+
+ 

@@ -47,6 +47,11 @@
 					</s:if>
 				</ul>
 			</nav>
+			<div id="board_nav1">
+				<a id="board_navd" href='/MUSED/tiles/notice/listAction.action'>공지사항</a>&nbsp;&nbsp; 
+				<a id="board_navd" href='/MUSED/tiles/free/listAction.action'>자유게시판</a> &nbsp;&nbsp; 
+				<a id="board_navd" href='/MUSED/tiles/sug/listAction.action'>건의게시판</a>
+			</div>
 	</section>
 		<!-- <a href='/MUSED/tiles/notice/listAction.action?currentPage=1'>공지사항</a>&nbsp;&nbsp; <a href='/MUSED/tiles/free/listAction.action'>자유게시판</a> &nbsp;&nbsp; <a href='/MUSED/tiles/sug/listAction.action'>건의게시판</a>
 	<br/><br/><br/><br/><br/><br/><br/>	 -->
