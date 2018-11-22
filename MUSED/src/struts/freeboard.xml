@@ -109,7 +109,7 @@
 	</action>
 	
 	<action name="deleteAction2" class="board.free.deleteAction" method="execute2">
-		<result type="chain">listAction</result>  
+		<result type="chain">listAction</result>
 	</action> 
 	
 	<!-- 코멘트작성 관련 액션 --> <!-- <result type="chain">listAction</result> -->

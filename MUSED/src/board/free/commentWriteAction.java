@@ -28,7 +28,7 @@ public class commentWriteAction extends ActionSupport {
 	Calendar today = Calendar.getInstance();
 	
 	
-	//생성자
+	//�깮�꽦�옄
 	public commentWriteAction() throws IOException{
       reader = Resources.getResourceAsReader("sqlMapConfig.xml");
       sqlMapper = SqlMapClientBuilder.buildSqlMapClient(reader);
@@ -53,6 +53,7 @@ public class commentWriteAction extends ActionSupport {
 		  paramClass.setRegdate(today.getTime());
 		  
 		  sqlMapper.insert("free.insertComment", paramClass);
+		  sqlMapper.update("free.updateCommentCount",getOriginno());
 		  
 		  return SUCCESS;
 	  }

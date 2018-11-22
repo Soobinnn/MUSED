@@ -1,11 +1,11 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-	pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=utf-8"
+	pageEncoding="utf-8"%>
 <%@ taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles"%>
 
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
+<meta charset="utf-8">
 <title><tiles:getAsString name="title" /></title>
 
 <style type="text/css">
@@ -40,18 +40,18 @@ div#left {
 
 #footer {
 	position : relative;
-	/* Áß¾Ó Á¤·Ä */
+	/* ì¤‘ì•™ ì •ë ¬ */
 	width: 100%;
 	margin: 0 auto;
 	margin-bottom: 10px;
 	
-	/* Å×µÎ¸® */
+	/* í…Œë‘ë¦¬ */
 	box-sizing : border-box;
 	padding: 10px;
 	border: 1px solid black;
 	top:400px;
 	bottom : 0px;
-	/* ±ÛÀÚ Á¤·Ä */
+	/* ê¸€ì ì •ë ¬ */
 	text-align: center;
 }
 </style>

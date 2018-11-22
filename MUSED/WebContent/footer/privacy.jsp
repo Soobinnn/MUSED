@@ -16,7 +16,7 @@
 
 
 <h1 class="bor_btm266 ">(주)Mused 개인정보처리방침</h1>
-<div style="width:60%; height:200px;overflow:auto" id="A_Container">
+<div style="width:80%; height:250px;overflow:auto" id="A_Container">
 	
 
 	<div class="service_box_2">

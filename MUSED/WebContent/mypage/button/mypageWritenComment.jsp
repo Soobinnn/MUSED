@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=utf-8"
+    pageEncoding="utf-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,7 +8,7 @@
 </head>
 <body>
 
-<center><h2>³»°¡ ¾´ ´ñ±Û!!</h2></center>
+<center><h2>ë‚´ê°€ ì“´ ëŒ“ê¸€!!</h2></center>
 
 </body>
 </html>

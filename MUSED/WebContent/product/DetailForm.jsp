@@ -237,7 +237,7 @@ to {
 					</table>
 				</td>
 				<td width="40%">판매자 정보<br> <img class="circle" id="blah"
-						src="C:\Java\upload\file_<s:property value="resultClass.product_id"/>.jpg"
+						src="/MUSED/mypage/image/file_<s:property value="resultClass.product_id"/>.jpg"
 						width="150" height="150" /><br> 판매자 : <s:property
 								value="resultClass.product_id" /><br>
 								 판매자 연락처 : <s:property value="resultClass.product_phone" /><br>
@@ -285,7 +285,7 @@ to {
 							<s:iterator value="commentList" status="stat">
 								<tr>
 									<td width="170" align="center">
-									<img class="circle"	id="blah"src="C:\Java\upload\file_<s:property value="c_id"/>.jpg" width="50" height="50" /><br> 
+									<img class="circle"	id="blah"src="/MUSED/mypage/image/file_<s:property value="c_id"/>.jpg" width="50" height="50" /><br> 
 									<s:property value="c_id" /><br>
 												<s:property value="c_regdate" /><br><br></td>
 									<td><s:property value="c_content" /> <s:url

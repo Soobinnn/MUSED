@@ -107,7 +107,15 @@ public class listAction extends ActionSupport {
 	    
 	     return SUCCESS;
 	  }
-	     
+
+	public List<cboardVO> getClist() {
+		return clist;
+	}
+
+	public void setClist(List<cboardVO> clist) {
+		this.clist = clist;
+	}
+
 	public String getSearchKeyword() {
 		return searchKeyword;
 	}

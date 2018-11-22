@@ -15,11 +15,14 @@ import com.opensymphony.xwork2.ActionSupport;
 
 public class writeAction extends ActionSupport{
 	
+
 	public static Reader reader;
 	public static SqlMapClient sqlMapper;
 	
 	private boardVO paramClass;
 	private boardVO resultClass;
+
+
 
 	
 	private int currentPage;
@@ -35,7 +38,7 @@ public class writeAction extends ActionSupport{
 	private File upload;
 	private String uploadContentType;
 	private String uploadFileName;
-	private String fileUploadPath="C:\\Java\\upload\\";
+	private String fileUploadPath="/MUSED/board/img/";
 	
 	private int ref;
 	private int re_step;

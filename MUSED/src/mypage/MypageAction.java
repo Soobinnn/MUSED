@@ -87,10 +87,10 @@ public class MypageAction extends ActionSupport implements SessionAware{
 	private File[] upload; // 파일 객체
 	private String[] uploadContentType; // 컨텐츠 타입
 	private String[] uploadFileName; // 파일 이름
-	private String fileUploadPath = "C:\\Java\\upload\\"; // 업로드 경로
+	private String fileUploadPath = "C:\\Java\\MUSED\\MUSED\\MUSED\\WebContent\\mypage\\image\\"; // 업로드 경로
 	
 	String file_ext;
-	String filePath = "C:\\Java\\upload\\";
+	String filePath = "C:\\Java\\MUSED\\MUSED\\MUSED\\WebContent\\mypage\\image\\";
 	
 	/*생성자*/
 	public MypageAction() throws IOException{
@@ -271,6 +271,7 @@ public class MypageAction extends ActionSupport implements SessionAware{
 	/*회원정보변경확인*/
 	public String modifyAction() throws Exception{
 		common();
+		System.out.println(getAddress1());
 		paramClass = new MemberVO();
 		
 		paramClass.setId(getId());
