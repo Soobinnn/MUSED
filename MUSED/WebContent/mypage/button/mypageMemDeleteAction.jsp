@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=utf-8"
+    pageEncoding="utf-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,10 +10,10 @@
 <body>
 <div id="main" align="center">
 <center>
-<h1>ȸ��Ż�� �Ϸ�Ǿ����ϴ�</h1><br>
-<h2>���� ���� MUSED�� �ٽ� ������ �� �ֱ⸦ �ٶ��ϴ�.</h2><br><br><br>
+<h1>회원탈퇴가 완료되었습니다</h1><br>
+<h2>보다 나은 MUSED로 다시 만나뵐 수 있기를 바랍니다.</h2><br><br><br>
 
-<input type="button" value="MUSED Ȩ �ٷΰ���" onclick="javascript:location.href='main.action'"/>
+<input type="button" value="MUSED 홈 바로가기" onclick="javascript:location.href='main.action'"/>
 
 </center>
 </div>

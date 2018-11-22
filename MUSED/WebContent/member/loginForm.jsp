@@ -64,8 +64,8 @@
 					<%} %>
 					<td>&nbsp;</td>
 					<td id="logintable2" align="left">
-						<input type="checkbox" id="saveId" name="saveId" value="1" />
-						<label for="saveId">SAVE ID</label>
+						<input id="cb" type="checkbox"  name="saveId" value="1" />
+						<label for="cb">SAVE ID</label>
 					</td>
 				</tr>
 				<tr>

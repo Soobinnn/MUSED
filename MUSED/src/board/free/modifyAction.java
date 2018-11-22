@@ -31,7 +31,7 @@ public class modifyAction extends ActionSupport {
 	  private File upload; // 파일객체 upload 생성
 	  private String uploadContentType; // 업로드파일의 형식
 	  private String uploadFileName; // 업로드되는 파일의 이름
-	  private String fileUploadPath = "c:\\Java\\upload"; //파일이 업로드되는 경로
+	  private String fileUploadPath = "/MUSED/board/img/"; //파일이 업로드되는 경로
 	  
 	  // 생성자
 	  public modifyAction() throws IOException{

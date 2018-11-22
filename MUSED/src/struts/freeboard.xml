@@ -54,6 +54,8 @@
     
 	<!-- 게시판 글 읽기 액션 -->
 	<action name="viewAction" class="board.free.viewAction">
+		<interceptor-ref name="chain" />
+			<interceptor-ref name="params" />
 		<result type="tiles">fb_view</result>
 	</action>
 	
@@ -107,12 +109,12 @@
 	</action>
 	
 	<action name="deleteAction2" class="board.free.deleteAction" method="execute2">
-		<result type="chain">listAction</result>  <!-- listAction으로 변경 -->
+		<result type="chain">listAction</result>
 	</action> 
 	
-	<!-- 코멘트작성 관련 액션 -->
+	<!-- 코멘트작성 관련 액션 --> <!-- <result type="chain">listAction</result> -->
 	<action name="writeCommentAction" class="board.free.commentWriteAction">
-		 <result type="chain">listAction</result>
+		<result type="chain">viewAction</result>
 	</action>
 </package>
 </struts>

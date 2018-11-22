@@ -183,6 +183,23 @@ function initRegion()
 </head>
 
 <body>
+<div id="heading" >
+<h1>재능판매</h1>
+</div>
+ <nav id="main_gnb">
+				<ul class="left">
+					<li><a href="productList.action?currentPage=1&sort=0">중고악기거래</a></li>
+					<li><a href="talentList.action?currentPage=1&sort=0">재능거래</a></li>
+					<li><a href="/MUSED/tiles/free/listAction.action?currentPage=1">커뮤니티</a></li>
+
+				</ul>
+				<ul class="right">
+					<s:if test='%{#session.ID != null}'>
+						<li><a href="productWriteForm.action">악기판매</a></li>
+						<li class="active"><a href="talentWriteForm.action">재능판매</a></li>
+					</s:if>
+				</ul>
+			</nav>
 <div id="main" align="center">
 
 	<s:if test="resultClass == NULL">
@@ -214,8 +231,8 @@ function initRegion()
           <td>&nbsp;<font color="#FF0000">*</font>  판매 상태</td>
           <td>
           <div class="checks small">
-          <input type="radio" checked="checked" name="talent_state" value="현"><label class="states">&nbsp;판매중</label></input>
-			<input type="radio" name="talent_state" value="완"><label class="state">&nbsp;판매 완료</label></input>
+          <input id="talent_ing"type="radio" checked="checked" name="talent_state" value="현"><label for="talent_ing">&nbsp;판매중</label></input>
+			<input id="talent_end" type="radio" name="talent_state" value="완"><label for="talent_end">&nbsp;판매 완료</label></input>
           </div>
           </td>
         </tr>

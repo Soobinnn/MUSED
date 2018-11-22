@@ -4,6 +4,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+
 <meta charset="utf-8">
 <title>마이페이지헤더</title>
 
@@ -49,8 +50,7 @@
 								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;프로필 사진</font> <br/> <img
 								class="circle" id="blah"
 								src="/MUSED/mypage/image/file_<s:property value="%{#session.ID}"/>.jpg"
-
-								width="150" height="150" /><br/><br/>
+									width="150" height="150" /><br/><br/>
 								<button class="replace" id="imgIn">이미지 업로드</button> <input type="file"
 								class="upload" id="imgInp" name="upload" accept="/MUSED/mypage/image/*"> &nbsp;<input
 								type="submit" class="in" value="확인">
@@ -82,6 +82,7 @@
 								</s:if> <s:if test="%{#session.ACCESS_NUM == 1}">관리자</s:if> <s:else>
 									<s:property value="%{grade}" />
 								</s:else>(<s:property value="%{paramClass.score}" />) 
+						
 							
 								<img id="light"
 								class="border" src="/MUSED/tiles/image/grade.png"

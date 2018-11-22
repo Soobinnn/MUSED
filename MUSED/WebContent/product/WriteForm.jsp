@@ -8,7 +8,7 @@
 <head>
 <title>악기 입력 폼</title>
 
-<link rel="stylesheet" href="/MUSED/css/productList.css"/>
+<link rel="stylesheet" href="/MUSED/css/testtest.css"/>
 <script language=javascript>
 
 function deleteAll(f)
@@ -189,6 +189,23 @@ function initRegion()
 	</script>
 </head>
 <body>
+<div id="heading" >
+<h1>악기판매</h1>
+</div>
+ <nav id="main_gnb">
+				<ul class="left">
+					<li><a href="productList.action?currentPage=1&sort=0">중고악기거래</a></li>
+					<li><a href="talentList.action?currentPage=1&sort=0">재능거래</a></li>
+					<li><a href="/MUSED/tiles/free/listAction.action?currentPage=1">커뮤니티</a></li>
+
+				</ul>
+				<ul class="right">
+					<s:if test='%{#session.ID != null}'>
+						<li class="active"><a href="productWriteForm.action">악기판매</a></li>
+						<li><a href="talentWriteForm.action">재능판매</a></li>
+					</s:if>
+				</ul>
+			</nav>
 <div id="main" align="center">
 	<s:if test="resultClass == NULL">
 			<form name="fwrite" action="productWrite.action" method="post" enctype="multipart/form-data" onsubmit="return validation();">
@@ -219,8 +236,8 @@ function initRegion()
           <td>&nbsp;<font color="#FF0000">*</font>  판매 상태</td>
           <td>
           <!-- 나중에 checkbox 선택 시 저장.. 이런거 다시 구현 -->
-			<input class="state" type="radio" checked="checked" name="product_state" value="현">&nbsp;판매중</input>
-			<input class="state" type="radio" name="product_state" value="완">&nbsp;판매 완료</input>
+			<input id="product_ing" type="radio" checked="checked" name="product_state" value="현"><label for="product_ing">&nbsp;판매중</label></input>
+			<input id="product_end" type="radio" name="product_state" value="완"><label for="product_end">&nbsp;판매 완료</label></input>
           </td>
         </tr>
         <tr>
@@ -252,18 +269,18 @@ function initRegion()
           <td>&nbsp;<font color="#FF0000">*</font>  상품 판매 형식</td>
           <td>
           <!-- 나중에 checkbox 선택 시 저장.. 이런거 다시 구현 -->
-			<input type="checkbox" name="product_type" value="직" id="직">
-				<label for="직" style="width:160px">
+			<input type="checkbox" name="product_type" value="직" id="cb5">
+				<label for="cb5" style="width:160px">
 					일반형
 					<font size="2p">(비배송형)</font>
 					</label></input>
-			<input type="checkbox" name="product_type" value="포" id="포" checked="checked">
-				<label for="포" style="width:160px">
+			<input type="checkbox" name="product_type" value="포" id="cb6" checked="checked">
+				<label for="cb6" style="width:160px">
 					배송형 
 					<font size="2p">(택배비 포함)</font>
 					</label></input>
-			<input type="checkbox" name="product_type" value="미" id="미">
-				<label for="미" style="width:160px">
+			<input type="checkbox" name="product_type" value="미" id="cb7">
+				<label for="cb7" style="width:160px">
 					배송형 
 					<font size="2p">(택배비 미포함)</font>
 					</label></input>

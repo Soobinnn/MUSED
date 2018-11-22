@@ -22,7 +22,6 @@ public class writeAction extends ActionSupport {
 	    private int no;
 	    private String subject;
 	    private String name;
-	    private String password;
 	    private String content;
 	    
 	    Calendar today = Calendar.getInstance(); //오늘 날짜 구하기
@@ -98,7 +97,7 @@ public class writeAction extends ActionSupport {
 	    	  }else {
 	    		  	    	  
 	    	  //등록 쿼리 수행
-	    	  sqlMapper.insert("sug.insertBoard", paramClass); //ref값에 상관없이? insertBoard 쿼리를 수행한다.
+	    	  sqlMapper.insert("sug.insertBoardReply", paramClass); //ref값에 상관없이? insertBoard 쿼리를 수행한다.
 	    	  }
 	    	return SUCCESS;  
 	      }
@@ -167,10 +166,6 @@ public class writeAction extends ActionSupport {
 			return name;
 		}
 
-		public String getPassword() {
-			return password;
-		}
-
 		public String getContent() {
 			return content;
 		}
@@ -214,10 +209,6 @@ public class writeAction extends ActionSupport {
 			this.name = name;
 		}
 
-		public void setPassword(String password) {
-			this.password = password;
-		}
-
 		public void setContent(String content) {
 			this.content = content;
 		}
@@ -227,4 +218,7 @@ public class writeAction extends ActionSupport {
 			this.today = today;
 		}
 
-	}
+
+
+
+}

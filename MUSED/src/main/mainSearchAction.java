@@ -12,7 +12,7 @@ import java.util.*;
 import java.io.Reader;
 import java.io.IOException;
 
-import product.pagingAction;
+import main.pagingAction;
 import product.productVO;
 import talent.talentVO;
 
@@ -50,7 +50,7 @@ public class mainSearchAction extends ActionSupport
 	private int totalCount_n;
 	private int totalCount_s;	
 	
-	private int blockCount=5;   //5*5 이미지 정렬
+	private int blockCount=25;   //5*5 이미지 정렬
 	private int blockPage=5;
 	private String pagingHtml;
 	private pagingAction page_p;
@@ -85,11 +85,11 @@ public class mainSearchAction extends ActionSupport
 		totalCount_n = list_n.size();
 		totalCount_s = list_s.size();	
 		
-		page_p=new pagingAction(currentPage,totalCount_p,blockCount,blockPage, num, "");
-		page_t=new pagingAction(currentPage,totalCount_t,blockCount,blockPage, num, "");
-		page_f=new pagingAction(currentPage,totalCount_f,blockCount,blockPage, num, "");
-		page_s=new pagingAction(currentPage,totalCount_s,blockCount,blockPage, num, "");
-		page_n=new pagingAction(currentPage,totalCount_n,blockCount,blockPage, num, "");
+		page_p=new pagingAction(currentPage,totalCount_p,blockCount,blockPage);
+		page_t=new pagingAction(currentPage,totalCount_t,blockCount,blockPage);
+		page_f=new pagingAction(currentPage,totalCount_f,blockCount,blockPage);
+		page_s=new pagingAction(currentPage,totalCount_s,blockCount,blockPage);
+		page_n=new pagingAction(currentPage,totalCount_n,blockCount,blockPage);
 
 		pagingHtml = page_p.getPagingHtml().toString();
 		
@@ -134,11 +134,11 @@ public class mainSearchAction extends ActionSupport
 		totalCount_s = list_s.size();
 		
 		/*page = new pagingAction(currentPage, totalCount, blockCount, blockPage, searchNum, getSearchKeyword());*/
-		page_p=new pagingAction(currentPage,totalCount_p,blockCount,blockPage, searchNum, getSearchKeyword());
-		page_t=new pagingAction(currentPage,totalCount_t,blockCount,blockPage, searchNum, getSearchKeyword());
-		page_f=new pagingAction(currentPage,totalCount_f,blockCount,blockPage, searchNum, getSearchKeyword());
-		page_s=new pagingAction(currentPage,totalCount_s,blockCount,blockPage, searchNum, getSearchKeyword());
-		page_n=new pagingAction(currentPage,totalCount_n,blockCount,blockPage, searchNum, getSearchKeyword());
+		page_p=new pagingAction(currentPage,totalCount_p,blockCount,blockPage);
+		page_t=new pagingAction(currentPage,totalCount_t,blockCount,blockPage);
+		page_f=new pagingAction(currentPage,totalCount_f,blockCount,blockPage);
+		page_s=new pagingAction(currentPage,totalCount_s,blockCount,blockPage);
+		page_n=new pagingAction(currentPage,totalCount_n,blockCount,blockPage);
 
 		
 		pagingHtml = page_p.getPagingHtml().toString();

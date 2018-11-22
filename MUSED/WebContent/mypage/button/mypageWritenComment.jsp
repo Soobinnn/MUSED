@@ -5,10 +5,10 @@
 <head>
 <meta charset="EUC-KR">
 <title>Insert title here</title>
-</head> 
+</head>
 <body>
 
-<center><h2>찜한 목록!!</h2></center>
+<center><h2>내가 쓴 댓글!!</h2></center>
 
 </body>
 </html>

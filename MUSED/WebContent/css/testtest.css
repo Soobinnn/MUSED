@@ -1117,7 +1117,30 @@ body:before
 	color : #0B2161;
 	font-weight :600;
 }
-/* 로그인  */
+
+#board_nav1
+{
+	position : relative;
+ 	left : 32rem;
+ 	margin : 1rem;
+ 	
+}
+#board_navd
+{
+	display :inline-block;
+	padding-right : 1rem;
+	text-decoration : none;
+	color:#fbf5ef;
+	font-weight : 600;
+	padding-top 
+	line-height : 1rem;
+}
+#board_navd:hover
+{
+	background-color : gray;
+	opacity : 0.4;
+}
+
 #login_logo
 {
 	position :relative;
@@ -1962,6 +1985,7 @@ select::-ms-expand
 }
 
 /* 체크박스 */
+>>>>>>> branch 'master' of https://github.com/Soobinnn/MUSED.git
 input[type="checkbox"]#cb,
 input[type="checkbox"]#cb1,
 input[type="checkbox"]#cb2,
@@ -2653,6 +2677,7 @@ button.primary:hover:active,
     padding: 2rem 0;
     text-align: center; 
 }
+<<<<<<< HEAD
 /* 소진이꺼 -보드*/
 
 

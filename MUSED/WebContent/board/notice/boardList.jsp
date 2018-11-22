@@ -23,20 +23,44 @@
 	}
 		
 </script>
-<link rel="stylesheet" href="/MUSED/css/board.css"/>
+<link rel="stylesheet" href="/MUSED/css/testtest.css"/>
 
 </head>
 
 <body>
 <div>
-		<a href='/MUSED/tiles/notice/listAction.action?currentPage=1'>공지사항</a>&nbsp;&nbsp; <a href='/MUSED/tiles/free/listAction.action'>자유게시판</a> &nbsp;&nbsp; <a href='/MUSED/tiles/sug/listAction.action'>건의게시판</a>
-	<br/><br/><br/><br/><br/><br/><br/>	
+	<div id="heading" >
+	<h1>공지사항</h1>
 	</div>
-	<div id="board" align="center">
+	<section id="body_nav">	
+		     <nav id="main_gnb">
+				<ul class="left">
+					<li><a href="productList.action?currentPage=1&sort=0">중고악기거래</a></li>
+					<li><a href="talentList.action?currentPage=1&sort=0">재능거래</a></li>
+					<li class="active"><a href="/MUSED/tiles/free/listAction.action?currentPage=1">커뮤니티</a></li>
+
+				</ul>
+				<ul class="right">
+					<s:if test='%{#session.ID != null}'>
+						<li id="menubar"><a href="productWriteForm.action">악기판매</a></li>
+						<li id="menubar"><a href="talentWriteForm.action">재능판매</a></li>
+					</s:if>
+				</ul>
+			</nav>
+			<div id="board_nav1">
+				<a id="board_navd" href='/MUSED/tiles/notice/listAction.action'>공지사항</a>&nbsp;&nbsp; 
+				<a id="board_navd" href='/MUSED/tiles/free/listAction.action'>자유게시판</a> &nbsp;&nbsp; 
+				<a id="board_navd" href='/MUSED/tiles/sug/listAction.action'>건의게시판</a>
+			</div>
+	</section>
+		<!-- <a href='/MUSED/tiles/notice/listAction.action?currentPage=1'>공지사항</a>&nbsp;&nbsp; <a href='/MUSED/tiles/free/listAction.action'>자유게시판</a> &nbsp;&nbsp; <a href='/MUSED/tiles/sug/listAction.action'>건의게시판</a>
+	<br/><br/><br/><br/><br/><br/><br/>	 -->
+	
+	<div id="board_" align="center">
 	<table width="600" border="0" cellspacing="0" cellpadding="2">
 			<tr><td><br></br><br></br></td></tr>
 		<tr>
-			<td align="center"><h2>공 지 사 항</h2></td>
+			<td align="center"><h2 class="board_h2">공 지 사 항</h2></td>
 		</tr>
 
 		<tr>
@@ -80,7 +104,7 @@
 			      <%-- <s:if test="re_level != 0">
 			          <c:forEach var = "i" begin ="${re_level}" end = "0">&nbsp;</c:forEach>→
 			      </s:if> 공지사항은 답변글을 하지 않을것이므로 주석처리--%>
-			       <s:a href="%{viewURL}"><s:property value="subject" /></s:a>
+			       <s:a id="board_a" href="%{viewURL}"><s:property value="subject" /></s:a>
 			   </td>
 			  <td class="free" align="center"> <s:property value="name" /></td>
 			 <td class="free" align="center"> <s:property value="regdate" /></td>
@@ -132,7 +156,7 @@
 			<s:if test="#session.ACCESS_NUM == 1"> <%--ACCESS_NUM컬럼의 값이 0이 일반 1이 관리자 2가 블랙 --%>
 			<tr align="right">
 				<td colspan="5">                        <%-- writeForm으로 이동하도록 한다. --%>
-					<input type="button" value="글쓰기" class="inputb" 
+					<input class="board_button" type="button" value="글쓰기" class="inputb" 
 					onclick="javascript:location.href='writeForm.action?currentPage=<s:property value="currentPage"/>';"/>
 			</s:if>
 		<s:else>
@@ -149,13 +173,13 @@
 	   <td colspan="5">
 	        <!-- 검색 폼 추가 -->
 	        <form>
-	               <select name="searchNum">
+	               <select class="board_select"  name="searchNum">
 	                 <option value="0">작성자</option>
 	                 <option value="1">제목</option>
 	                 <option value="2">내용</option>
 	               </select>
-	               <s:textfield name="searchKeyword" theme="simple" value="" cssStyle="width:120px" maxlength="20"/>
-	               <input name="submit" type="submit" value="검색" class="inputb">
+	               <s:textfield id="board_text" name="searchKeyword" theme="simple" value="" cssStyle="width:120px" maxlength="20"/>
+	               <input class="board_submit" name="submit" type="submit" value="검색" class="inputb">
 	        </form>
 	    </td>
 	  </tr>
