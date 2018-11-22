@@ -168,7 +168,7 @@ function refreshsuccess(a){
 <body>
 
 	<div id="heading" >
-			<h1>MUSED</h1>
+			<h1>중고악기</h1>
 	</div>
 	<section id="body_nav">	
 		     <nav id="main_gnb">
@@ -195,38 +195,38 @@ function refreshsuccess(a){
 	<br></br>
 	<s:hidden name="sort" value="0" />
 		<td colspan="5">
-		  	<input name="category1" type="checkbox" id="classic" value="classic">
-   			 	<label for="classic"><img src="/MUSED/product/ui_img/클래식.png"/>클래식</label>
+		  	<input name="category1" type="checkbox" id="classic" class="checkNone" value="classic">
+   			 	<label class="product_label" for="classic"><img src="/MUSED/product/ui_img/클래식.png"/>클래식</label>
    			 	
-	   		<input name="category5" type="checkbox" id="sound" value="sound">
-	   			 <label for="sound"><img src="/MUSED/product/ui_img/음악.png"/>음향악기</label>
+	   		<input name="category5" type="checkbox" id="sound"  class="checkNone" value="sound">
+	   			 <label class="product_label" for="sound"><img src="/MUSED/product/ui_img/음악.png"/>음향악기</label>
 	   			 
-   			<input name="category2" type="checkbox" id="guiter" value="guiter">
-   				<label for="guiter"><img src="/MUSED/product/ui_img/기타.png"/>기타</label>
+   			<input name="category2" type="checkbox" id="guiter"  class="checkNone" value="guiter">
+   				<label class="product_label" for="guiter"><img src="/MUSED/product/ui_img/기타.png"/>기타</label>
 	   			 
-	   		<input name="category4" type="checkbox" id="piano" value="piano">
-	   			 <label for="piano"><img src="/MUSED/product/ui_img/피아노.png"/>건반악기</label>
+	   		<input name="category4" type="checkbox" id="piano"  class="checkNone" value="piano">
+	   			 <label class="product_label" for="piano"><img src="/MUSED/product/ui_img/피아노.png"/>건반악기</label>
    				
-	   		<input name="category3" type="checkbox" id="drum" value="drum">
-	   			 <label for="drum"><img src="/MUSED/product/ui_img/드럼.png"/>드럼/타악기</label>
+	   		<input name="category3" type="checkbox" id="drum"  class="checkNone" value="drum">
+	   			 <label class="product_label" for="drum"><img src="/MUSED/product/ui_img/드럼.png"/>드럼/타악기</label>
 	   			 
-	   	   	<input name="category6" type="checkbox" id="etc" value="etc">
-	   			 <label for="etc"><img src="/MUSED/product/ui_img/그외.png"/>그 외 악기</label>
+	   	   	<input name="category6" type="checkbox" id="etc"  class="checkNone" value="etc">
+	   			 <label class="product_label" for="etc"><img src="/MUSED/product/ui_img/그외.png"/>그 외 악기</label>
 		</td>
 	</tr>
 	
 		<tr align="center" height="30px">
 		<td colspan="5" >
 		&nbsp;&nbsp;가 격 
-		<input name="priceA" type="text">&nbsp;원 ~ <input name="priceB" type="text">&nbsp;원
+		<input class="product_text" name="priceA" type="text">&nbsp;원 ~ <input class="product_text" name="priceB" type="text">&nbsp;원
 		</td>
 		</tr>
 	<tr align="center" height="30px">
 		<td colspan="5">
 
 		&nbsp;&nbsp;지 역 
-				<select name="sido" OnChange="changeRegion(fwrite)"></select>
-					<select name="gogon"></select>
+				<select class="product_select" name="sido" OnChange="changeRegion(fwrite)"></select>
+					<select class="product_select" name="gogon"></select>
 					
 					
 				<script language="javascript">
@@ -242,15 +242,15 @@ function refreshsuccess(a){
 	</tr>
 	<tr align="center" height="30px">
 		<td colspan="5">
-				&nbsp;&nbsp;<input type="text" name="searchKeyword" id="searchkeyword" theme="simple" placeholder="내용+제목"/>
-				<input name="search" type="submit" value="검색" class="inputb"/>
+				&nbsp;&nbsp;<input type="text" class="product_text" name="searchKeyword" id="searchkeyword" theme="simple" placeholder="내용+제목"/>
+				<input class="product_submit" name="search" type="submit" value="검색" class="inputb"/>
 		</td>
 	</tr>
 		</form>
 	<tr align="left">
 		<td colspan="5" height="30px">
 			<br/>
-				<select name="sort" class="sort">
+				<select class="product_select" name="sort" class="sort">
 					<option value="0" onclick="refresh(0)">최신순</option>
 					<option value="1" onclick="refresh(1)">인기순</option>
 					<option value="2" onclick="refresh(2)">저가순</option>

@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
 <%@ taglib prefix="s" uri="/struts-tags"%>
+<link rel="stylesheet" href="/MUSED/css/testtest.css"/>
+
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <title>아이디 찾기 성공</title>
@@ -18,6 +20,10 @@
 
 <center>
 	<body>
+	<div id="heading" >
+	<h1>아이디 찾기 성공</h1>
+	</div>
+	<div id="main">
 		<h1>아이디 찾기</h1>
 		<br>고객님의 정보와 일치하는 아이디 목록입니다.
 		<br>
@@ -32,10 +38,10 @@
 				</s:iterator>
 				</table>
 		</div><br><br>
-				<input type="submit" value="Login" /> &nbsp; <input
-							type="button" value="Find PWD" onclick="javascript:location.href='findPwForm.action'"/>
+				<input id="findsuccess_1" type="submit" value="Login" /> &nbsp; 
+				<input id="findsuccess_2" type="button" value="Find PWD" onclick="javascript:location.href='findPwForm.action'"/>
 		</form>
-		
+		</div>
 	</body>
 </center>
 </html>

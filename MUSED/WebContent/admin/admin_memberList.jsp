@@ -1,6 +1,6 @@
 <%@ page contentType="text/html; charset=utf-8"%>
 <%@ taglib prefix="s" uri="/struts-tags"%>
-
+<link rel="stylesheet" href="/MUSED/css/testtest.css"/>
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -52,7 +52,7 @@
 					</s:url>
 
 
-					<tr bgcolor="#FFFFFF" align="center">
+					<tr id="admin_membertr"bgcolor="#FFFFFF" align="center">
 						<td><input type="checkbox" name="check" value="<s:property value='id'/>" /></td>
 						<td><s:property value="id" /></td>
 						<td><s:property value="name" /></td>

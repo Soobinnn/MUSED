@@ -37,7 +37,7 @@
 			onsubmit="return check()">
 			<table id="jointable"width="100%" border="0" cellspacing="0" cellpadding="0">
 				<tr>
-					<td id="jointable1"><input type="checkbox" id="agreeUse" name="join" value=""><label for="agreeUse">&nbsp;MUSED이용 약관(필수)</label></td>
+					<td id="jointable1"><input type="checkbox" id="cb" name="join" value=""><label for="cb">&nbsp;MUSED이용 약관(필수)</label></td>
 				<tr>
 					<td id="jointable2"><textarea rows="10" cols="100">
 					여러분을 환영합니다.
@@ -83,7 +83,7 @@ MUSED는 여러분의 생각과 감정이 표현된 콘텐츠를 소중히 보�
 					</textarea></td>
 				</tr>
 				<tr>
-					<td id="jointable3"><input type="checkbox" id="agreePrivacy" name="join" value=""><label for="agreePrivacy">&nbsp;개인정보수집 및 이용에 대한 안내(필수)</label>
+					<td id="jointable3"><input type="checkbox" id="cb1" name="join" value=""><label for="cb1">&nbsp;개인정보수집 및 이용에 대한 안내(필수)</label>
 						</td>
 				</tr>
 				<tr>
@@ -130,11 +130,11 @@ MUSED는 여러분의 생각과 감정이 표현된 콘텐츠를 소중히 보�
 게시물 게재로 여러분은 MUSED에게 그러한 권한을 부여하게 되므로, 여러분은 이에 필요한 권리를 보유하고 있어야 합니다. 
 					</textarea></td>
 					<tr >
-						<br><td id="jointable5"><input type="checkbox" id="agreeEvent" name="join"><label for="agreeEvent">&nbsp;이벤트 등 프로모션 알림 메일 수신(선택)</label></td>
+						<br><td id="jointable5"><input type="checkbox" id="cb2" name="join"><label for="cb2">&nbsp;이벤트 등 프로모션 알림 메일 수신(선택)</label></td>
 					</tr>
 					<br>
 					<tr >
-						<td id="jointable6"><input type="checkbox" id="agreeAll" value="" class="checkbox" onclick=chkBox(this.checked)><label for="agreeAll">&nbsp;모두 동의 합니다.</label></td>
+						<td id="jointable6"><input type="checkbox" id="cb3" value="" class="checkbox" onclick=chkBox(this.checked)><label for="cb3">&nbsp;모두 동의 합니다.</label></td>
 					</tr>
 					<tr >
 						<td id="jointable7"><input id="join_agree" type="submit" value="Agree"></td>

@@ -10,23 +10,38 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <title>자유 게시판</title>
-<link rel="stylesheet" href="/MUSED/css/board.css"/>
+<link rel="stylesheet" href="/MUSED/css/testtest.css"/>
 
 </head>
 
 <body>
-
-	<div>
-
-		<a href='/MUSED/tiles/notice/listAction.action'>공지사항</a>&nbsp;&nbsp; <a href='/MUSED/tiles/free/listAction.action'>자유게시판</a> &nbsp;&nbsp; <a href='/MUSED/tiles/sug/listAction.action'>건의게시판</a>
-
-	<br/><br/><br/><br/><br/><br/><br/>	
+	<div id="heading" >
+	<h1>자유 게시판</h1>
 	</div>
-<div id="board" align="center">
+	<section id="body_nav">	
+		     <nav id="main_gnb">
+				<ul class="left">
+					<li><a href="productList.action?currentPage=1&sort=0">중고악기거래</a></li>
+					<li><a href="talentList.action?currentPage=1&sort=0">재능거래</a></li>
+					<li class="active"><a href="/MUSED/tiles/free/listAction.action?currentPage=1">커뮤니티</a></li>
+
+				</ul>
+				<ul class="right">
+					<s:if test='%{#session.ID != null}'>
+						<li id="menubar"><a href="productWriteForm.action">악기판매</a></li>
+						<li id="menubar"><a href="talentWriteForm.action">재능판매</a></li>
+					</s:if>
+				</ul>
+			</nav>
+	</section>
+<!-- 		<a id="board_a" href='/MUSED/tiles/notice/listAction.action'>공지사항</a>&nbsp;&nbsp; <a id="board_a" href='/MUSED/tiles/free/listAction.action'>자유게시판</a> &nbsp;&nbsp; <a id="board_a" href='/MUSED/tiles/sug/listAction.action'>건의게시판</a>
+
+	<br/><br/><br/><br/><br/><br/><br/>	 -->
+<div id="board_" align="center">
 	<table width="600" border="0" cellspacing="0" cellpadding="2">
 		<tr><td><br></br><br></br></td></tr>
 		<tr>
-			<td align="center"><h2>자유 게시판</h2></td>
+			<td align="center"><h2 class="board_h2">자유 게시판</h2></td>
 		</tr>
 
 		<tr>
@@ -71,7 +86,7 @@
 			      <s:if test="re_level != 0">
 			          <c:forEach var = "i" begin ="${re_level}" end = "0">&nbsp;</c:forEach>→
 			      </s:if>
-			       <s:a href="%{viewURL}"><s:property value="subject" /></s:a>
+			       <s:a id="board_a" href="%{viewURL}"><s:property value="subject" /></s:a>
 
 				   <s:if test="commentcnt > 0">
 			       (<s:property value="commentcnt"/>)
@@ -115,7 +130,7 @@
 			<s:if test="#session.ID != null">
 			<tr align="right">
 				<td colspan="5">                        <%-- 세션아이디값이 있다면(로그인한 상태이면) writeForm으로 이동하도록 한다. --%>
-					<input type="button" value="글쓰기" class="inputb" 
+					<input class="board_button" type="button" value="글쓰기" class="inputb" 
 					onclick="javascript:location.href='writeForm.action?currentPage=<s:property value="currentPage"/>';"/>
 				</td>
 			</tr>
@@ -123,7 +138,7 @@
 		<s:else>
 		  	<tr align="right">
 						<td colspan="5">                 <%-- 세션아이디값이 없으면(로그인한 상태가 아니면) 로그인 유도 페이지로 이동하게 한다. --%>
-<input type="button" value="글쓰기" class="inputb" onclick="javascript:location.href='/MUSED/tiles/loginForm.action';" />				
+<input class="board_button" type="button" value="글쓰기" class="inputb" onclick="javascript:location.href='/MUSED/tiles/loginForm.action';" />				
 
 						<%-- <input type="button" value="글쓰기" class="inputb">  --%>	
 							<%-- onClick="javascript:location.href='/MUSED/tiles/loginForm.action';"/> --%>
@@ -149,13 +164,13 @@
 	 
 	 
 	        <form>
-	               <select name="searchNum">
+	               <select class="board_select" name="searchNum">
 	                 <option value="0">작성자</option>
 	                 <option value="1">제목</option>
 	                 <option value="2">내용</option>
 	               </select>
-	               <s:textfield name="searchKeyword" theme="simple" value="" cssStyle="width:120px" maxlength="20"/>
-	               <input name="submit" type="submit" value="검색" class="inputb">
+	               <s:textfield id="board_text" name="searchKeyword" theme="simple" value="" cssStyle="width:120px" maxlength="20"/>
+	               <input class="board_submit" name="submit" type="submit" value="검색" class="inputb">
 	        </form>
 	    </td>
 	  </tr>
