@@ -3,6 +3,7 @@ package board.free;
 import java.io.File;
 import java.io.IOException;
 import java.io.Reader;
+import java.util.Calendar;
 
 import com.ibatis.common.resources.Resources;
 import com.ibatis.sqlmap.client.SqlMapClient;
@@ -22,13 +23,14 @@ public class deleteAction extends ActionSupport {
 
 	private int currentPage; // �쁽�옱 �럹�씠吏� 媛앹껜 currentPage
 
-	private String fileUploadPath = "c:\\Java\\upload\\";
+	private String fileUploadPath = "/MUSED/board/img/";
 
 	private int no; // 湲� 踰덊샇 媛앹껜 no
 	private int originno;
 
-	private int name;
+	private String name;
 
+		
 	// �깮�꽦�옄
 	public deleteAction() throws IOException {
 
@@ -67,6 +69,7 @@ public class deleteAction extends ActionSupport {
 		cClass = new cboardVO();
 		cResult = new cboardVO();
 
+		
 		cClass.setNo(getNo());
 		
 		sqlMapper.update("free.deleteCommentCount", getOriginno());
@@ -75,7 +78,8 @@ public class deleteAction extends ActionSupport {
 		return SUCCESS;
 	}
 
-	
+
+
 	public int getOriginno() {
 		return originno;
 	}
@@ -84,13 +88,15 @@ public class deleteAction extends ActionSupport {
 		this.originno = originno;
 	}
 
-	public int getName() {
-		return name;
-	}
 
-	public void setName(int name) {
-		this.name = name;
-	}
+	public String getName() {
+			return name;
+		}
+
+		public void setName(String name) {
+			this.name = name;
+		}
+
 
 	public cboardVO getcClass() {
 		return cClass;

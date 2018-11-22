@@ -40,7 +40,7 @@ public class viewAction extends ActionSupport {
 	  
 	  private String password;
 	  
-	  private String fileUploadPath = "c:\\Java\\upload\\";
+	  private String fileUploadPath = "/MUSED/board/img/";
 	  
 	  private InputStream inputStream;
 	  private String contentDisposition; //�뙆�씪紐�?�뙆�씪 �냽�꽦怨� 愿��젴�맂 媛앹껜 �깮�꽦
