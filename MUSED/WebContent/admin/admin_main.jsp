@@ -5,25 +5,41 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
-<link rel="stylesheet" href="test.css">
+<link rel="stylesheet" href="/MUSED/css/testtest.css"/>
 <head>
 <meta charset="utf-8">
 <title>관리자 페이지</title>
 </head>
 <body>
-		<div class ="container">
-		<section class="admin admin_body">
-			<h1><s:property value="%{#session.NAME}"/> 관리자님, 안녕하세요.</h1>
-			<a href="/MUSED/admin_memberlist.action?currentPage=1"><img src="/MUSED/tiles/image/member.png" width="200" height="200"/></a>
-			<a href="/MUSED/tiles/notice/admin_notice.action?currentPage=1"><img src="/MUSED/tiles/image/notice.png" width="200" height="200"/></a>			
-			<a href='/MUSED/tiles/admin/listAction.action?currentPage=1'><img src="/MUSED/tiles/image/report.jpg" width="200" height="200"/></a>
-			<br/>
-			<table width="600" border="1" cellspacing="0" cellpadding="0" >
-				<tr>
-				<td align="center">회원관리</td> <td align="center">공지사항</td> <td align="center">신고목록</td>
-				</tr>
-			</table>
+		<div id="heading" >
+			<h1>관리자 페이지</h1>
+		</div>
+		<h1 id="admin_text"><s:property value="%{#session.NAME}"/> 관리자님, 안녕하세요.</h1>
+		<div class="admin_testimonials">
+		
+		<section>
+				<div class="content">
+				<a href="/MUSED/admin_memberlist.action?currentPage=1"><img src="/MUSED/css/member.png" width="200" height="200"/></a>
+				<p>회원관리</p>
+				</div>
+		</section>
+		<section>
+				<div class="content">
+				<a href="/MUSED/tiles/notice/admin_notice.action?currentPage=1"><img src="/MUSED/css/notice.png" width="200" height="200"/></a>
+				<p>공지사항</p>
+				</div>
+		</section>
+		<section>
+				<div class="content">
+				<a href='/MUSED/tiles/admin/listAction.action?currentPage=1'><img src="/MUSED/css/report1.png" width="200" height="200"/></a>	
+				<p>신고목록</p>
+				</div>
 		</section>
 		</div>
+		
+		
+		
+
+
 </body>
 </html>

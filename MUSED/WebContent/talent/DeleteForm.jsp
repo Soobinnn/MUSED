@@ -5,10 +5,12 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link rel="stylesheet" href="/MUSED/css/productList.css"/>
 </head>
-<body>
-삭제되었습니다.
-<br> 
+<body align="center">
+<br/><br/><br/><br/>
+재능이 삭제되었습니다.
+<br/><br/> 
 <input name="talent_list" type="button" value="상품 목록보기" class="inputb" onClick="javascript:location.href='talentList.action?sort=0&currentPage=1'"/>
 <input name="main" type="button" value="메인 화면으로" class="inputb" onClick="javascript:location.href='main.action'"/>
 

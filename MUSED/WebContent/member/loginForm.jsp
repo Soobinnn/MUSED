@@ -2,8 +2,9 @@
 	pageEncoding="utf-8"%>
 <%@ page import="util.CookieBox"%>
 <%@ taglib prefix="s" uri="/struts-tags"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<link rel="stylesheet" href="/MUSED/css/testtest.css"/>
 <html>
 <head>
 <title>로그인 폼</title>
@@ -32,11 +33,17 @@
 		<%
 			CookieBox cookieBox = new CookieBox(request);
 		%>
-		<b><h1>MUSED</h1></b>
+		<div id="heading" >
+			<h1>로그인</h1>
+		</div>
+	
+	
+		<div id="main">
+		<img id="login_logo" src="/MUSED/css/main_logo.png" >
 		<form name="loginForm" action="loginAction.action" method="post">
-			<table>
+			<table id="logintable">
 				<tr>
-					<td align="center">ID</td>
+					<td id="logintable1" align="center">ID</td>
 					<%
 						String sid = request.getParameter("selectedId");
 					%>
@@ -55,27 +62,33 @@
 						<td align="center"><input type="text" name="id" size="17"
 						value=""></td>
 					<%} %>
-	
-					<td><input type="checkbox" name="saveId" value="1" />Save Id</td>
+					<td>&nbsp;</td>
+					<td id="logintable2" align="left">
+						<input type="checkbox" id="saveId" name="saveId" value="1" />
+						<label for="saveId">SAVE ID</label>
+					</td>
 				</tr>
 				<tr>
-					<td align="center">PWD</td>
-					<td align="center"><input type="password" name="password"
+					<td id="logintable3" align="center">PWD</td>
+					<td align="right"><input type="password" name="password"
 						size="17"></td>
 				</tr>
 				<tr align="center">
 					<td></td>
-					<td><input type="submit" value="LOGIN"></td>
+					<td align="center"><input id="login" type="submit" value="LOGIN" ></td>
+				</tr>
+				<tr>
 				</tr>
 				<tr align="center">
-					<td><a href="joinConfirm.action">Join Us</a></td>
-					<td><a href="findIdForm.action">Find ID</a></td>
-					<td><a href="findPwForm.action">Find PWD</a></td>
+					<td class="login_bottom"><a href="joinConfirm.action">Join Us</a></td>
+					<td class="login_bottom"><a href="findIdForm.action">Find ID</a></td>
+					<td class="login_bottom"><a href="findPwForm.action">Find PWD</a></td>
 				</tr>
 			</table>
-
+			
 
 		</form>
+		</div>
 	</body>
 </center>
 </html>

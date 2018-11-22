@@ -7,7 +7,6 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <title>공 지 사 항</title>
-<link rel="stylesheet" href="/StrutsBoard/board/common/css/css.css" type="text/css">
 
 <script type="text/javascript">
 	function validation() {

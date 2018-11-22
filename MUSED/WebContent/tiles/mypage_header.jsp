@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<link rel="stylesheet" href="/MUSED/tiles/style.css">
+
 <meta charset="utf-8">
 <title>마이페이지헤더</title>
 
@@ -89,6 +89,9 @@
 
 </head>
 <body>
+	<div id="heading" >
+			<h1>마이페이지</h1>
+	</div>
 	<form method="post" enctype="multipart/form-data"
 		action="updateProfile.action">
 		<div>
@@ -106,7 +109,8 @@
 
 								width="150" height="150" /><br>
 								<button class="replace">이미지 업로드</button> <input type="file"
-								class="upload" id="imgInp" name="upload" accept="image/*"><input
+								class="upload" id="imgInp" name="upload" accept="/MUSED/mypage/image/*"><input
+
 								type="submit" class="in" value="확인">
 							</td>
 							<td width="10%"></td>

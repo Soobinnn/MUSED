@@ -9,12 +9,17 @@
 	<title>회원목록</title>
 </head>
 <body>
+	<div id="heading" >
+			<h1>회원관리</h1>
+	</div>
+	
+	<div id="main">
 	<div class="container">
 		<section class="admin admin_body">
 
 		<table width="600" border="0" cellspacing="0" cellpadding="2">
 			<tr>
-				<td align="center"><h2>회원목록</h2></td>
+				<td align="center"><h2>회원관리</h2></td>
 			</tr>
 			<tr>
 				<td height="20"></td>
@@ -98,5 +103,7 @@
 		</form>
 
 		</section>
+		</div>
+		</div>
 </body>
 </html>

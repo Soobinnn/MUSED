@@ -5,11 +5,16 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
-<link rel="stylesheet" href="test.css">
+
 <head>
 <title>신고 목록</title>
 </head>
 <body>
+	<div id="heading" >
+			<h1>신고목록</h1>
+	</div>
+	
+	<div id="main">
 	<div class ="container">
 		<section class="admin admin_body">
   	<table width="600" border="0" cellspacing="0" cellpadding="2">
@@ -89,5 +94,6 @@
 	</form>
 	</section>
 	</div>	
+	</div>
 </body>
 </html>

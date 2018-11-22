@@ -9,6 +9,7 @@
 <title>재능 입력 폼</title>
 
 
+<link rel="stylesheet" href="/MUSED/css/productList.css"/>
 <script language=javascript>
 
 function deleteAll(f)
@@ -182,7 +183,7 @@ function initRegion()
 </head>
 
 <body>
-
+<div id="main" align="center">
 
 	<s:if test="resultClass == NULL">
 			<form name="fwrite" action="talentWrite.action" method="post" enctype="multipart/form-data" onsubmit="return validation();">
@@ -195,28 +196,35 @@ function initRegion()
 		</s:else>
 		
 
-       <table width="800" border="0" cellspacing="0" cellpadding="0">
+       <table width="80%" border="0" cellspacing="0" cellpadding="0">
         <tr>
-          <td><font color="#FF0000">*</font>는 필수 입력사항입니다.</td>
+          <td><br></br></td>
+          </tr>
+        <tr>
+          <td><br/>&nbsp;<font size="2p" color="#FF0000">* 는 필수 입력사항입니다.</font></td>
           <s:hidden name="talent_id" value="%{#session.ID}" />
         </tr>
-        
-        <tr bgcolor="#777777">
+         <tr>
+          <td><br></br></td>
+          </tr>
+        <tr>
           <td height="1" colspan="2"></td>
         </tr>
         <tr>
-          <td bgcolor="#F4F4F4"><font color="#FF0000">*</font>  판매 상태</td>
-          <td bgcolor="#FFFFFF">
-          <input type="radio" checked="checked" name="talent_state" value="현">판매중</input>
-			<input type="radio" name="talent_state" value="완">판매 완료</input>
+          <td>&nbsp;<font color="#FF0000">*</font>  판매 상태</td>
+          <td>
+          <div class="checks small">
+          <input type="radio" checked="checked" name="talent_state" value="현"><label class="states">&nbsp;판매중</label></input>
+			<input type="radio" name="talent_state" value="완"><label class="state">&nbsp;판매 완료</label></input>
+          </div>
           </td>
         </tr>
-        <tr bgcolor="#777777">
+        <tr>
           <td height="1" colspan="2"></td>	
         </tr>
 				
         <tr>
-          <td width="200" bgcolor="#F4F4F4"><font color="#FF0000">*</font>   카테고리</td>
+          <td width="200">&nbsp;<font color="#FF0000">*</font>   카테고리</td>
           <td>
           
           <!-- 나중에 category 선택 시 저장.. 이런거 다시 구현 -->
@@ -232,58 +240,58 @@ function initRegion()
 		
        	</td>
        </tr>							
-        <tr bgcolor="#777777">
+        <tr>
           <td height="1" colspan="2"></td>
         </tr>
         
  
     	<tr>
-          <td bgcolor="#F4F4F4"><font color="#FF0000">*</font>  제목</td>
-          <td bgcolor="#FFFFFF">
-            <s:textfield name="talent_subject" theme="simple" value="%{resultClass.talent_subject}" cssStyle="width:100px" maxlength="50"/>
+          <td>&nbsp;<font color="#FF0000">*</font>  제목</td>
+          <td>
+            <s:textfield name="talent_subject" theme="simple" value="%{resultClass.talent_subject}" cssStyle="width:300px" maxlength="50"/>
           </td>
         </tr>
-        <tr bgcolor="#777777">
+        <tr>
           <td height="1" colspan="2"></td>	
         </tr>
      
         <tr>
-          <td bgcolor="#F4F4F4"><font color="#FF0000">*</font>  상품명</td>
-          <td bgcolor="#FFFFFF">
-            <s:textfield name="talent_name" theme="simple" value="%{resultClass.talent_name}" cssStyle="width:100px" maxlength="50"/>
+          <td>&nbsp;<font color="#FF0000">*</font>  상품명</td>
+          <td>
+            <s:textfield name="talent_name" theme="simple" value="%{resultClass.talent_name}" cssStyle="width:300px" maxlength="50"/>
           </td>
         </tr>
-        <tr bgcolor="#777777">
+        <tr>
           <td height="1" colspan="2"></td>	
         </tr>
         	
         	
         <tr>
-          <td bgcolor="#F4F4F4"><font color="#FF0000">*</font>  가격</td>
-          <td bgcolor="#FFFFFF">
-            <s:textfield name="talent_price" theme="simple" value="%{resultClass.talent_price}" cssStyle="width:100px" maxlength="20"/>원
+          <td>&nbsp;<font color="#FF0000">*</font>  가격</td>
+          <td>
+            <s:textfield name="talent_price" theme="simple" value="%{resultClass.talent_price}" cssStyle="width:160px" maxlength="20"/>원
           </td>
         </tr>
-        <tr bgcolor="#777777">
+        <tr>
           <td height="1" colspan="2"></td>	
         </tr>
         
         
         <tr>
-          <td bgcolor="#F4F4F4">  거래 시 연락처</td>		
-          <td bgcolor="#FFFFFF">
-            <s:textfield name="talent_phone" theme="simple" value="%{resultClass.talent_phone}" cssStyle="width:100px" maxlength="11"/>
+          <td> &nbsp;&nbsp;&nbsp; 거래 시 연락처</td>		
+          <td>
+            <s:textfield name="talent_phone" theme="simple" value="%{resultClass.talent_phone}" cssStyle="width:88px" maxlength="11"/>
           </td>
         </tr>
-        <tr bgcolor="#777777">
+        <tr>
           <td height="1" colspan="2"></td>	
         </tr>
         <tr>
-          <td bgcolor="#F4F4F4">  거래 선호 지역</td>  
-          <td bgcolor="#FFFFFF">
+          <td>&nbsp;&nbsp;&nbsp;  거래 선호 지역</td>  
+          <td>
             
 					<select name="talent_sido" OnChange="changeRegion(fwrite)"></select>
-					<select name="talent_gogon"></select> * 지역을 선택하세요.<br>
+					<select name="talent_gogon"></select><br><font size="2p">* 재능을 기부 할 지역을 선택하세요.<br>
 					
 					
 					<script language="javascript">
@@ -298,51 +306,56 @@ function initRegion()
 		      </td>
         </tr>
        
-        <tr bgcolor="#777777">
+        <tr>
           <td height="1" colspan="2"></td>	
         </tr> 
+        <tr>
+        <td colspan="2">
+			<br><font size="2p" color="red">* 파일을 하나 이상 첨부 하지 않을 시 에러가 발생하여 재능이 등록되지 않습니다.</font></br><br/>
+		</td>
+		</tr>
 
         <tr>
-          <td bgcolor="#F4F4F4"><font color="#FF0000">*</font>  메인 사진 등록</td> 
-          <td bgcolor="#FFFFFF">
-             <s:file name="upload"/>   	      
-          </td>
+          <td>&nbsp;<font color="#FF0000">*</font>  메인 사진 등록</td> 
+          <td>
+             <s:file name="upload"/>
+           </td>
         </tr>
         <tr>
-          <td bgcolor="#F4F4F4">  추가 사진 등록</td>  
-          <td bgcolor="#FFFFFF">
+          <td> &nbsp;&nbsp; 추가 사진 등록</td>  
+          <td>
              <s:file name="upload"/>  
              <s:file name="upload"/>  
              <s:file name="upload"/>  
-             <s:file name="upload"/>   	      
           </td>
         </tr>
 
-        <tr bgcolor="#777777">
+        <tr >
           <td height="1" colspan="2"></td>
         </tr>       
          
 		<tr>
-          <td bgcolor="#F4F4F4"><font color="#FF0000">*</font>  상품 상세 설명 </td>
-          <td bgcolor="#FFFFFF">
+          <td>&nbsp;<font color="#FF0000">*</font>&nbsp;상품 상세 설명 </td>
+          <td>
             <s:textarea name="talent_content" theme="simple" value="%{resultClass.talent_content}" cols="50" rows="10" />
           </td>
         </tr>
-        <tr bgcolor="#777777">
-          <td height="1" colspan="2"></td>
+        <tr>
+          <td height="3" colspan="2"></td>
         </tr>
-        
-        
+
         <tr>
           <td align="right" colspan="2">
-          	<input name="submit" type="submit" value="작성완료" class="inputb">
+          	<input id="write" name="submit" type="submit" value="작성완료" class="inputb">
             <input name="list" type="button" value="목록" class="inputb" onClick="javascript:location.href='talentList.action?sort=0&currentPage=1'">
           </td>
         </tr>
-
+        <tr>
+          <td><br></br></td>
+          </tr>
     </table>
     </form>
-
+</div>
 
 </body>
 </html>
