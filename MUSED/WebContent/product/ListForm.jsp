@@ -137,6 +137,7 @@ function initRegion()
 function refresh(a){
 	//현재 주소를 가져온다.
 	var renewURL = location.href;
+	
 	//현재 주소 중 sort 부분이 있다면 날려버린다.
 	renewURL = renewURL.replace(/sort=([0-9]+)/ig,'');
 	//주소 추가 할당
@@ -277,7 +278,7 @@ function refreshsuccess(a){
 					<s:property value="currentPage"/>
 				</s:param>
 			</s:url>
-      <td>	 
+      <td width="20%">	 
           &nbsp;<s:a href="%{DetailURL}">
       			<img src="/MUSED/product/img/<s:property value='main_img'/>" style='height: 200px; width: 200px; display: block;'/>
 				<br><s:property value="product_subject" />

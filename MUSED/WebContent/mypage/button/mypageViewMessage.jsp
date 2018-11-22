@@ -8,7 +8,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Msg_viewlist</title>
 <meta charset="utf-8">
-
+<link rel="stylesheet" href="/MUSED/css/testtest.css"/>
 <script type="text/javascript">
 function openMessage() {
 	var url = "ReMessageForm.action"
@@ -20,8 +20,8 @@ function openMessage() {
 </script> 
 </head>
 <body>
-
-	<table width="100%" border="0" cellspacing="0" cellpadding="2">
+<div id="myMessageDetail" align="center">
+	<table width="90%" border="0" cellspacing="0" cellpadding="2">
 		<tr>
 			<td align="center">
 				<h2>메시지 보기</h2>
@@ -30,7 +30,7 @@ function openMessage() {
 	</table>
 	
 
-	<table width="100%" border="0" cellspacing="0" cellpadding="0">
+	<table width="90%" border="0" cellspacing="0" cellpadding="0">
 		<tr>
 		</tr>
 		<tr bgcolor="#777777">
@@ -43,11 +43,11 @@ function openMessage() {
 			<td height="1" colspan="2">
 			</td>
 		</tr>
-		<tr>
-			<td bgcolor="#F4F4F4">
+		<tr height="30">
+			<td width="30%" class="line" bgcolor="#F4F4F4">
 				&nbsp;<font size="2">보내는 사람</font>
 			</td>
-			<td bgcolor="#FFFFFF">
+			<td width="70%" bgcolor="#FFFFFF">
 			
 			<s:property value="resultClass.msg_wrt_id" /> 
 			</td>
@@ -62,7 +62,7 @@ function openMessage() {
 			</td>
 		</tr>
 		
-		<tr>
+		<tr height="170">
 			<td bgcolor="#F4F4F4">
 				<font color="#FF0000">*</font>내용
 			</td>
@@ -81,7 +81,7 @@ function openMessage() {
 			</td>
 		</tr>
 		<tr>
-			<td bgcolor="#F4F4F4">
+			<td class="line" height="30"  bgcolor="#F4F4F4">
 				&nbsp;<font size="2">받는 사람</font>
 			</td>
 			<td bgcolor="#FFFFFF">
@@ -113,5 +113,6 @@ function openMessage() {
 			</td>
 		</tr>
 	</table>
+	</div>
 </body>
 </html>

@@ -8,6 +8,8 @@
 <meta charset="EUC-KR">
 <title>Insert title here</title>
 
+<link rel="stylesheet" href="/MUSED/css/mypage.css"/>
+
 <script language="javascript">
 
 function outCheck() {
@@ -27,7 +29,9 @@ function outCheck() {
 
 <body>
 
+<div class="main">
 <center>
+
 <form action="memberDeleteAction.action" method="post" name="delete_form" >
 <h1>회원탈퇴 신청</h1><br>
 <h2>그동안 MUSED를 이용해 주셔서 감사합니다.</h2><br><br><br>
@@ -51,6 +55,7 @@ function outCheck() {
 </table>
 </form>
 </center>
+</div>
 
 </body>
 </html>

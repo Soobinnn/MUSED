@@ -270,7 +270,7 @@ function refreshsuccess(a){
 	<!-- 로그인 했을 때 상세보기 들어가짐 -->
 	<s:if test='%{#session.ID != null}'>
      	<s:iterator value="list" status="stat">
-  	      <td>	 
+  	      <td width="20%">	 
 	      	<s:url id="DetailURL" action="talentDetail">
 				<s:param name="talent_no">
 					<s:property value="talent_no"/>

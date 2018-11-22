@@ -8,19 +8,24 @@
 <head>
 
 <title>재능 판매 내역</title>
+<link rel="stylesheet" href="/MUSED/css/testtest.css"/>
+
 </head>
 <body>
 
-<h1><center>내가 판매한 재능!</center></h1><br>
+<div id="myPage"><center>
+<table width="90%" align="center" border="0" cellspacing="0" cellspadding="2">
+<tr>
+<td colspan="5">
+<h1><br/><center>내가 판매한 재능</center></h1><br/></td>
+</tr>
 
-<table width="600" border="0" cellspacing="0" cellspadding="2">
 <tr bgcolor="#777777">
-    	<td height="1" colspan="5"></td>
-   	</tr>
-    
-	<tr>
+    <td height="2" colspan="5"></td>
+</tr>
+<tr align="center">
      	<s:iterator value="list2" status="stat">
-  	      <td>	 
+  	      <td width="20%" height="30%">	 
 	      	<s:url id="DetailURL" action="talentDetail">
 				<s:param name="talent_no">
 					<s:property value="talent_no"/>
@@ -48,5 +53,7 @@
   		<td colspan="5"><s:property value="pagingHtml"  escape="false" /></td>
     </tr>
 </table>
+</center>
+</div>
 </body>
 </html>

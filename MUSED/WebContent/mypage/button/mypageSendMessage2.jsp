@@ -7,6 +7,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Msg_writeForm</title>
+<link rel="stylesheet" href="/MUSED/css/testtest.css"/>
 <meta charset="utf-8">
 	<script type="text/javascript">
 		function check(){
@@ -30,11 +31,17 @@
 	</script>
 </head>
 <body>
-
+<div id="myMessage" align="center">
 	<table width="100%" border="0" cellspacing="0" cellpadding="2">
 		<tr>
+			<td height="90">
+			
+			</td>
+		</tr>
+		
+		<tr>
 			<td align="center">
-				<h2>메시지 보내기</h2>
+				<h1 id="head">메시지 보내기</h1>
 			</td>
 		</tr>
 	</table>
@@ -44,7 +51,10 @@
 	<form action="sendMessage.action" method="post" enctype="multipart/form-data" onsubmit="return validation();" name="Msg_Wrt" onsubmit="return check()">
 		
 	<table width="60%" align="center" border="0" cellspacing="0" cellpadding="0">
-		<tr>
+			<tr>
+			<td height="60">
+			
+			</td>
 		</tr>
 		<tr bgcolor="#777777">
 			<td height="1" colspan="2">
@@ -53,14 +63,14 @@
 		<tr>
 		</tr>
 		<tr bgcolor="#777777">
-			<td height="1" colspan="2">
+			<td height="2" colspan="2">
 			</td>
 		</tr>
-		<tr>
-			<td bgcolor="#F4F4F4">
-				&nbsp;<font size="2">보내는 사람</font>
+		<tr height="30">
+			<td class="line" width="30%" bgcolor="#F4F4F4">
+				&nbsp;보내는 사람</font>
 			</td>
-			<td bgcolor="#FFFFFF">
+			<td width="70%" bgcolor="#FFFFFF">
 				<s:property value="%{#session.ID}"/>
 			 <input type="hidden" name="msg_wrt_id" value="<s:property value='%{#session.ID}'/>"/>  
 			</td>
@@ -76,11 +86,11 @@
 		</tr>
 		
 		<tr>
-			<td bgcolor="#F4F4F4">
+			<td class="line" bgcolor="#F4F4F4">
 				<font color="#FF0000">*</font>내용
 			</td>
 			<td bgcolor="#FFFFFF">
-				<s:textarea name="msg_content" theme="simple"  cols="80" rows="10"  />
+				<s:textarea name="msg_content" theme="simple"  cols="70" rows="9"  />
 			</td>
 		</tr>
 			 <tr bgcolor="#777777">
@@ -92,13 +102,13 @@
 			<td height="1" colspan="2">
 			</td>
 		</tr>  
-		<tr>
-			<td bgcolor="#F4F4F4">
-				&nbsp;<font size="2">받는 사람</font>
+		<tr height="30">
+			<td class="line" bgcolor="#F4F4F4">
+				&nbsp;받는 사람
 			</td>
 			<td bgcolor="#FFFFFF">
 			
-			<input type="text" name="msg_rec_id"  />
+			<input id="rcv_id" type="text" name="msg_rec_id"  />
 
 			</td>
 		</tr>
@@ -107,11 +117,11 @@
 			</td>
 		</tr>
 		<tr bgcolor="#777777">
-			<td height="1" colspan="2">
+			<td height="2" colspan="2">
 			</td>
 		</tr>
 		<tr>
-			<td height="10" colspan="2">
+			<td height="60" colspan="2">
 			</td>
 		</tr>
 		
@@ -123,5 +133,6 @@
 		</tr>
 	</table>
 	</form>	
+</div>
 </body>
 </html>

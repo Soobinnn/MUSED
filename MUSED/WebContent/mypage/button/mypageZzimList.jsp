@@ -5,7 +5,7 @@
 <head>
 <meta charset="EUC-KR">
 <title>Insert title here</title>
-</head>
+</head> 
 <body>
 
 <center><h2>찜한 목록!!</h2></center>

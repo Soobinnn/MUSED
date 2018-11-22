@@ -8,16 +8,22 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <title>상품 판매 내역</title>
+<link rel="stylesheet" href="/MUSED/css/testtest.css"/>
+
 </head>
 <body>
 
-<h1><center>내가 판매한 상품!</center></h1><br/>
-
-<table width="600" border="0" cellspacing="0" cellspadding="2">
-<tr bgcolor="#777777">
-    <td height="1" colspan="5"></td>
-</tr>
+<div id="myPage"><center>
+<table width="90%" align="center" border="0" cellspacing="0" cellspadding="2">
 <tr>
+<td colspan="5">
+<h1><br/><center>내가 판매한 상품</center></h1><br/></td>
+</tr>
+
+<tr bgcolor="#777777">
+    <td height="2" colspan="5"></td>
+</tr>
+<tr align="center">
     <s:iterator value="list" status="stat">
 	     <s:url id="DetailURL" action="productDetail">
 			<s:param name="product_no">
@@ -27,7 +33,7 @@
 				<s:property value="currentPage"/>
 			</s:param>
 		</s:url>
-      <td>	 
+      <td width="20%" height="30%">	 
           &nbsp;<s:a href="%{DetailURL}">
       			<img src="/MUSED/product/img/<s:property value="main_img"/>" style="height: 100px; width: 100px; display: block;"/>
 				<br><s:property value="product_subject" />
@@ -49,5 +55,7 @@
      <td colspan="5"><s:property value="pagingHtml"  escape="false" /></td>
 </tr>
 </table>
+</center>
+</div>
 </body>
 </html>
